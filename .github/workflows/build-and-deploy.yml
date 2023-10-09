@@ -33,12 +33,6 @@ jobs:
               with:
                   path: ./website/out
 
-            - name: Deploy
-              # https://github.com/JamesIves/github-pages-deploy-action
-              uses: JamesIves/github-pages-deploy-action@4.4.0
-              with:
-                  branch: gh-pages
-                  folder: website/out
     deploy:
         environment:
             name: github-pages
