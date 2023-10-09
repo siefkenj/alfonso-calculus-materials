@@ -16,7 +16,8 @@
         "glob": "^10.3.10",
         "postcss": "^8.4.31",
         "postcss-nesting": "^12.0.1",
-        "tailwindcss": "^3.3.3"
+        "tailwindcss": "^3.3.3",
+        "typescript": "^5.2.2"
     },
     "dependencies": {
         "@unified-latex/unified-latex": "^1.5.0",
