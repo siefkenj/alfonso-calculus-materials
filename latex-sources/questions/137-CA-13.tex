@@ -1,0 +1,976 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{} 
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{\pause}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0} 
+\definecolor{rosa}{rgb}{1, 0, 1}  
+\definecolor{naranja}{rgb}{1, .5, 0.1} 
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+ 
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+ 
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\setsize{15}}
+\setbeamerfont{block title}{size=\setsize{14}}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+% Preamble just for this file
+%===========================
+
+ 
+\newcommand{\suman}{\sum_{n=0}^{\infty} a_n}
+
+\newcommand{\fantasma}{\phantom{\DS{\frac 11}}}
+\newcommand{\PT}{ \mbox{(P.T.)}}
+\newcommand{\NT}{ \mbox{(N.T.)}}
+
+\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\vvv}{\vspace{.2cm}}
+
+%===================================================
+\begin{document}
+%===================================================
+
+%----------------------------------------------------------------------------------------
+%	Definition and basic properties of series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{A telescopic series}
+I want to calculate the value of the series \;
+	\DS{
+		\sum_{n=1}^{\infty} \frac{1}{n^2+2n}.
+	}
+\vv
+\begin{enumerate}
+	\item  Find a formula for the $k$-th partial sum
+		\DS{
+			S_k = \sum_{n=1}^{k} \frac{1}{n^2+2n}.
+		}
+		
+		\emph{Hint:}  \;  \DS{\frac{1}{n^2+2n} \; = \; \frac{A}{n} + \frac{B}{n+2} }
+\vv
+
+	\item  Using the definition of series, compute the value of 
+		$$
+			\sum_{n=1}^{\infty} \frac{1}{n^2+2n}
+		$$	
+	
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{What is wrong with this calculation?  Fix it}
+
+{\bf Claim:}  \;  \DS{\sum_{n=2}^{\infty} \ln \frac{n}{n+1} \, =\, \ln 2}
+
+\begin{block}{``Proof"}
+\vspace{-.4cm}
+	\begin{align*}
+		\sum_{n=2}^{\infty} \ln \frac{n}{n+1} 
+			\; &= \;
+		\sum_{n=2}^{\infty} \left[ \ln {n} - \ln(n+1) \right] 
+			\\ \; &= \;
+		\sum_{n=2}^{\infty} \ln (n) \; - \; 	\sum_{n=2}^{\infty} \ln (n+1)
+			\\ \; &= \;
+			\left( \ln 2 + \ln 3 + \ln 4 + \ldots \right) \; - \; ( \ln 3 + \ln 4 +  \ldots)  \phantom{\int}
+			\\ \; &= \;
+			\ln 2
+	\end{align*}
+\end{block}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Trig series: convergent or divergent?}
+
+	\begin{enumerate}
+	\begin{multicols}{2}
+		\item \DS{\sum_{n=0}^{\infty} \sin (n \pi)}
+		
+		\item  \DS{\sum_{n=0}^{\infty} \cos (n \pi)}
+	\end{multicols}
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Help me write the next assignment}
+
+In the next assignment I want to give you a series and ask you to calculate its value from the definition.  I want the sequence of partial sums \DS{\left\{ S_n \right\}_{n=1}^{\infty}} to be
+	$$
+		\forall n \geq 1, \; S_n = n^2
+	$$
+
+What series should I ask you to calculate?
+
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{What can you conclude?}
+
+Assume \DS{\forall n \in \N, \; a_n >0}.  Consider the series \DS{\sum_{n=0}^{\infty} a_n}.
+
+Let \DS{\left\{ S_n \right\}_{n=0}^{\infty}} be its sequence of partial sums.
+\vv
+
+In each of the following cases, what can you conclude about the \emph{series}?  Is it convergent, divergent, or we do not know?
+\vv
+
+\begin{enumerate}
+	\item \DS{\forall n \in \N, \; \mbox{ \phantom{s.t.} } \quad \exists M \in \R \; \mbox{ s.t. } \; \quad S_n \leq M}.
+	\item \DS{\exists M \in \R \; \mbox{ s.t. } \quad \forall n \in \N, \; \mbox{ \phantom{s.t.} }  \quad S_n \leq M}.
+	\item \DS{\exists M >0 \; \mbox{ s.t. } \; \quad \forall n \in \N, \; \mbox{ \phantom{s.t.} } \quad  a_n \leq M}.
+	\item \DS{\exists M >0 \; \mbox{ s.t. } \; \quad \forall n \in \N, \; \mbox{ \phantom{s.t.} } \quad a_n \geq M}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Harmonic series}
+
+For each $n >0$ we define
+	$$
+		r_n = \;  \, \mbox{smallest power of $2$ that is greater than or equal to $n$} \, 
+	$$
+\vspace{-.7cm}
+
+Consider the series \DS{S = \sum_{n=1}^{\infty} \frac{1}{r_n}}
+\vspace{.2cm}
+
+	\begin{enumerate}
+		\item Compute \DS{r_1} through \DS{r_8}
+\vv
+		\item Compute the partial sums \DS{S_1, S_2, S_4, S_8} for the series $S$.
+\vspace{.2cm}
+		\item Calculate \DS{S = \sum_{n=1}^{\infty} \frac{1}{r_n}}.
+		\item  Calculate \DS{H = \sum_{n=1}^{\infty} \frac{1}{n}}.
+		\hfill
+			\emph{Hint:} ``Compare" $H$ and $S$.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{True or False -- Definition of series}
+
+Let \DS{\sum_{n=0}^{\infty} a_n} be a series.  
+Let \DS{\{ S_n \}_{n=0}^{\infty}} be its partial-sum sequence.
+
+\begin{enumerate}
+	\item IF \azul{the series \DS{\sum_{n=0}^{\infty} a_n}  is convergent}, \\
+ 	THEN \rojo{the sequence  \DS{\{ S_n \}_{n=0}^{\infty}} is bounded}.
+\vspace{.5cm}
+
+	\item IF \azul{the series \DS{\sum_{n=0}^{\infty} a_n}  is convergent}, \\
+ 	THEN \rojo{the sequence  \DS{\{ S_n \}_{n=0}^{\infty}} is eventually monotonic}.
+\vspace{.8cm}
+
+	\item IF \rojo{the sequence \DS{\{ S_n \}_{n=0}^{\infty}} is bounded and eventually monotonic}, \\
+	THEN \azul{the series \DS{\sum_{n=0}^{\infty} a_n}  is convergent}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{True or False -- Definition of series}
+
+Let \DS{\sum_{n=0}^{\infty} a_n} be a series.  
+Let \DS{\{ S_n \}_{n=0}^{\infty}} be its partial-sum sequence.
+
+\begin{enumerate}
+\addtocounter{enumi}{3}
+	\item IF \azul{\DS{\forall n >0}, \DS{a_n>0}}, 
+	\vvv
+	
+	THEN \rojo{the sequence \DS{\{ S_n \}_{n=0}^{\infty}} is increasing}.
+\vv
+
+	\item IF \rojo{the sequence \DS{\{ S_n \}_{n=0}^{\infty}} is increasing}, \\
+	\vvv 
+	
+	THEN \azul{\DS{\forall n >0}, \DS{a_n>0}}.
+\vv
+
+	\item IF \azul{\DS{\forall n >0}, \DS{a_n\geq0}}, 
+	\vvv
+	
+	THEN \rojo{the sequence \DS{\{ S_n \}_{n=0}^{\infty}} is non-decreasing}.
+
+\vv
+	\item IF \rojo{the sequence \DS{\{ S_n \}_{n=0}^{\infty}} is non-decreasing}, \\
+	\vvv 
+	
+	THEN \azul{\DS{\forall n >0}, \DS{a_n\geq0}}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Geometric series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Rapid questions: geometric series}
+
+Convergent or divergent?
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{\sum_{n=0}^{\infty} \frac{1}{2^n}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{2^n}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{1}{2^{n/2}}}
+\vv
+	\item \DS{\sum_{n=5}^{\infty} \frac{3^n}{2^{2n+1}} }
+\vv
+	\item \DS{\sum_{n=3}^{\infty} \frac{3^n}{1000 \cdot 2^{n+2}} }
+\vv
+	\item \DS{\sum_{n=0}^{\infty} (-1)^n }
+\vv
+
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Geometric series}
+
+Calculate the value of the following series:
+
+	\begin{enumerate}
+		\item  \DS{1 + \frac 13 + \frac 19 + \frac{1}{27} + \frac{1}{81} + \ldots}
+\vv
+		\item \DS{\frac{1}{2} - \frac{1}{4} + \frac{1}{8} - \frac{1}{16} + \frac{1}{32} - \ldots}
+\vv
+		\item \DS{\frac{3}{2} - \frac{9}{4} + \frac{27}{8} - \frac{81}{16} + \ldots}
+\vv		
+		\item \DS{ 1 + \frac{1}{2^{0.5}} + \frac{1}{2} + \frac{1}{2^{1.5}} + \frac{1}{2^2} + \frac{1}{2^{2.5}} + \ldots}
+\vv	
+	\begin{multicols}{2}
+		\item \DS{\sum_{n=1}^{\infty} (-1)^n \frac{3^n}{2^{2n+1}}}	
+		\item  \DS{\sum_{n=k}^{\infty} x^n}
+	\end{multicols}
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Is \DS{0.999999\ldots = 1}?}
+
+\p
+\begin{enumerate}
+	\item Write the number \; \DS{0.9999999\ldots} \; as a series
+	
+		\emph{Hint:}  \DS{427 = 400 + 20 + 7}.
+\vv		
+	\item 	Compute the first few partial sums
+\vv
+	\item 	Add up the series.   
+	
+		\emph{Hint:}  it is geometric.
+		
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Decimal expansions of rational numbers}
+
+We can interpret any finite decimal expansion as a finite sum.  For example:
+	$$
+		2.13096 \, = \,  2 + \frac{1}{10} + \frac{3}{10^2} + \frac{0}{10^3} + \frac{9}{10^4} + \frac{6}{10^5}
+	$$
+Similarly, we can interpret any infinite decimal expansion as an infinite series.
+\vv
+ 
+Interpret the following numbers as series, and add up the series to calculate their value as fractions:
+	\begin{enumerate}
+	\begin{multicols}{2}
+		\item  $0.99999 \ldots$	
+		\item  $0.11111 \ldots$
+		\item  $0.252525 \ldots$
+		\item  $0.3121212 \ldots$
+	\end{multicols}
+	\end{enumerate}
+\emph{Hint:} Use geometric series
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Functions as series}
+
+You know that when $|x|<1$:
+\vspace{-.2cm}
+	$$
+		f(x) = \frac{1}{1-x} = \sum_{n=0}^{\infty} x^n
+	$$
+Find similar ways to write the following functions as series:
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{g(x) = \frac{1}{1+x}}
+\vspace{.2cm}
+	\item \DS{h(x) = \frac{1}{1-x^2}}
+\vspace{.2cm}
+	\item  \DS{A(x) = \frac{1}{2-x}}
+\vspace{.2cm}
+\p
+	\item \DS{G(x) = \ln ( 1+ x) }
+\vspace{.2cm}
+\end{multicols}
+\end{enumerate}
+\vspace{.2cm}
+\emph{Hint:}  For the last one, compute $G'$.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Challenge}
+
+We want to calculate the value of
+	$$
+		A \, = \, \sum_{n=0}^{\infty} \frac{1}{2^n}, \quad \quad
+		B \, = \, \sum_{n=1}^{\infty} \frac{n}{2^n}, \quad \quad
+		C \, = \, \sum_{n=1}^{\infty} \frac{n^2}{2^n}		
+	$$
+Let \DS{f(x)= \frac{1}{1-x}}.
+
+\hrulefill
+
+	\begin{enumerate}
+		\item  Recall that \, \DS{f(x) = \sum_{n=0}^{\infty} x^n} \, for \DS{|x|<1}.  Use it to compute $A$.
+		\item Pretend you can take derivatives of series the way you take 
+		them of finite sums.  Write \DS{f'(x)} as a series.
+\vvv
+		\item  Use it to compute $B$.
+\vvv
+		\item Do something similar to compute $C$.
+	\end{enumerate}
+
+		
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Challenge - 2}
+
+We want to calculate the value of
+	$$
+		\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1) \, 3^n }
+	$$
+
+\hrulefill
+
+	\begin{enumerate}
+		\item Compute \DS{\sum_{n=0}^{\infty} (-1)^n x^{2n}}
+		\item Compute \DS{\frac{d}{dx} \left[ \arctan x \right]}
+\vvv
+		\item  Pretend you can take derivatives and antiderivatives of series the way you can take them of finite sums.  Which series adds up to \DS{\arctan x}?
+\vvv
+		\item  Now calculate the value of the original series.
+	\end{enumerate}
+
+		
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Basic properties of series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Examples}
+
+\begin{enumerate}
+
+\item A series \DS{\sum_{n=0}^{\infty} a_n} may be
+		\DS{
+			\begin{cases}
+				\mbox{ convergent (a number) } \\
+				\mbox{ divergent } 
+					\begin{cases}
+						\mbox{ to } \infty \\
+						\mbox{ to } - \infty \\
+						\mbox{ ``oscillating"}
+					\end{cases}
+			\end{cases}
+		}
+\vv
+	
+Give one example of each of the four results.
+\vv \p
+	
+\item  Now assume \DS{\forall n \in \N, \; a_n \geq 0}.
+
+	Which of the four outcomes is still possible?
+
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{True or False -- The tail of a series}
+
+\begin{enumerate}
+
+	\item IF the series \azul{\DS{\sum_{n=0}^{\infty} a_n}} converges,  
+	
+	THEN the series \rojo{\DS{\sum_{n=7}^{\infty} a_{n}}} converges
+\vvv
+
+	\item IF the series \rojo{\DS{\sum_{n=7}^{\infty} a_n}} converges,  
+
+	THEN the series \azul{\DS{\sum_{n=0}^{\infty} a_{n}}} converges
+\vvv
+
+	\item IF the series \rojo{\DS{\sum_{n=0}^{\infty} a_n}} converges,  
+
+	THEN the series \azul{\DS{\sum_{n=7}^{\infty} a_{n}}} converges to a smaller number.
+
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{True or False -- The Necessary Condition}
+
+\begin{enumerate}
+	\item  IF \DS{\lim_{n \to \infty} a_n = 0}, \quad  THEN \DS{\sum_{n}^{\infty} a_n} is convergent.
+\vfill	
+	\item  IF \DS{\lim_{n \to \infty} a_n \neq 0}, \quad  THEN \DS{\sum_{n}^{\infty} a_n} is divergent.
+\vfill
+	\item  IF \DS{\sum_{n}^{\infty} a_n} is convergent \quad THEN \DS{\lim_{n \to \infty} a_n = 0}.
+\vfill
+	\item  IF \DS{\sum_{n}^{\infty} a_n} is divergent \quad THEN \DS{\lim_{n \to \infty} a_n \neq 0}.
+\vfill	 
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{True or False -- Harder questions}
+\vspace{-.2cm}
+\begin{enumerate}
+	\item IF \DS{\suman} is convergent, \quad THEN \DS{\lim_{k \to \infty} \left[ \sum_{n=k}^{\infty} a_n \right] = 0}.
+\vvv	
+
+	\item IF \DS{\lim_{k \to \infty} \left[ \sum_{n=k}^{\infty} a_n \right] = 0}, \quad THEN \DS{\suman} is convergent.
+\vvv	
+
+	\item IF \DS{\sum_{n=1}^{\infty} a_{2n}} and \DS{\sum_{n=1}^{\infty} a_{2n+1}} are convergent, 
+	
+		THEN \DS{\sum_{n=1}^{\infty} a_n} is convergent.
+\vvv
+
+	\item IF \DS{\sum_{n=1}^{\infty} a_n} is convergent,
+
+		THEN \DS{\sum_{n=1}^{\infty} a_{2n}} and \DS{\sum_{n=1}^{\infty} a_{2n+1}} are convergent. 
+
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Series are linear}
+
+	Let \DS{\sum_{n=0}^{\infty} a_n} be a series.  Let $c \in \R$.  Prove that
+		\begin{itemize}
+			\item IF \DS{\sum_{n=0}^{\infty} a_n} is convergent.
+			
+			\item THEN \DS{\sum_{n=0}^{\infty} ( ca_n)} is convergent and
+				\DS{
+					\sum_{n=0}^{\infty}  ( c a_n ) = c \left[  \sum_{n=0}^{\infty} a_n \right].
+				}
+		\end{itemize}
+\vv
+
+	Write a proof directly from the definition of series.
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Integral and comparison tests
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Rapid questions: improper integrals}
+
+Convergent or divergent?
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{\int_1^{\infty} \frac{1}{x^2} \, dx}
+\vv
+	\item \DS{\int_1^{\infty} \frac{1}{x} \, dx}
+\vv
+	\item \DS{\int_1^{\infty} \frac{1}{\sqrt{x}} \, dx}
+\vv
+\p
+	\item \DS{\int_1^{\infty} \frac{x+1}{x^3+2} \, dx}
+\vv
+	\item \DS{\int_1^{\infty} \frac{\sqrt{x^2+5}}{x^2+6} \, dx}
+\vv
+	\item \DS{\int_1^{\infty} \frac{x^2+3}{\sqrt{x^5+2}} \, dx}
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{For which values of $a \in \R$ are these series convergent?}
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{\sum_{n}^{\infty} \frac{1}{a^n}}
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{1}{n^a}}
+\vv
+	\item  \DS{\sum_{n}^{\infty} a^n}
+\vv
+	\item  \DS{\sum_{n}^{\infty} n^a }
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Quick comparisons: convergent or divergent?}
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{\sum_{n}^{\infty} \frac{n+ 1}{n^2+ 1}}
+\vv
+	\item \DS{\sum_{n}^{\infty} \frac{n^2 + 3n}{n^4+5n + 1}}
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{\sqrt{n} + 1}{n^2 + 1} }
+\vv
+	\item \DS{\sum_{n}^{\infty} \frac{\sqrt[3]{n^2 + 1} + 1 }{\sqrt{n^3+ n } + n + 1} }
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Slow comparisons: convergent or divergent?}
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{\sum_{n}^{\infty} \frac{2^n - 40}{3^n - 20}}
+\vv	\item  \DS{\sum_{n}^{\infty} \frac{\left( \ln n \right)^{20}}{n^2} }
+\vv	\item  \DS{\sum_{n}^{\infty} \sin^2 \frac{1}{n} }
+\vv	\item \DS{\sum_{n}^{\infty} \frac{1}{n \, (\ln n)^3} }
+\vv	\item \DS{\sum_{n}^{\infty} \frac{1}{n \, \ln n} }
+\vv	\item  \DS{\sum_{n}^{\infty}  e^{-n^2} }
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Convergence tests: ninja level}
+
+We know
+	\begin{itemize}
+		\item \DS{\forall n \in \N}, \DS{a_n > 0}.
+		\item the series \DS{\sum_n^{\infty} a_n } is convergent
+	\end{itemize}
+
+Determine whether the following series are convergent, divergent, or we do not have enough information to decide:
+	\begin{multicols}{2}
+	\begin{enumerate}
+		\item \DS{\sum_n^{\infty} \sin a_n}
+		\item \DS{\sum_n^{\infty} \cos a_n}
+		\item \DS{\sum_n^{\infty}  \sqrt{a_n}}
+		\item \DS{\sum_n^{\infty}  \left( a_n \right)^2}
+	\end{enumerate}
+	\end{multicols}
+	
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Are all decimal expansions well-defined?}
+
+
+We had defined a real number as ``any number with a decimal expansion".  Now we understand what it means to write a number with an infinite decimal expansion.  It is a series!
+	$$
+		0.a_1a_2a_3a_4a_5\cdots \; = \; \frac{a_1}{10} + \frac{a_2}{100} + \frac{a_3}{1000} + \ldots
+	$$
+for any ``digits" $a_1$, $a_2$, $a_3$, \ldots
+
+\
+
+But this raises a question: are these series always convergent, no matter which infinite string of digits we choose?
+
+\
+
+Yes, they are!  Prove it.  \\ (Hint: all the terms in the series are positive.)
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Alternating series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Rapid questions: alternating series test}
+
+Convergent or divergent?
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{\sum_{n=1}^{\infty} \frac{1}{n^{0.5}}}
+\vv
+	\item  \DS{\sum_{n=1}^{\infty} \frac{1}{n^{3}}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{1}{\sin n}}
+\vv
+	\item  \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{n^{0.5}}}
+\vv
+	\item  \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{n^{3}}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{\sin n}}
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{True or False - Odd and even partial sums}
+
+Let \DS{\sum_{n=0}^{\infty} a_n} be a series.  
+Let \DS{\{ S_n \}_{n=0}^{\infty}} be its partial-sum sequence.
+
+\begin{enumerate}
+	\item  IF \DS{\lim_{n \to \infty} S_{2n}} exists, \quad 
+		THEN \;  \azul{\DS{\suman} is convergent}.
+\vv
+		
+	\item  IF \DS{\lim_{n \to \infty} S_{2n}} exists \; and \; \DS{\lim_{n \to \infty} S_{2n+1}} exists,  
+	
+		THEN \; \azul{\DS{\suman} is convergent}.
+\vv
+	
+	\item  IF \DS{\lim_{n \to \infty} S_{2n}} exists \; and \;  \DS{\lim_{n \to \infty} a_n = 0}, 
+	
+		THEN  \; \azul{\DS{\suman} is convergent}.
+
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{ An Alternating Series Test example}
+
+Verify carefully the 3 hypotheses of the Alternating Series Test for
+	$$
+		\sum_{n=0}^{\infty} \, (-1)^n \, \frac{n - \pi}{e^n}
+	$$
+
+Can we conclude it is convergent?
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Estimation}
+
+Estimate the sum
+	$$
+		S = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}
+	$$
+with an error smaller than 0.001.  Write your final answer as a rational number (i.e.\ as a quotient of two integers).
+
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Not exactly alternating}
+
+Are these series convergent or divergent?
+
+$$
+	A = \azul{1 + \frac{1}{2}} \, \rojo{ - \frac{1}{3} - \frac{1}{4}} \, \azul{ + \frac{1}{5} + \frac{1}{6}} \, \rojo{ - \frac{1}{7} - \frac{1}{8}} \, \azul{ + \frac{1}{9} + \frac{1}{10}} \, \rojo{ - \frac{1}{11} - \frac{1}{12}} \, + \ldots
+$$
+
+
+$$
+	B = \azul{1 + \frac{1}{2} + \frac{1}{3}} \, \rojo{ - \frac{1}{4} - \frac{1}{5}} \, \azul{ + \frac{1}{6}  + \frac{1}{7} + \frac{1}{8}} \, \rojo{ - \frac{1}{9} - \frac{1}{10}} \, \azul{ + \frac{1}{11} + \frac{1}{12} + \frac{1}{13}} \, - \ldots
+$$
+\vvv
+	
+\emph{Suggestion:}  Draw the partial sums on the real line.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{A counterexample to Alternating Series Test?} 
+
+Construct a series of the form \DS{\sum_{n=1}^{\infty} (-1)^n b_n} such that
+	\begin{itemize}
+		\item  \DS{b_n >0} for all $n \geq 1$
+		\vspace{.4cm}
+		\item  \DS{\lim_{n \to \infty} b_n = 0}
+		\item  the series \DS{\sum_{n=1}^{\infty} (-1)^n b_n} is divergent.
+	\end{itemize}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Absolute and conditional convergence
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Absolutely convergent or conditionally convergent?}
+
+\begin{enumerate}
+	\item  \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{n^{0.5}}}
+\vv
+	\item  \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{n^{1.5}}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{(-1)^n}{\sin n}}
+\vv
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{ True or False - Absolute Values}
+
+\begin{enumerate}
+	\item  IF \azul{\DS{\left\{ a_n \right\}_{n=1}^{\infty}}} is convergent, \quad THEN \rojo{\DS{\left\{ \, |a_n| \, \right\}_{n=1}^{\infty}}} is convergent.
+\vv	
+	\item  IF \rojo{\DS{\left\{ \, |a_n| \, \right\}_{n=1}^{\infty}}} is convergent, \quad THEN \azul{\DS{\left\{ a_n \right\}_{n=1}^{\infty}}} is convergent.
+\vv	
+	\item  IF \; \azul{\DS{\sum_{n=1}^{\infty} a_n }} \; is convergent, \quad THEN \; \rojo{ \DS{\sum_{n=1}^{\infty} |a_n| }} \; is convergent.
+\vvv	
+	\item  IF \; \rojo{\DS{\sum_{n=1}^{\infty} |a_n| }} \; is convergent, \quad THEN \; \azul{\DS{\sum_{n=1}^{\infty} a_n }} \; is convergent.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Positive and negative terms - 1}
+
+\begin{itemize} 
+	\item Let \DS{\sum a_n} be a series.
+	\item Call \DS{\sum \PT} the sum of only the positive terms of the same series.
+	\item Call \DS{\sum \NT} the sum of only the negative terms of the same series.
+\end{itemize}
+
+ \p
+
+\begin{center}
+\begin{tabular}{c|c|c}
+		\azul{IF \DS{\sum \PT} is...} &  \azul{AND \DS{\sum \NT} is...} & \azul{THEN \DS{\sum a_n} may be...} \\
+	\hline
+		CONV & CONV & \fantasma \\
+	\hline
+		$\infty$ & CONV & \fantasma \\
+	\hline
+		CONV & $-\infty$ & \fantasma \\
+	\hline
+		$\infty$ & $-\infty$ & \fantasma \\
+	\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{11}
+\frametitle{Positive and negative terms - 2}
+
+\begin{itemize} 
+	\item Let \DS{\sum a_n} be a series.
+	\item \DS{\sum \PT} \; = \; sum of only the positive terms of the same series.
+	\item \DS{\sum \NT} \; = \; sum of only the negative terms of the same series.
+\end{itemize}
+\p
+	\begin{center}
+	\begin{tabular}{c|c|c|c|}
+		& \DS{\sum \PT} may be... &  \DS{\sum \NT} may be... \\
+	\hline
+		If \DS{\sum a_n} is CONV & & \fantasma  \\
+	\hline
+		If \DS{\sum |a_n|} is CONV & & \fantasma  \\
+	\hline
+		If \DS{\sum a_n} is ABS CONV & & \fantasma \\
+	\hline
+		If \DS{\sum a_n} is COND CONV & & \fantasma \\
+	\hline
+		If \DS{\sum a_n = \infty}  & &  \fantasma \\
+	\hline
+		If \DS{\sum a_n} is DIV oscillating & & \fantasma  \\
+	\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Ratio test
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Quick review: Convergent or divergent?}
+\vspace{-.4cm}
+\begin{enumerate}
+\begin{multicols}{2}
+
+	\item  \DS{\sum_{n}^{\infty}  (1.1)^n }
+\vv
+	\item  \DS{\sum_{n}^{\infty}  (0.9)^n }
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{1}{n^{1.1}}}
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{1}{n^{0.9}}}
+\vv
+	\item  \DS{\sum_{n}^{\infty}  \frac{(-1)^n}{\ln n} }
+\vv
+	\item  \DS{\sum_{n}^{\infty}  \frac{(-1)^n}{e^{1/n}} }
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{n^3 + n^2 + 11}{n^4 + 2n - 3}}
+\vv
+	\item  \DS{\sum_{n}^{\infty} \frac{\sqrt{n^5 + 2n + 16}}{n^4 - 11n + 7} }
+\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Ratio Test: Convergent or divergent?}
+
+Use Ratio Test to decide which series are convergent.  
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{\sum_{n=1}^{\infty}  \frac{3^n}{n!} }
+\vv
+	\item  \DS{\sum_{n=1}^{\infty}  \frac{(2n)!}{\left(n!\right)^2 \; 3^{n+1}} }
+\vv
+	\item  \DS{\sum_{n=2}^{\infty} \frac{n!}{n^n}  }
+\vv
+	\item  \DS{\sum_{n=2}^{\infty} \frac{1}{\ln n}  }
+\vv	
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Root test}
+
+Here is a new convergence test
+\begin{block}{Theorem}
+Let \DS{\sum_{n} a_n} be a series.  Assume the limit \DS{L= \lim_{n \to \infty} \sqrt[n]{|a_n|}} exists.
+	\begin{itemize}
+		\item IF $0 \leq L <1$  THEN the series is ???
+		\item IF $L > 1$  THEN the series is ???
+	\end{itemize}
+\end{block}
+
+Without writing an actual proof, guess the conclusion of the theorem and argue why it makes sense.
+
+\
+
+\emph{Hint:}  Imitate the argument on Video 13.18 for the Ratio Test.
+
+	For large values of $n$, what is $|a_n|$ approximately?
+
+\end{frame}
+%------------------------------
+%-----------------------------
+\end{document}
+%-----------------------------
+%-----------------------------
+
+
+
+

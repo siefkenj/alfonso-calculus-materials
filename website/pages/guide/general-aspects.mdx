@@ -1,0 +1,62 @@
+import { Callout } from 'nextra/components'
+
+# Inverted Class: General Aspects
+
+## A learning model
+
+Here is a rough (made up) model of how a student learns a math concept. I claim it goes in three steps:
+
+**First Contact.** The student learns the basics of the materials for the first time. This part is passive: the student either reads this or watches somebody explain it. These are the steps necessary before the student can start actively “doing” math by themself with the new concept. They could be receiving an explanation or motivation on why the concept is important, learning the basic definitions, reading statements of theorems for the first time, seeing examples worked out for the first time, memorizing an algorithm, or something else.
+
+**First Practice.** The student engages with the material for the first time. This part is active: the student is doing the math themself, perhaps collaborating with other students or assisted by us. Through this process, the student gains intuition about the concepts. They could be performing computations, thinking about how concepts relate or what is true or false, coming up with conjectures, trying to prove results, looking for errors in proofs, constructing examples or counterexamples, or many other things.
+
+**Deep Practice.** The student tackles harder problems and thinks deeply about them, probably struggling with them through a longer period of time. This part is very active. It helps solidify their understanding and sharpen their skills.
+
+Any mathematician will recognize “Deep Practice” as the part when we actually learn a concept for real, the only way to achieve understanding. We should also recognize that of the three steps, “First Contact” is by far the easiest, and the one for which students need us the least.
+
+## Lectures, active learning, and an inverted class
+
+**Lecture-based class ≡ First Contact.** I define a traditional class or a lecture-based class as a class where most of the time is spent with the instructor presenting something on the board (or on slides) while students listen and/or take notes. This could include, for example, the instructor proving theorems, performing calculations, or giving motivation.
+
+In a lecture-based course all the class time (or almost all the class time) is spent on the first step: First Contact. Students may or may not be understanding on real time, and they may or may not be taking notes. We hope that students will do the other two steps later at home by themselves.
+
+**Active-learning class ≡ First Practice.** I define an active-learning class as a class where most of the class time is spent with students doing math themselves, rather than watching the instructor do it. There are many forms of active learning. In an inverted class or flipped class students spend the majority of their class time working on First Practice, through carefully prepared activities, alone or collaborating with their peers, with our guidance. In order for this to work, students need to take care of First Contact before coming to class, as “pre-homework”. They will normally watch videos or read material ahead of time so that when class starts we can assume they have the basics and they can start practicing right away.
+
+## Why we don’t lecture anymore in MAT137Y
+
+**No longer necessary.** Lecturing is a very old form of teaching. It has its origins at a time when information was not readily available, not only before modern technology and the internet, but back when duplicating, making copies, or even finding books was difficult. The purpose of a lecture was simply to provide students with a set of notes they could learn from. The instructor presented the material and the students copied it; they would use it as a reference to study later. Lectures are no longer necessary for this specific purpose. Moreover, they only serve as First Contact, the first step in the learning model above. It seems a waste to spend the precious little time we have with students with the easiest of the three steps, the one students need us the least for, and then leaving them alone for the rest of the process.
+
+**Not a good way to absorb material.** Secondly, as a way of absorbing the material, physical real-time lectures do not work, particularly in the setting of a large calculus class with 200 students, each with a different pace. Think about the research seminars or conferences you have attended. Have you ever been unable to follow one such seminar because the presenter was going too fast, because they proceeded to write a complex proof with a concept they had just defined without giving you time to absorb the definition and develop intuition about it? That is the experience of the average undergraduate student, who is not a math major, in a math class. Chances are you are going too fast for them to follow on real time, to think about the material at the same time as you speak it, to convince themselves that what you are saying is true. By and large, for the purpose of First Contact, students much rather prefer watching videos with the same material which they can pause, rewind, and come back to as needed.
+
+**Lack of student feedback.** Thirdly, it is very easy to convince yourself that students have learned something that they have not, or that their understanding is much better than it actually is. We pretty much do it every single time we lecture, particularly if we are good lecturers. Think back to your lecturing experience: have you ever delivered a fantastic lecture on a specific concept, well crafted and structured, with crystal-clear explanations, that perfectly explains the important points, only to find out on the exam that half the students did not get the most basic point and made the error you warned them of? If you have been lecturing for a while, I am certain this will be familiar. The evidence that students did not learn something just because we lectured well on it was there all the time, but we continued ignoring it and repeating the same lecture as though it worked.
+
+By contrast, when students do not understand a concept in an inverted classroom, the evidence is in your face and you cannot ignore it. By its own structure, you are receiving constant feedback from the students on every activity, so you know what they do not get and which errors they make. This can be overwhelming at first; sometimes ignorance is bliss and we may wish we could go back to pretending they had gotten it and moving on, but it is important to remember that this feedback is a feature, not a bug. You want to know if your explanations are not working, don’t you?
+
+<Callout type="info" emoji="">
+**Example**
+
+When I used to lecture in MAT137Y, after introducing the quantifiers $∀$ and $∃$, I would give some simple examples of how to use them in definitions. This would include
+
+> Definition: Let $a∈\mathbb Z$. We say that $a$ is even when $∃b∈\mathbb Z$ such that $a=2b$.
+
+I always assumed this was a very basic, simple example that nobody would have trouble with, and I immediately moved to more interesting statements, such as those with two quantifiers.
+When I inverted the class for the first time, I instead asked students to complete the definition:
+
+> Definition: Let $a∈\mathbb Z$. We say that $a$ is even when $\ldots$”
+
+To my surprise the class was split between two options:
+
+-   “$\ldots\ \exists\, b\in \mathbb Z \text{ such that }a=2b$”
+-   “$\ldots\ \forall\, b\in \mathbb Z,\ a=2b$”
+
+I repeated the question every year ever since, so have other instructors, and we always have the same result. Yet none of us would have ever thought of it! Why do students make this error? They are thinking that it is true that “$∀b∈\mathbb Z ∀b∈\mathbb Z$ the number $a=2b$ is even”. But that is a claim or theorem, not the definition we were aiming for. They do not understand what a definition is; the notion of definition is much deeper and harder to absorb that we thought at first. Without an inverted class, we would have never found out.
+
+Here is how I use this exercise nowadays. I first ask students to individually complete the definition. Afterwards, I offer the two options and ask them to vote. The vote is normally split fifty-fifty. Then I tell students to discuss it with their neighbour. They are now eager to discuss and they do so, because they had mostly answered with confidence and they are suprised that half the class disagreed with them. After a minute I ask them to vote again. Sometimes they have now convinced each other and converged to the right answer, so we can move on. But sometimes they have not. In that case, I give them the hint “Is the number $a=6$ even? Does $a=6$ satisfy the definition?” Now they discuss again, and then they re-vote. By this time they have reached the right consensus. To finish, I remind them of what a definition is.
+</Callout>
+
+**Passive.** Finally, there is one additional advantage of an inverted class. We are instilling good habits into our students. They take ownership of their math learning, as opposed to being passive spectators. They get used to working on math regularly, a few times each week. They get used to collaborating and discussing with other students. And they see the difference that it makes to come to class prepared. By contrast, in a traditional class they can convince themselves that they are “doing their part” as long as they come to class and take notes, even if they have no idea what is going on and they are just transcribing without understanding.
+
+## What does the research say?
+
+In 2016 the Conference Board of Mathematical Science (CMBS), an umbrella organization consisting of 17 professional mathematical associations in the US (including the AMS and the MAA), upon thorough analysis or studies and meta-studies, issued a statement calling “on institutions of higher education, mathematics departments and the mathematics faculty, public policy-makers, and funding agencies to invest time and resources to ensure that effective active learning is incorporated into post-secondary mathematics classrooms”. They define active learning as “classroom environments in which students are provided opportunities to engage in mathematical investigation, communication, and group problem-solving, while also receiving feedback on their work from both experts and peers”.
+To learn what the research says on active learning, I recommend the [references in their report](https://www.cbmsweb.org/2016/07/active-learning-in-post-secondary-mathematics-education/).

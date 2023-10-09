@@ -1,0 +1,1032 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=7vhux5TLRmQ&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=1}{3.1 Derivative as slope}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=eNcg9cKzV1Q&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=2}{3.2 Computing a derivative from the definition}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=fUjLN1ZEDBc&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=3}{3.3 Derivative as rate of change}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=k_VxtK1U9jk&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=4}{3.4 Differentiation rules}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=QQbiHHiqTXo&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=5}{3.5 Differentiable implies continuous}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=GwxWAJP77ZY&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=6}{3.6 Proof of the product rule for derivatives}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=4k2gpNW0pEw&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=7}{3.7 Proof of the power rule*}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=7su5mypmgdw&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=8}{3.8 Higher-order derivatives}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=QBmUyi64zf8&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=9}{3.9 Continuous but not differentiable functions}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Qht28m7b13U&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=10}{3.10 Chain Rule - Examples}}
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=DQiXqChpeAc&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=11}{3.11 Chain rule - The theorem}}
+\newcommand{\vxii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=E_Cvb53vXI0&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=12}{3.12 Derivatives of trigonometric functions}}
+\newcommand{\vxiii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Ce44nuJzzdw&list=PLlwePzQY_wW8qiZD6XYqCnibdY37ygbx7&index=13}{3.13 Implicit differentiation}}
+
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{3. Derivatives}}
+\rfoot{}
+\cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 3: Derivatives
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+
+
+
+
+\tableofcontents
+
+\newpage
+%========================================
+%========================================
+\section{Derivate as Slope}
+%========================================
+%========================================
+
+\subsection{Tangent line to a line} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Simple question to use as a warm up.  Most students should get the right answer quickly.
+	\item A few students may be uncomfortable with the idea that a line is its own tangent line.  I remind them that, when in doubt, we always need to go back to the definition.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+
+\newpage
+%========================================
+\subsection{What is a tangent line?} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=2]{137-CA-03.pdf}}
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Many people wrongly define ``line tangent to C" as ``a line that intersects C at exactly one point".    The point of this question is to correct those errors and emphasize the point of Video 3.1: it is impossible to define tangent line (or derivative) without limits.
+		\item  I have used this question, when teaching in person, as a gentle warm up.  It is a nice way to start:
+			\begin{itemize}
+				\item	 I post the question and ask them to work individually.  
+				\item I walk among them, and when I see someone with a good picture, I give them a piece of chalk and ask them to draw it on the board.   
+				\item Once I have four pictures, I remind them of the point above: there is no way to define tangent line or derivative without limits.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+
+\newpage
+%========================================
+\subsection{Derivative from a graph} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=3]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=4]{137-CA-03.pdf}}
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I like using this question at the very beginning: when we have the interpretation of derivative as slope, and nothing else.  I emphasize that we are doing this geometrically, not with equations.  
+		\item Based on the geometric interpretation and nothing else, we can guide students to discover intuitively the relation between derivative and monotonicity, what happens at a local extremum, at a corner, or at point with vertical tangent line, and more. Those are all things they will later learn systematically, but this question allows them to explore and discover all of them by themselves.  Pretty cool!
+		\item The question I care about is the second slide.  However, if I give it to them directly, some students freeze and do nothing.  The first slide helps bridge the gap: after solving the first slide, I draw a set of axes, write ``\DS{y=f'(x)}", draw the one point we already have, and explain the problem.  Now students will at least try it.
+	\end{itemize}
+	
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+
+
+\newpage
+%========================================
+\subsection{From the derivative to the function} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I have used this question in two different ways:
+			\begin{itemize}
+				\item right at the beginning of Unit 3 (just using the interpretation of derivative as slope and nothing else),
+				\item or after Video 3.9 to reinforce its examples.
+			\end{itemize}
+		\item Notice that there are different correct answers.  The graph of the continuous function will likely have a cusp.  The graph of the non-continuous function could be the same with the two pieces separated at $x=0$, or may look like \DS{y = \ln |x|}.  This may confuse the students, but the point is that there is no scale in the axes.
+	\end{itemize}
+		
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vix
+\end{videos}
+
+
+
+\newpage
+
+
+%========================================
+\subsection{Estimations} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=6]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=7]{137-CA-03.pdf}}
+
+{ \includegraphics[scale=.6,page=8]{137-CA-03.pdf}}
+\end{center}
+
+\vspace{-10mm}
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These questions can be used individually, or as a set.  They work fine at the beginning of Unit 3, but they can also be used later.   I have used them one at a time on different days as well.
+		\item In many calculus courses linear approximations are introduced as a formula to memorize and use, completely missing the geometric interpretation and any understanding of why they make sense.  In our course, I have not introduced linear approximations at all.  Rather, they appear in a problem in the practice problems for students to ``discover" the concept themselves.  This slides can be used additionally for the same purpose.
+		\item When I use ``Estimations 1", I emphasize that this is not something we have taught them yet.  Instead, I want them to draw a picture, think about the data they have geometrically, and make something up.  It takes some prodding, but I insist I want them to make something up, even if they think it is wrong.  
+		\item  The goal of ``Estimations 3" is for students to \emph{discover} (a version of) L'H\^opitals Rule.  Many students have learned about  L'H\^opitals Rule in high school as an algorithm, but none of them have any idea why it works or even why it is reasonable.  It is a mystery.    When this activity works, I point out to them afterwards that this is a justification for  L'H\^opitals Rule, and pause for them to realize what they just walked into.  It is a nice surprise.  But beware: it is not an easy question to pull off.  If I rush it, or if if I tell them the answer rather than let them deduce it, then the beauty of the result is lost.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+
+%========================================
+%========================================
+\section{Derivatives from the definition} 
+%========================================
+%========================================
+
+%========================================
+\subsection{Derivative from the definition} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=9]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a standard type of question that students are probably expecting.
+		\item  There is no mystery to it.  If I give students enough time, they will solve it fine, and we move on.
+	\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+
+%========================================
+%========================================
+\section{Derivative as rate of change}
+%========================================
+%========================================
+
+\subsection{Velocity} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=10]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=11]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Don't underestimate these questions.  While they should not be difficult, some students struggle.  Everyone is happy following algorithms and performing calculations, but plenty of students are very bad at anything related to ``modelling" (translating between a plain English description of a real life situation and a calculus model).  If you were to collect the answers from all your students, you would be surprised at some of them.
+	\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+
+
+%========================================
+%========================================
+\section{Computations}
+%========================================
+%========================================
+
+
+\subsection{Computations} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=12]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=13]{137-CA-03.pdf}}
+
+{ \includegraphics[scale=.6,page=14]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=15]{137-CA-03.pdf}}
+
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These questions, of course, belong in different parts of the Unit:
+			\begin{itemize}
+				\item The first one only requires the basic differentiation rules.  
+				\item The second and third use the chain rule.  
+				\item The fourth requires all the above plus derivatives of trig functions.
+			\end{itemize}
+		\item  The point of these questions is for students to spend some time practicing calculations.  How I use them:
+			\begin{itemize}
+				\item  I post the questions and send students to work.
+				\item I walk among them, pay attention to their notebooks, and talk to them.
+				\item I invite them to compare answers with each other.
+				\item Based on how I see they are doing, I decide what to do.  I may skip some of them if they were mostly done well.  For others, I may just point out to a common error (if I have noticed it) or I may just give them the final answer.  Normally, I will solve at most one of them fully on the board.
+			\end{itemize}
+	\end{itemize}	
+\end{comments}
+\newpage
+
+\begin{videos}
+\viv
+
+\vx
+
+\vxii
+\end{videos}
+
+\newpage
+
+%========================================
+%========================================
+\section{Differentiation rules.  Differentiability, continuity, and lack thereof}
+%========================================
+%========================================
+
+\subsection{Differentiability, continuity, and operations} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=16]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=17]{137-CA-03.pdf}}
+
+{ \includegraphics[scale=.6,page=18]{137-CA-03.pdf}} 
+
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  How I use these questions:
+			\begin{itemize}
+				\item I invite students to think individually.
+				\item They vote. 
+				\item There will likely be consensus that some are true or false.  I agree with it and we move past those without discussion.
+				\item I tell them to focus on the ones there is disagreement on.  I invite them to talk to each other.
+				\item They vote again.  Based on the result, I decide how to continue.
+			\end{itemize}
+	\end{itemize}
+	
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vv
+
+\vix
+
+\end{videos}
+
+\newpage
+
+%========================================
+\subsection{Vertical things} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=19]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question is too hard to be used right after Video 3.1.  I recommend waiting till after Video 3.9.		
+		There are two difficulties:
+			\begin{itemize}
+				\item For reasons I do not understand, some students think that a function with a vertical asymptote has a vertical tangent line. 
+				\item  Even if they know that \DS{f(x)=x^{1/3}} has a vertical tangent line at $x=0$, some of them do not know how to translate this to get a function that has a vertical tangent line at $x=2$.
+			\end{itemize}
+		\item For these reasons, this is a good question.  However, I still do not know how to use it effectively as a class question.  Students seem to be split between the ones who get a correct answer right away, and the ones who are confused and do nothing.  I do not know how to guide them.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vix
+\end{videos}
+
+
+
+\newpage
+%========================================
+
+\subsection{Absolute Value} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=20]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=21]{137-CA-03.pdf}} 
+
+{ \includegraphics[scale=.6,page=22]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  If used in order, these questions are a nice trap.  After answering the first question correctly, they are more likely to make an error in the second.
+		\item How I use ``Absolute value and derivatives - 1":
+			\begin{itemize}
+				\item  They think individually, they vote, then they discuss, then they vote again.
+				\item If they have not converged to the right answer yet, I remind them what the product rule actually says: If the two individual factors are differentiable, then the product rule applies; otherwise, it doesn't and we have to try something else.  This is actually the point of the questions.  So I tell them we have to use the definition.
+				\item I invite them to work it out using using the definition of derivative.  This time they get the right answer.
+			\end{itemize}
+	\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vi 
+
+\vii
+
+\viv
+
+\vix
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{Proof of the Quotient Rule} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=23]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=24]{137-CA-03.pdf}} 
+
+{ \includegraphics[scale=.6,page=25]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{warning}
+	It is probably good to ask students to write some proofs in each unit.  This is one of the few such questions in Unit 3, so I recommend not skipping it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  The videos contain a proof of power rule and product rule, but not of quotient rule.  This is on purpose to give students a chance to write one of the proof themselves.
+		\item How I use this question:
+			\begin{itemize}
+				\item  I invite students to write a proof individually.  I give them enough time for it.
+				\item  I present the second slide.  I invite them to share their proof with a neighbour and give each other feedback.  I give them enough time for it.
+				\item I present the third slide, and I ask them to criticize it.
+			\end{itemize}
+		\item  The major problem with the third slide is important, but it is difficult to persuade students that it is important, and not just my capricious preference.    We need to justify why $g$ is continuous before we can write \DS{\lim_{x \to a} g(x) = g(a)}.  When we ask a question like this on a test or assignment, very few students actually do this right.    This is a hard habit they rarely let go of:  ``to calculate a limit, if you can, just plug it in" without considering whether the function is continuous or not.  	\end{itemize}	
+\end{comments}
+
+\newpage
+\begin{videos}
+\vii
+
+\viv
+
+\vvi
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{A non-continuous derivative} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=40]{137-CA-03.pdf}} 
+
+\end{center}
+
+
+\begin{warning}
+\nl
+	\begin{itemize}
+		\item While, thematically, this question belongs in the ``relation between differentiability and continuity" section, we need to have introduced chain rule and trig derivatives before using it.
+		\item  This is the standard example of a differentiable function whose derivative is not continuous.  We (instructors) tend to love this question.  You will likely be eager to use it.  But beware: it is a hard question and using it well takes much longer than you may anticipate.  If you are going to rush the question, or just present the answer yourself instead of letting students work though it and discover what is going on, it is not worth it.
+	\end{itemize}
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I want students to focus on Questions 2 and 3, of course.  However, since these questions are hard, students get intimidated by the number of questions, do not focus, and try to jump ahead.  To avoid this, I normally only present up to Question 3.  Only after we are done with them, I pose Questions 4, 5, and 6 (which by now will be easier).
+		\item This question can be controversial: it has caused flame wars in online math forums!
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+
+\vv
+
+\vix
+\end{videos}
+
+\newpage
+
+%========================================
+%========================================
+\section{Higher-order Derivatives}
+%========================================
+%========================================
+
+\subsection{Higher order derivatives} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=26]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a simple question that students find interesting and are happy to work with.  Just present the question and let students go.
+		\item As a hint, I tell students to leave products factored out.  Otherwise they multiply the coefficients and are unable to see the pattern.
+		\item Some students are worried about ``how to write the answer as a formula".  They do not realize that leaving it as ``\DS{3 \cdot 4 \cdot 5 \cdots (n+2)}" is perfectly fine.  It is worth mentioning this.  Of course, it can also be rewritten as \DS{(n+2)!/2}, but there won't always be such a way to write the answer.
+	\end{itemize}
+	
+\end{comments}
+
+\begin{videos}
+\vviii
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{Nixon} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=27]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This question is not particularly important, but I find it cute.  Some students don't see the point, though.  Sometimes it falls flat.
+		\item  Inflation is \DS{\frac{dC}{dt}}.  The quote can be translated as 
+			$$\frac{d^2C}{dt^2} > 0 \mbox{ but } \frac{d^3C}{dt^3} < 0.$$  
+			You don't see third derivatives in politics often, do you?
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\vviii
+\end{videos}
+
+\newpage
+
+
+%========================================
+%========================================
+\section{Chain Rule}
+%========================================
+%========================================
+
+\subsection{The statement of the chain rule} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=28]{137-CA-03.pdf}} \quad
+{ \includegraphics[scale=.6,page=29]{137-CA-03.pdf}} 
+
+{ \includegraphics[scale=.6,page=30]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Most students are very comfortable using the Chain Rule to compute derivatives in concrete examples, but they are much less comfortable writing the theorem as an identity. Even the notation is confusing for some of them: why do we write ``$(f \circ g)'(x)$" rather than ``$f(g(x))'$"?  Some may even write ``$f(g)$" instead of ``$f \circ g$".  
+		\item All of these three problems address the question ``where do we evaluate $f'$ and $g'$ to compute $(f \circ g)'$?" in different ways.
+	\end{itemize}
+
+\end{comments}
+
+\begin{videos}
+\vx
+
+\vxi
+\end{videos}
+
+\newpage
+
+%========================================
+\subsection{Balloon} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=31]{137-CA-03.pdf}}  \quad
+{ \includegraphics[scale=.6,page=32]{137-CA-03.pdf}}  
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a (very simple) related-rates problem in disguise!  I like introducing it here as a sneak preview of ``word problems"  (which we will study later as applications of the derivative).  It is good to demystify them.  Related-rates problems are just glorified uses of Chain Rule: they do not require anything new.
+	\end{itemize}
+	
+\end{comments}
+
+\begin{videos}
+\vi
+
+\viii
+
+\vx
+
+\vxi
+\end{videos}
+
+\newpage
+%========================================
+
+\subsection{An alternative proof of the quotient rule} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=33]{137-CA-03.pdf}}
+
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This question is quite straightforward.  I call it a proof, by it is just a calculation, and students do not have much trouble with it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vx
+
+\vxi
+
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{Derivatives of $(f \circ g)$} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=35]{137-CA-03.pdf}}
+
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is an excellent question to practice chain rule and product rule, as well as composition notation, in an abstract setting.
+		\item It gets a bit hairy for the third derivative, but students tend to be willing to try -- whether they make mistakes or not, that is another question.
+		\item  Students vary enormously in their pace for this question, which is why the challenge at the end is useful.  I never spend any time on the challenge in class, but it can keep faster students busy while the rest are still figuring out the original problem. There is always one student who keeps working on it outside of class and later emails me their conjecture.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vx
+
+\vxi
+\end{videos}
+
+\newpage
+
+%========================================
+%========================================
+\section{Derivatives of trigonometric functions}
+%========================================
+%========================================
+
+\subsection{Derivative of cos} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=36]{137-CA-03.pdf}}
+
+\end{center}
+
+\begin{warning}
+	It is probably good to ask students to write some proofs in each unit.  This is one of the few such questions in Unit 3, so I recommend not skipping it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item If a student has watched Video 3.12, then they should be able to do this, but it takes time.  It is a good exercise to solidify their understanding of the derivation in Video 3.12, but only if they do it themselves.  There really is no value in them watching us do it.  They already did that in the video!
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\vii
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{Derivatives of the other trig functions} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=37]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Notice that this was left as an exercise in Video 3.12.
+		\item  This is a nice question because it is very accessible, has a high success rate, and make students feel good.  They can do it themselves.
+		\item  This question helps emphasize that the differentiation identities all can be derived easily and are not random, magic formulas to be memorized (as in high school).
+	\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\viv
+\end{videos}
+
+\newpage
+
+%========================================
+
+\subsection{Product of trig functions} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=38]{137-CA-03.pdf}} 
+
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a simple computational question with a trick: the answer is 4.  It helps to remind students that any expression involving trig functions can always be rewritten in many ways.	
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\viv
+\end{videos}
+
+\newpage
+
+
+%========================================
+%========================================
+\section{Implicit Differentiation}
+%========================================
+%========================================
+
+\subsection{Implicit differentiation} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=41]{137-CA-03.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students have very different paces for this question.  Some are much faster than others. 
+		\item I normally do not compute \DS{h'''(0)} in class.  It is there to keep the faster students busy while the slower students are still working on the previous parts.
+		\item  To calculate $h'(0)$ we can go two ways:
+			\begin{itemize}
+				\item differentiate, solve for \DS{\frac{dy}{dx}}, then evaluate
+				\item differentiate, evaluate, then solve
+			\end{itemize}
+			However, if we later want to compute the second derivative, it is much easier to differentiate twice before solving.   Some students will differentiate once, solve, and then differentiate a second time, which makes it unnecessarily complicated.  I like to point this out to them.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+\end{videos}
+
+\newpage
+
+\end{document}
+%==================
+%==================
+
+
+

@@ -1,0 +1,1069 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=CYAPZikmuM4&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j}{14.1 Power series: an example}}
+\newcommand{\vii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=IEH7d9XiqqA&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=2}{14.2 Power series: the main theorem}}
+\newcommand{\viii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=aCFR5CABSA0&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=3}{14.3 Taylor polynomials (1) - The definition with the limit}}
+\newcommand{\viv}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=sNWY1w8YocM&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=4}{14.4 Taylor polynomials (2) - The definition with the derivatives}}
+\newcommand{\vv}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=c-rI1zMj0wA&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=5}{14.5 Taylor Polynomials (3) - The formula}}
+\newcommand{\vvi}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=o-RSENE_Yus&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=6}{14.6 The four main Maclaurin series}}
+\newcommand{\vvii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=SXLJOa1_GMs&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=7}{14.7 Analytic functions and the Remainder Theorems}}
+\newcommand{\vviii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=lQH-pqS7vdk&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=8}{14.8 A proof that the exponential function is analytic}}
+\newcommand{\vix}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=ksKu5p2qvB4&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=9}{14.9 How to write functions as power series quickly}}
+\newcommand{\vx}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=NYVjEbpY21w&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=10}{14.10 Logarithm as a power series}}
+\newcommand{\vxi}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=vM7sLZ2ljko&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=11}{14.11 Taylor applications: Estimations}}
+\newcommand{\vxii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=4Gbmp8Qn8Xo&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=12}{14.12 Taylor applications: Integrals}}
+\newcommand{\vxiii}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=-CK3K_aeH64&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=13}{14.13 Taylor applications: Limits}}
+\newcommand{\vxiv}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=ajglGMrE5Gk&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=14}{14.14 Taylor applications: Adding series}}
+\newcommand{\vxv}{\hspace{8mm}  \href{https://www.youtube.com/watch?v=1dSWYQ9AXuo&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j&index=15}{14.15 Taylor applications: Physics}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{14. Power series and Taylor series}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Discovery
+%===========================
+
+\newcommand{\seed}[2]{ 
+\begin{tikzpicture}
+\node {\includegraphics[scale=.6,page= #2]{#1}};
+%\node at (4,2.63) {\includegraphics[height=1cm]{thinking}};
+\node at (3.8,-2.63) {\includegraphics[height=0.9cm]{thinking}};
+\end{tikzpicture}
+}
+
+\newcommand{\review}[2]{ 
+\begin{tikzpicture}
+\node {\includegraphics[scale=.6,page= #2]{#1}};
+\node at (3.8,-2.63) {\includegraphics[height=0.9cm]{quick}};
+%\node at (4,-2) {\includegraphics[height=0.85cm]{quick}};
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 14: Power series and Taylor series
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{3mm}
+
+\begin{warning}
+\ \vspace{-3mm}
+
+	Students find this material very difficult.  	
+	Resist the temptation to spend time on ``interesting" questions unless students are ready.   Go slowly.  They will appreciate working on what you may consider ``trivial" questions to solidify the basics.
+\end{warning}
+
+\vspace{5mm}
+
+{\bf SPECIAL QUESTIONS}\\
+
+
+	\hspace{-1.3cm} {\includegraphics[height=0.9cm]{thinking}}\\
+	\vspace{-1.5cm}
+	
+	  {\bf Discovery: }  a question for students to explore an idea that will foreshadow or anticipate something appearing later in the videos.  They may simply think about a concept ahead of time, or they may fully discover a new result or technique by themselves.
+		\begin{itemize}
+			\item You can use it as I describe it -- then be aware that students have not learned the concept yet and the goal is to \emph{discover} it.
+			\item Or you can wait till they learn the concept in the videos -- then modify it appropriately, if needed.	\\
+		\end{itemize}
+
+	\hspace{-1.3cm} {\includegraphics[height=0.9cm]{quick}}\\
+	\vspace{-1.5cm}	
+	
+	 {\bf Concept check:}  a quick question to test something simple that we want students to know really well.  It works great as a warm-up.
+		\begin{itemize}
+			\item You may use it on the day this concept is being learned, as part of the process.
+			\item Or you may save for a later day as a warm up to ``review", to emphasize how important this is.
+		\end{itemize}
+
+\vspace{5mm}
+		
+{\bf OBJECTIVES}
+
+	\begin{itemize}
+		\item Identify power series and compute their interval of convergence.   %Recognize them as a particular case of a function defined as a series depending on a parameter.  
+		\item  Understand (and use) which properties of polynomials apply to power series in the interior of the interval of convergence.
+		\item Understand various equivalent definition of Taylor polynomials and Taylor series (as a an approximation of a function near a point with an error that approaches 0 ``quickly", as a polynomial with the right derivatives, or via the standard formula).  Compute with them.
+		\item  Memorize the standard Maclaurin series, and be able to re-derive them.
+		\item  Use all the common tricks to obtain new Taylor series expansions from old ones.
+		\item  Use Taylor series in many common applications (possibly limits, integrals, estimations, adding series, physics, asymptotic behaviour...)
+	\end{itemize}
+
+Throughout this last unit I recommend focusing on conceptual understanding, computations, and applications, while avoiding proofs, particularly the most technical ones.    Understanding, writing, and critiquing simple proofs is one objective for this course that has been practiced in all the previous units; however, the proofs in this unit are often too technical, hard, or long, so they are not appropriate for that learning objective.  Most of the aspects of the theory and most of the theorems are illustrated by how we use them in the applications.
+
+\vspace{3mm}
+\tableofcontents
+
+\newpage
+%==================
+\section{Power series}
+%==================
+%==================
+\subsection{Interval of convergence}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=2]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Standard practice to compute the interval of convergence of a series.  
+		\item Students can mostly do this question, but they are slower than you probably expect.
+		\item If I include Question 4, I specifically tell students that it is a bonus question, and that they should ignore it unless they have finished everything else.  I do not discuss it in class.
+		\item Solution to Question 4.
+			\begin{itemize}
+				\item  Computing the radius of convergence is no more difficult than for other series:  $R = 4/27$.
+				\item  At $R=4/27$ the series is divergent.  Use Stirling (Q7 on Practice Problems of Unit 11) to conclude that
+					$$
+						 \frac{(3n)!}{n!(2n)!} \left(\frac{4}{27}\right)^n   \; \sim \; \; \frac{1}{\sqrt{n}}
+					$$
+				\item  At $R=-4/27$ the series is conditionally convergent.  Use Alternating Series Test to prove it is convergent, although proving the terms are decreasing is a little bit subtle.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{What can you conclude?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This question refers to the main theorem about power series: they are absolutely convergent in the interior of the interval of convergence, divergent outside of it, and anything at the endpoints.
+		\item If students are confused, I draw a real line, an interval of convergence, and I ask them ``if the first series is absolutely convergent, where in this picture is $3$?"  This normally gets enough of them started.  If they collaborate, they can figure it out from here.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Preview of Taylor series and applications}
+%==================
+%==================
+\subsection{Writing functions as power series}
+
+\begin{center}
+\seed{137-CA-14.pdf}{4}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item I like using this question as \emph{exploration}
+			\begin{itemize}
+				\item  after learning about power series (Video 14.1) 
+				\item \emph{before} learning much about Taylor series manipulations (Video 14.9)
+			\end{itemize}
+		\item Students can play around, experiment, and discover that we can write ``regular" functions as power series.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vix
+
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Challenges}
+
+\begin{center}
+\seed{137-CA-14.pdf}{6} \quad
+\seed{137-CA-14.pdf}{8}
+
+\
+
+\seed{137-CA-14.pdf}{10}
+\end{center}
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  like using one of these question as \emph{exploration}
+			\begin{itemize}
+				\item  after learning about power series (Video 14.1)
+				\item \emph{before} learning about this application in videos (Video 14.14)
+			\end{itemize}
+		\item  This is difficult but with the right encouragement, if students are willing to play, experiment, and collaborate, they can \emph{discover} the result.  When this happens, it is extremely satisfying.    
+		\item On the other hand, if you have a passive, unengaged class, I recommend not using it.  They will just wait doing nothing.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vxiv
+
+\vx
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Definition of Taylor polynomials and Taylor series}
+%==================
+%==================
+\subsection{Basic questions on the definition(s) of Taylor polynomials}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=11]{137-CA-14.pdf}} 
+\vspace{-2cm}
+
+{ \includegraphics[scale=.6,page=12]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=14]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{warning}
+This may look like a trivial exercise, but it is far from it (particularly the last slide).
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:} students learn three ways to define the $n$-th Taylor polynomial $P_n$ of a function $f$ at $a$:
+			\begin{itemize}
+				\item (Video 14.3)  It satisfies \DS{\lim_{x \to a} \frac{f(x) - P_n(x)}{(x-a)^n} = 0}
+				\item (Video 14.4)  $P_n$ and $f$ have the same value and same first $n$ derivatives at $a$
+				\item (Video 14.5) With the formula \; \DS{P_n = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k}.
+			\end{itemize}
+		\item The goal of these questions is to understand the first two definitions by using them in very simple cases.  I like using this activity before students even watch Video 14.5.  Otherwise, once they watch Video 14.5, they try to do everything from the formula instead of from the other two properties.
+		\item The activity looks very easy, but students have a lot of trouble with it (which means the activity is worth it).  They need coaching, and they need firm insistence that they write down the definition for each case and try to make sense of it.
+		\item The ``warm up" slide is definitely worth it to focus their attention, even if simply means ``look it up and copy it down".
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Taylor polynomials}
+
+\begin{center}
+\review{137-CA-14.pdf}{15}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a short question to make sure students understand what it means to be ``an approximation of order $n$".
+		\item It works well as a quick ``concept check" at the beginning of class.
+		\item Some students will think 2 and 4 are false because they are not using the definition.  If you insist that they stop, write down the definition, and think, they should be able to figure it out.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - smooth functions}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=16]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=17]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These are quick questions about the definition of $C^n$ and $C^{\infty}$ functions.
+		\item They are not difficult.  They are just an excuse to make student think about these new definitions for a couple of minutes.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Approximating functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=18]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Video 14.4 proves that $g$ is an approximation for $f$ of order $n$ near $a$ if and only if  $f^{(k)}(a) = g^{(k)}(a)$ for all $0 \leq k \leq n$.
+		
+		This is a simple question to practice this result and assimilate it.
+		
+		\item Students may be surprised that various, different functions may be  approximations of the same order.
+		
+		\item The club picture is a link to the graphs on Desmos.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A polynomial given its derivatives}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=19]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Video 14.5 produces the standard formula for Taylor polynomials derived as ``a polynomial whose derivatives are the same as the derivatives of the function".  It leave the actual derivation (why the formula indeed has that property) as an exercise.
+		
+		\item This is a simple activity to do the calculation and derive the formula.  It is very accessible and, if we give students enough time, they can do it.
+
+		\item Question 2 will cause some confusion.  The point is that we can get a polynomial with these conditions and degree $3$, but we can also get manny polynomials with higher degree and the same conditions.  This explains why we impose the condition of ``degree at most $n$" for ``the $n$-th Taylor polynomial":  it makes it unique and, in a way, the simplest among other polynomials with the same properties.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Competition!}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=20]{137-CA-14.pdf}}  \quad
+{ \includegraphics[scale=.6,page=22]{137-CA-14.pdf}} 
+
+{ \includegraphics[scale=.6,page=24]{137-CA-14.pdf}}  \quad
+{ \includegraphics[scale=.6,page=25]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{warning}
+\nl
+	\begin{itemize}
+		\item Don't dismiss this activity for being ``silly".  It works really well and it makes its point.
+		\item  Omit this activity from your pre-class slides.  Otherwise, you will spoil it.
+	\end{itemize}
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}   Switching from polynomials written as linear combinations of powers of $x$ to polynomials written as linear combinations of powers of $(x-a)$ is trivial for us.  It isn't for students.  It confuses them a lot and they do not understand the point.
+		
+		This game works wonderfully to help students understand the point.
+		
+		\item Notice that \DS{C = D}.  Do not mention this until the discussion after the competition.
+		
+		\item How I use this activity:
+			\begin{itemize}
+				\item  I make students choose a team.  I make them write down only one of the two polynomials.
+				\item I explain what is going to happen.  I make it look as much as a game as I can.
+				\item I present the calculations and I give them 2 minutes.  Team D finishes while Team C is struggling with the first question.
+				\item I invite them to discuss with each other, and then collectively as a class:  was this fair?  why?  who had an advantage?
+				
+				Now they understand the advantage of the ``change of basis"
+				\item  I give them the last slide ``I spy a polynomial with my little eye".  They can now solve them quickly.  Before this activity they would have struggled.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{cosine}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=26]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Video 14.6 derives the Maclaurin series for $f(x) = e^x$ and $g(x) = \sin x$.  It leave $h(x) = \cos x$ as an exercise.
+		\item The goal is for students to derive one Maclaurin series themselves from the general formula.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Interval of convergence of Maclaurin series}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=27]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Video 14.6 presents these Maclaurin series but does not compute their interval of convergence.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Analytic functions}
+%==================
+%==================
+\subsection{$\sin$ is analytic}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=28]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=30]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Video 14.8 proves that $f(x) =e^x$ is analytic, as an example of proving Lagrange's Remainder Theorem.
+	
+		The best way to make sure students understand the process is to replicate it with another function.  That is the goal of this question.
+		
+		\item  I recommend using the ``warm up", even if it just means looking all those pieces up. It will help students focus.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vviii
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Generalize your proof}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=32]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=33]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  {\bf Context:}  After watching the proof that the exponential function is analytic (Video 14.8) and proving that sine is analytic (see previous activity) students start to see a pattern.  They often even ask about it.
+		
+		Through this exercise, students can get a first taste of what research is like: coming up with an interesting question, moving from examples to a general case, writing precise statements, testing their hypotheses, coming up with new theorems.  
+
+		\item If they have understood the previous two proofs, students will have no trouble saying that the condition we need is ``the derivatives need to be bounded".  However, they will need quite some prodding to write something more precisely.
+		
+		\item How I use this question: Slide 2 is a back-up -- I prefer not to use it.   Instead, 
+			\begin{itemize}
+				\item I ask students to work and discuss with each other.
+				\item After a while, I take some volunteer and write their answers on the board (it will look somewhat similar to Slide 2)
+				\item Then I ask them to discuss these options with their neighbours and to choose which ones work.
+			\end{itemize}
+			
+		\item There is a nice follow-up question.  There will likely be multiple hypotheses that make the theorem work (a bound that depends on $x$, or a bound that depends on nothing).  I then ask students to tell me which one of the resulting theorems is the most useful.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vviii
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A $C^{\infty}$-but-not-analytic function}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=34]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{warning}
+	This example is a ``classic" and may feel important, but I do not recommend using it.
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item I am including this question for completeness.  We (mathematicians) tend to like this example and may even feel bad if we do not share it with students.  But we are doing it for ourselves, not for them.
+		
+		This activity is difficult and could easily take you over half a class.  Even then, many students won't understand it unless you fully solve it for them, and in that case... what is the point?  Our limited time is probably better spent understanding the basics, and inviting students to practice more Taylor series manipulations and applications.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Constructing new Taylor series}
+%==================
+%==================
+\subsection{Taylor series gymnastics}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=35]{137-CA-14.pdf}}  \quad
+{ \includegraphics[scale=.6,page=36]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{warning}
+Do not skip this question -- you will want to use at least some of it
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These activities involve the classic manipulations to obtain new Taylor series from ``the main four ones".   
+		
+		\item They are not very difficult, but students need some practice to get comfortable with them.  This is time well spent as these manipulations will be necessary later as part of all the Taylor series applications.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+
+\vix
+
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{$\arctan$}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=39]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Video 14.10 obtains the Maclaurin series for $\ln(1+x)$ by integrating a known series.   
+		
+		This activity is an opportunity to practice the same technique with a different function.
+		
+		\item There will be a large controversy about the integration constant.  Do we need an integration constant?  Why don't we need an integration constant on each side of the equation?  Why do we need to find the value of the constant rather than leave it as $+C$?
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{$\arcsin$}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=40]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item {\bf Context:}  Students do not learn about the binomial series in the videos, although they are introduced in the practice problems.  They can still solve this question from scratch, rather than as a particular case of the binomial series.
+
+		\item This is one of the few opportunities for students to construct a new Maclaurin series using the general formula, rather than as manipulation of the main four series. 
+		
+		\item Students will struggle with how to express their answer.  They will think that it is not okay to leave an expression indicated such as ``$1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1)$" and they do not have the language of double factorials.
+		
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvi
+
+\vix
+
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Parity}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=41]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{warning}
+	Do not assume all students know the definition of odd and even function.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Once students recall or learn the definition of even and odd function, they will have no trouble with Question 2.
+		
+		\item Question 3, on the other hand, is confusing.  Most students do not know what we are asking and are tempted to just wait and do nothing.  Plan accordingly.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Product and composition of Taylor series}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=43]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=46]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students have learned that ``We can manipulate power series like polynomials (in the interior of their intervals of convergence)".  These questions elaborate on that point.
+		
+		\item Products and compositions of Taylor series do not appear explicitly on the videos.
+		
+		\item Students will be a bit hesitant and they need encouragement  ``Really: manipulate the power series like polynomials.  Write out the first few terms and manipulate them like polynomials".
+		
+		\item Once they are willing to try, the main difficulty/error is in deciding how many terms of the final answer are correct if they truncate the individual series they are multiplying or composing.  This is not obvious.  They will make errors and they will have questions about it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vvi
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Tangent and secant}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=47]{137-CA-14.pdf}}  \quad
+{ \includegraphics[scale=.6,page=49]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These questions are not particularly important or necessary.  Some people will find them cute; some people will find them tedious.  Nevertheless, if you want to show students the rich variety of ``Taylor manipulations", these are good candidates.
+		
+		\item These questions only work well if your students enjoy collaborating.    They will be uncertain and hesitant of many of the steps, but if they discuss and collaborate, they will move forward.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vvi
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Applications}
+%==================
+%==================
+\subsection{Integrals}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=51]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students find this application of Taylor series easy.  They understand it well, and they appreciate it as useful.
+
+		Give them time and they will solve the question.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Adding series}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=52]{137-CA-14.pdf}} \quad
+{ \includegraphics[scale=.6,page=53]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students find this application of Taylor series difficult and confusing.
+		
+		\item My original plan was to have Slide 1 as a gentle introduction and Slide 2 as the real practice.  However, I never get to Slide 2.  Students can work through Slide 1, but they are extremely slow.  The activity can easily take half a class.    In any case, it is good practice, and it is only useful if students are doing it, rather than watch me do it, so there is no point in rushing it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Limits}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=54]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students find this application of Taylor series difficult.  If they have watched Video 14.13 and reflected on it, they get the idea and they can work through it, although they are normally slow and hesitant.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Estimations}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=55]{137-CA-14.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This application of Taylor series is hit and miss.  The students who have understood and memorized Lagrange's Remainder Theorem have no trouble.  Others are confused, do not know what to do, and just wait doing nothing.
+		
+		\item This activity will work better if the class likes to discuss and collaborate.  Otherwise, many won't try.
+		
+		\item Solution:  
+			\begin{itemize}
+				\item  $A$ is better estimated with the Alternating Series Theorem.
+				\item  $B$ is estimated with Lagrange's Remainder Theorem.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxi
+\end{videos}
+
+\newpage
+%==================
+%==================
+\end{document}
+%==================
+%==================
+
+
+

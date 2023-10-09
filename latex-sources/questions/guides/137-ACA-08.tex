@@ -1,0 +1,768 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=xcyL3sEL2mM&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=1}{8.1 Antiderivatives}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=BQIiCjoFILs&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=2}{8.2 Functions defined as integrals}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=JeKCipoy8bc&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=3}{8.3 The Fundamental Theorem of Calculus -- Part 1}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=UZmMgSIgi3k&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=4}{8.4 A proof of Part 1 of the FTC}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=OKw2v0DOXOI&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=5}{8.5 The Fundamental Theorem of Calculus -- Part 2}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=58VnS2eczss&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=6}{8.6 A proof of Part 2 of the FTC}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=LBhvzrRyAtk&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN&index=7}{8.7 Summary: the three ``notions of integral"}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{8. The Fundamental Theorem of Calculus}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 8: The Fundamental Theorem of Calculus
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\section{Antiderivatives}
+%==================
+%==================
+\subsection{Initial Value Problem}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a short, warm-up question to remind students of the importance of the integration constant when computing antiderivatives.  
+		\item Most students will solve the question easily.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{The most misunderstood antiderivative}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=4]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Most students never understand why we write the absolute value in \DS{\int \frac 1x \,dx = \ln |x|+C}.  They just memorize it as a formula ``because we will lose marks in the test if we don't include the absolute value".  This activity is our only chance to change things!
+		\item   Students will be able to answer Questions 1 and 2.   For Question 3, they will need a push (``separate into two cases").  They will not be comfortable with their answer to Question 4, though.
+		\item The answer to Question 4 depends on some conventions.  We normally write
+			$$
+				\int \frac 1x \, dx \; = \; \ln|x| + C
+			$$
+			This is with the assumption that we only compute antiderivatives with an interval for domain.  In this case we do not know whether the interval is contained in $(0,\infty)$ or in $(-\infty,0)$, so we write \DS{\ln |x|} to take care of both cases.  Of course, there is another interpretation.  The most general antiderivative of \DS{f(x) = \frac{1}{x}} on the largest possible domain $(-\infty,0) \cup (0,\infty)$ is
+			$$
+				F(x) = \begin{cases} \ln x + C_1 & \mbox{ for } x >0 \\ \ln(-x) + C_2 & \mbox{ for } x<0 \end{cases}
+			$$
+			for arbitrary constants $C_1$ and $C_2$.
+		\item Question 5 confuses students.  They do not understand why we are asking about contradictions in the first place.  They do not see the apparent issue, so they cannot explain why it is not an issue!
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Compute these antiderivatives by guess and check}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item There is value in giving students time to work on a question like this in class.  It is not a waste of time.
+		\item  Most calculus textbooks will include a ``table of elementary antiderivatives" right after introducing the notion of antiderivative.  I did not include it in the videos on purpose.  I wanted to emphasize that students can (and should!) create their own table, that the elementary antiderivatives are just the elementary derivatives in reverse, and that they can get all their answer by guess and check.  They should not memorize anything new.
+		
+		This activity is the students' chance to create their table of elementary antiderivative.  I think it is important to give them time to do so, otherwise they never will, and they will resort to memorize the table they find somewhere else.  
+		\item Of course some students will be extremely fast.  I normally have some kind of challenge question on the side to keep those students busy while other students finish.
+		\item If I solve any of the questions, I emphasize the guess-and-check approach (see the example at 3:20 on Video 8.1).
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Sophisticated guess-and-check}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=6]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=7]{137-CA-08.pdf}} 
+
+{ \includegraphics[scale=.6,page=8]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=9]{137-CA-08.pdf}} 
+
+{ \includegraphics[scale=.6,page=10]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=11]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Later (in Unit 9) students will learn Integration Methods.  I often say that all the integration methods are ``sophisticated guess-and-check" or ``assisted guess-and-check".  Indeed, guess-and-check is the most important integration method, and it makes all the other methods more powerful.   However, once students learn the Official Integration Methods, they like to go on autopilot, use algorithms, and not think.  Right now, before they learn the official methods, we have an opportunity to make them think, develop their problem solving techniques, and expand their guess-and-check power.
+		\item Students tend to find these questions satisfying and fun.
+		\item The first four slides are a series for students to discover integration by parts without being told a single thing!  And it works!  It's beautiful.  Of course, you can also use just the first N if you prefer.
+		\item Slide 5 (trig-exp antiderivatives) works well as a stand-alone activity.   Students claim it is easy!   By constrast, the Official Method to solve this integral using parts twice is messy.
+		\item Slide 6 is a challenge.   I use it to keep the fast students busy while I give everybody else more time.    It would be a sin to rush these activities and spoil them for most of the class just because a few students finished them.   Let them work.  They enjoy it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Functions defined by integrals}
+%==================
+%==================
+\subsection{Functions defined by integrals}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=12]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{warning}
+	Don't skip this question.  
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Defining a function as an indefinite integral is a weird concept.  We have forgotten it, but the first time a student sees it, it is confusing.   Many calculus courses define a function as an indefinite integral and immediately jump into the FTC, without giving students a chance to get comfortable with this concept.  This is an error.  It is the whole reason why Video 8.2 is a separate video on its own.
+		
+		In particular, the notation is confusing.  What are the roles of $x$ and $t$? Can I use a different letter?  Can I use $x$ for both?
+		
+		Give students a chance to think about this question and discuss it with other students before they even learn about the FTC.  They will benefit from this.
+		\item The valid ones are 1, 3, 4, 5, 6, and 7.   After thinking about it and discussing with their peers, students will be more or less satisfied with 1-5, but they will have questions about 6-8.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Towards FTC}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=13]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=14]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is a very nice activity {\bf if students have not learned anything about FTC yet}.  If they already have (if they have watched Video 8.3, for instance) then it does not have such a big pay-off. 
+	\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item The point of this activity is to have students discover FTC (Part 1) geometrically by themselves.  
+		\item How I use this question
+			\begin{itemize}
+				\item   I give students the first slide and wait a bit.  They complete it without trouble and give me their answers.  This is to establish that we are estimating area, and that we are defining a new function $F$ as an indefinite integral.
+				\item  Now I give students the second slide and I invite them to draw the five points they already have, and to try to sketch the graph of the rest.
+				\item  After a bit of time, I help them reason what the graph of $y=F(x)$ should be when $0\leq x \leq 1$.   ``Should it be increasing or decreasing?"  ``If I increase $x$ by a little bit from here (draw a picture at $x=0.2$) or from here (draw a picture at $x=0.8$) when will $F(x)$ increase by more?"  (I make drawing to focus their attention on the slices of areas being added).  ``What shape will the graph have?"   By now I have their focus on how $f$ predicts the growth of $F$.   
+				\item I tell them to do the same thing for the rest of the domain. I give them time to work.
+				\item After they are done, I ask them what the graph of $F'$ looks like, and they agree it is $f$.    They have discovered FTC-Part 1 by thinking geometrically about adding a bit of area at a time.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{FTC - Part 1}
+%==================
+%==================
+\subsection{Filling the tank}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=15]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a simple warm-up question to emphasize that functions defined by integrals are useful and appear ``in real life".  We leave the answer to this question as an integral because there is no other way to do it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=16]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=17]{137-CA-08.pdf}} 
+
+{ \includegraphics[scale=.6,page=18]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students know that FTC-1 says that ``derivatives and integrals are inverses of each other" or that ``integrals are antiderivatives".   However, they don't necessarily fully understand the precise statement and all its implications.  Any of these questions will force them to think about the precise statement.
+		\item Slide 1 (``True or False")  -- All are False.
+			\begin{itemize}	
+				\item Possible error:  1 is True, not realizing that the left-hand side is the derivative of a constant.
+				\item Possible error: 2 is True because ``derivatives and integrals are inverses of each other".
+			\end{itemize}
+		\item Slide 2 (``More True or False") -- 2, 4, and 5 are True.
+			\begin{itemize}
+				\item  Possible error: 4 and 5 cannot both be true because they contradict each other.
+			\end{itemize}
+		\item Slide 3 (``True, False, or Shrugh")
+			\begin{itemize}
+				\item Statement 2 is technically false, but it is reasonable to simply answer ``we do not have enough information to decide".  By contrast, we can tell that Statement 1 is False because $H(1)>0$.
+				\item 3 and 6 are False.  4, 5 are True.
+				\item Possible error: 6 is true because 4 and 5 give us two different answers.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{FTC-1 applications}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=19]{137-CA-08.pdf}} \quad
+{ \includegraphics[scale=.6,page=20]{137-CA-08.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Both slides are about the main application of FTC-1:  computing the derivative of a function defined as an integral.
+		\item  The objective of Slide 1 is to reduce everything to the precise statement of FTC-1.
+			\begin{itemize}
+				\item $F_1$ is constant.
+				\item $F_2$ is a direct application of FTC-1.
+				\item $F_3$ is FTC-1 plus Chain Rule.
+				\item $F_4$ requires swapping the ends of integration.
+				\item $F_5$ requires breaking the integral in two pieces, and using previous results.
+			\end{itemize}
+			I prefer students reason this way so they understand where everything comes from, before they ever attempt the question in Slide 2.  I would not want them to memorize the result from Slide 2 without knowing where it came from.  I always use Slide 1 in class, but I may or may not skip Slide 2.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+
+
+%==================
+\subsection{An integral equation}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=21]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is an alternative way to apply FTC-1 -- just to ask the same idea in a different way.   
+		\item Students need to realize that they have to take a derivative of both sides first.  To my surprise, they normally do and they find this question easy.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{FTC - Part 2}
+%==================
+%==================
+\subsection{Compute these definite integrals}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=22]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a simple question to get comfortable with using FTC-2.
+		\item Students may not be able to find right away the antiderivatives for 3 ($4\arcsin x$) and 4 ($\tan x$), but other than that they find this question easy.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Find the error}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=23]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a short question to remind students not to use FTC-2 mindlessly.
+		\item While this is an error students make, once the question is posed, they quickly realize that the problem is at $x=0$.   Perhaps they cannot state precisely what the problem is, but they realize it is at $0$.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Areas}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=24]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{warning}
+	It is probably important to ask students to solve at least one of these questions.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students know that definite integrals represent area between the graph of a function and the $x$-axis.  Video 7.11 discusses how this is positive or negative, depending on whether the graph is above or below the $x$-axis.  However, the videos do not include a list of examples of all the ways that regions can be interpreted and cut into pieces to set them up as integrals.  I do not want students to memorize lots of formulas and cases (area between two curves, when the two curves intersect more than twice, using $y$ as the variable, ...)  Rather, I would like them to come up with all those ``methods'' themselves by reasoning from the basic definite integral.
+		
+		This activity is an opportunity for students to do so through exploration.
+		
+		\item Question 4 is much easier to calculate if we use $y$ as the variable of integration.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Minimizing area}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=25]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question is an attempt at asking something more complex about areas.  Half the students freeze and do not do anything because they do not recognize this type of question.  Also, they do not like working with parameters. 
+		
+		\item  I have used the hint ``Do not worry for now about minimizing the area.  For now just treat $a$ as a constant and calculate the value of the area.  You will worry about minimizing it later.  If you do not know how to start, compute the area first for $a=2$). 
+		
+		\item The link leads to a graph on Desmos with sliders.  In addition, the folder contains an animation of these parabolas (courtesy of Matt Sourisseau).
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Symmetry}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=26]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question is harder than I originally anticipated.  It is a cute question and I want to make it work, but I am not sure it does.   Most students just do not know what to do and wait.
+		
+		 I want students to think geometrically and notice symmetries.  This is difficult because they are not used to thinking geometrically, and some of the symmetries are not so clear.  That is why I added the links to graphs in Desmos.  I emphasize to  students that I want them to at least guess the answer by looking at the graph, even if they cannot write it algebraically.
+		\item The first integral is $0$.  This is the only one that some students find accessible.  The function is odd.
+		\item The second integral is $\pi/2$.  The region is half the rectangle \DS{[0,\pi]\times [0,1]}.  Draw the graph of $y=1/2$.  The piece of the region above that line has the same are as the region missing below.   Algebraically  
+			$$
+				\cos^2 x \; = \;  \frac{1}{2} + \frac{1}{2} \cos (2x)
+			$$
+			and the positive and negative contributions of $\cos 2x$ cancel.
+		\item The third integral is $\pi$.  The region is half the rectangle \DS{[-1,1]\times [0,\pi]}.   Draw the graph of $y=\pi/2$.  The piece of the region above that line has the same are as the region missing below.  Algebraically
+			$$
+				\arccos x \; = \; \frac{\pi}{2} - \arcsin x
+			$$
+			and $\arcsin$ is an odd function.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Average velocity}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=27]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question puts together the standard definition of average velocity, the representation of total distance traveled from integration, and the MVT.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{The Mean Value Theory for integrals is back}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=29]{137-CA-08.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Unit 7 contains an activity to write a different proof of this theorem.  In Unit 7 the proof uses IVT and EVT.  In Unit 8 the proof uses FTC and MVT.  If you are using one fo the two activities, it is nice to use both.
+		\item Students will find this proof easier than the one in Unit 7, once the hint is given.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

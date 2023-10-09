@@ -1,0 +1,1001 @@
+empty
+
+
+# Unit 2: Limits and continuity
+
+
+The most difficult units in the course are Units 2, 7, 14. The most difficult concepts are the definitions of limit and of definite integral.
+
+Your first big challenge in the course will come when you ask students to start working with and writing proofs with the definition of limit. It will take much more effort to engage them and have them actively participate than during Unit 1. Make sure you bring your A-game to class those days.
+
+One reason why students find $\varepsilon-\delta$ proofs so hard is that they like to focus on manipulations. They zoom in on equations and inequalities and try to manipulate symbols, ignoring the context and the meaning of surrounding quantifiers and conditionals.
+
+A very big focus in this unit should be Proof Structure. If students understand why we must begin some proofs by fixing $\varepsilon$, why variables are quantified in a claim but fixed one a time in a proof, why we choose $\delta$ as a function of $\varepsilon$ but not the other way around in a proof, ... then they are in good shape.
+
+### Getting Started: Inequalities and Absolute Value
+
+#### Properties of absolute value and inequalities
+
+<Slides>
+
+<QuestionPreview question={0} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={1} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Warm-up questions, individually or both.
+
+*   Some students, when in the middle of writing calculations or proofs, go on autopilot and do mindless manipulations. They don’t necessarily believe wrong “identities” to be true. Rather, they do whatever looks simplest to go from point A to point B without thinking of what is valid.
+
+    The point of these questions is to force them to think about the properties they may be tempted to use. When they do so, they normally get the right answer, even without our help.
+
+</Comments>
+
+<Videos>
+
+[2.4 Distance and absolute values](https://www.youtube.com/watch?v=6wFC38rVMbk\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=4)
+
+</Videos>
+
+#### Sets described by distance
+
+<Slides>
+
+<QuestionPreview question={2} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students who have watched the corresponding video will have no trouble with this question (even if they may be slow).
+
+*   This question is good as preparation before students learn the definition of limit.
+
+*   We want students to move between different representations of intervals (e.g.: $|x-a|<\delta \iff a-\delta < x <a + \delta)$ with a lot of ease. Otherwise, if they get lost in the small details in the definition of limit, they will never appreciate the big picture.
+
+</Comments>
+
+<Videos>
+
+[2.4 Distance and absolute values](https://www.youtube.com/watch?v=6wFC38rVMbk\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=4)
+
+</Videos>
+
+#### Implications
+
+<Slides>
+
+<QuestionPreview question={3} unit={2} small={true} />
+
+</Slides>
+
+<Warning>
+
+This question is essential (Parts 1 and 2). Don’t skip it!
+
+</Warning>
+
+<Comments>
+
+*   This question addresses an essential idea in “$\varepsilon-\delta$ proofs”: “If a value of $\delta$ works, then anything smaller also works”. But we need students to understand why, of course. It is a great question to do before introducing the definition of limit.
+
+*   The first answer that many students will give you for Parts 1 and 2 is just “$A=2$ and $B=1/2$”. Students like to strip all context, implications, and quantifiers; they zoom in just on equations and inequalitites, and they try to merely manipulate symbols. That is how they approach many “$\varepsilon-\delta$ proofs” and that’s why they find them so hard. The same is happening here.
+
+*   Here is how I often use the question:
+
+    *   I start with Parts 1 and 2 only. I ask them to think a bit individually.
+
+    *   Then I say “If you got ‘$A=2$ and $B=1/2$’, then your answer is incomplete.” Now I ask them to discuss with each other, which they do. Just with this, many of them get the right answer, but far from all of them.
+
+    *   At this state (after they have done a serious attempt) I use the hint “Is this implication true when $A=0.5$? When $A=2$?” and I give them more time. This normally does the trick.
+
+    *   I then decide whether to use Part 3 or not.
+
+*   If I explain the solution, I may get a question like “Is it always ‘$\leq$’ when the variable is on the first part of the implication, and is it always ‘$\geq$’ when the variable is on the second part?” or something similar. Beware of this question! The student is trying to get an algorithm for “these types of questions” so they can get the right answer without understanding why. Of course, I want to discourage this.
+
+</Comments>
+
+<Videos>
+
+[2.4 Distance and absolute values](https://www.youtube.com/watch?v=6wFC38rVMbk\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=4)
+
+</Videos>
+
+### Understanding Limits
+
+#### Limits from a graph
+
+<Slides>
+
+<QuestionPreview question={4} unit={2} small={true} />
+
+<QuestionPreview question={5} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={6} unit={2} small={true} />
+
+</Slides>
+
+<Warning>
+
+*   This is one of the most useful exercises about limits... if used wisely. Don’t waste it!
+
+*   If I use the last slide “More limits from a graph”, I have to give students first the definition of the floor function and a chance to get used to it. That is what the slide “Floor” is for. I cannot expect students to attempt a convoluted question involving the floor function without having played a bit with it first.
+
+</Warning>
+
+<Comments>
+
+*   We want students to understand the idea of limit intuitively (i.e., “what happens to $f(x)$ as $x$ gets close to $a$ but is not $a$?”) but we rarely ever ask them to think this way. Mostly, when they have to compute limits, they just need to use a few standard tricks and manipulations, plus evaluating when possible. They can do it without understand what a limit is. The beauty of this question is that there is no way around it: they have to think about what happens when $x$ is approaching $a$, quite literally. They have to think and understand.
+
+    However, if we want students to actually learn from this question, they have to struggle with it and figure it out by themselves. If we simply show them how to do it, if we give them the “trick”, then it becomes one more standard algorithm that they can use without thinking. Then the question is wasted.
+
+*   In the first slide, most students will initially think that the second limit does not exist. (“The inside limit does not exist so... the full limit does not exist”). Alternatively, they try to use some formula about compositions; but those formulas have extra hypotheses, so they do not apply here. It takes a lot of pushing to persuade them to stop looking for a shortcut and to think about what a limit is (“what happens to $f(f(x))$ when $x$ gets close to 2, but not 2?”).
+
+*   I normally begin with just Limits 1 and 2 in the slide “Limits from a graph”:
+
+    *   I give them 15 second to think individually.
+
+    *   I ask them to vote. 90% of them think none of the limits exist. I tell them I think at least one of the limits exists, and invite them to discuss with each other.
+
+    *   The class erupts in discussion! They are surprised because they thought they had answered with confidence, and they also see everybody else being confused, so they want to talk. I may go through various iterations of “Discuss with your neighbour” and then re-vote, giving them a hint each time, until they converge to the right result.
+
+    *   A small hint is “What is $\displaystyle \lim_{x\to 2^-}f(f(x))$?” This does not tell them the answer, but it makes them realize that there are still things they can try that they have not tried. A bigger hint is to follow it with “What is $f(f(1.9))$?”
+
+*   Afterwards I decide based on what happened:
+
+    *   If they struggled too much, after we converge to an answer and we discuss it, I give them limits 3 and 4 to solidify what they learned and may not use the other slides.
+
+    *   On the other hand, if this was fine, I may skip limits 3 and 4 and move to the challenge. I use the slide “Floor” to introduce the floor function. Then I move to “More limits from a graph”. Once they are in the right mood this is a question that takes effort, but that they enjoy and find interesting. Many students will be quite confused, though.
+
+</Comments>
+
+<Videos>
+
+[2.1 The idea of limit – (Non-rigorous) examples](https://www.youtube.com/watch?v=UDGVvSXHLTQ\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=1)[2.2 Examples of limits that do not exist](https://www.youtube.com/watch?v=bo2YmvSaTNI\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3\&t=0s)[2.3 Side limits](https://www.youtube.com/watch?v=299WBtK_qro\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3)
+
+</Videos>
+
+#### Limit at a point
+
+<Slides>
+
+<QuestionPreview question={7} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Answers $1$ and $3$ are very popular. $f(a)$ need not be defined in order for $\displaystyle{\lim_{x\rightarrow a}f(x)}$ to exist, and it does not have to approach $\infty$. However, the limit could be 0. This question helps students understand the difference between ”cannot”, ”could” and ”must”.
+
+</Comments>
+
+<Videos>
+
+[2.1 The idea of limit – (Non-rigorous) examples](https://www.youtube.com/watch?v=UDGVvSXHLTQ\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=1)[2.2 Examples of limits that do not exist](https://www.youtube.com/watch?v=bo2YmvSaTNI\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3\&t=0s)[2.3 Side limits](https://www.youtube.com/watch?v=299WBtK_qro\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3)
+
+</Videos>
+
+#### Evaluating Limits
+
+<Slides>
+
+<QuestionPreview question={8} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Expect many students to say “Yes”. After the initial voting, I invite them to discuss, and then vote again. Then I take volunteers to share. In this case, they are happy to share if they have the right answer — if they have a good counterexample, they *know* it is the right answer, and there isn’t much to explain.
+
+</Comments>
+
+<Videos>
+
+[2.1 The idea of limit – (Non-rigorous) examples](https://www.youtube.com/watch?v=UDGVvSXHLTQ\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=1)[2.2 Examples of limits that do not exist](https://www.youtube.com/watch?v=bo2YmvSaTNI\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3\&t=0s)
+
+</Videos>
+
+#### Exponential limits
+
+<Slides>
+
+<QuestionPreview question={9} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Simple question. It works well as filler: right after learning the “intuitive idea of limit” or much later. It is good for any day when I have 5 minutes left and the question I had originally planned would take too long.
+
+</Comments>
+
+<Videos>
+
+[2.1 The idea of limit – (Non-rigorous) examples](https://www.youtube.com/watch?v=UDGVvSXHLTQ\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=1)[2.2 Examples of limits that do not exist](https://www.youtube.com/watch?v=bo2YmvSaTNI\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3\&t=0s)[2.3 Side limits](https://www.youtube.com/watch?v=299WBtK_qro\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3)
+
+</Videos>
+
+#### Rational limits
+
+<Slides>
+
+<QuestionPreview question={10} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question should be easy to use. It will take students a while, but they will be happy to continue working (it is mostly computational) and they won’t need that much guidance.
+
+*   It can also work anywhere during Unit 2. So I have always saved it for when I need a question like that; perhaps after something difficult that has drained the students, or when I see the class is not working and I need a lifeline. I don’t normally end up using it, though.
+
+</Comments>
+
+<Videos>
+
+[2.2 Examples of limits that do not exist](https://www.youtube.com/watch?v=bo2YmvSaTNI\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3\&t=0s)[2.3 Side limits](https://www.youtube.com/watch?v=299WBtK_qro\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=3)
+
+</Videos>
+
+### Formal Definition of Limit
+
+#### $\delta$ from a graph
+
+<Slides>
+
+<QuestionPreview question={11} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question deals with one of the main ideas in the definition of limit and “$\varepsilon-\delta$ proofs”: If one value of $\delta$ works, then anything smaller also works.
+
+*   I like using this as warm-up on the day we explore the definition of limit.
+
+</Comments>
+
+<Videos>
+
+[2.5 The formal definition of limit](https://www.youtube.com/watch?v=eCBM1tVHDqo\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=5)
+
+</Videos>
+
+#### Side limits
+
+<Slides>
+
+<QuestionPreview question={12} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={13} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The videos present the definitions of $\displaystyle \lim_{x \to a}f(x) = L$ and $\displaystyle \lim_{x \to \infty}f(x) = L$, but not the definition of $\displaystyle \lim_{x \to a^+}f(x) = L$. This is on purpose. We want students to be able to go from the geometric idea to the formal definition on all the other variants of limits by themselves.
+
+*   Before moving on to the main activity (“Side limits”) we need to recall the definition of $\displaystyle \lim_{x \to a}f(x) = L$ that we already know. That is the point of the slide “Warm-up”. It is a bit silly: students can simply look it up, and I tell them to do so if needed. I still prefer this rather than me writing the definition of the board while they watch. At least they are “active”.
+
+*   I normally give students time, invite them to discuss, and then ask for a few volunteers to tell me which changes we need to make. For this question, it takes quite some prodding to get volunteers, but if I insist I may get various versions. Then I write them on the board and ask students to tell me which ones are valid.
+
+</Comments>
+
+<Videos>
+
+[2.5 The formal definition of limit](https://www.youtube.com/watch?v=eCBM1tVHDqo\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=5)
+
+</Videos>
+
+#### Infinite limits
+
+<Slides>
+
+<QuestionPreview question={14} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={15} unit={2} small={true} />
+
+<QuestionPreview question={16} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={17} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The videos present the definitions of $\displaystyle \lim_{x \to a}f(x) = L$ and $\displaystyle \lim_{x \to \infty}f(x) = L$, but not the definition of $\displaystyle \lim_{x \to a}f(x) = \infty$. This is on purpose. We want students to be able to go from the geometric idea to the formal definition on all the other variants of limits by themselves.
+
+*   How I use this question:
+
+    *   I present the first slide, and give them time to think individually. Then I invite them to discuss with their neighbor.
+
+    *   I take a few volunteers and I write their answers on the board. This takes quite a bit of prodding. I have the second slide as a back up, but I prefer to use their answers. They always give me Statements 1 and 3 from the second slide, plus a bunch of creative right and wrong answer.
+
+    *   I invite them to discuss. Then we vote on which ones are right.
+
+    *   Half the students struggle a lot with Statements 1 and 3 from the second slide; how can they possibly be equivalent? For some reason, adding Statement 2 helps. They first conclude that 1 and 2 are equivalent, and then they accept that 3 is also equivalent.
+
+    *   If students are still struggling when comparing Statements 1 and 2, I tell them to take a break. I move to the third slide, and after they reflect on it I come back to the second slide. Now it is easier.
+
+*   If I think these ideas need reinforcement, or if I want to revisit them at a later day, I will use the fourth slide.
+
+*   A sure sign that students are honestly doing this question rather than looking it up online is that they will write correct statements using “$\varepsilon$” as the variable instead of “$M$”.
+
+</Comments>
+
+<Videos>
+
+[2.5 The formal definition of limit](https://www.youtube.com/watch?v=eCBM1tVHDqo\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=5)[2.6 Limits at infinity](https://www.youtube.com/watch?v=QNuoKYCO-mM\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=6)
+
+</Videos>
+
+#### Existence
+
+<Slides>
+
+<QuestionPreview question={18} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={19} unit={2} small={true} />
+
+<QuestionPreview question={20} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The definition of “the limit does not exist” appears in video 2.9. **I like using this activity in class *before* they have watched that video**, when they have just learned the definition of “the limit is $L$”. But even if they have already watched it, it is worth repeating.
+
+*   There are three common errors:
+
+    *   They write the definition of “the limit is not $L$” while trying to write the definition of “the limit does not exist”.
+
+    *   They try to write the negation of a conditional as a different conditional.
+
+    *   They forget the hidden quantifier.
+
+*   The goal of this activity is the slide “Existence”. I have used this in two different ways.
+
+    *   I warm up with the slide “Negation of conditionals” (which is an activity from Unit 1) and perhaps “More negation” as well. Then I move to “Existence”.
+
+    *   Alternatively, I begin with “Existence” and I wait for them to write their answers. Before discussing them, I ask them to remember the activity “Negation of conditionals”. Now I ask them to reconsider their asnwers to “Existence”. Only after that we discuss.
+
+</Comments>
+
+<Videos>
+
+[2.5 The formal definition of limit](https://www.youtube.com/watch?v=eCBM1tVHDqo\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=5)[2.6 Limits at infinity](https://www.youtube.com/watch?v=QNuoKYCO-mM\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=6)[2.9 How to prove a limit DNE from the definition](https://www.youtube.com/watch?v=VOEzUbNTCSk\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=9)
+
+</Videos>
+
+### $\varepsilon-\delta$ Proofs
+
+#### Your first $\varepsilon-\delta$ proof
+
+<Slides>
+
+<QuestionPreview question={21} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={22} unit={2} small={true} />
+
+<QuestionPreview question={23} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   All proofs that a degree-one polynomial has a limit at a point are essentially identical, including the one in video 2.7. A student can basically use one as a template and copy it for others. But of course that is not our goal.
+
+*   You can use these three slides in different orders, or skip some of them.
+
+*   The ‘What is wrong with this “proof”?’ slide can work in at least two ways:
+
+    *   as a warm-up before students write their first proof, to get them talking about proof structure,
+
+    *   or save it to the end, after students have written their full proof (Step 3 in the slide “Your first $\varepsilon-\delta$ proof”).
+
+    Either way, students like this type of question.
+
+*   When we work though “Your first $\varepsilon-\delta$ proof”, I like to discuss Steps 1 and 2 and agree on an answer before giving them more time for Step 3.
+
+</Comments>
+
+<Videos>
+
+[2.7 Prove a function has a limit from the definition - Example 1](https://www.youtube.com/watch?v=-oq8jPI74tY\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=7)
+
+</Videos>
+
+#### A harder proof
+
+<Slides>
+
+<QuestionPreview question={24} unit={2} small={true} />
+
+<QuestionPreview question={25} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={26} unit={2} small={true} />
+
+</Slides>
+
+<Warning>
+
+Students find this question *very* difficult.
+
+</Warning>
+
+<Comments>
+
+*   How I use this question:
+
+    *   I ask them to work on Steps 1 and 2 of the slide “A harder proof”.
+
+    *   After they have their answers, we discuss and we agree on something.
+
+    *   Then I ask them to work on Steps 3 and 4. I give them some time to work on it but I do not discuss the answers.
+
+    *   I move to the slide “Is this proof correct?”. We resolve it. Some students had definitely made this mistake.
+
+    *   I move to the slide “Choosing deltas again”.
+
+    *   After we complete this activity, I go back and ask them to finish the original proof.
+
+    *   I will probably not give them an answer myself. It is up to them to put all the pieces together. If they want to see a sample full proof, there is one in Video 2.8.
+
+*   I created the Slide “Choosing deltas again” to help with the most difficult step (“What is $\delta$?”) and it does help, but it is often not enough. Going from 4 to 5 and from 5 to 6 may need further cueing.
+
+</Comments>
+
+<Videos>
+
+[2.8 Prove a function has a limit from the definition - Example 2](https://www.youtube.com/watch?v=29jRJO_QSW4\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=8)
+
+</Videos>
+
+#### Indeterminate form
+
+<Slides>
+
+<QuestionPreview question={27} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Short simple question about what the limit laws say or do not say.
+
+*   This question also foreshadows Indeterminate Forms (which don’t appear until Unit 6).
+
+</Comments>
+
+<Videos>
+
+[2.10 Limit laws](https://www.youtube.com/watch?v=nUepIw5kC2s\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=10)
+
+</Videos>
+
+#### Proving theorems about limits
+
+about\_limits
+
+<Slides>
+
+<QuestionPreview question={28} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={29} unit={2} small={true} />
+
+<QuestionPreview question={30} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={31} unit={2} small={true} />
+
+<QuestionPreview question={32} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={34} unit={2} small={true} />
+
+</Slides>
+
+<Warning>
+
+These all take much longer than we normally anticipate. Any one of them, if working well, could expand to use most of a class period. But if it is working well, it is time very well spent.
+
+</Warning>
+
+<Comments>
+
+*   There are three activities here to practice writing proofs involving limits: “A theorem about limits”, “A new squeeze”, and “ A new theorem about products”.
+
+    *   If using “A new squeeze” I like using the two slides in order. It is interesting to invite students to figure out the statement of the theorem first.
+
+    *   If using “A new theorem about products” I also use the two slides in order. I think students will appreciate the theorem better if they have thought first about why the more naive version is false.
+
+*   The “Proof feedback” slide is useful for all three of the proofs.
+
+*   These activities are only worth it if we spend enough time on them so it can be the students actually writing the proof, not us. Even then, they will struggle and many will prefer to just wait for you to write the proof yourself.
+
+*   I put a lot of emphasis on Proof Structure, because students struggle a lot with it. If you can make them understand why the proof of “$\forall \varepsilon>0\ldots$” must begin with “Fix $\varepsilon>0$” or “Let $\varepsilon>0$” rather than “$\forall \varepsilon>0$”, then you are on the right track.
+
+*   How I use them:
+
+    *   If using “A new squeeze” or “A new theorem about products”, we work on the preamble slide first.
+
+    *   I present the theorem and I ask them for the first few steps (up to “Write down the structure of the proof”).
+
+    *   We discuss it. I share a solution. **Students are scared about these proofs and I want them to try and not give up. They need more support and hand holding than normal.**
+
+    *   Then I invite them to work on the rough work and finally the proof.
+
+    *   After some time (a long time!) I will do one of two things:
+
+        *   I invite them to pair up and exchange proofs. Then I present the “Proof feedback” slide and I invite them to give each other feedback.
+
+        *   Alternatively, I present the “Proof feedback” slide directly and ask them to reflect on what they did.
+
+    *   I may ask for a brave volunteer who is willing to share their proof and have it critiqued. This has a lot of value, but I have to remember to be tactful and encouraging. I tell them it is particularly useful if they know their proof is wrong, because we can work on improving it.
+
+    *   I do *not* write a full proof myself at the end. If they are expecting my solution, many will give up and just wait for it. If they want to see full sample proofs, they have some in the Videos.
+
+</Comments>
+
+<Videos>
+
+[2.10 Limit laws](https://www.youtube.com/watch?v=nUepIw5kC2s\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=10)[2.11 Proof of the limit law for sums](https://www.youtube.com/watch?v=p8Ox1LtXyCA\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=11)[2.12 The Squeeze Theorem](https://www.youtube.com/watch?v=7TGgWs_qCWY\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=12)[2.13 Proof of the Squeeze Theorem](https://www.youtube.com/watch?v=vTonfq94c8s\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=13)
+
+</Videos>
+
+#### Critique this “proof”
+
+<Slides>
+
+<QuestionPreview question={34} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={35} unit={2} small={true} />
+
+<QuestionPreview question={36} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={37} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a different way to use “A new theorem about products”. All these “sample proofs” are based on students’ actual writing (this proof was in an assignment a few years ago), but I have cleaned them up a bit so the writing is a bit better and they each focus mostly on a single issue.
+
+*   Of course, I sometimes use just one of these. There is no need to use all three. I sometimes don’t use any of them.
+
+*   Issues with #1: this is a good “rough work”, but not the proof. Everything is out of order, proof structure is wrong.
+
+*   Issues with #2: everything was going well till the last line. The last line suggests they are introducing $M$ there, but $M$ had already been introduced in the statement of the claim. In particular, $M$ must have been fixed fixed earlier, before they say “Use the value $\varepsilon/M$ as ‘epsilon’...”.
+
+*   Issues with #3: The pieces in the third and fourth lines are out of order.
+
+</Comments>
+
+<Videos>
+
+[2.11 Proof of the limit law for sums](https://www.youtube.com/watch?v=p8Ox1LtXyCA\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=11)[2.13 Proof of the Squeeze Theorem](https://www.youtube.com/watch?v=vTonfq94c8s\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=13)
+
+</Videos>
+
+#### Limits with $\sin(1/x)$
+
+<Slides>
+
+<QuestionPreview question={38} unit={2} small={true} />
+
+<QuestionPreview question={39} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   You can use this question to check that your students watched the videos (this is very important at the beginning of the course)
+
+*   Some students would say that the answer to the first question is “all of the above”. Ask them to discuss with their neighbour and vote again. If they still don’t converge towards the correct answer, show them the second slide. This should clarify things immediately if they watched the video.
+
+</Comments>
+
+<Videos>
+
+[2.12 The Squeeze Theorem](https://www.youtube.com/watch?v=7TGgWs_qCWY\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=12)
+
+</Videos>
+
+#### Squeeze Theorem: Proofs
+
+“A new Squeeze” in about\_limits practices the ideas in the proof of the Squeeze Theorem.
+
+Here i another question
+
+<Slides>
+
+<QuestionPreview question={40} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This proof is much easier than the ones that they have done so far which they will appreciate.
+
+*   How I use this question:
+
+    *   I first give them the question without the hint and give them some time to think and discuss with their neighbours.
+
+    *   If I see that, after some time, they still don’t know how to begin, I give them the hint.
+
+</Comments>
+
+<Videos>
+
+[2.12 The Squeeze Theorem](https://www.youtube.com/watch?v=7TGgWs_qCWY\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=12)[2.13 Proof of the Squeeze Theorem](https://www.youtube.com/watch?v=vTonfq94c8s\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=13)
+
+</Videos>
+
+### Continuity
+
+#### Undefined function
+
+<Slides>
+
+<QuestionPreview question={41} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Short, simple question. Good for warm-up when studying continuity.
+
+</Comments>
+
+<Videos>
+
+[2.14 The definition of continuity](https://www.youtube.com/watch?v=iF9F1qHTRdM\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=14)
+
+</Videos>
+
+#### More continuous functions
+
+<Slides>
+
+<QuestionPreview question={42} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={43} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The slide “A new function” works by itself at the beginning of Unit 2, when reviewing absolute values. If I use it, **I do not include the second part until they have solved the first, because it is a spoiler.**
+
+*   The slide “A new function” also works as preparation right before “More continuous functions”. Either way, these questions are easy.
+
+</Comments>
+
+<Videos>
+
+[2.4 Distance and absolute values](https://www.youtube.com/watch?v=6wFC38rVMbk\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=4)[2.15 The main continuity theorem](https://www.youtube.com/watch?v=TtdsCGP-MAY\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=15)
+
+</Videos>
+
+#### Discontinuities
+
+<Slides>
+
+<QuestionPreview question={44} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Some students will think they have proven 1 is true. “If $f$ and $g$ have a limit, then so does $f+g$...”
+
+*   I invite them to think, discuss, and then vote. Then I take volunteers to share. In this case, they are happy to share if they have the right answer — if they have a good counterexample, they *know* it is the right answer, and there isn’t much to explain.
+
+</Comments>
+
+<Videos>
+
+[2.17 Discontinuities (and how to remove them)](https://www.youtube.com/watch?v=fLSQwA5gKT4\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=17)
+
+</Videos>
+
+#### Which one is the correct claim?
+
+<Slides>
+
+<QuestionPreview question={45} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Both are wrong, of course.
+
+*   This is a good warm-up question to check if students watched the videos. Video 2.16 is entirely devoted to this and spells out the answer. It also explains how to fix the claims.
+
+</Comments>
+
+<Videos>
+
+[2.16 Limits and composition of functions](https://www.youtube.com/watch?v=y1WYANJ7IPc\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=16)
+
+</Videos>
+
+#### A difficult example
+
+<Slides>
+
+<QuestionPreview question={46} unit={2} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is an interesting question, but it is hard to use well in class.
+
+</Warning>
+
+<Comments>
+
+*   Many students know that “the function must be discontinuous” but of course, that is not sufficient.
+
+*   Some students will know how to do it or will be happy to try. Others will throw their hands in the air and just wait for an answer. I am not sure how to effectively address this problem. I do not know how to give a good hint that does not solve the problem. Asking for volunteers is dangerous because they just spit out the answer.
+
+</Comments>
+
+<Videos>
+
+[2.16 Limits and composition of functions](https://www.youtube.com/watch?v=y1WYANJ7IPc\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=16)
+
+</Videos>
+
+### Computing Limits
+
+#### Transforming limits
+
+<Slides>
+
+<QuestionPreview question={47} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question uses the same idea as “Given that $\displaystyle \lim_{x \to 0}\frac{\sin x}{x}=1$, compute the following limits...” but it is a tiny bit more interesting, as it is not exactly identical to the examples they have seen, so they have to think a bit.
+
+*   In any case, it is a computational question. Students are happy to work on it individually.
+
+</Comments>
+
+<Videos>
+
+[2.19 Review of basic techniques for computing limits](https://www.youtube.com/watch?v=8kogZvSk2S4\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=19)
+
+</Videos>
+
+#### Computations
+
+<Slides>
+
+<QuestionPreview question={48} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={49} unit={2} small={true} />
+
+<QuestionPreview question={50} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={51} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Computations! Finally! Both you and students take a break. They feel much more confident with computations than with proofs, and they are happy to work individually on these problems. They will require much less assistance and structure.
+
+*   When I give students computational questions, I give them a bunch at once and let them work. I walk among them, see their progress, and talk to them. After a while, I regroup. Normally there are some easy questions that almost everybody got for which I announce the final answer and we move on without presenting a solution; some questions that most students got to work on but found difficult will be discussed as a class; and perhaps some challenging ones that we won’t get to but are there just to keep the fast students busy.
+
+*   My rules are that they must attempt the questions in order (which hopefully I chose for a reason) and that I will only discuss questions that most students have attempted (if I ask them what they want to see me do, they always ask for the hardest instead).
+
+</Comments>
+
+<Videos>
+
+[2.19 Review of basic techniques for computing limits](https://www.youtube.com/watch?v=8kogZvSk2S4\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=19)[2.20 How to compute the limit of a rational function at infinity](https://www.youtube.com/watch?v=odRR5XVqHe8\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=20)
+
+</Videos>
+
+#### Which solution is right?
+
+<Slides>
+
+<QuestionPreview question={52} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is more interesting that it seems. Many students will think they understand the reasoning on Solution 1 (given enough time) but won’t be able to find the error. They will also mistrust Solution 2 because it looks too easy. It is not trivial for them to solve this.
+
+</Comments>
+
+<Videos>
+
+[2.20 How to compute the limit of a rational function at infinity](https://www.youtube.com/watch?v=odRR5XVqHe8\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=20)
+
+</Videos>
+
+### IVT and EVT
+
+#### Can we conclude this?
+
+<Slides>
+
+<QuestionPreview question={53} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+This is a quick and easy question to make sure students understand the importance of checking all the hypotheses before applying IVT.
+
+</Comments>
+
+<Videos>
+
+[2.22 The Intermediate Value Theorem](https://www.youtube.com/watch?v=ncR9x7p6LaU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=22)
+
+</Videos>
+
+#### Existence of solutions
+
+<Slides>
+
+<QuestionPreview question={54} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a simple, standard application of IVT. A similar example is in Video 2.22, so anybody who watches the video will have no problem with this.
+
+</Comments>
+
+<Videos>
+
+[2.22 The Intermediate Value Theorem](https://www.youtube.com/watch?v=ncR9x7p6LaU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=22)
+
+</Videos>
+
+#### Can this be proven?
+
+<Slides>
+
+<QuestionPreview question={55} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   While easy, this question is not as easy as I thought. They are all simple applications of IVT (except 2, of course). Students do realize it is about the IVT, but I find they need a push to write a complete answer. A complete answer should specifically construct a function and say on which interval they use IVT, not just say “Use IVT on the angle”.
+
+</Comments>
+
+<Videos>
+
+[2.22 The Intermediate Value Theorem](https://www.youtube.com/watch?v=ncR9x7p6LaU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=22)
+
+</Videos>
+
+#### Temperature
+
+<Slides>
+
+<QuestionPreview question={56} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is quite easy. Most students will confidently answer questions 1 and 2. However, some students will struggle with question 3. Expect some of them to be confused about the difference between “we cannot conclude that the temperature must have been $22^{\circ}$ at some point” versus ”the temperature could have been $22^{\circ}$”.
+
+</Comments>
+
+<Videos>
+
+[2.22 The Intermediate Value Theorem](https://www.youtube.com/watch?v=ncR9x7p6LaU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=22)
+
+</Videos>
+
+#### Extrema
+
+<Slides>
+
+<QuestionPreview question={57} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   In this question, I am expecting some students to stop at “I cannot use EVT” and think they are done, or think this means there are no extrema. I want students to realize that when the standard theorem does not apply, they should keep trying and be creative.
+
+*   Question 3 is the most interesting. I am looking for an argument as follows: we know $\displaystyle \lim_{x \to 0}f(x) =5$ and we can find $x_{1}, x_{2}\in (0, 5]$ such that $\displaystyle f(x_{1}) < 5 < f(x_{2})$. Then think about what the graph must look like, and conclude that the function must have a maximum and a minimum. This is not a proof, but it is a convincing heuristical argument. This is a good question to develop one’s problem-solving skills. One possible hint is to ask them:
+
+    *   We know that $f$ is not defined at $0$, but what happens as $x$ approaches $0$?
+
+    *   Find an approximate value of $f(\pi)$.
+
+    *   Find an approximate value of $f(\pi/2)$.
+
+    *   What does the graph of $f$ roughly look like?
+
+</Comments>
+
+<Videos>
+
+[2.21 The Extreme Value Theorem](https://www.youtube.com/watch?v=r5Tz0wi5RRU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=21)
+
+</Videos>
+
+#### Definition of maximum
+
+<Slides>
+
+<QuestionPreview question={58} unit={2} small={true} />
+
+ 
+
+<QuestionPreview question={59} unit={2} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   How I use this question:
+
+    *   I present the first slide “Definition of maximum”. I give students time to think individually and vote.
+
+    *   After discussion they vote again. If necessary I take volunteers or explain. We agree they are all false.
+
+    *   I invite them to fix it. I give them time, and take volunteers. With enough prodding something they construct some unexpected, but correct, definitions, in particular if they are trying to fix the bad definitions rather than starting the definition from scratch.
+
+    *   As an alternative (or in addition), I use the slide “More on the definition of maximum”.
+
+</Comments>
+
+<Videos>
+
+[2.21 The Extreme Value Theorem](https://www.youtube.com/watch?v=r5Tz0wi5RRU\&list=PLlwePzQY_wW8P_I8BFgm0-upywEwTKd8_\&index=21)
+
+</Videos>

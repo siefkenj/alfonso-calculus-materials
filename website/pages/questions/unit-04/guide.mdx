@@ -1,0 +1,666 @@
+import { QuestionPreview } from "../../../components/question-preview";
+import {
+    Videos,
+    Slides,
+    Comments,
+    Warning,
+} from "../../../components/guide-components";
+
+# Unit 4: Transcendental functions
+
+Video 4.6 is “general culture”. It is an addition for the sake of completeness (and for honesty) that hopefully some students will find interesting, but we won’t test students on it.
+
+### Functions and inverse functions
+
+#### Worm up
+
+<Slides>
+
+<QuestionPreview question={0} unit={4} small={true} />
+
+
+
+<QuestionPreview question={1} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   Don’t dismiss the first slide! Plenty of students will say it is not a function. The misunderstandings caused by high school:
+
+    -   They do not know what a function is. They think that a function, a graph, and an equation are the same thing.
+
+    -   “$x$” always represents the variable of a function and “$y$” always represents the output of a function.
+
+    -   So they look at the path of the worm, and they think “this graph does not describe $y$ as a function of $x$” – although they would not be able to phrase it this way.
+
+-   For the second slide, students (if they have watched the video) will produce various, different correct answers. This can lead to a nice discussion about what is a function, and the difference between codomain and range. Remember that this is explained in the first videos for completeness, with the understanding that we will then move on with the usual calculus conventions and never pay much attention to the notion of codomain again.
+
+</Comments>
+
+<Videos>
+
+[4.1 What is a function?](https://www.youtube.com/watch?v=17lUN_X8vAY&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=1)
+
+</Videos>
+
+#### Finding a restricted domain on which a function is Invertible
+
+<Slides>
+
+<QuestionPreview question={2} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   This is an easy question. Students usually get it right very quickly.
+
+-   It will be useful later when we talk about inverse trigonometric functions.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)[4.3 Inverse functions - Examples](https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3)
+
+</Videos>
+
+#### The basics of inverse functions
+
+<Slides>
+
+<QuestionPreview question={3} unit={4} small={true} />
+
+
+
+<QuestionPreview question={4} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   These are simple questions to establish that we know what an inverse is and how to read a graph.
+
+-   If I give them enough time, students get the right answers.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)[4.3 Inverse functions - Examples](https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3)
+
+</Videos>
+
+#### Absolute value and inverses
+
+<Slides>
+
+<QuestionPreview question={5} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+This question is harder than it looks. I think it is a good question, but I am not sure how to use it effectively in class. A large number of students will simply say “I do not know how to do this” and wait. Of course, merely presenting the solution to them is not useful. But my attempts to _guide_ them to discover it have only been partially successful.
+
+</Warning>
+
+<Comments>
+
+-   Many students learn to compute inverse functions algorithmically in high school:
+
+    -   Write $\displaystyle y = h(x)$.
+
+    -   Swap ‘$x$’ and ‘$y$’. (Why do high-school teachers insist on this step?)
+
+    -   Solve for $y$.
+
+    If they try this approach in this function, they panic, because they do not know how to solve with the absolute value, and they freeze.
+
+    Of course, if you understand what you are doing, this is much simpler:
+
+    -   To compute $\displaystyle h^{-1}(-8)$, write the equation and _guess_ the answer.
+
+    -   To find a formula for $\displaystyle h^{-1}(y)$, break it into two cases (depending on whether $x$ is positive or negative).
+
+-   How I use this question:
+
+    -   I normally give them Question 1 only.
+
+    -   After giving them time, since many are stuck, I write the equation $\displaystyle x|x|+1=-8$ and ask them to guess the answer by trial and error.
+
+    -   Once we are satisfied, I give them Question 2, 3, and 4 and time to work. I give the hint of breaking the absolute value into cases.
+
+    -   Once we share answers, I give them Question 5 and some time. I do not verify the answer to Question 5 for them.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)[4.3 Inverse functions - Examples](https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3)
+
+</Videos>
+
+#### Functions, inverses, and graph
+
+<Slides>
+
+<QuestionPreview question={6} unit={4} small={true} />
+
+
+
+<QuestionPreview question={7} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   What I like about these questions:
+
+    -   If a student fully understands what an inverse function is beyond algorithms, then they are very doable.
+
+    -   Otherwise, they are a big challenge.
+
+-   These questions lend themselves very much to collaboration. Everyone knows what to do with parts of the question, even if they cannot take care of everything. Having students discuss with each other helps.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)[4.3 Inverse functions - Examples](https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3)[4.4 Derivative of the inverse of a function](https://www.youtube.com/watch?v=BMXesqZ_XCA&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=4)
+
+</Videos>
+
+#### Composition and inverses
+
+<Slides>
+
+<QuestionPreview question={8} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   The point of this question is not the result per se (yes, it is an important result in math, but not particularly important in calculus) but to give students a chance to explore and be creative.
+
+-   The hint at the bottom (trying an example) is normally enough for them to figure out the claim is false, but not to fix it.
+
+-   As a hint on how to fix it, I like using this example: in the morning before leaving home, you put your socks on followed by your shoes. If you want to reverse the operation and walk barefoot once you return home, what do you need to do?
+
+</Comments>
+
+<Videos>
+
+[4.1 What is a function?](https://www.youtube.com/watch?v=17lUN_X8vAY&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=1)[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)
+
+</Videos>
+
+#### Composition of one-to-one functions
+
+<Slides>
+
+<QuestionPreview question={9} unit={4} small={true} />
+
+
+
+<QuestionPreview question={10} unit={4} small={true} />
+
+<QuestionPreview question={11} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+As with all proof-writing questions, this is hard for students and always them longer than we expect.
+
+</Warning>
+
+<Comments>
+
+-   These questions are just an opportunity to practice simple proof-writing using the new concepts. Simple proof-writing is an important objective of the course. These specific theorems are not particularly important, and we won’t be using them anywhere.
+
+-   First proof:
+
+    -   In this question I focus strongly on proof structure. By now students should be comfortable writing the definition of both the hypotheses and the conclusion, but they still may not realize that the definition of the conclusion tells them the structure of the proof. In other words, don’t assume they know that the proof begins with
+
+        > “Let
+        > $x_{1}, x_{2}\in \mathbb{R}$. Assume
+        > $g(f(x_{1})) = g(f(x_{2}))$. WTS
+        > $x_{1}= x_{2}$.”
+
+    -   Another important problem is that students attach intrinsic meaning to the letters used for quantified variables, not realizing that they are dummy variables.
+
+        For example, in this case, they may have written
+
+        > “We know that
+        > $\displaystyle \forall x_{1}, x_{2}\in \mathbb{R}, \; g(x_{1}) = g(x_{2}) \implies x_{1}= x_{2}$. Let
+        > $\displaystyle x_{1}, x_{2}\in \mathbb{R}$. Assume
+        > $\displaystyle g(f(x_{1})) = g(f(x_{2}))$.”
+
+        and not realize that they can immediately conclude that
+        $\displaystyle f(x_{1}) = f(x_{2})$.
+
+-   Second proof. This is a sneaky way to introduce students to “Proof by Contrapositive” without giving it a name or explaining what it is. It works! And I like it much better than memorizing “proof by contrapositive” as an algorithm just because.
+
+-   Third proof. Many students don’t know what to do and simply wait for the answer, which defeats the purpose. Here are two possible hints (which may or may not help students):
+
+    -   Choose a function $g$ whose range is $\mathbb{R}^{+}$ and think about why that would help.
+
+    -   Draw functions defined by arrows in sets with a finite number of points, instead on $\mathbb{R}$ with equations.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)
+
+</Videos>
+
+#### Increasing and one-to-one
+
+<Slides>
+
+<QuestionPreview question={12} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   The goal of this question is to show students that we can prove a function is one-to-one through indirect methods, without having an explicit equation for the inverse, and then we can still compute its derivative.
+
+-   In addition, it is an opportunity to practice simple proof-writing using new concepts.
+
+-   The proof is quite simple but students need to be careful with the structure of the proof.
+
+</Comments>
+
+<Videos>
+
+[4.2 Inverse functions - The theory](https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2)[4.3 Inverse functions - Examples](https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3)[4.4 Derivative of the inverse of a function](https://www.youtube.com/watch?v=BMXesqZ_XCA&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=4)
+
+</Videos>
+
+#### Where is the error?
+
+<Slides>
+
+<QuestionPreview question={13} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   The point of this question is that when we write
+
+    ```math
+    (f^{-1})'(y) = \frac{1}{f'(x)}
+    ```
+
+    we need to remember that $\left(f^{-1}\right)'$ and $f'$ are evaluated at different points.
+
+-   Anecdote!
+
+    A hiring committee in our math department was interviewing various candidates for a teaching job. They gave them this question and asked them to model how they would explain the problem to a student. This was not a math test: they assumed that of course the candidates understood the math. They wanted to test their pedagogical skills: could they explain it in a way that would be understandable and helpful for a calculus student? To the committee’s surprise, most of the candidates were unable to find the math error in the argument.
+
+</Comments>
+
+<Videos>
+
+[4.4 Derivative of the inverse of a function](https://www.youtube.com/watch?v=BMXesqZ_XCA&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=4)
+
+</Videos>
+
+#### Derivatives of the inverse function
+
+<Slides>
+
+<QuestionPreview question={14} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is a great question, but it is messy and full of traps. It is harder than it looks. Don’t improvise it.
+
+</Warning>
+
+<Comments>
+
+-   There are two ways to approach the second question:
+
+    -   In the first derivation we obtained
+
+        ```math
+        \begin{equation}f'(f^{-1}(y))\; (f^{-1})'(y)\; = \; 1\end{equation}
+        ```
+
+        then we take derivatives of both sides with respect to $y$.
+
+    -   Alternatively, we first solve in Equation (1) for $\displaystyle f'(f(y))$, and then we take another derivative.
+
+    In either case, the notation gets messy, and students gets confused about when they should evaluate and what they should evaluate. They also make errors for not paying to attention to what we are taking a derivative with respect to.
+
+-   The correct answer to the second question is
+
+    ```math
+    (f^{-1})''(b) = \frac{- f''(a)}{f(a)^{3}}
+    ```
+
+    but it is probably more common to “derive” the wrong answer
+
+    ```math
+    (f^{-1})''(b) = \frac{- f''(a)}{f(a)^{2}}.
+    ```
+
+    The error comes not use the Chain Rule correctly, and confusing a derivative “with respect to $x$” and “with respect to $y$”.
+
+</Comments>
+
+<Videos>
+
+[4.4 Derivative of the inverse of a function](https://www.youtube.com/watch?v=BMXesqZ_XCA&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=4)
+
+</Videos>
+
+### Exponentials and logarithms
+
+#### Computations
+
+<Slides>
+
+<QuestionPreview question={15} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   A calculation question to practice the skills they learned in the Videos.
+
+</Comments>
+
+<Videos>
+
+[4.5 Derivative of Exponentials and the Number e](https://www.youtube.com/watch?v=q19VQuujeAI&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=5)[4.7 Derivative of logarithm](https://www.youtube.com/watch?v=Nx7noVPMkXE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=7)[4.8 Derivative of other exponentials](https://www.youtube.com/watch?v=GLc0JgegIH4&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=8)[4.9 Logarithmic Differentiation](https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9)
+
+</Videos>
+
+#### Logarithm and absolute value
+
+<Slides>
+
+<QuestionPreview question={16} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+Don’t skip this question! It will pay off when we get to antiderivatives. Most students never truly understand why we write the absolute value in
+
+$\displaystyle \int \frac{dx}{x}= \ln |x| + C$
+
+. You can plant a seed here.
+
+</Warning>
+
+<Comments>
+
+-   Many students will choose either of the wrong answers!
+
+-   After students’ initial voting, I like asking them to draw the graph of the function $\ln|x|$ and check whether their answer makes sense based on the slope and the domain. This is a good opportunity to remind them that it is a good idea to check whether your answer makes sense or not.
+
+-   Of course, the correct way to solve this question is to break it into cases depending on whether $x>0$ or $x<0$. Students are unlikely to try that without being explicitly told.
+
+</Comments>
+
+<Videos>
+
+[4.7 Derivative of logarithm](https://www.youtube.com/watch?v=Nx7noVPMkXE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=7)
+
+</Videos>
+
+#### A different type of logarithm
+
+<Slides>
+
+<QuestionPreview question={17} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   In the videos I obtained formulas and algorithms to compute derivatives of various functions. The emphasis was always on deriving them and understanding why they work. To continue with that emphasis, here is a (slightly) different-looking type of function, and I am asking students to figure out how to compute its derivative. I emphasize in class that this is not something we have taught them yet, and that this is on purpose, because this is one of the objectives of the course.
+
+-   There are at least two ways to solve this:
+
+    -   Use the hint, then take derivatives implicitly
+
+    -   Use the change-of-base identity for logarithms
+
+</Comments>
+
+<Videos>
+
+[4.7 Derivative of logarithm](https://www.youtube.com/watch?v=Nx7noVPMkXE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=7)[4.8 Derivative of other exponentials](https://www.youtube.com/watch?v=GLc0JgegIH4&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=8)[4.9 Logarithmic Differentiation](https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9)
+
+</Videos>
+
+#### Logarithmic differentiation
+
+<Slides>
+
+<QuestionPreview question={18} unit={4} small={true} />
+
+
+
+<QuestionPreview question={19} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   We came up with this question years ago serendipitously, looking at questions from term tests:
+
+    -   69% of students were able to derive a formula for the derivative of $\displaystyle G(x) = u(x)^{v(x)}$.
+
+    -   Only 12% of students were able to derive a formula for the derivative of $\displaystyle F(x)=u(x)^{u(x)}+ v(x)^{v(x)}\hspace{-1mm}.$
+
+-   Why do students make this error?
+
+    Students like to“go on autopilot” when solving problems. They memorize algorithms and execute the steps without thinking. That is what is happening here. They have memorized the steps for how to take the derivative of $\displaystyle f(x)= u(x)^{v(x)}$:
+
+    -   Take logarithms on both sides
+
+    -   Simplify
+
+    -   Take derivatives of both sides
+
+    -   Solve for $\displaystyle f'(x)$
+
+    This function looks like it is of the same type, so they follow the steps without thinking. When it comes to “simplify”, they do the only simplification that looks like a simplification, without thinking whether it is true.
+
+    Peculiarly, if you ask them, if you draw attention to it, they notice the error: they do know that $\displaystyle \ln(a+b) \neq \ln(a) + \ln(b)$.
+
+-   How I use this question:
+
+    -   I give students the first slide (compute the derivative of $g$) and I give them time. I invite them to discuss their answers.
+
+    -   If they have watched the video, they normally get it right.
+
+    -   Now I ask students to compute the derivative of $f$ (second slide) without showing them the wrong answer yet. I give them time.
+
+    -   Without discussing it yet, I show them the wrong answer and ask them to find the error. Half the class has made the same error!
+
+</Comments>
+
+<Videos>
+
+[4.9 Logarithmic Differentiation](https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9)
+
+</Videos>
+
+#### Hard derivatives made easy
+
+<Slides>
+
+<QuestionPreview question={20} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   Use logarithmic differentiation.
+
+-   A former instructor liked to do this as a “magic trick”. He would ask students to give him difficult functions, and he would arrange them in the board making a big product/quotient with all of them. Then, once it looked nasty enough, he would announce he was about to take the derivative of the function in 30 seconds. And then he would do it. It was memorable!
+
+</Comments>
+
+<Videos>
+
+[4.9 Logarithmic Differentiation](https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9)
+
+</Videos>
+
+#### An Implicit function
+
+<Slides>
+
+<QuestionPreview question={21} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+Here is how I use this question:
+
+-   I give them some time to work individually. If I think that they need a hint to get started, I tell them to use implicit differentiation.
+
+-   I collect some students answers and write them on the board. Some student will make the mistake of saying that the derivative of $x^{y}$ is $yx^{y-1}$. I ask them to discuss why this is not correct and what the correct why of finding the derivative is.
+
+    Understanding why these wrong answers are wrong is as important as knowing the correct method.
+
+</Comments>
+
+<Videos>
+
+[4.9 Logarithmic Differentiation](https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9)
+
+</Videos>
+
+### Inverse trigonometric functions
+
+#### Definition and derivative of arctan
+
+<Slides>
+
+<QuestionPreview question={22} unit={4} small={true} />
+
+
+
+<QuestionPreview question={23} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   In Videos 4.12 and 4.13 I slowly defined $\arcsin$ and derived all its properties. In Video 4.14 I rush through $\arctan$. The point of these activities is for students to repeat the detailed derivation I did for $\arcsin$, but for $\arctan$. In this course we want students to understand derivations, and not just memorize final formulas.
+
+</Comments>
+
+<Videos>
+
+[4.12 ARCSIN](https://www.youtube.com/watch?v=V7cK2SQMizE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=12)[4.13 The derivative of ARCSIN](https://www.youtube.com/watch?v=kuKrSTOKw30&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=13)[4.14 ARCTAN and ARCCOS](https://www.youtube.com/watch?v=kANSILD9sn0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=14)
+
+</Videos>
+
+#### Computations
+
+<Slides>
+
+<QuestionPreview question={24} unit={4} small={true} />
+
+</Slides>
+
+<Comments>
+
+-   Standard computational question to practice the new derivatives they learned. Both derivatives simplify nicely.
+
+</Comments>
+
+<Videos>
+
+[4.13 The derivative of ARCSIN](https://www.youtube.com/watch?v=kuKrSTOKw30&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=13)[4.14 ARCTAN and ARCCOS](https://www.youtube.com/watch?v=kANSILD9sn0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=14)
+
+</Videos>
+
+#### Trig-inverse-trig
+
+<Slides>
+
+<QuestionPreview question={25} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+Students won’t understand how to justify the correct choice of branch for the square roots (or even why we need to justify it).
+
+</Warning>
+
+<Comments>
+
+-   A calculation of this type appears in Video 4.13, and more generally any time we derive a formula for the derivative of an inverse-trig function.
+
+-   The correct answers are:
+
+    1.  $\displaystyle \sin \arccos x = \sqrt{1-x^{2}}$ for $\displaystyle -1 \leq x \leq 1$
+
+    2.  $\displaystyle \sec \arccos x = \frac{1}{x}$ for $\displaystyle x \neq 0$
+
+    3.  $\displaystyle \sec \arctan x = \sqrt{1+x^{2}}$ for $\displaystyle x \in \mathbb{R}$
+
+    4.  $\displaystyle \tan \operatorname{arcsec}x = \begin{cases}\sqrt{x^{2}-1} & \text{ if } x \geq 1 \\ -\sqrt{x^{2}-1} & \text{ if } x \leq -1\end{cases}$
+
+-   Many students won’t know where to start without the hints.
+
+-   Even if they figure out the basic “algebra”, they will be less comfortable with the domain. In addition, very few students will be able to justify why one needs to choose the positive (or negative, in one case) branch of the square root. They may not even understand why this needs justification.
+
+</Comments>
+
+<Videos>
+
+[4.12 ARCSIN](https://www.youtube.com/watch?v=V7cK2SQMizE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=12)[4.13 The derivative of ARCSIN](https://www.youtube.com/watch?v=kuKrSTOKw30&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=13)[4.14 ARCTAN and ARCCOS](https://www.youtube.com/watch?v=kANSILD9sn0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=14)
+
+</Videos>
+
+#### arcsec
+
+<Slides>
+
+<QuestionPreview question={26} unit={4} small={true} />
+
+</Slides>
+
+<Warning>
+
+This question will take longer than it looks.
+
+</Warning>
+
+<Comments>
+
+-   This question is more subtle than it seems:
+
+    -   The domain of $\operatorname{arcsec}$ is not a single interval.
+
+    -   The derivative is $\displaystyle \frac{d}{dx}\operatorname{arcsec}x = \frac{1}{|x| \sqrt{x^2-1}}$, and the absolute value is necessary.
+
+    Students will be very uncomfortable with both things.
+
+</Comments>
+
+<Videos>
+
+[4.12 ARCSIN](https://www.youtube.com/watch?v=V7cK2SQMizE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=12)[4.13 The derivative of ARCSIN](https://www.youtube.com/watch?v=kuKrSTOKw30&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=13)[4.14 ARCTAN and ARCCOS](https://www.youtube.com/watch?v=kANSILD9sn0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=14)
+
+</Videos>

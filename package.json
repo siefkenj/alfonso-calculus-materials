@@ -1,0 +1,32 @@
+{
+    "name": "alfonso-calculus-materials",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Calculus Materials from Alfonso Gracia-Saz (MAT137, University of Toronto)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"No test specified\" && exit 0"
+    },
+    "author": "",
+    "license": "CC-BY-SA-4",
+    "devDependencies": {
+        "autoprefixer": "^10.4.16",
+        "glob": "^10.3.10",
+        "postcss": "^8.4.31",
+        "postcss-nesting": "^12.0.1",
+        "tailwindcss": "^3.3.3"
+    },
+    "dependencies": {
+        "@unified-latex/unified-latex": "^1.5.0",
+        "@unified-latex/unified-latex-cli": "^1.5.0",
+        "classnames": "^2.3.2",
+        "file-saver": "^2.0.5",
+        "jszip": "^3.10.1",
+        "next": "^13.5.4",
+        "nextra": "^2.13.2",
+        "nextra-theme-docs": "^2.13.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "vite-node": "^0.34.6"
+    }
+}

@@ -1,0 +1,950 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=17lUN_X8vAY&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=1}{4.1 What is a function?}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=DxecWsEms_c&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=2}{4.2 Inverse functions - The theory}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=bnsVbyLUZqs&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=3}{4.3 Inverse functions - Examples}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=BMXesqZ_XCA&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=4}{4.4 Derivative of the inverse of a function}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=q19VQuujeAI&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=5}{4.5 Derivative of Exponentials and the Number e}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=FQHvMifuXHU&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=6}{4.6 The (surprisingly) difficult definition of exponentials and logarithms}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Nx7noVPMkXE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=7}{4.7 Derivative of logarithm}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=GLc0JgegIH4&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=8}{4.8 Derivative of other exponentials}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=0iF8AUWVrb0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=9}{4.9 Logarithmic Differentiation}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=kkEIHByB158&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=10}{4.10 Proof of the power rule (for all exponents)}}
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=IJ6FwlnRSws&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=11}{4.11 LN or LOG? The controversy}}
+\newcommand{\vxii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=V7cK2SQMizE&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=12}{4.12 ARCSIN}}
+\newcommand{\vxiii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=kuKrSTOKw30&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=13}{4.13 The derivative of ARCSIN}}
+\newcommand{\vxiv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=kANSILD9sn0&list=PLlwePzQY_wW-EDeUZebRoA8HGoeZxxpEU&index=14}{4.14 ARCTAN and ARCCOS}}
+
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{4. Trascendental functions}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+\newcommand{\arcsec}{\operatorname{arcsec}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 4: Trascendental functios
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+Video 4.6 is ``general culture".  It is an addition for the  sake of completeness (and for honesty) that hopefully some students will find interesting, but we won't test students on it.
+
+\
+
+\tableofcontents
+
+\newpage
+%========================================
+%========================================
+\section{Functions and inverse functions}
+%========================================
+%========================================
+
+\subsection{Worm up} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=1]{137-CA-04.pdf}} \quad
+{ \includegraphics[scale=.6,page=2]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   Don't dismiss the first slide!  Plenty of students will say it is not a function.  The misunderstandings caused by high school:
+		\begin{itemize}
+			\item  They do not know what a function is.  They think that a function, a graph, and an equation are the same thing.
+			\item  ``$x$" always represents the variable of a function and ``$y$" always represents the output of a function.
+			\item So they look at the path of the worm, and they think ``this graph does not describe $y$ as a function of $x$" -- although they would not be able to phrase it this way.
+		\end{itemize}
+	\item For the second slide, students (if they have watched the video) will produce various, different correct answers.  This can lead to a nice discussion about what is a function, and the difference between codomain and range.  Remember that this is explained in the first videos for completeness, with the understanding that we will then move on with the usual calculus conventions and never pay much attention to the notion of codomain again.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%========================================
+
+\subsection{Finding a restricted domain on which a function is Invertible} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This is an easy question. Students usually get it right very quickly. 
+\item It will be useful later when we talk about inverse trigonometric functions.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{The basics of inverse functions} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=4]{137-CA-04.pdf}} \quad
+{ \includegraphics[scale=.6,page=5]{137-CA-04.pdf}}
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item These are simple questions to establish that we know what an inverse is and how to read a graph.   
+	\item If I give them enough time, students get the right answers.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Absolute value and inverses} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=7]{137-CA-04.pdf}} 
+\end{center}
+
+\vspace{-11mm}
+
+\begin{warning}
+ This question is harder than it looks.    I think it is a good question, but I am not sure how to use it effectively in class.  A large number of students will simply say ``I do not know how to do this" and wait.  Of course, merely presenting the solution to them is not useful.  But my attempts to \emph{guide} them to discover it have only been partially successful.
+\end{warning}
+
+\vspace{-1mm}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Many students learn to compute inverse functions algorithmically in high school:
+		\begin{itemize}
+			\item  Write \DS{y = h(x)}.  
+			\item Swap `$x$' and `$y$'.  (Why do high-school teachers insist on this step?)
+			\item Solve for $y$.
+		\end{itemize}
+		If they try this approach in this function, they panic, because they do not know how to solve with the absolute value, and they freeze.
+		
+		Of course, if you understand what you are doing, this is much simpler:
+		\begin{itemize}
+			\item  To compute \DS{h^{-1}(-8)}, write the equation and \emph{guess} the answer.
+			\item  To find a formula for \DS{h^{-1}(y)}, break it into two cases (depending on whether $x$ is positive or negative).
+		\end{itemize}
+	\item How I use this question:
+		\begin{itemize}
+			\item  I normally give them Question 1 only.
+			\item  After giving them time, since many are stuck, I write the equation \DS{x|x|+1=-8} and ask them to guess the answer by trial and error.
+			\item Once we are satisfied, I give them Question 2, 3, and 4 and time to work.  I give the hint of breaking the absolute value into cases.  
+			\item Once we share answers, I give them Question 5 and some time.  I do not verify the answer to Question 5 for them.
+		\end{itemize}
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Functions, inverses, and graph} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=8]{137-CA-04.pdf}}  \quad
+{ \includegraphics[scale=.6,page=9]{137-CA-04.pdf}}  
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item What I like about these questions:
+		\begin{itemize}
+			\item   If a student fully understands what an inverse function is beyond algorithms, then they are very doable.
+			\item Otherwise, they are a big challenge.
+		\end{itemize}
+	\item These questions lend themselves very much to collaboration.  Everyone knows what to do with parts of the question, even if they cannot take care of everything.  Having students discuss with each other helps.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Composition and inverses} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=11]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   The point of this question is not the result per se (yes, it is an important result in math, but not particularly important in calculus) but to give students a chance to explore and be creative.
+	\item The hint at the bottom (trying an example) is normally enough for them to figure out the claim is false, but not to fix it.
+	\item  As a hint on how to fix it, I like using this example: in the morning before leaving home, you put your socks on followed by your shoes. If you want to reverse the operation and walk barefoot once you return home, what do you need to do?
+	
+	% (complete with actual physical movement):    ``If I take one step forward, and then turn right, how do I undo it and go back to where I started?  Do I take one step backward, and then turn left?"
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+
+%==================
+\subsection{Composition of one-to-one functions} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=13]{137-CA-04.pdf}} \quad
+{ \includegraphics[scale=.6,page=16]{137-CA-04.pdf}} 
+
+\
+
+{ \includegraphics[scale=.6,page=17]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{warning}
+	As with all proof-writing questions, this is hard for students and always them longer than we expect.
+\end{warning}
+\begin{comments}
+\nl
+\begin{itemize}
+	\item These questions are just an opportunity to practice simple proof-writing using the new concepts.  Simple proof-writing is an important objective of the course.  These specific theorems are not particularly important, and we won't be using them anywhere.
+	\item First proof:	
+		\begin{itemize}
+			\item  In this question I focus strongly on proof structure.  By now students should be comfortable writing the definition of both the hypotheses and the conclusion, but they still may not realize that the definition of the conclusion tells them the structure of the proof.   In other words, don't assume they know that the proof begins with 
+				\begin{quote} ``Let $x_1, x_2 \in \mathbb{R}$.  Assume $g(f(x_1)) = g(f(x_2))$.  WTS $x_1 = x_2$."\end{quote}
+			\item Another important problem is that students attach intrinsic meaning to the letters used for quantified variables, not realizing that they are dummy variables.
+			
+				For example, in this case, they may have written 
+					\begin{quote}
+						``We know that \DS{\forall x_1, x_2 \in \mathbb{R}, \; g(x_1) = g(x_2) \implies x_1 = x_2}.
+						
+						Let \DS{x_1, x_2 \in \mathbb{R}}.  Assume \DS{g(f(x_1)) = g(f(x_2))}."
+					\end{quote}
+				and not realize that they can immediately conclude that \DS{f(x_1) = f(x_2)}.
+		\end{itemize}
+	\item Second proof.  This is a sneaky way to introduce students to ``Proof by Contrapositive" without giving it a name or explaining what it is.   It works!  And I like it much better than memorizing ``proof by contrapositive" as an algorithm just because.
+	\item Third proof.   
+	Many students don't know what to do and simply wait for the answer, which defeats the purpose. Here are two possible hints (which may or may not help students):
+		\begin{itemize}
+			\item Choose a function $g$ whose range is $\R^+$ and think about why that would help.
+			\item  Draw functions defined by arrows in sets with a finite number of points, instead on $\mathbb{R}$ with equations.
+		\end{itemize}
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+
+%==================
+\subsection{Increasing and one-to-one}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=19]{137-CA-04.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item The goal of this question is to show students that we can prove a function is one-to-one through indirect methods, without having an explicit equation for the inverse, and then we can still compute its derivative.
+	\item In addition, it is an opportunity to practice simple proof-writing using new concepts.  
+	\item   The proof is quite simple but students need to be careful with the structure of the proof.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Where is the error?} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=20]{137-CA-04.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   The point of this question is that when we write
+		$$
+			(f^{-1})'(y) = \frac{1}{f'(x)}
+		$$
+		we need to remember that $\left(f^{-1}\right)'$ and $f'$ are evaluated at different points.
+	\item Anecdote!  
+	
+		A hiring committee in our math department was interviewing various candidates for a teaching job.  They gave them this question and asked them  to model how they would explain the problem to a student.  This was not a math test: they assumed that of course the candidates understood the math.  They wanted to test their pedagogical skills: could they explain it in a way that would be understandable and helpful for a calculus student?  To the committee's surprise, most of the candidates were unable to find the math error in the argument.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Derivatives of the inverse function} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=23]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{warning}
+This is a great question, but it is messy and full of traps.  It is harder than it looks.  Don't improvise it.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   There are two ways to approach the second question:
+		\begin{itemize}
+			\item  In the first derivation we obtained 
+				\begin{equation} \label{eq:uno}
+					f'(f^{-1}(y))\;  (f^{-1})'(y)\;  = \; 1
+				\end{equation}
+				then we take derivatives of both sides with respect to $y$.
+			\item  Alternatively, we first solve in Equation \eqref{eq:uno} for \DS{f'(f(y))}, and then we take another derivative.
+		\end{itemize}
+	In either case, the notation gets messy, and students gets confused about when they should evaluate and what they should evaluate.  They also make errors for not paying to attention to what we are taking a derivative with respect to.
+	\item The correct answer to the second question is 
+		$$
+			(f^{-1})''(b) =  \frac{- f''(a)}{f(a)^3}
+		$$
+		but it is probably more common to ``derive" the wrong answer
+		$$
+			(f^{-1})''(b) =  \frac{- f''(a)}{f(a)^2}.
+		$$
+		The error comes not use the Chain Rule correctly, and confusing a derivative ``with respect to $x$'' and ``with respect to $y$".
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\viv
+\end{videos}
+
+\newpage
+%========================================
+%========================================
+\section{Exponentials and logarithms}
+%========================================
+%========================================
+
+\subsection{Computations} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=24]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item A calculation question to practice the skills they learned in the Videos.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvii
+
+\vviii
+
+\vix
+\end{videos}
+
+\newpage
+%========================================
+
+\subsection{Logarithm and absolute value} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=25]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{warning}
+Don't skip this question!  It will pay off when we get to antiderivatives. Most students never truly understand why we write the absolute value in \DS{\int \frac{dx}{x} = \ln |x| + C}.  You can plant a seed here.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Many students will choose either of the wrong answers!   
+	\item After students' initial voting, I like asking them to draw the graph of the function $\ln|x|$ and check whether their answer makes sense based on the slope and the domain. This is a good opportunity to remind them that it is a good idea to check whether your answer makes sense or not.
+	\item Of course, the correct way to solve this question is to break it into cases depending on whether $x>0$ or $x<0$.  Students are unlikely to try that without being explicitly told.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A different type of logarithm} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=27]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item In the videos I obtained formulas and algorithms to compute derivatives of various functions.  The emphasis was always on deriving them and understanding why they work.    To continue with that emphasis, here is a (slightly) different-looking type of function, and I am asking students to figure out how to compute its derivative.  I emphasize in class that this is not something we have taught them yet, and that this is on purpose, because this is one of the objectives of the course.
+	\item There are at least two ways to solve this:
+		\begin{itemize}
+			\item  Use the hint, then take derivatives implicitly
+			\item  Use the change-of-base identity for logarithms
+		\end{itemize}	
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Logarithmic differentiation} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=28]{137-CA-04.pdf}} \quad
+{ \includegraphics[scale=.6,page=30]{137-CA-04.pdf}} 
+\end{center}
+
+\vspace{-5mm}
+\begin{comments}
+\nl
+\begin{itemize}
+	\item We came up with this question years ago serendipitously, looking at questions from term tests:
+		\begin{itemize}
+			\item    \hspace{-2.5mm}  69\% of students were able to derive a formula for the derivative of \DS{G(x) = u(x)^{v(x)}}.
+			\item  \hspace{-2.5mm} Only 12\% of students were able to derive a formula for the derivative of {\DS{F(x)=u(x)^{u(x)} + v(x)^{v(x)} \hspace{-1mm}.}}
+		\end{itemize}
+	\item Why do students make this error?
+		
+		Students like to``go on autopilot" when solving problems.  They memorize algorithms and execute the steps without thinking.  That is what is happening here.  They have memorized the steps for how to take the derivative of \DS{f(x)= u(x)^{v(x)}}:
+			\begin{itemize}
+				\item Take logarithms on both sides
+				\item Simplify
+				\item Take derivatives of both sides
+				\item Solve for \DS{f'(x)}
+			\end{itemize}
+		This function looks like it is of the same type, so they follow the steps without thinking.  When it comes to ``simplify", they do the only simplification that looks like a simplification, without thinking whether it is true.
+		
+		Peculiarly, if you ask them, if you draw attention to it, they notice the error:  they do know that \DS{\ln(a+b) \neq \ln(a) + \ln(b)}.
+
+	\item How I use this question:	
+		\begin{itemize}
+			\item  I give students the first slide (compute the derivative of $g$) and I give them time.  I invite them to discuss their answers.
+			\item If they have watched the video, they normally get it right.
+			\item Now I ask students to compute the derivative of $f$ (second slide) without showing them the wrong answer yet.  I give them time.
+			\item Without discussing it yet, I show them the wrong answer and ask them to find the error.   Half the class has made the same error!
+		\end{itemize}
+
+\end{itemize}	
+\end{comments}
+
+\vspace{-1mm}
+\begin{videos}
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Hard derivatives made easy} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=31]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Use logarithmic differentiation.
+	\item A former instructor liked to do this as a ``magic trick".  He would ask students to give him difficult functions, and he would arrange them in the board making a big product/quotient with all of them.  Then, once it looked nasty enough, he would announce he was about to take the derivative of the function in 30 seconds.  And then he would do it.  It was memorable!
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{An Implicit function} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=32]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\item Here is how I use this question:
+	\begin{itemize}
+	\item I give them some time to work individually. If I think that they need a hint to get started, I tell them to use implicit differentiation.
+	\item I collect some students answers and write them on the board. Some student will make the mistake of saying that the derivative of $x^y$ is $yx^{y-1}$. I ask them to discuss why this is not correct and what the correct why of finding the derivative is.
+	
+	Understanding why these wrong answers are wrong is as important as knowing the correct method.
+	\end{itemize}
+
+\end{comments}
+
+\begin{videos}
+\vix
+\end{videos}
+
+\newpage
+%========================================
+%========================================
+\section{Inverse trigonometric functions}
+%========================================
+%========================================
+
+\subsection{Definition and derivative of arctan} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=33]{137-CA-04.pdf}}  \quad
+{ \includegraphics[scale=.6,page=34]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item In Videos 4.12 and 4.13 I slowly defined $\arcsin$ and derived all its properties.  In Video 4.14 I rush through $\arctan$.  The point of these activities is for students to repeat the detailed derivation I did for $\arcsin$, but for $\arctan$.    In this course we want students to understand derivations, and not just memorize final formulas.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\vxiii
+
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Computations} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=35]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Standard computational question to practice the new derivatives they learned.  Both derivatives simplify nicely.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxiii
+
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Trig-inverse-trig}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=37]{137-CA-04.pdf}} 
+\end{center}
+
+\begin{warning}
+Students won't understand how to justify the correct choice of branch for the square roots (or even why we need to justify it).
+\end{warning}
+\begin{comments}
+\nl
+\begin{itemize}
+	\item A calculation of this type appears in Video 4.13, and more generally any time we derive a formula for the derivative of an inverse-trig function.
+	\item The correct answers are:
+		\begin{enumerate}
+			\item  \DS{\sin \arccos x = \sqrt{1-x^2}}  for \DS{-1 \leq x \leq 1}
+			\item \DS{\sec \arccos x = \frac{1}{x}} for \DS{x \neq 0}
+			\item \DS{\sec \arctan x = \sqrt{1+x^2}} for \DS{x \in \R}
+			\item \DS{\tan \arcsec x = \begin{cases}
+					\sqrt{x^2-1} & \mbox{ if } x \geq 1 \\
+					-\sqrt{x^2-1} & \mbox{ if } x \leq -1 
+				\end{cases}}
+		\end{enumerate}
+	\item Many students won't know where to start without the hints.
+	
+	\item Even if they figure out the basic ``algebra", they will be less comfortable with the domain.  In addition, very few students will be able to justify why one needs to choose the positive (or negative, in one case) branch of the square root.  They may not even understand why this needs justification.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\vxiii
+
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+\subsection{arcsec} 
+
+\begin{center}
+{ \includegraphics[scale=.7,page=38]{137-CA-04.pdf}} 
+\end{center}
+
+
+\begin{warning}
+This question will take longer than it looks.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item This question is more subtle than it seems:
+		\begin{itemize}
+			\item The domain of $\arcsec$ is not a single interval.
+			\item The derivative is \DS{\frac{d}{dx} \arcsec x = \frac{1}{|x| \sqrt{x^2-1}}}, and the absolute value is necessary.
+		\end{itemize}
+		Students will be very uncomfortable with both things.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxii
+
+\vxiii
+
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

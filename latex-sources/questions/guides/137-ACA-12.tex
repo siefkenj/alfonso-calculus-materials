@@ -1,0 +1,735 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=NqxwJ2D-Ckc&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo}{12.1 Improper integrals: Definition and Example 1}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=L9wxtktioik&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=2}{12.2 Improper integrals: Example 2}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=pbr8GWBmLhU&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=3}{12.3 Improper integrals: Example 3}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=LVKdfkNyp58&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=4}{12.4 Improper integral - Example 4 (``p functions")
+}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=l0bYj2g9qqM&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=5}{12.5 Improper integral: Example 5 (vertical asymptote)}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=WAhjLIfNnjI&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=6}{12.6 Doubly improper integrals}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=8xtCdrLzQpQ&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=7}{12.7 The Basic Comparison Test for improper integrals}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=9NeR7QXGJbE&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=8}{12.8 The Basic Comparison Test for integrals: Examples}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=2hOr_4hc3pA&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=9}{12.9 The Limit-Comparison Test for improper integrals}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=FqJSWNtT_aA&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo&index=10}{12.10 The Limit-Comparison Test - proof}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{12. Improper integrals}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 12: Improper integrals
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+
+{\bf OBJECTIVES}
+
+\vspace{3mm}
+
+	\begin{itemize}
+		\item Understand that improper integrals are a new concept that we have to define.  This means that we cannot just assume that improper integrals are always well-defined and have the same properties as regular integrals.
+		
+		\item State and understand the definition of improper integral and use it to compute simple improper integrals.
+		
+		\item Memorize the standard family of convergent/divergent improper integrals: \DS{\int^{\infty}_1 \frac{dx}{x^p}}.
+
+		\item Understand the statement of the two Comparison Tests (Basic Comparison Test and Limit-Comparison Test), why they are true, and use them to prove certain improper integrals are convergent and divergent, or in simple proofs.		
+	\end{itemize}
+
+\vspace{3mm}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\section{Definition of improper integral}
+%==================
+%==================
+\subsection{Recall the definitions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This is a quick question to begin.  If students have watched the videos, it will be fast.
+		\item It also serves to emphasize that everything must be done from the definition.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Computation}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=2]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a simple calculation where the improper integral can be computed exactly from the definition.  It is good for students to compute at least one example all the way from the definition before we jump onto comparison tests.  
+		\item The only potential issue is that some students may leave an antiderivative as
+			$$
+				\ln x - \ln (x+1)
+			$$
+			rather than as
+			$$
+				\ln \frac{x}{x+1}
+			$$
+			and then be unable to compute the limit as $x \to \infty$.  Other than that, if you give them enough time, they won't have trouble with it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{The most important improper integrals}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=3]{137-CA-12.pdf}}  \quad
+{ \includegraphics[scale=.6,page=4]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{warning}
+This result is most important!  It is worth the time.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   I cannot overemphasize how important this result is.  Students will be using it all the time in later lessons.  I want them to know it in their sleep.
+		\item Students have learned the answer to Question 1 in Video 12.4, but they have not learned the answer to Question 2 yet.   Still, it is worth it to ask them to do both derivations themselves.
+		\item When do I use these questions?
+			\begin{itemize}
+				\item  I use Slide 1 on the first lesson of Unit 12 to have student do the derivation themselves entirely.
+				\item  In a later lesson, I use Slide 2 as a quick warm up before we start doing computations with comparison tests.  If they do not know this result, there is no point in attempting to use Comparison Test, so it is a good reminder.  Sometimes I will use Slide 2 as a warm up at the beginning of multiple lessons, to emphasize the importance.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vv
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Examples}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=6]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Most of this question is very easy.  It is just a quick activity to remind students of the definitions and make them think of what an example of each type looks like.
+		\item There is one exception: coming up with a type-2 divergent ``oscillating" integral is difficult.   
+			\begin{itemize}
+				\item  Students will likely propose \DS{\int_0^1 \sin \frac{1}{x} dx} and it will take some work to persuade them that this integral is convergent (particularly because the integrand does not have an elementary antiderivative!)
+				\item One actual example is \DS{\int_0^1 \left( \cos \frac{1}{x} \right) \frac{1}{x^2} \, dx}.  Notice that we can indeed find an elementary antiderivative.  The way I came up with this answer is backwards: first I thought of what I wanted the antiderivative to be, then I computed its derivative and made it the integrand.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\viv
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Positive functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=9]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students will learn this in Video 12.7.  I recommend using this activity before they have watched the video.  
+		\item   Some students mistakenly think that \DS{\int_0^{\infty} (2 + \sin x) \, dx} is an example of   ``oscillating".
+		
+		Remind them that ``oscillating" means ``divergent, but neither $\infty$ or $-\infty$", and not simply that the function alternates between increasing and decreasing.
+
+		\item The goals are
+			\begin{itemize}
+				\item to make them realize what is different about positive integrals (thus laying down the foundation for comparison tests) before they are given the answer in the videos, and 
+				\item to ponder why ``eventual" conditions (``for large values of $x$") are as good as full conditions when it comes to convergence -- this will be a repeating theme for the rest of the course.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Doubly improper integrals}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=11]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=12]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Both slides address the same point.  I sometimes use one, the other, or both.    Normally I get confusion and a lively discussion which, by itself, does not 
+lead to consensus.  This is one of the few activities where I can't avoid giving a mini lecture at the end.
+
+		\item The correct answer is that \; \DS{\int_{-1}^{1} \frac{1}{x} \, dx} \; is divergent.  Strictly speaking
+			$$
+				\int_{-1}^{1} \frac{1}{x} \, dx \; = \; \left[ \lim_{\e \to 0^+} \int_{-1}^{-\e} \frac{1}{x} \, dx \right] \; + \; \left[ \lim_{\e \to 0^+} \int_{\e}^{1} \frac{1}{x} \, dx \right] 
+			$$
+			 and we cannot merge the two limits because we cannot cancel $-\infty$ with $\infty$. 
+		
+			I explain this in Video 12.6. 
+		\item Expect this to be controversial!  The arguments for why this should be 0 are convincing. 
+		\item I would not bring this up unless a student (normally in physics) does, but just in case be prepared.  The calculation in the second slide is the \emph{principal part} of the improper integral.  If a doubly improper integral like this one is convergent, then its value equals the principal part.  But when the integral is divergent, it is still possible for the principal part to exist.  It does not help that physicist are too casual with this distinction and pretend that the integral and the principal part are the same.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Probability}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=13]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This question is not necessary (probability is not included in the course's objectives) but, if you have time, it is nice to give students a glimpse of one of the most common applications of integration: probability.
+		\item The question itself is simple: give students time and they will solve it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Collection of antiderivatives}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=15]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{warning}
+\nl
+	\begin{itemize}
+		\item This question is tempting (to us) because it looks interesting (to us)... but remember to base your decisions on what students need, not what we enjoy.  I do not give this question priority over the basics.
+		\item   I advice not using this question unless you have an engaged class with students eager to collaborate.  Otherwise, half the class will think they do not know what to do and will wait for your answer doing nothing.
+	\end{itemize}
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   I only use this question if I need a challenge and I have already covered all the basics.  
+		\item The necessary and sufficient condition is that \DS{\int_{-\infty}^0 f(x) \, dx \; = \; \int_0^{\infty} f(x) \, dx \; = \; \infty}.  This is difficult to conjecture, and even harder (for students) to prove.  A formal proof would use the definition of limit and IVT.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\section{Comparison tests}
+%==================
+%==================
+\subsection{A simple BCT application}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=16]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I use this question as a gentle, guided warm up to the BCT to emphasize two points:	
+			\begin{itemize}
+				\item BCT is sometimes inconclusive
+				\item  We often need to try different things until we find something that helps
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Comparisons}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=17]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=18]{137-CA-12.pdf}} 
+
+{ \includegraphics[scale=.6,page=19]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=20]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item All of these questions are variation on the same idea.  The goal is not only to learn to use BCT, but to understand why it works.  That's why I ask students to think of variations.
+		\item If students are willing to discuss with each other, they normally get the right conclusions, but only after discussion.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{BCT and LCT calculations}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=22]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=23]{137-CA-12.pdf}} 
+
+{ \includegraphics[scale=.6,page=24]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=25]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{warning}
+	Students can solve (most of) these questions but they are probably slower than you expect.  Give them plenty of time: it is worth it for them to practice to solidify concepts, and this only works if you give them enough time.
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These are questions for students to practice BCT and LCT, develop intuition, and gain fluency.  They take time.
+		\item I use different slides depending on my goal.
+			\begin{itemize}
+				\item  I use Slide 1 (``BCT calculations") if students have only learned BCT and I only want to practice BCT.
+					\begin{itemize}
+						\item  For a shorter activity, using only ``standard" applications, I use Questions 1-3 only.
+						\item  For a longer activity, to give students a challenge, I use all Question 1-5.
+					\end{itemize}
+				\item  Slide 2 (``Rapid fire") is a reminder once again of the examples we want students to do quickly in their sleep.    I use it to emphasize: the other questions may take time, but I want them to answer these ones within seconds.
+				\item  Slide 3 (``Slow questions") is a mix of BCT and LCT applications, easy and hard.  I could easily spend a full class with only this question if I wanted.
+				\item Slide 4 (``A harder calculation") is a question I save in case I need a computational challenge.  I have never had to use it: the last few questions in Slide 3 are hard enough.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+
+\vix
+
+\vx
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{A variation on LCT}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=28]{137-CA-12.pdf}} \quad
+{ \includegraphics[scale=.6,page=29]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item In Video 12.7 I explained LCT as stated in this slide.  I left the two generalizations in these slides as an exercise.
+		\item There are two ways to use these questions
+			\begin{itemize}
+				\item  intuitively -- just conjecture the answer without proving it: one function is smaller than the other for large values of $x$.
+				\item  formally -- write a formal proof (if you want to practice proof writing)
+			\end{itemize}
+			Students will be able to write the correct conjecture (if given enough time and a chance to discuss). 
+			
+			As usual, writing a proof is much harder.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Absolute convergence}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=30]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Absolute convergence for improper integral is not included in our learning goals, and the topic does not appear in the videos.   Unfortunately, we don't have as much time for Unit 12 as we might want, and it is important the basics are well learned rather than trying to ``teach" students a lot of things.    Thus, this question is not ``important" or necessary.
+		
+		If you have decide to use it, it may work well as an example of an application of BCT, and it can help plant a seed for the notion of absolute convergence of series (which we \emph{will} study in Unit 13).
+		
+		\item This question is very easy for us, but expect it to be confusing for students.  Specifically, the auxiliary functions $f_+$ and $f_-$ will be confusing.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Dirichlet integral}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=31]{137-CA-12.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This could be a good question to finish by tying together various ideas from Unit 12 and various other units.  However, I have never had time for it (or even come close).  If the question were not so easily googelable it would make for a great assignment question.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\viv
+
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\end{document}
+%==================
+%==================
+
+
+

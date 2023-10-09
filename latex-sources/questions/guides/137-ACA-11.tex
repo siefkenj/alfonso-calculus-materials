@@ -1,0 +1,791 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=utfrtw-H9-Q&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2}{11.1 What is a sequence?}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Dr8LzBA-H84&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=2}{11.2 The limit of a sequence}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=xuNRMkzSzZY&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=3}{11.3 Properties of limits of sequences}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=J8uZJ9by0ys&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=4}{11.4 Monotonic and bounded sequences}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=njHTdc0rv6Y&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=5}{11.5 Every convergent sequence is bounded}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=5m7XdA7ogEk&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=6}{11.6 The monotone convergence theorem for sequences}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Dd3n2rfqxf4&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=7}{11.7 The Big Theorem}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=aMZRptPCtZc&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2&index=8}{11.8 Proof of the "Big Theorem"}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{11. Sequences}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 11: Sequences
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+
+{\bf OBJECTIVES}
+
+\vspace{3mm}
+
+	\begin{itemize}
+		\item Understand the (various equivalent) definitions of sequence, convergence, various types of divergence, monotonicity, and boundness.   We do not introduce subsequences.
+		\item Transfer all the results about limits of functions to limits of sequences, when appropriate.
+		\item Use these in computations, examples, and simple proofs.
+		\item In particular, know (and be able to justify) the relations between them; most notably 1) convergent implies bounded, and 2) bounded $+$ monotonic implies convergent.
+		\item Understand the definition of ``$a_n$ grows much slower than $b_n$". Memorize (and be able to prove) the hierarchy of divergent sequences (logarithms, polynomials, exponentials, factorials, and power-exponentials), and use it in simple proofs and limit computations.  
+		
+		This is probably the most useful result about sequences (but most calculus courses do not teach it!)  Since we will use it all the time in Units 12-14, I gave it a name (The Big Theorem).
+	\end{itemize}
+
+\vspace{3mm}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\section{Definition of sequence and convergence}
+%==================
+%==================
+\subsection{Warm up}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a short warm-up question that students find easy, and even fun.
+		\item This is an opportunity to remind students that we should only define a sequence by its first few terms when it is completely clear what we mean.  Strictly speaking, it is always going to be ambiguous: if somebody misunderstands what I mean when I describe a sequence by the first few terms, it is my fault.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Sequences vs functions - convergence} \label{seqfun1}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=2]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Questions 1 and 2 will appear in Video 11.3, but it is a good activity to ask students to think about this before they learn it in the video.
+		\item  Question 3 is an ``obvious" claim.  However, when it becomes necessary to use this implication in the middle of a proof, a fraction of students doubt it (and I do not know why).  For example, see ``Is this proof correct?" in \autoref{recurrence}: some student think the error is equating \DS{\lim R_n} and \DS{\lim R_{n+1}}.    Thus, it may be good to make them think about this implication in isolation.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Definition of limit of a sequence} \label{deflimit}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=3]{137-CA-11.pdf}}  \quad
+{ \includegraphics[scale=.6,page=4]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is easily one of the most important activities in Unit 11, and the best way to make sure they understand the definition of sequence.  However, it is only useful if we force students to think about it, struggle with it, discuss with each other, and come to consensus.  If they are just going to wait for our explanation it is just a waste of time.
+		\item The good news is that by this point in the course students can handle much more abstraction than back in Unit 2, and they will find the question less intimidating than they did back them.  Many will still struggle, but their answers will be better than they were back in Unit 2 for a similar question.  After completing the activity I like to make them notice this growth so they can appreciate how far they have come.
+		\item I always use Slide 1.  I will decide whether to move to Slide 2, or leave it for another day, or skip it entirely based on how Slide 1 went.
+		\item How I use this question:
+			\begin{itemize}
+				\item First, I tell them to work individually.  I walk among them and I see how they are doing.  I can see every time they record a ``T" or ``F" on their paper, so I see their pace.  
+				\item Once I decide it is time (most have probably not finished yet) I ask them to vote.  For a few of them there will be consensus.  I record those answers on the board and will not explain or discuss them.  For others there is disagreement or they are reluctant to answer (which means they do not know).  
+				\item I point out the questions we do not have consensus on yet and tell them to discuss those with their neighbours.  
+				\item After a while we vote on just those again.   Based on their replies, I will decide what to do.
+				\item If at some point I think they are slowing down and they need a boost of energy, a good hint to restart the discussion is telling them how many correct statements there are.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Convergence and divergence}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item    Students often misuse definitions in assignments, and confuse the following three statements:
+			\begin{itemize}
+				\item  \DS{\lim_{n \to \infty} a_n \neq L}
+				\item  \DS{\{a_n\}} is divergent --- equivalently, \DS{\forall L \in \R, \lim_{n \to \infty} a_n \neq L}
+				\item \DS{\{a_n\}} is divergent to $\infty$
+			\end{itemize}
+		They also sometimes confuse
+			\begin{itemize}
+				\item  \DS{\{a_n\}} is convergent --- equivalently, \DS{\exists L \in \R \mbox{ s.t. } \lim_{n \to \infty} a_n = L}
+				\item \DS{\lim_{n \to \infty} a_n = L}
+			\end{itemize}	
+		This activity is an opportunity to emphasize the distinctions and why they matter.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Proof from the definition of limit}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=6]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students learned to write proofs like this back in Unit 2.  There is no significant difference in writing a proof like this for a function or for a sequence.  This is an opportunity to review those proofs if you think it is more important.  I normally do not give it priority over other activities.
+		\item If you decide to use it, I recommend emphasizing writing the definition of what we want to prove, and figuring out the proof structure from it.   Proof structure is what students struggle the most with, and the reason some of their ``proofs" are word salad rather than proofs.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Monotonicity and boundness}
+%==================
+%==================
+\subsection{Sequences vs functions - monotonicity and boundness}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=7]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Students find 1 and 2 easy -- they are similar to \autoref{seqfun1}: ``Sequences vs functions - convergence".
+		
+		\item Students  find Question 4 hard.  A counterexample is either a non-continuous function (which they rarely consider) or something like \DS{f(x) = x \sin (\pi x)}.  Having students discuss in group should help:  if a student comes up with a good counterexample, they will have no trouble convincing others.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Examples}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=8]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This was left as an exercise in Video 11.4.
+		
+		\item In Video 11.4 students learned 3 theorems:
+			\begin{itemize}
+				\item  Theorem 1:  Every convergent sequence is bounded.
+				\item  Theorem 2 (Monotone Convergence Theorem): A bounded and monotonic sequence is convergent.
+				\item  Theorem 3: A sequence that is increasing and unbounded above is divergent to $\infty$
+			\end{itemize}
+			Theorems 1 and 2 are enough to justify all the choices that are impossible.
+
+		\item Students find this question easy.  I give them a bit of time, and then it is easy to get volunteers to complete all the cells.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Limits of sequences defined by recurrence} \label{recurrence}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=9]{137-CA-11.pdf}} \quad
+{ \includegraphics[scale=.6,page=11]{137-CA-11.pdf}} 
+
+{ \includegraphics[scale=.6,page=12]{137-CA-11.pdf}}  \quad
+{ \includegraphics[scale=.6,page=13]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is more subtle than it seems.   To make sure students got the point, I like to ask them ``What have we actually proven in [Slide 2]?"  I want them to say ``The sequence $R_n$ is either divergent or convergent to $-1+\sqrt{3}$" but this won't come out naturally.  Many won't see anything wrong or will believe that there is an error in the algebra.  Others, noticing we have assumed the sequence is convergent, will believe we have proven nothing.
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  It is hard for students to appreciate how useful the Monotone Convergence Theorem is.  ``If a sequence is bounded and monotonic, then it has a limit... What good is the theorem if it does not tell me what the limit is?"   This activity provides an example of an application.  There is a standard ``trick" to compute the limit of a sequence defined by recurrence... as long as we know it is convergent.  If we use the same trick on a divergent sequence, we may still get a ``limit", and it will be wrong.
+		\item  My hope is that students realize why the argument in the second slide is incomplete without me telling them.
+		\item How I use this activity:
+			\begin{itemize}
+				\item  I give them Slide 1 and a minute to work on it.  I verify their answers.  This is just to make sure they understand the notation.
+				\item I give them Slide 2 and ask them to think about it.  At this moment few of them would be able to point out the error if I asked them, and I do not not want one student to spoil it for all, so I  move on.
+				\item I give them Slide 3 and give them time to work on it.  We discuss their answers together.
+				\item I go back to Slide 2 and invite to discuss with their neighbours.
+				\item Finally, we have a discussion together about Slide 2.  This is where I ask them ``what have we actually proven in Slide 2?"
+				\item Only after that, I move to Slide 4.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\viv
+
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - convergence, monotonicity, and boundness}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=14]{137-CA-11.pdf}} \quad
+{ \includegraphics[scale=.6,page=15]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{warning}
+	I advise not using both activities on the same day.  Rather, save one as review for a later day.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Slide 1 
+			\begin{itemize}
+				\item This is a compilation of very common errors.  All of them are common false assumptions that students make in their arguments (except for 1 and 8, which are true).
+				\item Collaboration is essential for this activity.  Many students will make many errors.  However, any student who can come up with a counterexample to any of them should be able to convince their neighbours.
+			\end{itemize}
+		\item Slide 2
+			\begin{itemize}
+				\item This is a summary of the most important results that we absolutely want students to know.  Once they have study, they should know them in their sleep.
+				\item This activity works very well as a quick ``warm up" on a later day (for example, on the first day of Unit 12).
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Fill in the blanks}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=16]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Answers:
+			\begin{enumerate}
+				\item $m \neq 0$. They may think $m$ needs to be positive.
+				\item $m \geq 0$. They will miss that we can include $m=0$ even though $a_n$ is never 0.
+				\item $m \in \R$. This is always true no matter what hypothesis we choose
+				\item  $m \geq - \pi/2$. They might find it difficult to begin working on this question.  If they need a little push, I tell them to sketch the graph of $\sin$.
+			\end{enumerate}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Proving theorems}
+%==================
+%==================
+\subsection{Proof of Theorem 3}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=18]{137-CA-11.pdf}} \quad
+{ \includegraphics[scale=.6,page=19]{137-CA-11.pdf}} 
+
+{ \includegraphics[scale=.6,page=20]{137-CA-11.pdf}}  \quad
+{ \includegraphics[scale=.6,page=21]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item I use this question in a similar manner to proofs of theorems about limits of functions in Unit 2.
+		\item  Background:
+			\begin{itemize}
+				\item  In Video 11.4 students learned three theorems:
+					\begin{itemize}
+						\item  Theorem 1:  Every convergent sequence is bounded.
+						\item  Theorem 2 (Monotone Convergence Theorem): A bounded and monotonic sequence is convergent.
+						\item  Theorem 3: A sequence that is increasing and unbounded above is divergent to $\infty$
+					\end{itemize}
+				\item In Videos 11.5 and 11.6 students learned the proofs of Theorems 1 and 2.
+				\item Now is their chance to prove Theorem 3 (which is a bit easier).
+			\end{itemize}
+		\item While students have gotten better since Unit 2, they still struggle with these proofs.    Their main issues, as you may recall:
+			\begin{itemize}
+				\item  Proof structure.
+				\item  The difference between a quantified variable (in the statement of the theorem) and a fixed variable (in the proof).
+				\item Quantified variables are dummy variables and do not carry any intrinsic meaning.
+				\item Variables should be introduced (and fixed) in a specific order.
+			\end{itemize}
+		\item The two bad proofs to critique are good samples of the way students write:
+			\begin{itemize}
+				\item \#1 contains all the ideas in the proof and can be turned into a perfect proof, but it is not a proof -- it is just the right work.  It does not have the right structure, variables are not fixed in order...
+				\item \#2 is just a student bluffing.  They do not know how to write the proof so they just wrote ``stuff" in the hopes of getting partial marks.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvi
+
+\vii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Composition law}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=23]{137-CA-11.pdf}} \quad
+{ \includegraphics[scale=.6,page=19]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This proof is quite hard for students and it can easily take a whole hour.  If you want students to discover this proof and write it themselves, you will need to give them a good chunk of time, discuss the proof structure, give them more time, discuss the key idea in the proof, and give them more time.  	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\vii
+
+\vv
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{The Big Theorem}
+%==================
+%==================
+\subsection{Calculations}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=24]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a simple calculation question to use the Big Theorem.
+		\item Students who have watched the Videos find this quite easy.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - The Big Theorem}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=26]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Question 3 is important on its own: it is part of an argument that we will use later (Units 12 and 13) when we use Limit-Comparison Test for improper integrals and series.
+		\item  There are two ways to come up with your answers: intuitively, or rigorously (using the formal definition of limit).  Both are valid, depending on what you want to emphasize.
+		\item Collaboration is important in this question.  Students will be quite hesitant at first, but they will be more confident if they discuss with each other.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Refining the Big Theorem}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=27]{137-CA-11.pdf}} \quad
+{ \includegraphics[scale=.6,page=28]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   There are various ways to use this activity.
+			\begin{itemize}
+				\item Slide 2 by itself is an interesting question, but it is challenging.  Beware: some students will decide they do not know how to do it and wait for the answer without even trying.
+				\item  Slide 1 by itself is much easier (half the question is just unravelling the solution).
+				\item  We can also use Slide 1 as warm up, to make Slide 2 a bit more accessible.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Review}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=29]{137-CA-11.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a collection of true or false questions from various parts of the unit, all mixed together.  It is not a necessary question, but it is a possible way to end the unit.
+		\item Question 4 will be particularly difficult.  The variable $\e$ is playing an unusual role here.  Students won't recognize that the ``then-part" just means the sequence is bounded above.
+		\item Question 5: The definition of ``almost all" appears in \autoref{deflimit}.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\end{document}
+%==================
+%==================
+
+
+

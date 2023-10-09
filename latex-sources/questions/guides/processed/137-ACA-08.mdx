@@ -1,0 +1,519 @@
+# Unit 8: The Fundamental Theorem of Calculus
+
+### Antiderivatives
+
+#### Initial Value Problem
+
+<Slides>
+
+<QuestionPreview question={0} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a short, warm-up question to remind students of the importance of the integration constant when computing antiderivatives.
+
+*   Most students will solve the question easily.
+
+</Comments>
+
+<Videos>
+
+[8.1 Antiderivatives](https://www.youtube.com/watch?v=xcyL3sEL2mM\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=1)
+
+</Videos>
+
+#### The most misunderstood antiderivative
+
+<Slides>
+
+<QuestionPreview question={1} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Most students never understand why we write the absolute value in $\displaystyle \int \frac{1}{x}\,dx = \ln |x|+C$. They just memorize it as a formula “because we will lose marks in the test if we don’t include the absolute value”. This activity is our only chance to change things!
+
+*   Students will be able to answer Questions 1 and 2. For Question 3, they will need a push (“separate into two cases”). They will not be comfortable with their answer to Question 4, though.
+
+*   The answer to Question 4 depends on some conventions. We normally write
+
+    ```math
+    \int \frac{1}{x}\, dx \; = \; \ln|x| + C
+    ```
+
+    This is with the assumption that we only compute antiderivatives with an interval for domain. In this case we do not know whether the interval is contained in $(0,\infty)$ or in $(-\infty,0)$, so we write $\displaystyle \ln |x|$ to take care of both cases. Of course, there is another interpretation. The most general antiderivative of $\displaystyle f(x) = \frac{1}{x}$ on the largest possible domain $(-\infty,0) \cup (0,\infty)$ is
+
+    ```math
+    F(x) = \begin{cases}\ln x + C_{1}&\text{ for }x >0 \\ \ln(-x) + C_{2}&\text{ for }x<0\end{cases}
+    ```
+
+    for arbitrary constants $C_{1}$ and $C_{2}$.
+
+*   Question 5 confuses students. They do not understand why we are asking about contradictions in the first place. They do not see the apparent issue, so they cannot explain why it is not an issue!
+
+</Comments>
+
+<Videos>
+
+[8.1 Antiderivatives](https://www.youtube.com/watch?v=xcyL3sEL2mM\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=1)
+
+</Videos>
+
+#### Compute these antiderivatives by guess and check
+
+<Slides>
+
+<QuestionPreview question={2} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   There is value in giving students time to work on a question like this in class. It is not a waste of time.
+
+*   Most calculus textbooks will include a “table of elementary antiderivatives” right after introducing the notion of antiderivative. I did not include it in the videos on purpose. I wanted to emphasize that students can (and should!) create their own table, that the elementary antiderivatives are just the elementary derivatives in reverse, and that they can get all their answer by guess and check. They should not memorize anything new.
+
+    This activity is the students’ chance to create their table of elementary antiderivative. I think it is important to give them time to do so, otherwise they never will, and they will resort to memorize the table they find somewhere else.
+
+*   Of course some students will be extremely fast. I normally have some kind of challenge question on the side to keep those students busy while other students finish.
+
+*   If I solve any of the questions, I emphasize the guess-and-check approach (see the example at 3:20 on Video 8.1).
+
+</Comments>
+
+<Videos>
+
+[8.1 Antiderivatives](https://www.youtube.com/watch?v=xcyL3sEL2mM\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=1)
+
+</Videos>
+
+#### Sophisticated guess-and-check
+
+<Slides>
+
+<QuestionPreview question={3} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={4} unit={8} small={true} />
+
+<QuestionPreview question={5} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={6} unit={8} small={true} />
+
+<QuestionPreview question={7} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={8} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Later (in Unit 9) students will learn Integration Methods. I often say that all the integration methods are “sophisticated guess-and-check” or “assisted guess-and-check”. Indeed, guess-and-check is the most important integration method, and it makes all the other methods more powerful. However, once students learn the Official Integration Methods, they like to go on autopilot, use algorithms, and not think. Right now, before they learn the official methods, we have an opportunity to make them think, develop their problem solving techniques, and expand their guess-and-check power.
+
+*   Students tend to find these questions satisfying and fun.
+
+*   The first four slides are a series for students to discover integration by parts without being told a single thing! And it works! It’s beautiful. Of course, you can also use just the first N if you prefer.
+
+*   Slide 5 (trig-exp antiderivatives) works well as a stand-alone activity. Students claim it is easy! By constrast, the Official Method to solve this integral using parts twice is messy.
+
+*   Slide 6 is a challenge. I use it to keep the fast students busy while I give everybody else more time. It would be a sin to rush these activities and spoil them for most of the class just because a few students finished them. Let them work. They enjoy it.
+
+</Comments>
+
+<Videos>
+
+[8.1 Antiderivatives](https://www.youtube.com/watch?v=xcyL3sEL2mM\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=1)
+
+</Videos>
+
+### Functions defined by integrals
+
+#### Functions defined by integrals
+
+<Slides>
+
+<QuestionPreview question={9} unit={8} small={true} />
+
+</Slides>
+
+<Warning>
+
+Don’t skip this question.
+
+</Warning>
+
+<Comments>
+
+*   Defining a function as an indefinite integral is a weird concept. We have forgotten it, but the first time a student sees it, it is confusing. Many calculus courses define a function as an indefinite integral and immediately jump into the FTC, without giving students a chance to get comfortable with this concept. This is an error. It is the whole reason why Video 8.2 is a separate video on its own.
+
+    In particular, the notation is confusing. What are the roles of $x$ and $t$? Can I use a different letter? Can I use $x$ for both?
+
+    Give students a chance to think about this question and discuss it with other students before they even learn about the FTC. They will benefit from this.
+
+*   The valid ones are 1, 3, 4, 5, 6, and 7. After thinking about it and discussing with their peers, students will be more or less satisfied with 1-5, but they will have questions about 6-8.
+
+</Comments>
+
+<Videos>
+
+[8.2 Functions defined as integrals](https://www.youtube.com/watch?v=BQIiCjoFILs\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=2)
+
+</Videos>
+
+#### Towards FTC
+
+<Slides>
+
+<QuestionPreview question={10} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={11} unit={8} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is a very nice activity **if students have not learned anything about FTC yet**. If they already have (if they have watched Video 8.3, for instance) then it does not have such a big pay-off.
+
+</Warning>
+
+<Comments>
+
+*   The point of this activity is to have students discover FTC (Part 1) geometrically by themselves.
+
+*   How I use this question
+
+    *   I give students the first slide and wait a bit. They complete it without trouble and give me their answers. This is to establish that we are estimating area, and that we are defining a new function $F$ as an indefinite integral.
+
+    *   Now I give students the second slide and I invite them to draw the five points they already have, and to try to sketch the graph of the rest.
+
+    *   After a bit of time, I help them reason what the graph of $y=F(x)$ should be when $0\leq x \leq 1$. “Should it be increasing or decreasing?” “If I increase $x$ by a little bit from here (draw a picture at $x=0.2$) or from here (draw a picture at $x=0.8$) when will $F(x)$ increase by more?” (I make drawing to focus their attention on the slices of areas being added). “What shape will the graph have?” By now I have their focus on how $f$ predicts the growth of $F$.
+
+    *   I tell them to do the same thing for the rest of the domain. I give them time to work.
+
+    *   After they are done, I ask them what the graph of $F'$ looks like, and they agree it is $f$. They have discovered FTC-Part 1 by thinking geometrically about adding a bit of area at a time.
+
+</Comments>
+
+<Videos>
+
+[8.2 Functions defined as integrals](https://www.youtube.com/watch?v=BQIiCjoFILs\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=2)[8.3 The Fundamental Theorem of Calculus – Part 1](https://www.youtube.com/watch?v=JeKCipoy8bc\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=3)[8.4 A proof of Part 1 of the FTC](https://www.youtube.com/watch?v=UZmMgSIgi3k\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=4)
+
+</Videos>
+
+### FTC - Part 1
+
+#### Filling the tank
+
+<Slides>
+
+<QuestionPreview question={12} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a simple warm-up question to emphasize that functions defined by integrals are useful and appear “in real life”. We leave the answer to this question as an integral because there is no other way to do it.
+
+</Comments>
+
+<Videos>
+
+[8.2 Functions defined as integrals](https://www.youtube.com/watch?v=BQIiCjoFILs\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=2)[8.3 The Fundamental Theorem of Calculus – Part 1](https://www.youtube.com/watch?v=JeKCipoy8bc\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=3)
+
+</Videos>
+
+#### True or False
+
+<Slides>
+
+<QuestionPreview question={13} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={14} unit={8} small={true} />
+
+<QuestionPreview question={15} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students know that FTC-1 says that “derivatives and integrals are inverses of each other” or that “integrals are antiderivatives”. However, they don’t necessarily fully understand the precise statement and all its implications. Any of these questions will force them to think about the precise statement.
+
+*   Slide 1 (“True or False”) – All are False.
+
+    *   Possible error: 1 is True, not realizing that the left-hand side is the derivative of a constant.
+
+    *   Possible error: 2 is True because “derivatives and integrals are inverses of each other”.
+
+*   Slide 2 (“More True or False”) – 2, 4, and 5 are True.
+
+    *   Possible error: 4 and 5 cannot both be true because they contradict each other.
+
+*   Slide 3 (“True, False, or Shrugh”)
+
+    *   Statement 2 is technically false, but it is reasonable to simply answer “we do not have enough information to decide”. By contrast, we can tell that Statement 1 is False because $H(1)>0$.
+
+    *   3 and 6 are False. 4, 5 are True.
+
+    *   Possible error: 6 is true because 4 and 5 give us two different answers.
+
+</Comments>
+
+<Videos>
+
+[8.2 Functions defined as integrals](https://www.youtube.com/watch?v=BQIiCjoFILs\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=2)[8.3 The Fundamental Theorem of Calculus – Part 1](https://www.youtube.com/watch?v=JeKCipoy8bc\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=3)[8.6 A proof of Part 2 of the FTC](https://www.youtube.com/watch?v=58VnS2eczss\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=6)
+
+</Videos>
+
+#### FTC-1 applications
+
+<Slides>
+
+<QuestionPreview question={16} unit={8} small={true} />
+
+ 
+
+<QuestionPreview question={17} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Both slides are about the main application of FTC-1: computing the derivative of a function defined as an integral.
+
+*   The objective of Slide 1 is to reduce everything to the precise statement of FTC-1.
+
+    *   $F_{1}$ is constant.
+
+    *   $F_{2}$ is a direct application of FTC-1.
+
+    *   $F_{3}$ is FTC-1 plus Chain Rule.
+
+    *   $F_{4}$ requires swapping the ends of integration.
+
+    *   $F_{5}$ requires breaking the integral in two pieces, and using previous results.
+
+    I prefer students reason this way so they understand where everything comes from, before they ever attempt the question in Slide 2. I would not want them to memorize the result from Slide 2 without knowing where it came from. I always use Slide 1 in class, but I may or may not skip Slide 2.
+
+</Comments>
+
+<Videos>
+
+[8.3 The Fundamental Theorem of Calculus – Part 1](https://www.youtube.com/watch?v=JeKCipoy8bc\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=3)
+
+</Videos>
+
+#### An integral equation
+
+<Slides>
+
+<QuestionPreview question={18} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is an alternative way to apply FTC-1 – just to ask the same idea in a different way.
+
+*   Students need to realize that they have to take a derivative of both sides first. To my surprise, they normally do and they find this question easy.
+
+</Comments>
+
+<Videos>
+
+[8.3 The Fundamental Theorem of Calculus – Part 1](https://www.youtube.com/watch?v=JeKCipoy8bc\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=3)
+
+</Videos>
+
+### FTC - Part 2
+
+#### Compute these definite integrals
+
+<Slides>
+
+<QuestionPreview question={19} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a simple question to get comfortable with using FTC-2.
+
+*   Students may not be able to find right away the antiderivatives for 3 ($4\arcsin x$) and 4 ($\tan x$), but other than that they find this question easy.
+
+</Comments>
+
+<Videos>
+
+[8.5 The Fundamental Theorem of Calculus – Part 2](https://www.youtube.com/watch?v=OKw2v0DOXOI\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=5)
+
+</Videos>
+
+#### Find the error
+
+<Slides>
+
+<QuestionPreview question={20} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a short question to remind students not to use FTC-2 mindlessly.
+
+*   While this is an error students make, once the question is posed, they quickly realize that the problem is at $x=0$. Perhaps they cannot state precisely what the problem is, but they realize it is at $0$.
+
+</Comments>
+
+<Videos>
+
+[8.5 The Fundamental Theorem of Calculus – Part 2](https://www.youtube.com/watch?v=OKw2v0DOXOI\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=5)
+
+</Videos>
+
+#### Areas
+
+<Slides>
+
+<QuestionPreview question={21} unit={8} small={true} />
+
+</Slides>
+
+<Warning>
+
+It is probably important to ask students to solve at least one of these questions.
+
+</Warning>
+
+<Comments>
+
+*   Students know that definite integrals represent area between the graph of a function and the $x$-axis. Video 7.11 discusses how this is positive or negative, depending on whether the graph is above or below the $x$-axis. However, the videos do not include a list of examples of all the ways that regions can be interpreted and cut into pieces to set them up as integrals. I do not want students to memorize lots of formulas and cases (area between two curves, when the two curves intersect more than twice, using $y$ as the variable, ...) Rather, I would like them to come up with all those “methods” themselves by reasoning from the basic definite integral.
+
+    This activity is an opportunity for students to do so through exploration.
+
+*   Question 4 is much easier to calculate if we use $y$ as the variable of integration.
+
+</Comments>
+
+<Videos>
+
+[8.5 The Fundamental Theorem of Calculus – Part 2](https://www.youtube.com/watch?v=OKw2v0DOXOI\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=5)[8.7 Summary: the three “notions of integral”](https://www.youtube.com/watch?v=LBhvzrRyAtk\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=7)
+
+</Videos>
+
+#### Minimizing area
+
+<Slides>
+
+<QuestionPreview question={22} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is an attempt at asking something more complex about areas. Half the students freeze and do not do anything because they do not recognize this type of question. Also, they do not like working with parameters.
+
+*   I have used the hint “Do not worry for now about minimizing the area. For now just treat $a$ as a constant and calculate the value of the area. You will worry about minimizing it later. If you do not know how to start, compute the area first for $a=2$).
+
+*   The link leads to a graph on Desmos with sliders. In addition, the folder contains an animation of these parabolas (courtesy of Matt Sourisseau).
+
+</Comments>
+
+<Videos>
+
+[8.5 The Fundamental Theorem of Calculus – Part 2](https://www.youtube.com/watch?v=OKw2v0DOXOI\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=5)[8.7 Summary: the three “notions of integral”](https://www.youtube.com/watch?v=LBhvzrRyAtk\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=7)
+
+</Videos>
+
+#### Symmetry
+
+<Slides>
+
+<QuestionPreview question={23} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is harder than I originally anticipated. It is a cute question and I want to make it work, but I am not sure it does. Most students just do not know what to do and wait.
+
+    I want students to think geometrically and notice symmetries. This is difficult because they are not used to thinking geometrically, and some of the symmetries are not so clear. That is why I added the links to graphs in Desmos. I emphasize to students that I want them to at least guess the answer by looking at the graph, even if they cannot write it algebraically.
+
+*   The first integral is $0$. This is the only one that some students find accessible. The function is odd.
+
+*   The second integral is $\pi/2$. The region is half the rectangle $\displaystyle [0,\pi]\times [0,1]$. Draw the graph of $y=1/2$. The piece of the region above that line has the same are as the region missing below. Algebraically
+
+    ```math
+    \cos^{2}x \; = \; \frac{1}{2}+ \frac{1}{2}\cos (2x)
+    ```
+
+    and the positive and negative contributions of $\cos 2x$ cancel.
+
+*   The third integral is $\pi$. The region is half the rectangle $\displaystyle [-1,1]\times [0,\pi]$. Draw the graph of $y=\pi/2$. The piece of the region above that line has the same are as the region missing below. Algebraically
+
+    ```math
+    \arccos x \; = \; \frac{\pi}{2}- \arcsin x
+    ```
+
+    and $\arcsin$ is an odd function.
+
+</Comments>
+
+<Videos>
+
+[8.7 Summary: the three “notions of integral”](https://www.youtube.com/watch?v=LBhvzrRyAtk\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=7)
+
+</Videos>
+
+#### Average velocity
+
+<Slides>
+
+<QuestionPreview question={24} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question puts together the standard definition of average velocity, the representation of total distance traveled from integration, and the MVT.
+
+</Comments>
+
+<Videos>
+
+[8.7 Summary: the three “notions of integral”](https://www.youtube.com/watch?v=LBhvzrRyAtk\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=7)
+
+</Videos>
+
+#### The Mean Value Theory for integrals is back
+
+<Slides>
+
+<QuestionPreview question={25} unit={8} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Unit 7 contains an activity to write a different proof of this theorem. In Unit 7 the proof uses IVT and EVT. In Unit 8 the proof uses FTC and MVT. If you are using one fo the two activities, it is nice to use both.
+
+*   Students will find this proof easier than the one in Unit 7, once the hint is given.
+
+</Comments>
+
+<Videos>
+
+[8.7 Summary: the three “notions of integral”](https://www.youtube.com/watch?v=LBhvzrRyAtk\&list=PLlwePzQY_wW_8-sITAbG_GU2JgiuwXkDN\&index=7)
+
+</Videos>

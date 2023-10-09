@@ -1,0 +1,508 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm}\href{https://www.youtube.com/watch?v=Kq9Q5LISo5o&list=PLlwePzQY_wW9f22c89JAQBzaa-9XgESA8}{10.1 Volumes as integrals: the slicing/disc/washer method}}
+\newcommand{\vii}{\hspace{8mm}\href{https://www.youtube.com/watch?v=YYM9URJ4iJ8&list=PLlwePzQY_wW9f22c89JAQBzaa-9XgESA8&index=2}{10.2 Volumes as integrals: the cylindrical-shell method}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{10. Applications of the integral}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+\usepackage[normalem]{ulem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 10: Applications of the integral
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+
+{\bf OBJECTIVES}
+
+\vspace{3mm}
+
+Many calculus courses study a long list of applications of the integral (volumes, surface area, arc length, work, centre of mass, ...)  These applications are reduced to memorizing a dozen formulas and nothing else.   This is of dubious value.  Even if we restrict ourselves to common and useful applications, if all we do is give students a formula to memorize and later ask them to plug different functions into it, what is the point?    Any time they need one such formula in the future they can look it up, and there is no skill (or difficulty) in plugging a function into it.
+
+\vspace{3mm}
+
+Instead, our emphasis is on \emph{understanding} why certain quantities can be computed by integrals, and to be able to derive these formulas, including new ones, themselves.  That way, whichever application they may need in the future, they will be ready for it.   If we get them to that point, it does not matter which specific applications they have \sout{learned} memorized.
+
+\vspace{5mm}
+
+{\bf HOW WE GET THERE}
+
+
+\begin{itemize}
+	\item  In Videos and in class, students learn to compute volumes as integrals (once again, with emphasis on where the formulas come from).
+	\item  Then, in the Practice Problems for Unit 10, students have scaffolded sequences of problems designed to make them \emph{come up} with the formulas for various other applications of the integral.   They won't have seen these other applications in Videos or in class.
+\end{itemize}
+
+\vspace{5mm}
+
+\begin{warning}
+Most of the activities in these slides take students a long time.    They are only worth it if we give students enough time to work and \emph{they} are the ones solving the problems.  It is not surprising to only have time for 2 activities per class.
+\end{warning}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\subsection{An equation for volumes by the carrot method}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I introduced this method with only one example in Video 10.1.  This question simply asks students to write the general formula for an arbitrary function.
+		\item Students find this easy --- assuming they have watched the video.
+		\item  This method is normally called the ``washer method" in textbooks when the region is bounded between two curves.  I also refer to it as the ``disc method" or as ``the carrot method", due to the prop I use in Video 10.1.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Sphere}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=2]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is a standard example to practice computing the volume of a solid of revolution by slicing it into discs.
+		\item This example has various advantages over others:
+			\begin{itemize}
+				\item We are asking to compute the volume of a sphere, rather than an artificial example.
+				\item	 We are not giving them the equation of a function to rotate around the $x$-axis.  They have to figure out how to model the sphere as a solid of revolution and thus they cannot simply use a formula.
+				\item  It is satisfying to finally prove the equation for the volume of a sphere after years of using it without knowing where it came from.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Pyramid}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This is one of the simplest examples of a solid whose volume can be computed by ``slicing it like a carrot", but that is not a solid of revolution.  They have to start from scratch: they cannot use any of the previous formulas, and they have to fully understand the ``slicing method" to set this up as integral.  For these reasons, this activity is probably the best activity in the unit.
+		\item I am particular careful not to waste this activity.  I give students enough time, and I make them do it, rather than wait for me to do it. I usually have students think for a while, then discuss together a bit of the set up, then they continue working, then we discuss a bit more, and so on.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Many axis of rotation}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=4]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  In both Video 10.1 and Video 10.2 I only computed the volume of solids of revolution obtained by rotating around the $x$-axis the region between the graph of function and the $x$-axis.  I made that choice on purpose.  In this question we are asking students about a more general problem: rotate the region between two curves around various different axis.  
+		
+		Once again, we want students to \emph{understand} how we set up volumes as integrals, rather than memorize formulas.  The purpose of this question is not to give students formulas for a few more variations, but to have them \emph{derive} them.
+		\item I have chosen an example where the functions are simple, the endpoints are simple, and the algebra is simple, so we can focus on what matters.
+		\item  You could use this questions twice: once after Video 10.1 (to solve all the question with the ``washer method") and once after Video 10.2 (to solve all the questions with the ``cylindrical shell" method).
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{An equation for volumes by ``cylindrical shells"}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  I introduced this method with only one example in Video 10.2.  This question simply asks students to write the general formula for an arbitrary function.
+		\item Students find this easy --- assuming they have watched the video.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A hat}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=6]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This example is quite similar to the one in Video 10.2.  I use it if I want students to practice the cylindrical shell method with a straightforward example.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Doughnut}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=7]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{warning}
+	Students should know that \DS{(x-1)^2 + y^2 = 1} is the equation of a circumference with center $(1,0)$ and radius $1$, but many won't.   In that case they won't be able to visualize this solid, they will likely be intimidated by the question, and they will wait doing nothing.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a good activity to finish the unit.  It uses all the ideas from both methods but pushes students by being a bit different.  Beware: this activity will take a very long time.
+		\item  The two main difficulties are:
+			\begin{itemize}
+				\item  The region is not described as being between the graph of two explicit functions.
+				\item  The axis of rotation is not one of the cartesian axes.
+			\end{itemize}
+			Still, if they fully understand the methods and why they work, they should be able, with enough time, to complete the tasks.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Challenge}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=8]{137-CA-10.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question is probably too hard as a class activity.  I suspect most students will simply say ``I do not know what to do" and will wait without trying to do anything.  
+		\item I save this question in case students are on top of everything, are finding the lesson too easy, and need a challenge.  I have never needed to use it, though.
+		\item Solution: If the axis of the cylinders are the $x$-axis and the $y$-axis, cut the solid with planes parallel to the $xy$-plane (or perpendicular to the $z$-axis, if you prefer).  The resulting cross sections will be squares.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+\end{videos}
+
+\newpage
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

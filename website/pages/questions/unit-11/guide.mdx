@@ -1,0 +1,520 @@
+import { QuestionPreview } from "../../../components/question-preview";
+import {
+    Videos,
+    Slides,
+    Comments,
+    Warning,
+} from "../../../components/guide-components";
+
+# Unit 11: Sequences
+
+**OBJECTIVES**
+
+*   Understand the (various equivalent) definitions of sequence, convergence, various types of divergence, monotonicity, and boundness. We do not introduce subsequences.
+
+*   Transfer all the results about limits of functions to limits of sequences, when appropriate.
+
+*   Use these in computations, examples, and simple proofs.
+
+*   In particular, know (and be able to justify) the relations between them; most notably 1) convergent implies bounded, and 2) bounded $+$ monotonic implies convergent.
+
+*   Understand the definition of “$a_{n}$ grows much slower than $b_{n}$”. Memorize (and be able to prove) the hierarchy of divergent sequences (logarithms, polynomials, exponentials, factorials, and power-exponentials), and use it in simple proofs and limit computations.
+
+    This is probably the most useful result about sequences (but most calculus courses do not teach it!) Since we will use it all the time in Units 12-14, I gave it a name (The Big Theorem).
+
+### Definition of sequence and convergence
+
+#### Warm up
+
+<Slides>
+
+<QuestionPreview question={0} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a short warm-up question that students find easy, and even fun.
+
+*   This is an opportunity to remind students that we should only define a sequence by its first few terms when it is completely clear what we mean. Strictly speaking, it is always going to be ambiguous: if somebody misunderstands what I mean when I describe a sequence by the first few terms, it is my fault.
+
+</Comments>
+
+<Videos>
+
+[11.1 What is a sequence?](https://www.youtube.com/watch?v=utfrtw-H9-Q\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2)
+
+</Videos>
+
+#### Sequences vs functions - convergence [#seqfun1]
+
+<Slides>
+
+<QuestionPreview question={1} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Questions 1 and 2 will appear in Video 11.3, but it is a good activity to ask students to think about this before they learn it in the video.
+
+*   Question 3 is an “obvious” claim. However, when it becomes necessary to use this implication in the middle of a proof, a fraction of students doubt it (and I do not know why). For example, see [“Is this proof correct?”](#recurrence) in recurrence: some student think the error is equating $\displaystyle \lim R_{n}$ and $\displaystyle \lim R_{n+1}$. Thus, it may be good to make them think about this implication in isolation.
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)
+
+</Videos>
+
+#### Definition of limit of a sequence [#deflimit]
+
+<Slides>
+
+<QuestionPreview question={2} unit={11} small={true} />
+
+<QuestionPreview question={3} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is easily one of the most important activities in Unit 11, and the best way to make sure they understand the definition of sequence. However, it is only useful if we force students to think about it, struggle with it, discuss with each other, and come to consensus. If they are just going to wait for our explanation it is just a waste of time.
+
+*   The good news is that by this point in the course students can handle much more abstraction than back in Unit 2, and they will find the question less intimidating than they did back them. Many will still struggle, but their answers will be better than they were back in Unit 2 for a similar question. After completing the activity I like to make them notice this growth so they can appreciate how far they have come.
+
+*   I always use Slide 1. I will decide whether to move to Slide 2, or leave it for another day, or skip it entirely based on how Slide 1 went.
+
+*   How I use this question:
+
+    *   First, I tell them to work individually. I walk among them and I see how they are doing. I can see every time they record a “T” or “F” on their paper, so I see their pace.
+
+    *   Once I decide it is time (most have probably not finished yet) I ask them to vote. For a few of them there will be consensus. I record those answers on the board and will not explain or discuss them. For others there is disagreement or they are reluctant to answer (which means they do not know).
+
+    *   I point out the questions we do not have consensus on yet and tell them to discuss those with their neighbours.
+
+    *   After a while we vote on just those again. Based on their replies, I will decide what to do.
+
+    *   If at some point I think they are slowing down and they need a boost of energy, a good hint to restart the discussion is telling them how many correct statements there are.
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)
+
+</Videos>
+
+#### Convergence and divergence
+
+<Slides>
+
+<QuestionPreview question={4} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students often misuse definitions in assignments, and confuse the following three statements:
+
+    *   $\displaystyle \lim_{n \to \infty}a_{n}\neq L$
+
+    *   $\displaystyle \{a_{n}\}$ is divergent — equivalently, $\displaystyle \forall L \in \mathbb{R}, \lim_{n \to \infty}a_{n}\neq L$
+
+    *   $\displaystyle \{a_{n}\}$ is divergent to $\infty$
+
+    They also sometimes confuse
+
+    *   $\displaystyle \{a_{n}\}$ is convergent — equivalently, $\displaystyle \exists L \in \mathbb{R}\text{ s.t. }\lim_{n \to \infty}a_{n}= L$
+
+    *   $\displaystyle \lim_{n \to \infty}a_{n}= L$
+
+    This activity is an opportunity to emphasize the distinctions and why they matter.
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)
+
+</Videos>
+
+#### Proof from the definition of limit
+
+<Slides>
+
+<QuestionPreview question={5} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students learned to write proofs like this back in Unit 2. There is no significant difference in writing a proof like this for a function or for a sequence. This is an opportunity to review those proofs if you think it is more important. I normally do not give it priority over other activities.
+
+*   If you decide to use it, I recommend emphasizing writing the definition of what we want to prove, and figuring out the proof structure from it. Proof structure is what students struggle the most with, and the reason some of their “proofs” are word salad rather than proofs.
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)
+
+</Videos>
+
+### Monotonicity and boundness
+
+#### Sequences vs functions - monotonicity and boundness
+
+<Slides>
+
+<QuestionPreview question={6} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students find 1 and 2 easy – they are similar to [“Sequences vs functions - convergence”.](#seqfun1)
+
+*   Students find Question 4 hard. A counterexample is either a non-continuous function (which they rarely consider) or something like $\displaystyle f(x) = x \sin (\pi x)$. Having students discuss in group should help: if a student comes up with a good counterexample, they will have no trouble convincing others.
+
+</Comments>
+
+<Videos>
+
+[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+#### Examples
+
+<Slides>
+
+<QuestionPreview question={7} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This was left as an exercise in Video 11.4.
+
+*   In Video 11.4 students learned 3 theorems:
+
+    *   Theorem 1: Every convergent sequence is bounded.
+
+    *   Theorem 2 (Monotone Convergence Theorem): A bounded and monotonic sequence is convergent.
+
+    *   Theorem 3: A sequence that is increasing and unbounded above is divergent to $\infty$
+
+    Theorems 1 and 2 are enough to justify all the choices that are impossible.
+
+*   Students find this question easy. I give them a bit of time, and then it is easy to get volunteers to complete all the cells.
+
+</Comments>
+
+<Videos>
+
+[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+#### Limits of sequences defined by recurrence [#recurrence]
+
+<Slides>
+
+<QuestionPreview question={8} unit={11} small={true} />
+
+<QuestionPreview question={9} unit={11} small={true} />
+
+<QuestionPreview question={10} unit={11} small={true} />
+
+<QuestionPreview question={11} unit={11} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is more subtle than it seems. To make sure students got the point, I like to ask them 
+“What have we actually proven in \[Slide 2]?” I want them to say “The sequence
+$R_{n}$
+is either divergent or convergent to
+$-1+\sqrt{3}$” but this won’t come out naturally. 
+Many won’t see anything wrong or will believe that there is an error in the algebra. Others, noticing we have assumed the sequence is convergent, will believe we have proven nothing.
+
+</Warning>
+
+<Comments>
+
+*   It is hard for students to appreciate how useful the Monotone Convergence Theorem is. “If a sequence is bounded and monotonic, then it has a limit... What good is the theorem if it does not tell me what the limit is?” This activity provides an example of an application. There is a standard “trick” to compute the limit of a sequence defined by recurrence... as long as we know it is convergent. If we use the same trick on a divergent sequence, we may still get a “limit”, and it will be wrong.
+
+*   My hope is that students realize why the argument in the second slide is incomplete without me telling them.
+
+*   How I use this activity:
+
+    *   I give them Slide 1 and a minute to work on it. I verify their answers. This is just to make sure they understand the notation.
+
+    *   I give them Slide 2 and ask them to think about it. At this moment few of them would be able to point out the error if I asked them, and I do not not want one student to spoil it for all, so I move on.
+
+    *   I give them Slide 3 and give them time to work on it. We discuss their answers together.
+
+    *   I go back to Slide 2 and invite to discuss with their neighbours.
+
+    *   Finally, we have a discussion together about Slide 2. This is where I ask them “what have we actually proven in Slide 2?”
+
+    *   Only after that, I move to Slide 4.
+
+</Comments>
+
+<Videos>
+
+[11.1 What is a sequence?](https://www.youtube.com/watch?v=utfrtw-H9-Q\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2)[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+#### True or False - convergence, monotonicity, and boundness
+
+<Slides>
+
+<QuestionPreview question={12} unit={11} small={true} />
+
+ 
+
+<QuestionPreview question={13} unit={11} small={true} />
+
+</Slides>
+
+<Warning>
+
+I advise not using both activities on the same day. Rather, save one as review for a later day.
+
+</Warning>
+
+<Comments>
+
+*   Slide 1
+
+    *   This is a compilation of very common errors. All of them are common false assumptions that students make in their arguments (except for 1 and 8, which are true).
+
+    *   Collaboration is essential for this activity. Many students will make many errors. However, any student who can come up with a counterexample to any of them should be able to convince their neighbours.
+
+*   Slide 2
+
+    *   This is a summary of the most important results that we absolutely want students to know. Once they have study, they should know them in their sleep.
+
+    *   This activity works very well as a quick “warm up” on a later day (for example, on the first day of Unit 12).
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+#### Fill in the blanks
+
+<Slides>
+
+<QuestionPreview question={14} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Answers:
+
+    1.  $m \neq 0$. They may think $m$ needs to be positive.
+
+    2.  $m \geq 0$. They will miss that we can include $m=0$ even though $a_{n}$ is never 0.
+
+    3.  $m \in \mathbb{R}$. This is always true no matter what hypothesis we choose
+
+    4.  $m \geq - \pi/2$. They might find it difficult to begin working on this question. If they need a little push, I tell them to sketch the graph of $\sin$.
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+### Proving theorems
+
+#### Proof of Theorem 3
+
+<Slides>
+
+<QuestionPreview question={15} unit={11} small={true} />
+
+<QuestionPreview question={16} unit={11} small={true} />
+
+<QuestionPreview question={17} unit={11} small={true} />
+
+<QuestionPreview question={18} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   I use this question in a similar manner to proofs of theorems about limits of functions in Unit 2.
+
+*   Background:
+
+    *   In Video 11.4 students learned three theorems:
+
+        *   Theorem 1: Every convergent sequence is bounded.
+
+        *   Theorem 2 (Monotone Convergence Theorem): A bounded and monotonic sequence is convergent.
+
+        *   Theorem 3: A sequence that is increasing and unbounded above is divergent to $\infty$
+
+    *   In Videos 11.5 and 11.6 students learned the proofs of Theorems 1 and 2.
+
+    *   Now is their chance to prove Theorem 3 (which is a bit easier).
+
+*   While students have gotten better since Unit 2, they still struggle with these proofs. Their main issues, as you may recall:
+
+    *   Proof structure.
+
+    *   The difference between a quantified variable (in the statement of the theorem) and a fixed variable (in the proof).
+
+    *   Quantified variables are dummy variables and do not carry any intrinsic meaning.
+
+    *   Variables should be introduced (and fixed) in a specific order.
+
+*   The two bad proofs to critique are good samples of the way students write:
+
+    *   \#1 contains all the ideas in the proof and can be turned into a perfect proof, but it is not a proof – it is just the right work. It does not have the right structure, variables are not fixed in order...
+
+    *   \#2 is just a student bluffing. They do not know how to write the proof so they just wrote “stuff” in the hopes of getting partial marks.
+
+</Comments>
+
+<Videos>
+
+[11.5 Every convergent sequence is bounded](https://www.youtube.com/watch?v=njHTdc0rv6Y\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=5)[11.6 The monotone convergence theorem for sequences](https://www.youtube.com/watch?v=5m7XdA7ogEk\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=6)[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)
+
+</Videos>
+
+#### Composition law
+
+<Slides>
+
+<QuestionPreview question={19} unit={11} small={true} />
+
+<QuestionPreview question={16} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This proof is quite hard for students and it can easily take a whole hour. If you want students to discover this proof and write it themselves, you will need to give them a good chunk of time, discuss the proof structure, give them more time, discuss the key idea in the proof, and give them more time.
+
+</Comments>
+
+<Videos>
+
+[11.3 Properties of limits of sequences](https://www.youtube.com/watch?v=xuNRMkzSzZY\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=3)[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.5 Every convergent sequence is bounded](https://www.youtube.com/watch?v=njHTdc0rv6Y\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=5)[11.6 The monotone convergence theorem for sequences](https://www.youtube.com/watch?v=5m7XdA7ogEk\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=6)
+
+</Videos>
+
+### The Big Theorem
+
+#### Calculations
+
+<Slides>
+
+<QuestionPreview question={20} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a simple calculation question to use the Big Theorem.
+
+*   Students who have watched the Videos find this quite easy.
+
+</Comments>
+
+<Videos>
+
+[11.7 The Big Theorem](https://www.youtube.com/watch?v=Dd3n2rfqxf4\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=7)
+
+</Videos>
+
+#### True or False - The Big Theorem
+
+<Slides>
+
+<QuestionPreview question={21} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Question 3 is important on its own: it is part of an argument that we will use later (Units 12 and 13) when we use Limit-Comparison Test for improper integrals and series.
+
+*   There are two ways to come up with your answers: intuitively, or rigorously (using the formal definition of limit). Both are valid, depending on what you want to emphasize.
+
+*   Collaboration is important in this question. Students will be quite hesitant at first, but they will be more confident if they discuss with each other.
+
+</Comments>
+
+<Videos>
+
+[11.7 The Big Theorem](https://www.youtube.com/watch?v=Dd3n2rfqxf4\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=7)
+
+</Videos>
+
+#### Refining the Big Theorem
+
+<Slides>
+
+<QuestionPreview question={22} unit={11} small={true} />
+
+<QuestionPreview question={23} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   There are various ways to use this activity.
+
+    *   Slide 2 by itself is an interesting question, but it is challenging. Beware: some students will decide they do not know how to do it and wait for the answer without even trying.
+
+    *   Slide 1 by itself is much easier (half the question is just unravelling the solution).
+
+    *   We can also use Slide 1 as warm up, to make Slide 2 a bit more accessible.
+
+</Comments>
+
+<Videos>
+
+[11.7 The Big Theorem](https://www.youtube.com/watch?v=Dd3n2rfqxf4\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=7)[11.8 Proof of the ”Big Theorem”](https://www.youtube.com/watch?v=aMZRptPCtZc\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=8)
+
+</Videos>
+
+#### True or False - Review
+
+<Slides>
+
+<QuestionPreview question={24} unit={11} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a collection of true or false questions from various parts of the unit, all mixed together. It is not a necessary question, but it is a possible way to end the unit.
+
+*   Question 4 will be particularly difficult. The variable $\varepsilon$ is playing an unusual role here. Students won’t recognize that the “then-part” just means the sequence is bounded above.
+
+*   Question 5: The definition of “almost all” appears in [Definition of limit of a sequence](#deflimit).
+
+</Comments>
+
+<Videos>
+
+[11.2 The limit of a sequence](https://www.youtube.com/watch?v=Dr8LzBA-H84\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=2)[11.4 Monotonic and bounded sequences](https://www.youtube.com/watch?v=J8uZJ9by0ys\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=4)[11.8 Proof of the ”Big Theorem”](https://www.youtube.com/watch?v=aMZRptPCtZc\&list=PLlwePzQY_wW_yFyXauToZNFNhhufzioP2\&index=8)
+
+</Videos>

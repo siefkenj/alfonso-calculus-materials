@@ -1,0 +1,22 @@
+{
+    "*": {
+        "theme": { "typesetting": "article" }
+    },
+    "index": {
+        "title": "About"
+    },
+    "unit-01": "Unit 1: Introduction to logic, notation,sets, definitions, and proofs",
+    "unit-02": "Unit 2: Limits and continuity",
+    "unit-03": "Unit 3: Derivatives",
+    "unit-04": "Unit 4: Transcendental functions",
+    "unit-05": "Unit 5: The Mean Value Theorem and applications",
+    "unit-06": "Unit 6: Applications of derivatives and limits",
+    "unit-07": "Unit 7: The definition of integral",
+    "unit-08": "Unit 8: The Fundamental Theorem of Calculus",
+    "unit-09": "Unit 9: Integration methods",
+    "unit-10": "Unit 10: Applications of the integral",
+    "unit-11": "Unit 11: Sequences",
+    "unit-12": "Unit 12: Improper integrals",
+    "unit-13": "Unit 13: Series",
+    "unit-14": "Unit 14: Power series and Taylor series"
+}

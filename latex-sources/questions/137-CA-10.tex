@@ -1,0 +1,198 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{} 
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{\pause}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0} 
+\definecolor{rosa}{rgb}{1, 0, 1}  
+\definecolor{naranja}{rgb}{1, .5, 0.1} 
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+ 
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+ 
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\setsize{15}}
+\setbeamerfont{block title}{size=\setsize{14}}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+\newcommand{\erf}{\operatorname{erf}}
+\newcommand{\vv}{\vspace{.2cm}}
+
+%===================================================
+\begin{document}
+%===================================================
+
+%------------------------------
+\begin{frame}[t]
+\frametitle{An equation for volumes by the carrot method}
+
+Let $a < b$.
+
+Let $f$ be a continuous, positive function defined on $[a,b]$.
+
+Let $R$ be the region in the first quadrant bounded between the graph of $f$ and the $x$-axis.
+
+Find a formula for the volume of the solid of revolution obtained by rotation the region $R$ around the $x$-axis.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Sphere}
+
+You know the formula for the volume of a sphere with radius $R$. 
+  Now you are able to prove it!
+
+\begin{enumerate}
+	\item  Write an equation for the circle with radius $R$ centered at $(0,0)$.
+	\item    If you rotate this circle around the $x$-axis, it will produce a sphere.  Compute its volume as an integral by slicing it like a carrot.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Pyramid}
+
+Compute the volume of a pyramid with height $H$ and square base with side length $L$.
+
+\
+
+\emph{Hint:}  Slice the pyramid like a carrot with cuts parallel to the base.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Many axis of rotation}
+
+Let $R$ be the region in the first quadrant bounded between the curves with equations \DS{y = x^3} and \DS{y=\sqrt{32x}}.  
+
+Compute the volume of the solid of revolution obtained by rotating $R$ around...
+	\begin{enumerate}
+		\item ... the $x$-axis
+		\item ... the $y$-axis
+		\item ... the line $y=-1$
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{An equation for volumes by ``cylindrical shells"}
+
+Let $a < b$.
+
+Let $f$ be a continuous, positive function defined on $[a,b]$.
+
+Let $R$ be the region in the first quadrant bounded between the graph of $f$ and the $x$-axis.
+
+Find a formula for the volume of the solid of revolution obtained by rotation the region $R$ around the $y$-axis.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{A hat}
+
+Let $R$ be the region in the first quadrant bounded between the graphs of \DS{y=x^5+x-2}, \DS{x=2}, and the \DS{x}-axis.  
+
+Compute the volume of the solid of revolution obtained by rotating $R$ around the $y$-axis.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Doughnut}
+
+Let $R$ be the region inside the curve with equation
+	$$
+		(x-1)^2 + y^2=1.
+	$$
+Rotate $R$ around the line with equation \DS{x=4}.  The resulting solid is called a \emph{torus}.
+
+\begin{enumerate}
+	\item  Draw a picture and convince yourself that a torus looks like a doughnut.
+	\item  Set up the volume of the torus as an integral using $x$ as the variable (``cylindrical shell method").  You do not need to compute the integral. 
+	\item  Set up the volume of the torus as an integral using $y$ as the variable (``carrot method").  You do not need to compute the integral. 
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Challenge}
+
+Two cylinders have the same radius $R$ and their axes are perpendicular.  Find the volume of their intersection.
+
+\
+
+\emph{Hint:}  You can slice the resulting solid by parallel cuts in three different directions.  One of the three makes the problem much, much simpler than the other two.
+
+\end{frame}
+%------------------------------
+%-----------------------------
+\end{document}
+%-----------------------------
+%-----------------------------
+
+
+
+

@@ -1,0 +1,744 @@
+# Unit 14: Power series and Taylor series
+
+<Warning>
+
+Students find this material very difficult. Resist the temptation to spend time on “interesting” questions unless students are ready. Go slowly. They will appreciate working on what you may consider “trivial” questions to solidify the basics.
+
+</Warning>
+
+
+**OBJECTIVES**
+
+*   Identify power series and compute their interval of convergence.
+
+*   Understand (and use) which properties of polynomials apply to power series in the interior of the interval of convergence.
+
+*   Understand various equivalent definition of Taylor polynomials and Taylor series (as a an approximation of a function near a point with an error that approaches 0 “quickly”, as a polynomial with the right derivatives, or via the standard formula). Compute with them.
+
+*   Memorize the standard Maclaurin series, and be able to re-derive them.
+
+*   Use all the common tricks to obtain new Taylor series expansions from old ones.
+
+*   Use Taylor series in many common applications (possibly limits, integrals, estimations, adding series, physics, asymptotic behaviour...)
+
+Throughout this last unit I recommend focusing on conceptual understanding, computations, and applications, while avoiding proofs, particularly the most technical ones. Understanding, writing, and critiquing simple proofs is one objective for this course that has been practiced in all the previous units; however, the proofs in this unit are often too technical, hard, or long, so they are not appropriate for that learning objective. Most of the aspects of the theory and most of the theorems are illustrated by how we use them in the applications.
+
+### Power series
+
+#### Interval of convergence
+
+<Slides>
+
+<QuestionPreview question={0} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Standard practice to compute the interval of convergence of a series.
+
+*   Students can mostly do this question, but they are slower than you probably expect.
+
+*   If I include Question 4, I specifically tell students that it is a bonus question, and that they should ignore it unless they have finished everything else. I do not discuss it in class.
+
+*   Solution to Question 4.
+
+    *   Computing the radius of convergence is no more difficult than for other series: $R = 4/27$.
+
+    *   At $R=4/27$ the series is divergent. Use Stirling (Q7 on Practice Problems of Unit 11) to conclude that
+
+        ```math
+        \frac{(3n)!}{n!(2n)!}\left(\frac{4}{27}\right)^{n}\; \sim \; \; \frac{1}{\sqrt{n}}
+        ```
+
+    *   At $R=-4/27$ the series is conditionally convergent. Use Alternating Series Test to prove it is convergent, although proving the terms are decreasing is a little bit subtle.
+
+</Comments>
+
+<Videos>
+
+[14.1 Power series: an example](https://www.youtube.com/watch?v=CYAPZikmuM4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j)[14.2 Power series: the main theorem](https://www.youtube.com/watch?v=IEH7d9XiqqA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=2)
+
+</Videos>
+
+#### What can you conclude?
+
+<Slides>
+
+<QuestionPreview question={1} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question refers to the main theorem about power series: they are absolutely convergent in the interior of the interval of convergence, divergent outside of it, and anything at the endpoints.
+
+*   If students are confused, I draw a real line, an interval of convergence, and I ask them “if the first series is absolutely convergent, where in this picture is $3$?” This normally gets enough of them started. If they collaborate, they can figure it out from here.
+
+</Comments>
+
+<Videos>
+
+[14.1 Power series: an example](https://www.youtube.com/watch?v=CYAPZikmuM4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j)[14.2 Power series: the main theorem](https://www.youtube.com/watch?v=IEH7d9XiqqA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=2)
+
+</Videos>
+
+### Preview of Taylor series and applications
+
+#### Writing functions as power series
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-14.pdf"}\html-attr:page{"4"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   I like using this question as *exploration*
+
+    *   after learning about power series (Video 14.1)
+
+    *   *before* learning much about Taylor series manipulations (Video 14.9)
+
+*   Students can play around, experiment, and discover that we can write “regular” functions as power series.
+
+</Comments>
+
+<Videos>
+
+[14.1 Power series: an example](https://www.youtube.com/watch?v=CYAPZikmuM4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)[14.10 Logarithm as a power series](https://www.youtube.com/watch?v=NYVjEbpY21w\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=10)
+
+</Videos>
+
+#### Challenges
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-14.pdf"}\html-attr:page{"6"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}} {\html-tag:img{\html-attr:src{"137-CA-14.pdf"}\html-attr:page{"8"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}{\html-tag:img{\html-attr:src{"137-CA-14.pdf"}\html-attr:page{"10"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   like using one of these question as *exploration*
+
+    *   after learning about power series (Video 14.1)
+
+    *   *before* learning about this application in videos (Video 14.14)
+
+*   This is difficult but with the right encouragement, if students are willing to play, experiment, and collaborate, they can *discover* the result. When this happens, it is extremely satisfying.
+
+*   On the other hand, if you have a passive, unengaged class, I recommend not using it. They will just wait doing nothing.
+
+</Comments>
+
+<Videos>
+
+[14.1 Power series: an example](https://www.youtube.com/watch?v=CYAPZikmuM4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j)[14.14 Taylor applications: Adding series](https://www.youtube.com/watch?v=ajglGMrE5Gk\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=14)[14.10 Logarithm as a power series](https://www.youtube.com/watch?v=NYVjEbpY21w\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=10)
+
+</Videos>
+
+### Definition of Taylor polynomials and Taylor series
+
+#### Basic questions on the definition(s) of Taylor polynomials
+
+<Slides>
+
+<QuestionPreview question={6} unit={14} small={true} />
+
+<QuestionPreview question={7} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={8} unit={14} small={true} />
+
+</Slides>
+
+<Warning>
+
+This may look like a trivial exercise, but it is far from it (particularly the last slide).
+
+</Warning>
+
+<Comments>
+
+*   **Context:** students learn three ways to define the $n$-th Taylor polynomial $P_{n}$ of a function $f$ at $a$:
+
+    *   (Video 14.3) It satisfies $\displaystyle \lim_{x \to a}\frac{f(x) - P_{n}(x)}{(x-a)^{n}}= 0$
+
+    *   (Video 14.4) $P_{n}$ and $f$ have the same value and same first $n$ derivatives at $a$
+
+    *   (Video 14.5) With the formula   $\displaystyle P_{n}= \sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^{k}$.
+
+*   The goal of these questions is to understand the first two definitions by using them in very simple cases. I like using this activity before students even watch Video 14.5. Otherwise, once they watch Video 14.5, they try to do everything from the formula instead of from the other two properties.
+
+*   The activity looks very easy, but students have a lot of trouble with it (which means the activity is worth it). They need coaching, and they need firm insistence that they write down the definition for each case and try to make sense of it.
+
+*   The “warm up” slide is definitely worth it to focus their attention, even if simply means “look it up and copy it down”.
+
+</Comments>
+
+<Videos>
+
+[14.3 Taylor polynomials (1) - The definition with the limit](https://www.youtube.com/watch?v=aCFR5CABSA0\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=3)[14.4 Taylor polynomials (2) - The definition with the derivatives](https://www.youtube.com/watch?v=sNWY1w8YocM\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=4)
+
+</Videos>
+
+#### True or False - Taylor polynomials
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-14.pdf"}\html-attr:page{"15"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"quick"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   This is a short question to make sure students understand what it means to be “an approximation of order $n$”.
+
+*   It works well as a quick “concept check” at the beginning of class.
+
+*   Some students will think 2 and 4 are false because they are not using the definition. If you insist that they stop, write down the definition, and think, they should be able to figure it out.
+
+</Comments>
+
+<Videos>
+
+[14.3 Taylor polynomials (1) - The definition with the limit](https://www.youtube.com/watch?v=aCFR5CABSA0\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=3)
+
+</Videos>
+
+#### True or False - smooth functions
+
+<Slides>
+
+<QuestionPreview question={10} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={11} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These are quick questions about the definition of $C^{n}$ and $C^{\infty}$ functions.
+
+*   They are not difficult. They are just an excuse to make student think about these new definitions for a couple of minutes.
+
+</Comments>
+
+<Videos>
+
+[14.4 Taylor polynomials (2) - The definition with the derivatives](https://www.youtube.com/watch?v=sNWY1w8YocM\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=4)
+
+</Videos>
+
+#### Approximating functions
+
+<Slides>
+
+<QuestionPreview question={12} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Video 14.4 proves that $g$ is an approximation for $f$ of order $n$ near $a$ if and only if $f^{(k)}(a) = g^{(k)}(a)$ for all $0 \leq k \leq n$.
+
+    This is a simple question to practice this result and assimilate it.
+
+*   Students may be surprised that various, different functions may be approximations of the same order.
+
+*   The club picture is a link to the graphs on Desmos.
+
+</Comments>
+
+<Videos>
+
+[14.4 Taylor polynomials (2) - The definition with the derivatives](https://www.youtube.com/watch?v=sNWY1w8YocM\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=4)[14.3 Taylor polynomials (1) - The definition with the limit](https://www.youtube.com/watch?v=aCFR5CABSA0\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=3)
+
+</Videos>
+
+#### A polynomial given its derivatives
+
+<Slides>
+
+<QuestionPreview question={13} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Video 14.5 produces the standard formula for Taylor polynomials derived as “a polynomial whose derivatives are the same as the derivatives of the function”. It leave the actual derivation (why the formula indeed has that property) as an exercise.
+
+*   This is a simple activity to do the calculation and derive the formula. It is very accessible and, if we give students enough time, they can do it.
+
+*   Question 2 will cause some confusion. The point is that we can get a polynomial with these conditions and degree $3$, but we can also get manny polynomials with higher degree and the same conditions. This explains why we impose the condition of “degree at most $n$” for “the $n$-th Taylor polynomial”: it makes it unique and, in a way, the simplest among other polynomials with the same properties.
+
+</Comments>
+
+<Videos>
+
+[14.5 Taylor Polynomials (3) - The formula](https://www.youtube.com/watch?v=c-rI1zMj0wA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=5)
+
+</Videos>
+
+#### Competition!
+
+<Slides>
+
+<QuestionPreview question={14} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={15} unit={14} small={true} />
+
+<QuestionPreview question={16} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={17} unit={14} small={true} />
+
+</Slides>
+
+<Warning>
+
+*   Don’t dismiss this activity for being “silly”. It works really well and it makes its point.
+
+*   Omit this activity from your pre-class slides. Otherwise, you will spoil it.
+
+</Warning>
+
+<Comments>
+
+*   **Context:** Switching from polynomials written as linear combinations of powers of $x$ to polynomials written as linear combinations of powers of $(x-a)$ is trivial for us. It isn’t for students. It confuses them a lot and they do not understand the point.
+
+    This game works wonderfully to help students understand the point.
+
+*   Notice that $\displaystyle C = D$. Do not mention this until the discussion after the competition.
+
+*   How I use this activity:
+
+    *   I make students choose a team. I make them write down only one of the two polynomials.
+
+    *   I explain what is going to happen. I make it look as much as a game as I can.
+
+    *   I present the calculations and I give them 2 minutes. Team D finishes while Team C is struggling with the first question.
+
+    *   I invite them to discuss with each other, and then collectively as a class: was this fair? why? who had an advantage?
+
+        Now they understand the advantage of the “change of basis”
+
+    *   I give them the last slide “I spy a polynomial with my little eye”. They can now solve them quickly. Before this activity they would have struggled.
+
+</Comments>
+
+<Videos>
+
+[14.5 Taylor Polynomials (3) - The formula](https://www.youtube.com/watch?v=c-rI1zMj0wA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=5)
+
+</Videos>
+
+#### cosine
+
+<Slides>
+
+<QuestionPreview question={18} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Video 14.6 derives the Maclaurin series for $f(x) = e^{x}$ and $g(x) = \sin x$. It leave $h(x) = \cos x$ as an exercise.
+
+*   The goal is for students to derive one Maclaurin series themselves from the general formula.
+
+</Comments>
+
+<Videos>
+
+[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)
+
+</Videos>
+
+#### Interval of convergence of Maclaurin series
+
+<Slides>
+
+<QuestionPreview question={19} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Video 14.6 presents these Maclaurin series but does not compute their interval of convergence.
+
+</Comments>
+
+<Videos>
+
+[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)
+
+</Videos>
+
+### Analytic functions
+
+#### $\sin$ is analytic
+
+<Slides>
+
+<QuestionPreview question={20} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={21} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Video 14.8 proves that $f(x) =e^{x}$ is analytic, as an example of proving Lagrange’s Remainder Theorem.
+
+    The best way to make sure students understand the process is to replicate it with another function. That is the goal of this question.
+
+*   I recommend using the “warm up”, even if it just means looking all those pieces up. It will help students focus.
+
+</Comments>
+
+<Videos>
+
+[14.8 A proof that the exponential function is analytic](https://www.youtube.com/watch?v=lQH-pqS7vdk\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=8)[14.7 Analytic functions and the Remainder Theorems](https://www.youtube.com/watch?v=SXLJOa1_GMs\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=7)
+
+</Videos>
+
+#### Generalize your proof
+
+<Slides>
+
+<QuestionPreview question={22} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={23} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** After watching the proof that the exponential function is analytic (Video 14.8) and proving that sine is analytic (see previous activity) students start to see a pattern. They often even ask about it.
+
+    Through this exercise, students can get a first taste of what research is like: coming up with an interesting question, moving from examples to a general case, writing precise statements, testing their hypotheses, coming up with new theorems.
+
+*   If they have understood the previous two proofs, students will have no trouble saying that the condition we need is “the derivatives need to be bounded”. However, they will need quite some prodding to write something more precisely.
+
+*   How I use this question: Slide 2 is a back-up – I prefer not to use it. Instead,
+
+    *   I ask students to work and discuss with each other.
+
+    *   After a while, I take some volunteer and write their answers on the board (it will look somewhat similar to Slide 2)
+
+    *   Then I ask them to discuss these options with their neighbours and to choose which ones work.
+
+*   There is a nice follow-up question. There will likely be multiple hypotheses that make the theorem work (a bound that depends on $x$, or a bound that depends on nothing). I then ask students to tell me which one of the resulting theorems is the most useful.
+
+</Comments>
+
+<Videos>
+
+[14.8 A proof that the exponential function is analytic](https://www.youtube.com/watch?v=lQH-pqS7vdk\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=8)[14.7 Analytic functions and the Remainder Theorems](https://www.youtube.com/watch?v=SXLJOa1_GMs\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=7)
+
+</Videos>
+
+#### A $C^{\infty}$-but-not-analytic function
+
+<Slides>
+
+<QuestionPreview question={24} unit={14} small={true} />
+
+</Slides>
+
+<Warning>
+
+This example is a “classic” and may feel important, but I do not recommend using it.
+
+</Warning>
+
+<Comments>
+
+*   I am including this question for completeness. We (mathematicians) tend to like this example and may even feel bad if we do not share it with students. But we are doing it for ourselves, not for them.
+
+    This activity is difficult and could easily take you over half a class. Even then, many students won’t understand it unless you fully solve it for them, and in that case... what is the point? Our limited time is probably better spent understanding the basics, and inviting students to practice more Taylor series manipulations and applications.
+
+</Comments>
+
+<Videos>
+
+[14.7 Analytic functions and the Remainder Theorems](https://www.youtube.com/watch?v=SXLJOa1_GMs\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=7)
+
+</Videos>
+
+### Constructing new Taylor series
+
+#### Taylor series gymnastics
+
+<Slides>
+
+<QuestionPreview question={25} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={26} unit={14} small={true} />
+
+</Slides>
+
+<Warning>
+
+Do not skip this question – you will want to use at least some of it
+
+</Warning>
+
+<Comments>
+
+*   These activities involve the classic manipulations to obtain new Taylor series from “the main four ones”.
+
+*   They are not very difficult, but students need some practice to get comfortable with them. This is time well spent as these manipulations will be necessary later as part of all the Taylor series applications.
+
+</Comments>
+
+<Videos>
+
+[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)[14.10 Logarithm as a power series](https://www.youtube.com/watch?v=NYVjEbpY21w\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=10)
+
+</Videos>
+
+#### $\arctan$
+
+<Slides>
+
+<QuestionPreview question={27} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Video 14.10 obtains the Maclaurin series for $\ln(1+x)$ by integrating a known series.
+
+    This activity is an opportunity to practice the same technique with a different function.
+
+*   There will be a large controversy about the integration constant. Do we need an integration constant? Why don’t we need an integration constant on each side of the equation? Why do we need to find the value of the constant rather than leave it as $+C$?
+
+</Comments>
+
+<Videos>
+
+[14.10 Logarithm as a power series](https://www.youtube.com/watch?v=NYVjEbpY21w\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=10)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)
+
+</Videos>
+
+#### $\arcsin$
+
+<Slides>
+
+<QuestionPreview question={28} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **Context:** Students do not learn about the binomial series in the videos, although they are introduced in the practice problems. They can still solve this question from scratch, rather than as a particular case of the binomial series.
+
+*   This is one of the few opportunities for students to construct a new Maclaurin series using the general formula, rather than as manipulation of the main four series.
+
+*   Students will struggle with how to express their answer. They will think that it is not okay to leave an expression indicated such as “$1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1)$” and they do not have the language of double factorials.
+
+</Comments>
+
+<Videos>
+
+[14.5 Taylor Polynomials (3) - The formula](https://www.youtube.com/watch?v=c-rI1zMj0wA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=5)[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)[14.10 Logarithm as a power series](https://www.youtube.com/watch?v=NYVjEbpY21w\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=10)
+
+</Videos>
+
+#### Parity
+
+<Slides>
+
+<QuestionPreview question={29} unit={14} small={true} />
+
+</Slides>
+
+<Warning>
+
+Do not assume all students know the definition of odd and even function.
+
+</Warning>
+
+<Comments>
+
+*   Once students recall or learn the definition of even and odd function, they will have no trouble with Question 2.
+
+*   Question 3, on the other hand, is confusing. Most students do not know what we are asking and are tempted to just wait and do nothing. Plan accordingly.
+
+</Comments>
+
+<Videos>
+
+[14.5 Taylor Polynomials (3) - The formula](https://www.youtube.com/watch?v=c-rI1zMj0wA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=5)
+
+</Videos>
+
+#### Product and composition of Taylor series
+
+<Slides>
+
+<QuestionPreview question={30} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={31} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students have learned that “We can manipulate power series like polynomials (in the interior of their intervals of convergence)”. These questions elaborate on that point.
+
+*   Products and compositions of Taylor series do not appear explicitly on the videos.
+
+*   Students will be a bit hesitant and they need encouragement “Really: manipulate the power series like polynomials. Write out the first few terms and manipulate them like polynomials”.
+
+*   Once they are willing to try, the main difficulty/error is in deciding how many terms of the final answer are correct if they truncate the individual series they are multiplying or composing. This is not obvious. They will make errors and they will have questions about it.
+
+</Comments>
+
+<Videos>
+
+[14.2 Power series: the main theorem](https://www.youtube.com/watch?v=IEH7d9XiqqA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=2)[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)
+
+</Videos>
+
+#### Tangent and secant
+
+<Slides>
+
+<QuestionPreview question={32} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={33} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These questions are not particularly important or necessary. Some people will find them cute; some people will find them tedious. Nevertheless, if you want to show students the rich variety of “Taylor manipulations”, these are good candidates.
+
+*   These questions only work well if your students enjoy collaborating. They will be uncertain and hesitant of many of the steps, but if they discuss and collaborate, they will move forward.
+
+</Comments>
+
+<Videos>
+
+[14.2 Power series: the main theorem](https://www.youtube.com/watch?v=IEH7d9XiqqA\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=2)[14.6 The four main Maclaurin series](https://www.youtube.com/watch?v=o-RSENE_Yus\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=6)[14.9 How to write functions as power series quickly](https://www.youtube.com/watch?v=ksKu5p2qvB4\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=9)
+
+</Videos>
+
+### Applications
+
+#### Integrals
+
+<Slides>
+
+<QuestionPreview question={34} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students find this application of Taylor series easy. They understand it well, and they appreciate it as useful.
+
+    Give them time and they will solve the question.
+
+</Comments>
+
+<Videos>
+
+[14.12 Taylor applications: Integrals](https://www.youtube.com/watch?v=4Gbmp8Qn8Xo\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=12)
+
+</Videos>
+
+#### Adding series
+
+<Slides>
+
+<QuestionPreview question={35} unit={14} small={true} />
+
+ 
+
+<QuestionPreview question={36} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students find this application of Taylor series difficult and confusing.
+
+*   My original plan was to have Slide 1 as a gentle introduction and Slide 2 as the real practice. However, I never get to Slide 2. Students can work through Slide 1, but they are extremely slow. The activity can easily take half a class. In any case, it is good practice, and it is only useful if students are doing it, rather than watch me do it, so there is no point in rushing it.
+
+</Comments>
+
+<Videos>
+
+[14.14 Taylor applications: Adding series](https://www.youtube.com/watch?v=ajglGMrE5Gk\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=14)
+
+</Videos>
+
+#### Limits
+
+<Slides>
+
+<QuestionPreview question={37} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students find this application of Taylor series difficult. If they have watched Video 14.13 and reflected on it, they get the idea and they can work through it, although they are normally slow and hesitant.
+
+</Comments>
+
+<Videos>
+
+[14.13 Taylor applications: Limits](https://www.youtube.com/watch?v=-CK3K_aeH64\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=13)
+
+</Videos>
+
+#### Estimations
+
+<Slides>
+
+<QuestionPreview question={38} unit={14} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This application of Taylor series is hit and miss. The students who have understood and memorized Lagrange’s Remainder Theorem have no trouble. Others are confused, do not know what to do, and just wait doing nothing.
+
+*   This activity will work better if the class likes to discuss and collaborate. Otherwise, many won’t try.
+
+*   Solution:
+
+    *   $A$ is better estimated with the Alternating Series Theorem.
+
+    *   $B$ is estimated with Lagrange’s Remainder Theorem.
+
+</Comments>
+
+<Videos>
+
+[14.11 Taylor applications: Estimations](https://www.youtube.com/watch?v=vM7sLZ2ljko\&list=PLlwePzQY_wW9h32ZwS6CYsY4eR_b2pE9j\&index=11)
+
+</Videos>

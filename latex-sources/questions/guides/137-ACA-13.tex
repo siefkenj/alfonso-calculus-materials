@@ -1,0 +1,1399 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=vJCGp9luzlc&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI}{13.1 Infinite sums: a cautionary tale} }
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=VccmKguRkeY&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=2}{13.2 The definition of infinite sum} }
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=OfDw7AoVXYs&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=3}{13.3 A telescopic series} }
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=jrO276f_wwg&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=4}{13.4 Examples of divergent series from the definition} }
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=IjTJP3ssOkk&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=5}{13.5 Geometric series} }
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=x8zxHukU-UE&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=6}{13.6 Series are linear} }
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=9njCb8usB94&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=7}{13.7 The tail of a series} }
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=kP9qHkTSNpI&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=8}{13.8 A necessary condition for convergence of series} }
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=_7qwFfSjBtE&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=9}{13.9 Positive series} }
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=spg7c-LY59o&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=10}{13.10 The integral test - the theorem} }
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=bmb_K39nay0&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=11}{13.11 The integral test - Examples} }
+\newcommand{\vxii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=QbYK4COJUqU&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=12}{13.12 Comparison tests for series} }
+\newcommand{\vxiii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=OM9U6Pwze8E&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=13}{13.13 Alternating series} }
+\newcommand{\vxiv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=NFhV-ZVg6pg&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=14}{13.14 Estimating the value of an alternating series} }
+\newcommand{\vxv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=2i0iUwLwwxs&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=15}{13.15 Absolute convergence vs conditional convergence} }
+\newcommand{\vxvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=_CSvVbH-0c0&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=16}{13.16 Proof of the Absolute Convergence Test} }
+\newcommand{\vxvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=H6f9mfqzeBg&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=17}{13.17 Infinite sums are not commutative!} }
+\newcommand{\vxviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=2Fj56wxfLEo&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=18}{13.18 Ratio test: the theorem} }
+\newcommand{\vxix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=S0C0XoEKGCk&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI&index=19}{13.19 Ratio test: examples} }
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{13. Series}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Discovery
+%===========================
+
+\newcommand{\seed}[2]{ 
+\begin{tikzpicture}
+\node {\includegraphics[scale=.6,page= #2]{#1}};
+%\node at (4,2.63) {\includegraphics[height=1cm]{thinking}};
+\node at (3.8,-2.63) {\includegraphics[height=0.9cm]{thinking}};
+\end{tikzpicture}
+}
+
+\newcommand{\review}[2]{ 
+\begin{tikzpicture}
+\node {\includegraphics[scale=.6,page= #2]{#1}};
+\node at (3.8,-2.63) {\includegraphics[height=0.9cm]{quick}};
+%\node at (4,-2) {\includegraphics[height=0.85cm]{quick}};
+\end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 13: Series
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{3mm}
+
+\begin{warning}
+\ \vspace{-3mm}
+
+	Students find this material very difficult.  There are lots of little concepts and little results.  Individually, they are not too hard, but they become a big mess if we move on too quickly before students have absorbed each piece.
+\vspace{3mm}
+	
+	Resist the temptation to spend time on ``interesting" questions unless students have fully understood the basics.   Go slowly.  They will appreciate working on what you may consider ``trivial" questions so as to gain confidence.
+\end{warning}
+
+\vspace{5mm}
+
+{\bf SPECIAL QUESTIONS}\\
+
+
+	\hspace{-1.3cm} {\includegraphics[height=0.9cm]{thinking}}\\
+	\vspace{-1.5cm}
+	
+	  {\bf Discovery: }  a question for students to explore an idea that will foreshadow or anticipate something appearing later in the videos.  They may simply think about a concept ahead of time, or they may fully discover a new result or technique by themselves.
+		\begin{itemize}
+			\item You can use it as I describe it -- then be aware that students have not learned the concept yet and the goal is to \emph{discover} it.
+			\item Or you can wait till they learn the concept in the videos -- then modify it appropriately, if needed.	\\
+		\end{itemize}
+
+	\hspace{-1.3cm} {\includegraphics[height=0.9cm]{quick}}\\
+	\vspace{-1.5cm}	
+	
+	 {\bf Concept check:}  a quick question to test something simple that we want students to know really well.  It works great as a warm-up.
+		\begin{itemize}
+			\item You may use it on the day this concept is being learned, as part of the process.
+			\item Or you may save for a later day as a warm up to ``review", to emphasize how important this is.
+		\end{itemize}
+
+\vspace{5mm}
+
+{\bf OBJECTIVES}
+
+	\begin{itemize}
+		\item Never confuse a sequence with a series.  Use proper notation for both concepts.
+		\item Like for improper integrals, understand that an infinite sum is a new concept that we have to define.  
+		\item Understand the definition, be able to explain it, and use it to compute the value of simple series (mostly geometric and telescopic series).  
+		\item Estimate a series numerically.
+		\item Know that we cannot take for granted that properties of finite sums carry to infinite sums.  Know which properties carry and prove so from the definition.
+		\item  State the standard convergence tests and justify intuitively why they work (even if not formally prove them).  Correctly use them to determine whether a series is convergent (and even conditionally convergent or absolutely convergent) or divergent, as well as in simple proofs.
+	\end{itemize}
+\vspace{3mm}
+
+\tableofcontents
+
+\newpage
+%==================
+\section{Definition of series}
+%==================
+%==================
+\subsection{Telescopic series}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=1]{137-CA-13.pdf}}  \quad
+{ \includegraphics[scale=.6,page=2]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item The two slides work well together or individually (any of them).
+			\begin{itemize}
+				\item    Slide 1 is an example where students  can compute a series from beginning to end using the definition.
+				\item  Slide 2 reminds students that we cannot assume infinite sums behave like finite sums.  Series are a new concept and properties cannot be taken for granted.
+			\end{itemize}
+		\item Answers:
+			\begin{itemize}
+				\item  Slide 1:  \; \DS{S_k = \frac{1}{2} \left[ 1 + \frac{1}{2} - \frac{1}{k+1} - \frac{1}{k+2} \right]}
+				\item  Slide 2: \; The series is divergent to $-\infty$.  The split we did as difference of two series was illegal, because it was ``$\infty - \infty$".
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Trig series}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Basic question to remind students of the simplest examples of divergent series.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Help me write the next assignment}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=4]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Simple question to hammer on the definition of series and of partial sums.
+		
+		\item Answer:  \DS{\sum_{n=1}^{\infty} (2n+1)}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{What can you conclude?}
+
+\begin{center}
+\seed{137-CA-13.pdf}{5}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This activity foreshadows (slightly) positive series and comparison tests.
+		\item It also insist on the definition of series as a limit of partial sums.
+		\item Answers:
+			\begin{itemize}
+				\item 1 - we do not know: every series satisfies this
+				\item 2 - convergent: the sequence of partial sums is increasing and bounded above
+				\item 3 - we do not know
+				\item 4 - divergent: the series grows faster than \DS{\sum_n^{\infty} M}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Harmonic series}
+
+\begin{center}
+\seed{137-CA-13.pdf}{6}
+\end{center}
+
+\begin{warning}
+	This is one of those activities that looks confusing, makes students react with ``I do not know", and tempts them to just wait for your answer while doing nothing.  Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question foreshadows comparison tests.
+		
+		\item   Students will later learn that the harmonic series diverges using the Integral Test.
+			
+				This question is an attempt at doing an ``elementary" proof from the definition of series.
+		
+		\item How I use this question:
+			\begin{itemize}
+				\item I give students a bit of time.
+				\item We discuss together the answer to 1.
+				\item I give students more time for the rest.
+			\end{itemize}
+		\item Answer:
+			\begin{itemize}
+				\item  \DS{r_1 = 1}, \; \DS{S_1=1}
+				\item \DS{r_2 = \frac 12}, \; \DS{S_2 = S_1 + \frac 12}
+				\item \DS{r_3=r_4 = \frac 14}, \; \DS{S_4 = S_2 + \frac 12}
+				\item \DS{r_5= r_6 = r_7 = r_8 = \frac 18}, \; \DS{S_8 = S_4 + \frac 12}
+				\item ...
+			\end{itemize}
+
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vix
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Definition of series}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=7]{137-CA-13.pdf}} \quad
+{ \includegraphics[scale=.6,page=8]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+This activity is easy, but do not rush it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This activity should be easy.  It focuses on the definition of a series as the limit of the sequence of partial sums, together with properties of sequences.
+		
+		\item Nevertheless, do not rush it!   Students can answer this question, but it takes them time to wrap their heads around the notation and get comfortable with it.   It is worth it to give them enough time to think through it and discuss it with their peers. 
+		
+		\item Answers: 1, 3, 4, 5, 6, 7 are true.  2 is false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Geometric series}
+%==================
+%==================
+\subsection{Rapid geometric series}
+
+\begin{center}
+\review{137-CA-13.pdf}{9}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Short question to recognize geometric series even when they are ``in disguise".
+		
+		\item Works well as a warm up.
+		
+		\item Answer: 1, 2, 3, 4 are convergent.  The rest are divergent.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Compute geometric series}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=10]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Simple question to recognize geometric series and add them up.
+		
+		\item Students find this question accessible and even fun.  Give them enough time and they will solve it.
+
+		\item  There are some subtleties about Question 6:
+			\begin{itemize}
+				\item They will forget we need to break this into cases, depending on whether $|x|<1$.
+				\item  The videos only introduce \DS{\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}}.  Some of them learned in high school  \DS{\sum_{n=0}^{\infty} ax^n = \frac{a}{1-x}}.  ``Are we allowed to use this other formula?"  ``Do we need to know it?"
+				\item  If you try to reduce this problem to using the basic formula only ``are we allowed to do those manipulations?"
+			\end{itemize}
+		\item Answers: 
+			\begin{itemize}
+			\begin{multicols}{2}
+				\item[1.]   \DS{\sum_{n=0}^{\infty} \left( \frac{1}{3} \right)^n \; = \; \frac{1}{1 - 1/3}}
+				\item[2.]   \DS{ \frac{1}{2} \sum_{n=0}^{\infty} \left( \frac{-1}{2} \right)^n \; = \; \frac{1/2}{1 + 1/2}}
+				\item[2.]   \DS{ \frac{3}{2} \sum_{n=0}^{\infty} \left( \frac{-3}{2} \right)^n \; } divergent
+				\item[4.]   \DS{\sum_{n=0}^{\infty} \left( \frac{1}{2^{0.5}} \right)^n \; = \; \frac{1}{1 - 1/\sqrt{2}}}
+				\item[5.]   \DS{\sum_{n=0}^{\infty} \frac{1}{2} \left[  \left( \frac{-3}{4} \right)^n - 1 \right] \; = \; \frac{1/2}{1 + 3/4} - \frac{1}{2}}
+				\item[6.]   \DS{x^k \cdot \sum_{n=0}^{\infty} x^n \; = \; \frac{x^k}{1 - x}} \;  if $|x|<1$.
+			\end{multicols}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{$0.9999999 \ldots$}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=12]{137-CA-13.pdf}}  \quad
+{ \includegraphics[scale=.6,page=13]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   There are absurdly heated debates on the internet over whether $0.999 \ldots = 1$.  Read the Wikipedia article
+		\href{https://en.wikipedia.org/wiki/0.999... }{https://en.wikipedia.org/wiki/0.999... } and in particular the sections ``Skepticism in education" and ``Cultural phenomenon".
+		\item Your class will be split between firm believers that they are different, confused students, believers that they are equal but who cannot prove it rigorously, and those who know what is going on.
+		
+		Resist the temptation to rush or to lecture to your students and give them the answer.  Proper understanding of what is going on is now within their reach if you give them enough time.    Use this activity wisely and you will witness many ``aha" moments, things finally clicking, and some minds blown.
+		
+		\item \emph{After} students have solve the question, it is appropriate to have a mini-lecture to explain how a decimal representation is just a way to represent a number, that the proper interpretation of such expansions is a series, and how it is reasonable for two decimal representations to represent the same number (just like two fractions can represent the same number).
+		
+		\item Both of the slides serve the same purpose.  I use one or the other depending on the time I want to spend.
+		
+		\item Answers:
+			\begin{itemize}
+			\begin{multicols}{2}
+				\item  \DS{0.99999 \ldots \; = \; \sum_{n=1}^{\infty} \frac{9}{10^n}  \; = \; 1}
+				\item  \DS{0.11111 \ldots \; = \; \sum_{n=1}^{\infty} \frac{1}{10^n}  \; = \; \frac{1}{9}}
+				\item  \DS{0.252525 \ldots \; = \; \sum_{n=1}^{\infty} \frac{25}{100^n}  \; = \; \frac{25}{99}}
+				\item  \DS{0.3121212 \ldots \; = \; \frac{3}{10} + \frac{1}{10}\sum_{n=1}^{\infty} \frac{12}{100^n}  \; = \; \frac{103}{330}}
+			\end{multicols}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Power series advertising}
+
+\begin{center}
+\seed{137-CA-13.pdf}{15}
+
+\seed{137-CA-13.pdf}{16}
+\seed{137-CA-13.pdf}{17}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   The good:  
+			\begin{itemize}
+				\item These activities serve as an advertisement for why we will spend Unit 14 studying power series.  
+				\item If successful, students will be impressed and intrigued.
+			\end{itemize}
+		\item The bad: 
+			\begin{itemize}
+				\item These activities are hard and take a lot of time!   
+				\item Resist the temptation to rush into them unless you have enough time and students are very comfortable with the basics.  
+				 If you are going to end up explaining the answer yourself, rather than having students discover it, they are not worth it.  
+				 \item If unsure, solidifying the basics of series is probably more important.  After all, none of these questions are ``necessary" at this point in the unit.  Students will eventually learn this in Unit 14 anyway.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Basic properties of series}
+%==================
+%==================
+\subsection{Examples}
+
+\begin{center}
+\seed{137-CA-13.pdf}{19}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Simple question that anticipates positive series.
+		\item   Some students mistakenly think that \DS{\sum_n^{\infty} (2 + \sin n)} is an example of  positive series that is  ``oscillating".
+		
+		Remind them that ``oscillating" means ``divergent, but neither $\infty$ or $-\infty$", and not simply that the terms alternate between increasing and decreasing.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viii
+
+\viv
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Tail of a series}
+
+\begin{center}
+\seed{137-CA-13.pdf}{20}
+\end{center}
+
+\begin{warning}
+	I suggest not skipping this question.  This result is essential.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This activity foreshadows the ``tail of a series" (whether a series converges depends only on the tails).
+		\item Common point of confusion: some students will think that $a_n = 1/n$ provides a counterexample to 2.  They are thinking that it is possible for \DS{\int_0^\infty f(x) dx} to be divergent while \DS{\int_7^{\infty} f(x) dx} is convergent as long as \DS{\int_0^7 f(x) dx} is divergent.
+		\item Answers: 1, 2 are true.  3 is false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Necessary condition}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=21]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+Do not skip this question!
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This is one of the most important results about series, and one of the most commonly misused in tests and assignments.  I would advise using this activity \emph{even more than once}.
+		
+		\item  2, 3 are true.  1,4 are false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Harder questions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=22]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is one of those activities that looks confusing, makes students react with ``I do not know", and tempts them to just wait for your answer while doing nothing.  Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   These questions are hard.  Most students try to do them ``by feeling", just by looking at them and guessing, without writing anything down, or thinking of definitions.  That is pretty much impossible.
+
+		\item If I use this question, I aggressively tell students to rewrite everything in terms of partial sums.  Otherwise, they will get nowhere.
+
+		
+		\item For 1 and 2, we need to notice that \DS{\sum_{n=k}^{\infty} a_n \; = \; S - S_{k-1}}.  This is obvious to you and me, but students do not think of it easily.
+		
+		\item The notation in 3 and 4 will confuse students.  It may be worth it to write the first few terms of the series to make sure they understand what they are working with.
+		
+		\item Answers:
+			\begin{itemize}
+				\item 1 and 2 are true.   
+				\item  3 is true.   \DS{\sum_{n=1}^{k} a_n = \sum_{n=1}^{\lfloor k/2 \rfloor} a_{2n} + \sum_{n=1}^{\lceil k/2 \rceil }a_{2n+1}}, then use limit laws.
+				\item 4 is false.  Counterexample:  \DS{1 - 1 + \frac{1}{2} - \frac{1}{2} + \frac{1}{3} - \frac{1}{3} + \frac{1}{4} - \frac{1}{4} + \ldots}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Series are linear}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=23]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   In Video 13.6 students learn that series are linear.  The video proves additivity, but leaves scalar multiplication (the proof in this activity) as an exercise.
+		\item  The goals of this activity include
+			\begin{itemize}
+				\item We cannot assume all properties of finite sums carry on to infinite sums.  We need to verify which ones do.
+				\item  To prove they do carry, just use the definition of a series as a limit of partial sums.
+			\end{itemize}
+		\item This proof will be accessible to students who watched the videos.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Integral and comparison tests}
+%==================
+%==================
+\subsection{Quick review of most useful improper integrals}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=25]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   I use this activity early in Unit 13 to keep these results (which belong to Unit 12) fresh and relevant in students' minds.   
+		
+		We will need to recall them when we get to integral test and comparison tests for series.
+		
+		\item Answers:  1, 4 are convergent.  2, 3, 5, 6 are divergent.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxi
+\end{videos}
+
+\newpage
+%==================
+\subsection{$p$-series vs geometric series}
+
+\begin{center}
+\review{137-CA-13.pdf}{26}
+\end{center}
+
+\begin{warning}
+Do not skip this question!
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This activity summarizes two essential families of series.    We want students to be able to answer this in their sleep.  
+		
+		\item Answers:
+			\begin{itemize}
+			\begin{multicols}{2}
+				\item[1.]  \DS{|a|>1}
+				\item[2.]  \DS{a>1}
+				\item[3.]  \DS{|a|<1}
+				\item[4.]  \DS{a>-1}
+			\end{multicols}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vx
+
+\vxi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Comparison and integral test practice}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=27]{137-CA-13.pdf}}  \quad
+{ \includegraphics[scale=.6,page=28]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Practice with standard applications of integral test and comparison tests.
+			\begin{itemize}
+				\item  Slide 1 contains easier questions.  We want everybody to eventually be able to solve these in their sleep.  Students will be slower than you think.
+				\item  Slide 2 contains harder examples including some very challenging ones.  You could easily spend a whole class just on this slide.    
+
+					When I use it, I tell students to focus on Question X, Y, Z (the ones we will actually discuss), but the rest are there to keep faster students busy.
+			\end{itemize}
+		\item Students need the practice, and they will take a lot of time.  It is time well spent.
+		
+		\item Answers:
+			\begin{itemize}
+				\item Slide 1.  Use LCT with \DS{\sum_{n}^{\infty} \frac{1}{n^p}} for an appropriate value of $p$.
+					\begin{itemize}
+					\begin{multicols}{2}
+						\item[1.]  Divergent ($p=1$)
+						\item[2.]  Convergent ($p=1/2$)
+						\item[3.]  Convergent ($p=3/2$)
+						\item[4.]  Divergent ($p=5/6$)
+					\end{multicols}
+  					\end{itemize}
+				\item Slide 2
+					\begin{itemize}
+						\item[1.]  Convergent: LCT with a geometric series
+						\item[2.]  Convergent:  \DS{\ln n << n^{1/40}} and use comparison tests
+						\item[3.]  Convergent:  LCT with \DS{\sum_{n} \frac{1}{n^2}}
+						\item[4.]  Convergent:  Integral test.
+						\item[5.]  Divergent: Integral test
+						\item[6.]  Convergent:  \DS{e^{-n^2} < e^{-n}}, then integral test.  Or \DS{e^{-n^2} << \frac{1}{n^2}}.
+					\end{itemize}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Abstract use of convergence tests}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=29]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+This is a great question.  I am sure you like it already.  As paradoxical as it may sound, do not rush to use it!
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   This is one of the most important questions in the unit, because it summarizes many ideas.  If a student understands everything, then it is delightfully simple.  Otherwise, it is impossible.
+		
+		{\bf However this does not mean you should necessarily use it in class!}  If students are not comfortable with the basics, you will be wasting a great activity and they will not be able to to solve it.  If you do not have time for it, do not worry: it is included in the practice problems and students will attempt it when studying for the test.
+		
+		\item Answers.  Since \DS{\sum_{n} a_n} is convergent, we conclude \DS{a_n \longrightarrow 0}.
+			\begin{itemize}
+				\item[1.]  Convergent.  Use LCT as \DS{\lim_{n \to \infty} \frac{\sin a_n}{a_n} = 1}.
+				\item[2.]  Divergent.  \DS{\lim_{n \to \infty} \cos a_n = 1}.
+				\item[3.] No conclusion. Examples \DS{a_n = \frac{1}{n^2}} and \DS{a_n = \frac{1}{n^4}}.
+				\item[4.]  Convergent.  $0 < a_n <1$ for large values of $n$.  Therefore ${a_n}^2 < a_n$.  Use BCT.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vviii
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Infinite decimal expansions are well-defined}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=30]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+	If you use this question, have a plan to make sure students understand what the point is, perhaps including a brief explanation before starting.
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Answer:  It is always convergent -- compare it with \DS{0.9999....} using BCT.
+		\item   This question is hard to use well.   Students easily miss the point and do not understand what we are doing or why.  Those who get it find the question easy (but perhaps satisfying).  Those who don't just wait without doing anything.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vix
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Alternating series}
+%==================
+%==================
+\subsection{Rapid questions: alternating series test}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=31]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Simple question to check the statement of the alternating series test with very easy examples.  
+		\item  Answers:  2, 4, 5 are true; 1, 3, 6 are false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+
+\vviii
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Odd and even partial sums}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=32]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   These questions address a step in the \emph{proof} of the Alternating Series Test (Video 13.13) that students may miss.
+		\item Answer:  In general, the sequence \DS{\{S_n\}_{n=0}^{\infty}} is convergent iff the two sequences \DS{\{S_{2n}\}_{n=0}^{\infty}} and \DS{\{S_{2n+1}\}_{n=0}^{\infty}} are convergent to the \emph{same} limit. 
+				
+		3 is true; 1, 2 are false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+\subsection{An alternating series test example}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=33]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   The terms of these series only satisfy the hypotheses of the Alternating Series test \emph{eventually}, but that is enough.  That is the point of the question.
+		\item Some students mistakenly believe that we do not need to check the sequence \DS{\left\{ \frac{n - \pi}{e^n} \right\}_{n}^{\infty}} to be (eventually) decreasing.   They mistakenly reason: it is (eventually) positive and convergent to 0, so it must be (eventually) decreasing.    
+		
+		\item A simple way to check monotonicity is to extend to a function and take the derivative.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Estimation}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=34]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Standard application of the second half of the Alternating Series Theorem.
+		\item Answer:  
+		The smallest partial sum that works is \; \DS{S_2 = 1 - \frac{1}{3!} + \frac{1}{5!} = \frac{101}{120}} \; because \; \DS{\frac{1}{7!} < 0.001}.
+		
+		\item Common error: Many students correctly calculate that \DS{\frac{1}{7!} < 0.001} and therefore think we need to use 
+			\DS{S_3 = 1 - \frac{1}{3!} + \frac{1}{5!} - \frac{1}{7!}} as an estimate.
+			
+			This error comes from memorizing the formula without thinking about why it is true.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Not exactly alternating}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=35]{137-CA-13.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   These two series have both positive and negative terms, but they are not alternating as in the Alternating Series Test.  They are unlike any example students my have seen.  The goal is to challenge them to be creative and come up with new tricks.
+		\item You will need to convince students to play and experiment.    Most students reaction to this activity is ``I do not know what to do.  I will just wait for the answer".   Collaboration is essential for this activity.  Making the goal explicit may help.
+		\item I like to use this question at the end of class, give them a bit of time, and \emph{not solve it}.
+		\item Answers:
+			\begin{itemize}
+				\item  $A$ is convergent.   Group every two terms together and you have a new series that \emph{does} satisfy the hypotheses of the Alternating Series test.  Equivalently, think of the sequence of even partial sums.
+				\item  $B$ is divergent.   Group every 5 terms together.  Equivalently look at the sequence of every 5th partial sum.   
+					$$
+						B \; \geq \; 1 + \frac{1}{6} + \frac{1}{11} + \frac{1}{16} + \ldots
+					$$
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vxii
+
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A counterexample to the alternating series test?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=36]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is one of those activities that looks confusing, makes students react with ``I do not know", and tempts them to just wait for your answer while doing nothing.  Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  Small hint: there can't be a counterexample to the Alternating Series Test, so which of the hypotheses is this series failing?
+
+		Many students realize that we need \DS{\{b_n \}_n} \emph{not} to be eventually decreasing.  Unfortunately, this by itself is not enough and most students get stuck.
+		
+		\item Big hint: You can define \DS{\{b_{2n}\}} and \DS{\{b_{2n-1}\}} independently.
+		
+		Students will figure it out with this hint, but unfortunately, it gives a little bit too much away.  It would be better to guide to discover this hint themselves, but I do not know how.
+		
+		\item Sample answer: \DS{b_{2n} = \frac{1}{n}} and \DS{b_{2n-1} = \frac{1}{n^2}}.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{Absolute and conditional convergence}
+%==================
+%==================
+\subsection{Absolutely convergent or conditionally convergent?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=37]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Quick check of the definition of absolute and conditional convergence.   The examples are easy if we remember the definitions.
+		\item   Answer:
+			\begin{itemize}
+				\item[1.] is conditionally convergent
+				\item[2.] is absolutely convergent
+				\item[3.] is divergent.   (Yes, the wording is misleading on purpose, just to check if they are paying attention.)
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxv
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Absolute Values}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=38]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Questions 3 and 4 are the ``absolute convergence test".  This is an essential result that students must know.
+		\item Questions 1 and 2, by contrast, are new questions.  Students must think of them on the spot.  Having all four questions together will confuse some of them.
+		\item Answers: 1 and 4 are true; 2 and 3 are false.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxv
+
+\vxvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Positive and negative terms}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=40]{137-CA-13.pdf}} \quad
+{ \includegraphics[scale=.6,page=42]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These two activities work fine together or independently (either one of them).
+		\item   The goal is to make students think about the ideas behind the absolute convergence test, and the difference between absolute and conditional convergence (including the reason for the name).  
+		\item Answers:
+%			\begin{itemize}
+%				\item Slide 1.
+%					\begin{center}
+%					\begin{tabular}{|c|}
+%					\hline
+%						convergent  \\
+%					\hline
+%						$\infty$ \\
+%					\hline
+%						$-\infty$  \\
+%					\hline
+%						convergent, $\infty$, $-\infty$, or oscillating  \\
+%					\hline					
+%					\end{tabular}
+%					\end{center}
+%				\item Slide 2.
+%					\begin{center}
+%					\begin{tabular}{|c|c|}
+%					\hline
+%						convergent or $\infty$ & convergent or $-\infty$ \\
+%					\hline
+%						convergent  & convergent  \\
+%					\hline
+%						convergent  & convergent  \\
+%					\hline
+%						$\infty$ &  $-\infty$ \\
+%					\hline
+%						$\infty$ & convergent or $-\infty$ \\
+%					\hline
+%						$\infty$ &  $-\infty$ \\
+%					\hline					
+%					\end{tabular}
+%					\end{center}
+%			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxv
+
+\vxvi
+
+\vxvii
+\end{videos}
+
+\newpage
+%==================
+%==================
+\section{The Ratio Test}
+%==================
+%==================
+\subsection{Quick review: convergence or divergent}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=43]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This activity works well as a warm up on the last session of Unit 13, before we go on practicing the Ratio Test.
+		\item   This is NOT about the Ratio Test.  Rather, it is a summary of all the important examples of series whose convergence is very easy to calculate.  We want students to be able to answer these question in their sleep.
+		\item Answers:
+			\begin{itemize}
+			\begin{multicols}{2}
+				\item[1.] Divergent (geometric)
+				\item[2.] Convergent (geometric)
+				\item[3.] Convergent ($p$-series)
+				\item[4.]  Divergent ($p$-series)
+				\item[5.] Convergent (alternating series test)
+				\item[6.]  Divergent (necessary condition)
+				\item[7.]  Divergent (LCT)
+				\item[8.]  Convergent (LCT)
+			\end{multicols}
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vviii
+
+\vxii
+
+\vxiii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Ratio test}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=44]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   Standard practice with the Ratio Test.
+		\item What to expect:
+			\begin{itemize}
+				\item Question 1 (convergent) is easy, but students are likely much slower than you expect.
+				\item In Question 2 (divergent), some students have trouble simplifying \DS{\frac{(2(n+1))!}{(2n)!}}
+				\item In Question 3 (convergent), students will have trouble computing the limit.
+				\item In Question 4 (divergent) the Ratio Test is inconclusive.  This is on purpose, to remind students this may happen.  Use BCT instead.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxviii
+
+\vxix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Root test}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=45]{137-CA-13.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is one of those activities that looks confusing, makes students react with ``I do not know", and tempts them to just wait for your answer while doing nothing.  Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   In Video 13.18 students learn the Ratio Test and a heuristic argument (not a formal proof) of why the theorem is true.  The videos do \emph{not} include the Root Test at all.  
+		\item The goal of this question is to guide students to come up with a new theorem (intuitively; without necessarily writing a formal proof).    It is a bit of a gamble: it may pay off and be very satisfying.... or it may flop and lead nowhere.
+		\item To clarify: students do not need to learn the Root Test in this course.   In this activity they are practicing other skills; the goal is not to memorize the theorem itself.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxviii
+
+\vxix
+\end{videos}
+
+\newpage
+%==================
+%==================
+\end{document}
+%==================
+%==================
+
+
+

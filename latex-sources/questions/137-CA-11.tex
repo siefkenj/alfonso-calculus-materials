@@ -1,0 +1,649 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{} 
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{\pause}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0} 
+\definecolor{rosa}{rgb}{1, 0, 1}  
+\definecolor{naranja}{rgb}{1, .5, 0.1} 
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+ 
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+ 
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\setsize{15}}
+\setbeamerfont{block title}{size=\setsize{14}}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+% Preamble just for this file
+%===========================
+
+\newcommand{\an}{\left\{ a_n \right\}_{n=0}^{\infty}}
+\newcommand{\bn}{\left\{ b_n \right\}_{n=0}^{\infty}}
+\newcommand{\Rn}{\left\{ R_n \right\}_{n=0}^{\infty}}
+
+\newcommand{\seqs}[1]{\left\{ #1_n \right\}_{n}}
+
+
+\newcommand{\tasma}{\phantom{\DS{\int_{\dfrac 11}^9} ????????  }}
+
+%===================================================
+\begin{document}
+%===================================================
+%----------------------------------------------------------------------------------------
+%	Definition of sequence and convergence
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Warm up}
+
+Write a formula for the general term of these sequences
+\vfill
+\begin{enumerate}
+	\item \DS{\{a_n\}_{n=0}^{\infty} = \{ \, 1, \, 4, \, 9, \, 16, \, 25, \, \ldots \, \} }
+\vfill
+	\item \DS{\{b_n\}_{n=1}^{\infty} = \{ \, 1, \, -2, \, 4, \, -8, \, 16, \, -32, \,  \ldots \, \} }
+\vfill
+	\item \DS{\{c_n\}_{n=1}^{\infty} = \left\{ \,  \frac{2}{1!}, \, \frac{3}{2!}, \, \frac{4}{3!}, \, \frac{5}{4!}, \,  \ldots \, \right\} }
+\vfill
+	\item \DS{\{d_n\}_{n=1}^{\infty} = \{ \,  1, \, 4, \, 7, \, 10, \, 13, \, \ldots \, \} }
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Sequences vs functions -- convergence}
+
+For any function $f$ with domain $[0, \infty)$, \\
+we define a sequence as $a_n = f(n)$. \\
+Let $L \in \R$.  Which of these implications is true?
+
+\
+\begin{enumerate}
+	\item  IF \DS{\lim_{x \to \infty} f(x) = L}, \;
+		THEN \DS{\lim_{n \to \infty} a_n = L}.	
+\vfill
+	\item IF \DS{\lim_{n \to \infty} a_n = L}, \;
+		 THEN \DS{\lim_{x \to \infty} f(x) = L}.
+\vfill
+	\item IF \DS{\lim_{n \to \infty} a_n = L}, \;
+		 THEN \DS{\lim_{n \to \infty} a_{n+1} = L}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Definition of limit of a sequence}
+
+Let \DS{\an} be a sequence.  Let \DS{L \in \R}.  \\
+Which statements are equivalent to  \DS{``\an \longrightarrow L"}?
+
+\begin{enumerate}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| < \e.}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \; \rojo{ > } \; n_0 \implies |L-a_n| < \e.}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \rojo{\R}, \; \forall n \in  \N, \; \quad n \geq n_0 \implies |L-a_n| < \e.}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \N, \; \forall n \in  \rojo{ \R}, \; \quad n \geq n_0 \implies |L-a_n| < \e.}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| \; \rojo{\leq} \; \e.}
+	
+	\
+	\item \DS{\forall \e \; \rojo{\in (0,1)}, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| < \e.}
+	\item \DS{\forall \e>0, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| < \rojo{\frac{1}{\e}}.}
+	\item \DS{\forall \rojo{k \in \Z^{+}}, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| < \rojo{k}.}
+	\item \DS{\forall \rojo{k \in \Z^{+}}, \; \exists n_0 \in \N, \; \forall n \in \N, \; \quad n \geq n_0 \implies |L-a_n| < \rojo{\frac{1}{k}}.}
+\end{enumerate}
+
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{Definition of limit of a sequence  (continued)}
+
+
+Let \DS{\an} be a sequence.  Let \DS{L \in \R}.  \\
+Which statements are equivalent to  \DS{``\an \longrightarrow L"}?
+
+\begin{enumerate}
+\addtocounter{enumi}{9}
+	\item  \DS{\forall \e >0}, the interval \DS{(L-\e, L+\e)} contains all the elements of the sequence, except the first few.
+	\item  \DS{\forall \e >0}, the interval \DS{(L-\e, L+\e)} contains infinitely many of the elements of the sequence.
+	\item  \DS{\forall \e >0}, the interval \DS{(L-\e, L+\e)} contains \emph{\rojo{almost all}} the elements of the sequence.
+	\item  \DS{\forall \e >0}, the interval \DS{[L-\e, L+\e]} contains \emph{\rojo{almost all}} the elements of the sequence.
+	\item  Every interval that contains $L$ must  contain \emph{\rojo{almost all}} all the elements of the sequence.
+	\item  Every open interval that contains $L$ must  contain \emph{\rojo{almost all}} all the elements of the sequence.
+\end{enumerate}
+
+\
+
+\emph{Notation:}  ``\emph{\rojo{almost all}}" = ``all, except finitely many"
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Convergence and divergence}
+
+Let \DS{\an} be a sequence.   \\ Write the formal definition of the following concepts:
+
+	\begin{enumerate}
+		\item  \DS{\an} is convergent.
+
+\vfill
+		\item  \DS{\an} is divergent.
+
+\vfill
+		\item  \DS{\an} is divergent to $\infty$.
+
+\vfill
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Proof from the definition of limit}
+
+Prove, directly from the definition of limit, that
+	$$
+		\lim_{n \to \infty} \frac{n^2}{n^2+1} = 1.
+	$$
+
+\
+
+\emph{Suggestion:}
+\begin{enumerate}
+	\item Write down the definition of what you want to show.
+	\item  Use itto decide the structure of the proof.
+	\item Do some rough work if necessary.
+	\item  Write down the formal proof.
+\end{enumerate}	
+	
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Monotonicity and  boundness
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Sequences vs functions -- monotonicity and boundness}
+
+For any function $f$ with domain $[0, \infty)$, \\
+we define a sequence as $a_n = f(n)$. \\
+Which of these implications is true?
+
+\
+\begin{enumerate}
+	\item  IF $f$ is increasing,
+		THEN \DS{\an} is increasing.	
+		\vfill
+	\item IF \DS{\an} is increasing,
+		 THEN $f$ is increasing.
+		\vfill
+	\item  IF $f$ is bounded,
+		THEN \DS{\an} is bounded.	
+		\vfill
+	\item IF \DS{\an} is bounded,
+		 THEN $f$ is bounded.
+		\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Examples}
+
+Construct 8 examples of sequences. \\
+If any of them is impossible, cite a theorem to justify it.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+&& convergent & divergent \\
+\hline
+\multirow{2}{*}{monotonic} & bounded & \tasma & \tasma \\ 
+\cline{2-4}
+& unbounded & \tasma & \tasma  \\
+\hline
+\multirow{2}{*}{not monotonic} & bounded & \tasma & \tasma  \\
+\cline{2-4}
+& unbounded &\tasma & \tasma \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\end{frame}
+%-----------------------------
+\begin{frame}[t]
+\frametitle{A sequence defined by recurrence}
+
+Consider the sequence \DS{\Rn} defined by
+	\begin{equation*}
+		\begin{cases}
+			&R_0 = 1 \\
+			 \forall n \in \N, \quad & R_{n+1} = \dfrac{ R_n + 2}{R_n + 3}
+		\end{cases}
+	\end{equation*}
+Compute \DS{R_1, \, R_2, \, R_3}.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Is this proof correct?}
+Let  \DS{\Rn} be the sequence in the previous slide.
+\begin{block}{Claim:}
+	\DS{\Rn \longrightarrow -1 + \sqrt{3} }.
+\end{block}
+\pause
+\begin{proof}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item  Let \DS{L = \lim_{n \to \infty} R_n}.
+		\item \DS{R_{n+1} = \frac{R_n + 2}{ R_n + 3}}
+		\item \DS{\lim_{n \to \infty }R_{n+1} = \lim_{n \to \infty }\frac{R_n + 2}{ R_n + 3}}
+		\item \DS{L = \frac{L + 2}{ L + 3}}
+		\item \DS{L(L+3) = L + 2 }
+		\item \DS{L^2 +2L - 2 = 0 }
+		\item \DS{L =   -1 \pm \sqrt{3}}
+		\item \DS{L} must be positive, so \DS{L =  -1 + \sqrt{3} }
+	\end{itemize}
+\end{multicols}
+\end{proof}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Another sequence defined by recurrence}
+Consider the sequence \DS{\an} defined by
+	\begin{equation*}
+		\begin{cases}
+			&a_0 = 1 \\
+			 \forall n \in \N, \quad & a_{n+1} = 1 - a_n
+		\end{cases}
+	\end{equation*}
+
+\begin{itemize}
+	\item Use the same method as in the previous slide to compute its limit.
+	\item {\bf After} you have computed the limit, calculate $a_1$, $a_2$, $a_3$, and $a_4$.
+	\item What happened?
+\end{itemize}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{The original sequence defined by recurrence --  done right}
+
+Consider the sequence \DS{\Rn} defined by
+	\begin{equation*}
+		\begin{cases}
+			&R_0 = 1 \\
+			 \forall n \in \N, \quad & R_{n+1} = \dfrac{ R_n + 2}{R_n + 3}
+		\end{cases}
+	\end{equation*}
+
+\begin{enumerate}
+	\item Prove \DS{\Rn} is bounded below by 0.
+	\item Prove \DS{\Rn} is decreasing (use induction)
+	\item Prove \DS{\Rn} is convergent (use a theorem)
+	\item Now the calculation in the earlier slide is correct, and we can get the value of the limit.
+\end{enumerate}
+
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{\smallerfont True or False - convergence, monotonicity, and boundedness}
+
+\begin{enumerate}
+	\item  If a sequence is convergent, then it is bounded above.
+	\item If a sequence is bounded, then it is convergent
+	\item If a sequence is convergent, then it is eventually monotonic.
+	\item If a sequence is positive and converges to 0, then it is eventually monotonic.
+	\item If a sequence diverges to $\infty$, then it is eventually monotonic.
+	\item If a sequence diverges, then it is unbounded.
+	\item If a sequence diverges and is unbounded above, then it diverges to $\infty$.
+	\item If a sequence is eventually monotonic, then it is either convergent, divergent to $\infty$, or divergent to $-\infty$.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{True or False - Rapid fire}
+
+	\begin{enumerate}
+		\item  (convergent) \DS{\implies} (bounded)
+	\vfill
+		\item  (convergent) \DS{\implies} (monotonic)
+	\vfill
+		\item  (convergent) \DS{\implies} (eventually monotonic)
+	\vfill
+		\item  (bounded) \DS{\implies} (convergent)
+	\vfill
+		\item  (monotonic) \DS{\implies} (convergent)
+	\vfill
+		\item  (bounded + monotonic) \DS{\implies} (convergent)
+	\vfill
+		\item  (divergent to $\infty$) \DS{\implies} (eventually monotonic)
+	\vfill
+		\item  (divergent to $\infty$) \DS{\implies} (unbounded above)
+	\vfill
+		\item  (unbounded above) \DS{\implies} (divergent to $\infty$)
+	\end{enumerate}
+\vfill
+
+\vfill
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Fill in the blanks}
+
+Let \DS{\{a_n\}} be a decreasing, bounded sequence.   \\
+Assume $a_1 = 1$ and $a_n$ is never $0$. \\
+Let $m$ be the greatest lower bound of \DS{\{a_n\}}.\\
+\medskip
+
+For each of the statements below, find \textbf{all} the values of $m$ that make the statement true.
+
+\begin{enumerate}
+	\item  IF \boxed{\phantom{????????????}} THEN \DS{\{1/a_n\}} is bounded
+	\item  IF \boxed{\phantom{????????????}} THEN \DS{\{1/a_n\}} is increasing
+	\item  IF \boxed{\phantom{????????????}} THEN \DS{\{\sin a_n\}} is bounded
+	\item  IF \boxed{\phantom{????????????}} THEN \DS{\{\sin a_n\}} is decreasing
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Proving theorems
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Proof of Theorem 3}
+ Write a proof for the following Theorem
+\begin{block}{\smallerfont Theorem 3}
+Let \DS{\an} be a sequence.
+	\begin{itemize}
+		\item IF \DS{\an} is increasing AND unbounded above,
+		\item THEN \DS{\an} is divergent to $\infty$ 
+	\end{itemize}
+\end{block}
+\p
+\begin{enumerate}
+	\item  Write the definitions of ``increasing", ``unbounded above", and ``divergent to $\infty$"
+	\item  Using the definition of what you want to prove, write down the structure of the formal proof.
+	\item  Do some rough work if necessary.
+	\item  Write a formal proof.
+\end{enumerate}
+
+\end{frame}
+%---------------------------------
+\begin{frame}[t]
+\frametitle{Proof feedback}
+
+\begin{enumerate}
+	\item Does your proof have the correct structure? 
+	\item	Are all your variables fixed (not quantified)?  In the right order?  Do you know what depends on what?
+	\item Is the proof self-contained?  Or do I need to read the rough work to understand it?
+	\item Does each statement follow logically from previous statements?
+	\item Did you explain what you were doing?  Would your reader be able to follow your thought process without reading your mind?
+\end{enumerate}
+
+\end{frame}
+%---------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Critique this proof - \#1}
+
+\begin{itemize}
+\vfill
+	\item  \DS{\forall M \in \R, \; \exists n_0 \in \N, \; \forall n \in \N, \quad n\geq n_0 \implies x_n > M}
+\vfill \vfill
+	\item $M$ is not an upper bound: \DS{\exists n_0 \in \N} s.t. \DS{x_{n_0} > M}
+\vfill \vfill
+	\item \DS{n \geq n_0 \; \implies \; x_n \geq x_{n_0} > M}
+\vfill
+\end{itemize}
+\end{frame}
+%---------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Critique this proof - \#2}
+
+\begin{itemize}
+\vfill
+	\item  WTS $a_n \rightarrow \infty$.  This means:
+\vspace{.2cm}
+	 \quad \DS{\forall M \in \R, \; \exists n_0 \in \N, \; \forall n \in \N, \quad n\geq n_0 \implies x_n > M}
+\vfill \vfill
+	\item bounded above: \quad   \DS{\exists M \in \R, \; \forall n \in \N, \; x_n \leq M}
+\vfill \vfill
+	\item negation:   \quad \DS{\forall M \in \R, \; \exists n \in \N, \; x_n > M}
+\vfill \vfill
+	\item $\forall n \in \N$, take $n=n_0$.
+\vfill
+\end{itemize}
+\end{frame}
+%---------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Composition law}
+ Write a proof for the following Theorem
+\begin{block}{Theorem}
+Let \DS{\an} be a sequence.  Let \DS{L \in \R}.  Let $f$ be a function.
+\begin{itemize}
+	\item IF \DS{\begin{cases}
+			\an \longrightarrow L \\
+			f \mbox{ is continuous at } L
+		\end{cases}
+		}
+	\item THEN \DS{ \left\{ f(a_n) \right\}_{n=0}^{\infty}   \longrightarrow f(L)} .
+\end{itemize}
+\end{block}
+\p
+\begin{enumerate}
+	\item  Write the definition of your hypotheses and your conclusion.
+	\item  Using the definition of your conclusion, figure out the structure of the proof.
+	\item  Do some rough work if necessary.
+	\item  Write a formal proof.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	The ``Big Theorem"
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Calculations}
+
+\begin{enumerate}
+	\item  \DS{\lim_{n \to \infty} \frac{n! + 2 e^n}{3n! + 4 e^n} }
+
+	\vfill
+	\item   \DS{\lim_{n \to \infty} \frac{2^n + (2n)^2 }{2^{n+1} + n^2 } }
+	
+	\vfill
+	\item  \DS{\lim_{n \to \infty} \frac{5n^{5} + 5^n + 5n! }{n^n} }
+\end{enumerate}
+
+\vfill
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{True or False -- The Big Theorem}
+
+Let \DS{\an} and \DS{\bn} be positive sequences.
+\vspace{.15cm}
+\begin{enumerate}
+	\item   IF \; \rojo{\DS{a_n << b_n}}, \quad THEN  \; \azul{\DS{\forall m \in \N}, \DS{a_m < b_m}}.
+\vfill
+	\item   IF \; \rojo{\DS{a_n << b_n}}, \quad THEN  \; \azul{\DS{\exists m \in \N} s.t. \DS{a_m < b_m}}.
+\vfill
+	\item   IF \; \rojo{\DS{a_n << b_n}}, \quad THEN  \; \azul{\DS{\exists n_0 \in \N} s.t.} 
+		\vspace{.15cm}
+		
+		\azul{ \DS{\forall m \in \N, \; m\geq n_0 \implies a_m < b_m}}.
+\vfill
+\p
+	\item   IF \; \azul{\DS{\forall m \in \N, \, a_m < b_m}},  \quad THEN \; \rojo{\DS{a_n << b_n}}.
+\vfill
+	\item   IF \; \azul{\DS{\exists m \in \N} s.t.  \DS{a_m < b_m}},  \quad THEN \; \rojo{\DS{a_n << b_n}}.
+\vfill
+	\item   IF \; \azul{\DS{\exists n_0 \in \N} s.t. \DS{\forall m \in \N, \; m\geq n_0 \implies a_m < b_m}},  
+		\vspace{.15cm}
+		
+		THEN \; \rojo{\DS{a_n << b_n}}.
+\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Refining the Big Theorem - 1}
+
+\begin{enumerate}
+	\item  Construct a sequence \DS{\seqs{u}} such that
+  		$$
+			\begin{cases}
+				\forall a < 0, & n^a << u_n  \\
+				\forall a \geq 0, & u_n << n^a
+			\end{cases}
+		$$
+
+\
+
+	\item  Construct a sequence \DS{\seqs{v}} such that
+  		$$
+			\begin{cases}
+				\forall a \leq 0, & n^a << v_n  \\
+				\forall a > 0, & v_n << n^a
+			\end{cases}
+		$$
+\end{enumerate}   
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Refining the Big Theorem - 2}
+
+\begin{enumerate}
+	\item  Construct a sequence \DS{\seqs{u}} such that
+  		$$
+			\begin{cases}
+				\forall a < 2, & n^a << u_n  \\
+				\forall a \geq 2, & u_n << n^a
+			\end{cases}
+		$$
+
+\
+
+	\item  Construct a sequence \DS{\seqs{v}} such that
+  		$$
+			\begin{cases}
+				\forall a \leq 2, & n^a << v_n  \\
+				\forall a > 2, & v_n << n^a
+			\end{cases}
+		$$
+\end{enumerate}   
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{True or False - Review}
+
+\begin{enumerate}
+	\item  If \DS{\an} diverges and is increasing, then $\exists n \in \N$ s.t. $a_n > 100$.
+\vfill
+	\item If \DS{\lim_{n \to \infty} a_n = L}, then $\forall n \in \N$, \DS{a_n < L+1}.
+\vfill
+	\item If \DS{\lim_{n \to \infty} a_n = L}, then $\exists n \in \N$ s.t. \DS{a_n < L+1}.
+\vfill
+	\item If \DS{\lim_{n \to \infty} a_n = L}, then $\exists \e>0$ s.t.  $\forall n \in \N$, \DS{a_n < L+\e}.
+\vfill
+	\item If $\an$ is convergent and $b_n =a_n$ for \emph{almost all} $n \in \N$, then $\bn$ is convergent.
+\vfill
+	\item If $a_n << b_n$, then $\exists n \in \N$ s.t. $a_n <  b_n$. 
+\vfill
+	\item If $a_n << b_n$, then $\forall \e >0$, $\exists n \in \N$ s.t. $a_n < \e b_n$.
+\vfill
+	\item If $a_n << b_n$, then $\forall \e >0$, $\exists n_0 \in \N$ s.t. $\forall n \in \N$,  $n \geq n_0 \implies a_n < \e b_n$, 
+\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%------------------------------
+%-----------------------------
+\end{document}
+%-----------------------------
+%-----------------------------
+
+
+
+

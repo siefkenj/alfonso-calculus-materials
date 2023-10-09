@@ -1,0 +1,491 @@
+import { QuestionPreview } from "../../../components/question-preview";
+import {
+    Videos,
+    Slides,
+    Comments,
+    Warning,
+} from "../../../components/guide-components";
+
+# Unit 9: Integration methods
+
+**Our objective is NOT to teach algorithms**
+
+There are two integration methods that are important by themselves: substitution and parts. Students need to become fluent in performing these computations, as well as understand why the algorithm works, and be able to justify it using differentiation rules.
+
+After that, drilling complicated integration methods into students is obsolete. Almost nobody performs them by hand anymore. Instead, when we study other integration methods, we are teaching problem solving, not integration methods. We want students to learn the more general idea of “reduce this problem to another one I have already solved”, which is the essence of all these methods. So we focus on students understanding why the methods work and how someone could come up with them in the first place, rather than applying it to super-complex examples or memorizing a long list of algorithms. **To a certain extent it does not matter which other integration methods (if any) we “teach”.**
+
+### Integration by substitution
+
+#### Computation practice: substitution
+
+<Slides>
+
+<QuestionPreview question={0} unit={9} small={true} />
+
+<QuestionPreview question={1} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is some standard computational practice of integration by substitution.
+
+*   How I use this question:
+
+    *   If I want a gentle warm up to make sure they understand the basics of the algorithm, I use the first slide. It is a single question and I am telling them which substitution to use.
+
+    *   If I want a bit more practice, I give them the second slide with only questions 1-4.
+
+    *   If I want longer practice, I give them the second slide with questions 1-8.
+
+*   If I give them the second slide, I will not solve all the questions myself afterwards. I will walk around the class observing their work. Afterwards, I will decide whether I give them a final answer, or I solve it, or I just point out what the correct substitutions is, or nothing. In particular, I may tell them to focus on a subset of the questions (the only ones we will discuss) and the rest are there to keep faster students busy.
+
+*   Notice that Question 8 does not have an elementary antiderivative.
+
+</Comments>
+
+<Videos>
+
+[9.1 Integration by substitution - The theory](https://www.youtube.com/watch?v=6IiHC3-E3kQ\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=1)[9.2 Integration by substitution - Examples](https://www.youtube.com/watch?v=dS50LonV_ms\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=2)
+
+</Videos>
+
+#### Definite integral via substitution
+
+<Slides>
+
+<QuestionPreview question={2} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question shows a common wrong write-up for a definite integral via substitution.
+
+*   It takes some work to convince them that this matters and it is not just me being pedantic. I normally focus on the the expression
+
+    ```math
+    \frac{1}{3}\int_{0}^{2}u^{1/2}du,
+    ```
+
+    isolate it, agree that it has a meaning on its own independent of context, and ask whether this quantity is $\displaystyle 52/9$ or not.
+
+*   There are two ways to fix this:
+
+    *   First compute $\displaystyle \int \sqrt{x^{3}+1}\, x^{2}\, dx$, and then use FTC on a different line.
+
+    *   Change the ends of integration when performing the substitution.
+
+</Comments>
+
+<Videos>
+
+[9.3 Substitution for definite integrals](https://www.youtube.com/watch?v=9WkYb_fRoG0\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=3)
+
+</Videos>
+
+#### Integral of products of $\sin$ and $\cos$
+
+<Slides>
+
+<QuestionPreview question={3} unit={9} small={true} />
+
+</Slides>
+
+<Warning>
+
+This question is only worth it BEFORE students watch Video 9.7.
+
+</Warning>
+
+<Comments>
+
+*   Students will learn this in Video 9.7. After they have watched it, this question is moot. But if they have not watched it yet, it is a very nice exercise and it is completely accessible.
+
+*   This is an example of one of the many obsolete integration algorithms our grandparents used to memorize (“to integrate a function of type X, do Y”). It is not particularly important per se. The point is not to *know* the algorithm. The point is to be able to come up with the algorithm.
+
+*   How I use this question:
+
+    *   I give students only Questions 1-3.
+
+    *   After they solved them and we discuss them, I give them Question 4.
+
+</Comments>
+
+<Videos>
+
+[9.1 Integration by substitution - The theory](https://www.youtube.com/watch?v=6IiHC3-E3kQ\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=1)[9.2 Integration by substitution - Examples](https://www.youtube.com/watch?v=dS50LonV_ms\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=2)[9.7 Integration of products of trigonometric functions (Part 1)](https://www.youtube.com/watch?v=8TCGSagLskc\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=7)
+
+</Videos>
+
+#### Odd functions
+
+<Slides>
+
+<QuestionPreview question={4} unit={9} small={true} />
+
+</Slides>
+
+<Warning>
+
+Students should know the definition of odd function, but plenty of them don’t.
+
+</Warning>
+
+<Comments>
+
+*   Students find this question harder than you expect. It is not super hard, but many students react with “I do not know what you want me to do”. Have some guidance ready!
+
+*   How I use this question:
+
+    *   I tell students to ask their neighbour or to look up the definition of “odd function” if they do not know it.
+
+    *   I give them time to work individually and to discuss with their neighbours.
+
+    *   We discuss together the answers to Questions 1 and 2. We discuss together the beginning of the hint (we split the integral in two pieces and agree we want to show one piece is minus the other).
+
+    *   I give them time again to complete the proof. Otherwise most students will not have even thought of this piece of the proof, which is the main point of the question.
+
+</Comments>
+
+<Videos>
+
+[9.1 Integration by substitution - The theory](https://www.youtube.com/watch?v=6IiHC3-E3kQ\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=1)[9.2 Integration by substitution - Examples](https://www.youtube.com/watch?v=dS50LonV_ms\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=2)[9.3 Substitution for definite integrals](https://www.youtube.com/watch?v=9WkYb_fRoG0\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=3)
+
+</Videos>
+
+### Integration by parts
+
+#### Computation practice: parts
+
+<Slides>
+
+<QuestionPreview question={5} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is some standard computational practice of integration by parts.
+
+*   When teaching integration by parts, I want to focus on “how do we choose parts so that the transformed integral is simpler” and use that as the only guiding principle. In other words, I do not use “ILATE”. Whoever invented “ILATE” has harmed countless students by preventing them from understanding.
+
+*   Depending on how much time I want to spend, I give them more or fewer questions. I may also tell them to focus on a subset of the questions (the only ones we will discuss) and the rest are there to keep faster students busy.
+
+*   I will not solve all the questions myself afterwards. I will walk around the class observing their work. Afterwards, I will decide whether I give them a final answer, or I solve it, or I just point out how to “choose parts”, or nothing.
+
+</Comments>
+
+<Videos>
+
+[9.4 Integration by parts - The theory](https://www.youtube.com/watch?v=taKIe3Ui3oI\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=4)[9.5 Integration by parts - Examples](https://www.youtube.com/watch?v=15DJgDvMpTE\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=5)[9.6 Integration by parts - One more example](https://www.youtube.com/watch?v=gR-chzRVpWo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=6)
+
+</Videos>
+
+#### Persistence
+
+<Slides>
+
+<QuestionPreview question={6} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   How I use this question:
+
+    *   I give students *only* the first integral and I tell them to use integration by parts. This is hard enough for many of them.
+
+    *   Once students have progressed enough, we discuss how to do it.
+
+    *   Only after that, I give them the rest of the problem. I think they appreciate the recursion method better if they have solved the first integral by brute force. Otherwise, they do not see the big picture.
+
+*   This question will consume a lot of time.
+
+</Comments>
+
+<Videos>
+
+[9.4 Integration by parts - The theory](https://www.youtube.com/watch?v=taKIe3Ui3oI\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=4)[9.5 Integration by parts - Examples](https://www.youtube.com/watch?v=15DJgDvMpTE\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=5)
+
+</Videos>
+
+#### Integrals from a graph
+
+<Slides>
+
+<QuestionPreview question={7} unit={9} small={true} />
+
+<QuestionPreview question={8} unit={9} small={true} />
+
+ 
+
+<QuestionPreview question={9} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question checks whether students fully understand substitution and parts, or they just push symbols blindly without knowing what they mean. Since the question “looks different” from standard applications, they need to think and understand.
+
+*   Students will be very uncomfortable with having to estimate some areas and not getting exact answers.
+
+*   Question 3 is difficult. Most of them won’t think of using parts.
+
+</Comments>
+
+<Videos>
+
+[9.1 Integration by substitution - The theory](https://www.youtube.com/watch?v=6IiHC3-E3kQ\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=1)[9.2 Integration by substitution - Examples](https://www.youtube.com/watch?v=dS50LonV_ms\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=2)[9.3 Substitution for definite integrals](https://www.youtube.com/watch?v=9WkYb_fRoG0\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=3)[9.4 Integration by parts - The theory](https://www.youtube.com/watch?v=taKIe3Ui3oI\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=4)[9.5 Integration by parts - Examples](https://www.youtube.com/watch?v=15DJgDvMpTE\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=5)
+
+</Videos>
+
+#### The error function
+
+<Slides>
+
+<QuestionPreview question={10} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question checks whether students fully understand substitution and parts, or they just push symbols blindly without knowing what they mean. Since the question “looks different” from standard applications, they need to think and understand.
+
+*   *   1 is easy
+
+    *   2 is hard, even after we tell them to use parts. They do not think of separating $te^{-t^2}$ as something whose antiderivative we know.
+
+    *   3 is accessible, but a bit confusing as they do not think of rewriting $2t^{2}= (\sqrt{2}t)^{2}$.
+
+    *   4 is hard. They do not think of completing the square.
+
+    *   5 is easy if they have completed 4.
+
+    *   6 is easier after we tell them to use substitution.
+
+*   We can use this question to remind students that some functions are defined as integrals because there is not other way to define them.
+
+</Comments>
+
+<Videos>
+
+[9.1 Integration by substitution - The theory](https://www.youtube.com/watch?v=6IiHC3-E3kQ\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=1)[9.2 Integration by substitution - Examples](https://www.youtube.com/watch?v=dS50LonV_ms\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=2)[9.3 Substitution for definite integrals](https://www.youtube.com/watch?v=9WkYb_fRoG0\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=3)[9.4 Integration by parts - The theory](https://www.youtube.com/watch?v=taKIe3Ui3oI\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=4)[9.5 Integration by parts - Examples](https://www.youtube.com/watch?v=15DJgDvMpTE\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=5)
+
+</Videos>
+
+#### Exp-trig antiderivative
+
+<Slides>
+
+<QuestionPreview question={11} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students have seen the “standard” solution to this question (with $a=b=1$) in Video 9.6: use parts twice to get an equation on $I$. There is something unsatisfying about the standard solution: it is a trick. How could a students have known to try it without being told the trick first? How could they have known it was going to work?
+
+*   By contrast, the method proposed in this slide is a bit more natural and is something a student can reasonably do. Give them enough time and they can complete the calculation without further help. It is a bit more satisfying.
+
+</Comments>
+
+<Videos>
+
+[9.6 Integration by parts - One more example](https://www.youtube.com/watch?v=gR-chzRVpWo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=6)
+
+</Videos>
+
+### Integration of products of trigonometric functions
+
+#### Practice: integrals with trigonometric functions
+
+<Slides>
+
+<QuestionPreview question={12} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   In these exercises students will practice the ideas and examples they have learned in Videos 9.7–9.9.
+
+*   Be careful: asking students to work through all six of them will take too much time.
+
+*   I want students to only work until they get it to a point from which it is clear how to finish, and then stop. That way they won’t take too much time. However, students often do not understand this instruction and want to work on the problems one at a time from beginning to end (thus not going very far). I need to explain carefully what I want and make sure they get it before I launch them to work.
+
+</Comments>
+
+<Videos>
+
+[9.7 Integration of products of trigonometric functions (Part 1)](https://www.youtube.com/watch?v=8TCGSagLskc\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=7)[9.8 Integration of products of trigonometric functions (Part 2)](https://www.youtube.com/watch?v=zrPCAP9-0wo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=8)
+
+</Videos>
+
+#### Integrals of products of secant and tangent
+
+<Slides>
+
+<QuestionPreview question={13} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   In Video 9.7 students learned when to use the substitution $\displaystyle u=\sin x$ or the substitution $\displaystyle u= \cos x$ to compute $\displaystyle \int \sin^{n}x \cos^{m}x$. The point was not to memorize the algorithm but to understand why it worked. This question tests their understanding by asking them to use the same ideas for a different family of functions and to come up with their own algorithm.
+
+*   To my surprise, they do not find this question too difficult. If I give them enough time and the chance to discuss with each other, many of them get the right answer.
+
+*   They will invariably ask you what to do when $n$ is odd and $m$ is even. Have an answer ready.
+
+</Comments>
+
+<Videos>
+
+[9.7 Integration of products of trigonometric functions (Part 1)](https://www.youtube.com/watch?v=8TCGSagLskc\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=7)
+
+</Videos>
+
+#### A reduction formula
+
+<Slides>
+
+<QuestionPreview question={14} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is interesting but it takes a very long time. Unless you plan to give students a big chunk of the class to work on it, I recommend not using it. The question is only interesting if students come up with the ideas themselves. They can, but it takes them time.
+
+*   Video 9.8 briefly touches upon using integration by parts for these types of integrals, but not in much detail so this method is still somewhat new to students.
+
+</Comments>
+
+<Videos>
+
+[9.8 Integration of products of trigonometric functions (Part 2)](https://www.youtube.com/watch?v=zrPCAP9-0wo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=8)[9.6 Integration by parts - One more example](https://www.youtube.com/watch?v=gR-chzRVpWo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=6)[9.4 Integration by parts - The theory](https://www.youtube.com/watch?v=taKIe3Ui3oI\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=4)
+
+</Videos>
+
+#### A different kind of substitution
+
+<Slides>
+
+<QuestionPreview question={15} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   I have not included trigonometric substitution in the videos, so this is entirely new.
+
+*   The point of the video is for student to use a new approach to integration that they have not seen before, with little direction. The point is NOT to learn trigonometric substitution. Once again: memorizing a long list of recipes is not the point.
+
+*   If you do not make a fuss about this, if you do not advertise that this is “a different type of substitution”, then students won’t even notice; they will just solve the problem like a standard substitution problem, and they won’t think there is anything different.
+
+</Comments>
+
+<Videos>
+
+[9.3 Substitution for definite integrals](https://www.youtube.com/watch?v=9WkYb_fRoG0\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=3)[9.8 Integration of products of trigonometric functions (Part 2)](https://www.youtube.com/watch?v=zrPCAP9-0wo\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=8)
+
+</Videos>
+
+### Integration of rational functions
+
+#### Discovering partial-fraction decomposition
+
+<Slides>
+
+<QuestionPreview question={16} unit={9} small={true} />
+
+ 
+
+<QuestionPreview question={17} unit={9} small={true} />
+
+<QuestionPreview question={18} unit={9} small={true} />
+
+ 
+
+<QuestionPreview question={19} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Each of these four slides is a scaffolded sequence of questions designed to “discover” how to integrate certain functions. In theory, students could come up with the methods by themselves through these activities, without having seen any examples first.
+
+*   Videos 9.10–9.12 present some of the ideas of partial fraction decomposition and integration of rational functions. They do not present a complete step-by-step algorithm to integrate all rational functions.
+
+*   Once again, remember that our goal is not to memorize a long list of algorithms, but to develop problem solving skills.
+
+    If you allow students to play and explore, and you give them time, they will come up with creative methods to solve some of these problems which are not the “official” ones. For example, for question 4 on the second slide, the “official” method is to write
+
+    ```math
+    \frac{x^{2}}{(x+1)^{3}}= \frac{A}{(x+1)^{3}}+ \frac{B}{(x+1)^{2}}+\frac{C}{x+1}
+    ```
+
+    Instead, every time I use it, some student proposes integration by parts (it works!) and some student proposes the substitution $\displaystyle u=x+1$ (which is faster!)
+
+</Comments>
+
+<Videos>
+
+[9.10 Integration of rational functions - Example 1](https://www.youtube.com/watch?v=w-T90XSM90s\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=10)[9.11 Integration of rational functions - Example 2](https://www.youtube.com/watch?v=XwuohSB1e5w\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=11)[9.12 Integration of rational functions - Example 3](https://www.youtube.com/watch?v=NjmH5KjYS2k\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=12)
+
+</Videos>
+
+#### The integral of secant
+
+<Slides>
+
+<QuestionPreview question={20} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Perhaps the only point of this activity is to tie lose ends from the videos:
+
+    *   Video 9.9 explained how to use the substitution $\displaystyle u=\sin x$ to transform $\displaystyle \int \sec x \, dx$ into the integral of a rational function (and then stops).
+
+    *   Video 9.10 explained how to compute the integral of similar rational functions using partial-fraction decomposition.
+
+    *   This activity invites students to put the two of them together and complete the computation of $\displaystyle \int \sec \, dx$ from beginning to end. That is all.
+
+</Comments>
+
+<Videos>
+
+[9.9 The integral of secant](https://www.youtube.com/watch?v=OT5DTVFfvFA\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=9)[9.10 Integration of rational functions - Example 1](https://www.youtube.com/watch?v=w-T90XSM90s\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=10)
+
+</Videos>
+
+#### Messier rational functions
+
+<Slides>
+
+<QuestionPreview question={19} unit={9} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These questions are the traditional, more involved, partial-fraction decompositions that used to be taught in calculus courses. Notice that the videos don’t introduce this method in full.
+
+*   If I use this question, I ask students:
+
+    *   Find simple rational functions that you can integrate and whose denominator divides the denominator of the integrand
+
+    *   How many of them will you need, noting that you want this to work for any polynomial of degree... (after long division)?
+
+    This still makes the problem very difficult. Expect students to struggle. Still, I do not see any value in giving students the “official” method as a recipe. They will never use it in their lives. But I see value is struggling to come up with the method, even if they do not fully complete it.
+
+</Comments>
+
+<Videos>
+
+[9.10 Integration of rational functions - Example 1](https://www.youtube.com/watch?v=w-T90XSM90s\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=10)[9.11 Integration of rational functions - Example 2](https://www.youtube.com/watch?v=XwuohSB1e5w\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=11)[9.12 Integration of rational functions - Example 3](https://www.youtube.com/watch?v=NjmH5KjYS2k\&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF\&index=12)
+
+</Videos>

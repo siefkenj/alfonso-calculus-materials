@@ -1,0 +1,977 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{} 
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{\pause}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0} 
+\definecolor{rosa}{rgb}{1, 0, 1}  
+\definecolor{naranja}{rgb}{1, .5, 0.1} 
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+ 
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+ 
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\setsize{15}}
+\setbeamerfont{block title}{size=\setsize{14}}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+% Preamble just for this file
+%===========================
+
+\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\vvv}{\vspace{.2cm}}
+
+\newcommand{\fantasma}{\phantom{\DS{\frac 11}}}
+\newcommand{\tasma}{\fantasma ??? \fantasma}
+
+%===================================================
+\begin{document}
+%===================================================
+
+%----------------------------------------------------------------------------------------
+%	Power series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Interval of convergence}
+
+Find the interval of convergence of each power series: 
+
+\begin{enumerate}
+\begin{multicols}{2}
+
+	\item \DS{\sum_{n=0}^{\infty} \frac{x^n}{n!}}
+	\vv
+	\item  \DS{\sum_{n=1}^{\infty} \frac{(x-5)^n}{n^2 \, 2^{2n+1} } }
+	\vv
+	\item \DS{\sum_{n=1}^{\infty}  \frac{n^n}{42^n} x^n   }
+	\vv
+\p	\item {(Hard!)} \DS{\sum_{n=0}^{\infty} \frac{(3n)!}{n!(2n)!} \, x^n }
+	\vv
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{What can you conclude?}
+
+Think of the power series \DS{\sum_{n}^{\infty} a_nx^n}.  Do not assume $a_n \geq0$.
+
+In each case, may the given series be absolutely convergent (AC)?  conditionally convergent (CC)?  divergent (D)?  all of them?
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|}
+\hline 
+IF & \DS{\sum_{n}^{\infty} a_n 3^n} is ...
+	& AC& CC & D
+\\
+\hline \hline
+  &  \DS{\sum_{n}^{\infty} a_n 2^n} may be ...
+&\tasma&\tasma&\tasma
+\\
+\cline{2-5} THEN &   \DS{\sum_{n}^{\infty} a_n (-3)^n} may be ...
+&\tasma&\tasma&\tasma
+\\
+\cline{2-5} &  \DS{\sum_{n}^{\infty} a_n 4^n} may be ...
+&\tasma&\tasma&\tasma
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Preview of Taylor series and applications
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Writing functions as power series}
+
+You know that \quad \DS{\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n}  \quad for  $|x|<1$
+
+Manipulate it to write the following functions as power series centered at 0:
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{g(x) = \frac{1}{1+x}}
+	\vv
+	\item  \DS{A(x) = \frac{1}{2-x}}
+	\vv
+	
+	\emph{Hint:}  Factor \DS{1/2}.
+	\item \DS{h(x) = \frac{1}{1-x^2}}
+	\vv
+	\item \DS{F(x) = \ln (1 + x)}
+	\vv
+	
+	\emph{Hint:} Compute \DS{F'}
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Challenge}
+
+	Compute \quad
+		\DS{	A = \sum_{n=1}^{\infty} \frac{n}{3^n} }
+		
+\hrulefill \p
+
+	\begin{enumerate}
+		\item What is the value of the sum \DS{\sum_{n=0}^{\infty} x^n} ?
+		\item  Use derivatives to relate \DS{\sum_{n}^{\infty} x^n} and \DS{\sum_{n}^{\infty} nx^{n-1}}.
+		\item Compute  \DS{\sum_{n=1}^{\infty}  n x^{n-1} }. 
+			\quad Then compute \DS{\sum_{n=1}^{\infty}  n x^{n} }.  
+		\item Compute the value of series $A$.
+	\end{enumerate}
+		
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Challenge}
+
+	Compute  \quad
+		\DS{	A = \sum_{n=1}^{\infty} \frac{n}{3^n} }
+		\quad
+		and \quad
+		\DS{	B = \sum_{n=1}^{\infty} \frac{n^2}{3^n} }
+		
+\hrulefill \p
+
+	\begin{enumerate}
+		\item What is the value of the sum \DS{\sum_{n=0}^{\infty} x^n} ?
+		\item  Use derivatives to relate \DS{\sum_{n}^{\infty} x^n} and \DS{\sum_{n}^{\infty} nx^{n-1}}.
+		\item Compute  \DS{\sum_{n=1}^{\infty}  n x^{n-1} }. 
+			\quad Then compute \DS{\sum_{n=1}^{\infty}  n x^{n} }.  
+		\item Compute the value of series $A$.
+		\item Compute the value of series $B$.
+	\end{enumerate}
+		
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Challenge - 2}
+
+	We want to calculate the value of
+		$$
+			\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1) \, 3^n }
+		$$
+
+\p  \hrulefill  
+
+	\begin{enumerate}
+		\item  Write \DS{F(x) = \arctan x} as a power series.
+		\vv
+
+			\emph{Hint:}
+			  Compute \DS{F'(x)}.  
+			Using the geometric series, write \DS{F'(x)} as a series.  
+			Then integrate.  
+		\vv
+		
+		\item  Now calculate the original sum.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Definition of Taylor polynomials and Taylor series
+%----------------------------------------------------------------------------------------
+%------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Warm up}
+
+Write down the (various equivalent) definitions of Taylor polynomial you have learned so far.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Tangent line}
+
+Let $f$ be a $C^1$ function at $a \in \R$.
+
+Then the tangent line of $f$ at $a$ is given by 
+	$$
+		y = L(x)
+	$$
+\begin{enumerate}
+	\item  Recall the explicit formula for $L$
+	\item  Prove that $L$ is the 1-st Taylor polynomial for $f$ at $a$ using the 1st definition.
+	\item  Prove that $L$ is the 1-st Taylor polynomial for $f$ at $a$ using the 2nd definition.
+\end{enumerate}	
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Taylor polynomial of a polynomial}
+
+Let $f(x) = x^3$.
+
+Let $Q_{n,a}$ be the $n$-th Taylor polynomial for $f$ at $a$.
+\vvv
+
+	\begin{enumerate}
+		\item  Using the 2nd definition, find $Q_{2,0}$.
+		
+			Then verify it also satisfies the 1st definition.			
+		\vvv
+\p		\item  Repeat for $Q_{3,0}$
+		\vvv
+		\item  Repeat for $Q_{3,1}$
+		\vvv
+		\item  Repeat for $Q_{2,1}$.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{True or False -- Taylor polynomials}
+
+Let $f$ be a function defined at and near $a \in \R$.   Let \DS{n \in \N}. \\
+Let $P_n$ be the $n$-th Taylor polynomial for $f$ at $a$. \\
+Which ones of these are true?
+
+\begin{enumerate}
+	\item $P_n$ is an approximation for $f$ of order $n$ near $a$.
+\vfill
+	\item $f$ is an approximation for $P_n$ of order $n$ near $a$.
+\vfill
+	\item $P_3$ is an approximation for $f$ of order $4$ near $a$.
+\vfill
+	\item $P_4$ is an approximation for $f$ of order $3$ near $a$.
+\vfill
+	\item  \DS{\lim_{x \to a} \left[ f(x) - P_n(x) \right] = 0}
+\vfill
+	\item  \DS{\lim_{x \to a} \frac{f(x) - P_n(x)}{(x-a)^n} = 0  }
+\vfill
+	\item If $x$ is close to $a$, then $f(x) = P_n(x)$.
+\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{True or False -- smooth functions}
+
+Let $f$ be a function.  Let $a \in \R$.  Let $m \in \N$.
+\vvv
+	\begin{enumerate}
+		\item IF $f$ is continuous, \; THEN $f$ is $C^0$.
+		\item IF $f$ is $C^0$, \; THEN $f$ is continuous.
+		\item IF $f$ is differentiable, \; THEN $f$ is $C^1$.
+		\item IF $f$ is $C^1$, \; THEN $f$ is differentiable.
+		\item IF $f$ is $C^{\infty}$, \; THEN $\forall n \in \N$, $f$ is $C^{n}$.
+		\item IF $\forall n \in \N$, $f$ is $C^{n}$, \; THEN $f$ is $C^{\infty}$.
+		\item IF $f$ is $C^m$ at $a$, \\ \; THEN $f$ is $C^m$ on some interval centered at $a$.
+		\item IF $f$ is $C^m$ at $a$, \\  \; THEN $f$ is $C^{m-1}$ on some interval centered at $a$.
+	\end{enumerate}
+
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{True or False -- Operations with smooth functions}
+
+Let $f$ and $g$ be two functions with domain $\R$.  Let $n \in \N$.
+\vvv
+
+	\begin{enumerate}
+		\item  IF $f$ and $g$ are $C^{n}$, \; THEN $f + g$ is $C^n$.
+		\item  IF $f$ and $g$ are $C^{n}$, \; THEN $f \cdot g$ is $C^n$.
+		\item  IF $f$ and $g$ are $C^{n}$, \; THEN $f \circ g$ is $C^n$.
+		\item  IF $f$ and $g$ are $C^{\infty}$, \; THEN $f + g$ is $C^\infty$.
+		\item  IF $f$ and $g$ are $C^{\infty}$, \; THEN $f \cdot g$ is $C^\infty$.
+		\item  IF $f$ and $g$ are $C^{\infty}$, \; THEN $f \circ g$ is $C^\infty$.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Approximating functions }
+
+Which one of the following functions is a better approximation for \; \DS{F(x) = \sin x + \cos x} \; near 0?
+\vvv
+	\begin{enumerate}
+		\item  \DS{f(x) = 1 + x - \frac{x^2}{2} }
+\vvv		\item  \DS{g(x)  = e^x  -x^2  }
+\vvv		\item  \DS{h(x) = 1 + \ln (1+x)}
+	\end{enumerate}
+
+\ \hfill \href{https://www.desmos.com/calculator/1hqedw17c8}{$\clubsuit$}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{A polynomial given its derivatives}
+
+
+	\begin{enumerate}
+		\item  Consider the polynomial \DS{P(x)= c_0 + c_1 x + c_2 x^2 + c_3 x^3}.  Find values of the coefficients that satisfy
+			$$
+				P(0) = 1, \quad P'(0) = 5, \quad P''(0) = 3, \quad P'''(0) = -7			
+			$$
+		\item Find \emph{all} polynomials $P$ (of any degree) that satisfy
+			$$
+				P(0) = 1, \quad P'(0) = 5, \quad P''(0) = 3, \quad P'''(0) = -7			
+			$$
+		\item Find a polynomial $P$ of smallest possible degree that satisfies 
+			$$
+				P(0) = A, \quad P'(0) = B, \quad P''(0) = C, \quad P'''(0) = D
+			$$
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Competition!}
+
+\begin{itemize}
+	\item Do you prefer cats or dogs?  You MUST choose one.
+	
+\p		Now you are in the $C$-team or the $D$-team.
+
+\p
+	\item Copy only one polynomial ($C$ or $D$):
+\end{itemize}
+{\smallerfont
+		\begin{align*}
+			C(x) & \, = \,  -\frac{293}{8} \, + \, 29x \, + \, \frac{13}{4}x^2-3x^3 \, + \, \frac{3}{8}x^4  \phantom{\int}
+				\\
+			D(x) & \, = \,  29 \, + \,  8(x -3) \, - \, \frac{7}{2} (x-3)^2 
+					\, + \,  \frac{9}{6}(x-3)^3 \, + \, \frac{9}{24}(x-3)^4
+		\end{align*}
+}
+\begin{itemize}
+	\item I will ask you questions. 
+	
+	 Answer only about your polynomial ($C$ or $D$).
+	 
+	 {\bf No calculators!}
+\end{itemize}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Competition!}
+\vspace{-.8cm}
+{\smallerfont
+		\begin{align*}
+			C(x) & \, = \,  -\frac{293}{8} \, + \, 29x \, + \, \frac{13}{4}x^2-3x^3 \, + \, \frac{3}{8}x^4  \phantom{\int}
+				\\
+			D(x) & \, = \,  29 \, + \,  8(x -3) \, - \, \frac{7}{2} (x-3)^2 
+					\, + \,  \frac{9}{6}(x-3)^3 \, + \, \frac{9}{24}(x-3)^4
+		\end{align*}
+}
+\p
+\vspace{-1cm}
+
+\begin{multicols}{2}
+$C$-team compute...
+\begin{itemize}
+	\item $C(3)$
+	\item $C'(3)$
+	\item $C''(3)$
+	\item $C'''(3)$
+	\item $C^{(4)}(3)$
+\end{itemize}
+
+$D$-team compute...
+\begin{itemize}
+	\item $D(3)$
+	\item $D'(3)$
+	\item $D''(3)$
+	\item $D'''(3)$
+	\item $D^{(4)}(3)$
+\end{itemize}
+\end{multicols}
+Simplify your answers (write them as rational numbers)
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{I spy a polynomial with my little eye}
+
+I'm thinking of a cubic polynomial $P$.  It satisfies
+	$$
+		P(1)=8, \quad
+		P'(1)=-\pi, \quad
+		P''(1) = 4, \quad
+		P'''(1) = \sqrt{7}
+	$$
+
+What is $P(x)$?
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{cosine}
+
+Obtain the Maclaurin series for $h(x) = \cos x$.
+
+There are at least two ways to do this:
+\vvv
+	\begin{enumerate}
+		\item  Use the general formula for Maclaurin series.
+\vvv
+		\item  Use the Maclaurin series for $\sin$ to compute \DS{\cos x = \frac{d}{dx} \sin x}.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Interval of convergence of Maclaurin series}
+
+\begin{enumerate}
+	\item (Recall) Write down the Maclaurin series for the following functions
+	$$
+		f(x) = e^x, \quad \quad g(x) = \sin x, \quad \quad h(x) = \cos x
+	$$
+
+	\item Compute the interval of convergence for each one of them.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Analytic functions
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Warm up}
+
+\begin{enumerate}
+	\item Write down the Maclaurin series for \DS{f(x)=\sin x}.
+		(Just recall it.)
+		
+	\
+	
+	\item Compute the interval of convergence of this power series.
+	
+	\ 
+	
+	\item Write down the statement of Lagrange's Remainder Theorem.
+		(Just recall it.  Look it up if needed.)
+		
+\end{enumerate}
+
+\end{frame}
+
+%------------------------------
+\begin{frame}
+\smallerfont
+\frametitle{$sin$ is analytic}
+
+Let \DS{f(x) = \sin x}.  You know its Maclaurin series is
+	$$
+		S(x) \; =\;  \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!}
+			\; = \; x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots
+	$$
+As you know, to prove that \DS{\sin x = S(x)} we need to show that
+	$$
+		\forall x \in \R, \quad \lim_{n \to \infty} R_n(x) = 0
+	$$
+Use Lagrange's Remainder Theorem to prove it!
+
+\
+
+\hrulefill \p
+
+\
+
+\emph{Reminder:}  Lagrange's Remainder Theorem says that given $f$, $a$, $x$, and $n$ with certain conditions, 
+	\begin{equation*}
+		\exists \xi \mbox{ between $a$ and $x$ s.t. } \quad R_{n}(x) \, = \, \frac{f^{(n+1)}(\xi)}{(n+1)!} \, (x-a)^{n+1}
+	\end{equation*}
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Generalize your proof}
+
+\begin{block}{Theorem}
+Let $I$ be an open interval.  Let $a \in I$.
+Let $f$ be a $C^{\infty}$ function on $I$.
+
+Let $S(x)$ be the Taylor series for $f$ centered at $a$.
+
+\begin{itemize}
+	\item  IF \boxed{???}
+	\item  THEN \DS{\forall x \in I, \; f(x) = S(x)}
+\end{itemize}
+
+\end{block}
+\vvv
+
+Which condition can you write instead of  ``\boxed{???}" to make the theorem true?
+
+\p \vvv
+
+If you are thinking ``the derivatives must be bounded", then you are on the right track, but you need to be much more precise.  Which derivatives?  On which domain?   There are a lot of variables here; can the bounds depend on any variable?  
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{Generalize your proof (continued)}
+
+Which one or ones of the following conditions can be written instead of ``\boxed{???}" to make the theorem true?
+\vvv
+\begin{enumerate}
+	\item  \DS{\azul{\forall n \in \N}}, \; \DS{f^{(n)}} is bounded on $I$
+\vvv
+	\item  \DS{\azul{\forall n \in \N}}, \; \rojo{\DS{\forall x \in I}}, \; \DS{f^{(n)}} is bounded on $J_{x,a}$
+\vvv
+	\item  \DS{\azul{\forall n \in \N}}, \; \rojo{\DS{\forall x \in I}}, \; \violeta{\DS{\exists A, B \in \R}},  \; \verde{\DS{\forall \xi \in J_{x,a}}}, \; \DS{A \leq f^{(n)}(\verde{\xi}) \leq B}
+\vvv
+	\item  \rojo{\DS{\forall x \in I}},  \; \violeta{\DS{\exists A, B \in \R}},  \; \DS{\azul{\forall n \in \N}},  \; \verde{\DS{\forall \xi \in J_{x,a}}}, \; \DS{A \leq f^{(n)}(\verde{\xi}) \leq B}
+\vvv
+	\item  \rojo{\DS{\forall x \in I}},  \; \violeta{\DS{\exists M \geq 0}},  \; \DS{\azul{\forall n \in \N}},  \; \verde{\DS{\forall \xi \in J_{x,a}}}, \; \DS{\left\vert f^{(n)}(\verde{\xi}) \right\vert \leq M}
+\vvv
+	\item  \DS{\violeta{\exists A, B \in \R}}, \; \rojo{\DS{\forall x \in I}},  \; \DS{\azul{\forall n \in \N}},  \; \verde{\DS{\forall \xi \in J_{x,a}}}, \; \DS{A \leq f^{(n)}(\verde{\xi}) \leq B}
+\vvv
+	\item  \DS{\violeta{\exists A, B \in \R}}, \; \rojo{\DS{\forall x \in I}},  \; \DS{\azul{\forall n \in \N}},  \; \DS{A \leq f^{(n)}(\rojo{x}) \leq B}
+\end{enumerate}
+\vv
+
+\emph{Notation:}  \DS{J_{x,a}} is the interval between $x$ and $a$
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{A \DS{C^{\infty}} but not analytic function}
+
+Consider the function \DS{F(x) = \begin{cases} e^{-1/x} & \mbox{ if } x >0, \\ 0 & \mbox{ if } x \leq 0.\end{cases}}
+
+	\begin{enumerate}
+		\item  Prove that, for every $n \in \N$,  \DS{\lim_{t \to \infty} t^n e^{-t} =0}.
+		\item  Prove that, for every $n \in \N$, \DS{\lim_{x \to 0^+} \frac{e^{-1/x}}{x^n}=0}.
+		\item Calculate \DS{F'(x)} for $x>0$.
+		\item Calculate \DS{F'(x)} for $x <0$.
+		\item Calculate \DS{F'(0)} from the definition.
+		\item Calculate \DS{F''(0)} from the definition.
+		\item Prove that for every $n \in \N$, \DS{F^{(n)}(0) = 0}.
+		\item Write the Maclaurin series for $F$ at $0$.
+		\item Is $F$ analytic?  Is it $C^{\infty}$?
+	\end{enumerate}
+
+
+\end{frame}
+
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Constructing new Taylor series
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Taylor series gymnastics}
+
+Write the following functions as power series centered at $0$.  Write them first with sigma notation, and then write out the first few terms.  Indicate the domain where each expansion is valid.
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{f(x) = e^{-x}}
+\vvv
+	\item \DS{f(x) = x^2 \cos x}
+\vvv
+	\item \DS{f(x) = \frac{1}{1+x}}
+\vvv
+	\item \DS{f(x) = \frac{1}{1-x^2}}
+\vvv
+	\item \DS{f(x) = \frac{x}{3+2x}}		
+\vvv
+	\item  \DS{f(x) = \sin \left(2 x^3 \right) }
+\vvv
+	\item \DS{f(x) = \frac{e^x + e^{-x}}{2}}
+\vvv
+	\item \DS{f(x) = \ln \frac{1+x}{1-x} }
+\vvv
+\end{multicols}
+\end{enumerate}
+\vvv
+
+\emph{Note:}  You do not need to take any derivatives.  You can reduce them all to other Maclaurin series you know.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Taylor series not at 0}
+
+Write the Taylor series...
+	\begin{enumerate}
+		\item for \; \DS{f(x) = e^x} \; at \; $a=-1$
+		\item for  \; \DS{g(x) = \sin x} \; at \; \DS{a = \pi/4}
+		\item for \; \DS{H(x) = 1/x} \; at \; \DS{a = 3}
+	\end{enumerate}
+
+ \
+
+You can do these problems in two ways:
+	\begin{enumerate}
+		\item Compute first few derivatives, guess the pattern, use general formula
+		\item Use substitution \DS{u = x - a}, use known Maclaurin series (without computing any derivative).
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{arctan}
+
+\begin{enumerate} 
+	\item  Write the Maclaurin series for \; \DS{G(x) = \arctan x}
+	\vvv
+	
+	\emph{Hint:}  Compute the first derivative.  Then use the geometric series.  Then integrate.
+	\vvv
+	
+\p	\item What is \DS{G^{(137)}(0)}?
+	\vvv
+	
+\p	\item Use this previous results to compute
+		$$
+			A = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1) \, 3^n }
+		$$
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{$\arcsin$}
+
+Let \DS{f(x)=\frac{1}{\sqrt{1+x}}}.
+	\begin{enumerate}
+		\item  Find a formula for its derivatives \DS{f^{(n)}(x)}.
+		\vvv
+		\item Write its Maclaurin series at $0$.  Call it $S(x)$.
+		\vvv
+		\item What is the radius of convergence of series $S(x)$?
+		
+			{\setsize{12} 
+				\emph{Note:}  Use without proof that \DS{f(x)=S(x)} inside the interval of convergence.
+			}
+		\vvv
+		\item Use this result to write $h(x) = \arcsin$ as a power series centered at $0$.
+		
+			{\setsize{12}
+				\emph{Hint:}  Compute \DS{h'(x)}.	
+			}
+		\vvv	
+		\item What is \DS{h^{(7)}(0)}?
+		
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Parity}
+
+\begin{enumerate}
+	\item Write down the definition of odd function and even function.  (Assume the domain is $\R$.)
+\vvv
+	\item  Let $f$ be an odd, $C^{\infty}$ function.  What can you say about its Maclaurin series?  What if $f$ is even?
+\vvv
+
+	\emph{Hint:} Think of $\sin$ and $\cos$.
+\vvv 
+	\item Prove it.
+\vvv
+
+	\emph{Hints:}  
+		\begin{itemize}
+			\item  Use the general formula for the Maclaurin series.  
+			\item If $h$ is odd then what is $h(0)$?
+			\item The derivative of an even function is ...?
+			\item The derivative of an odd function is ...?
+		\end{itemize}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+
+\frametitle{Product of Taylor series}
+
+Let \DS{f(x) = e^{x} \ln(1+x)}
+\vvv
+
+\begin{enumerate}
+	\item Write the 4-th Taylor polynomial for $f$ at $a=0$.
+\vvv	
+
+	{\setsize{11}
+			\emph{Hint:} Write the first few terms of the Maclaurin series for each factor and multiply them.
+	}
+\vv		
+
+	\item What is \DS{f^{(4)}(0)}?
+\vv	
+	
+\p	\item Use it to calculate the limit
+	
+		$$\lim_{x \to 0} \frac{e^x \ln(1+x) + \ln(1-x)}{x^4}$$
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Composition of Taylor series}
+
+Let \DS{g(x) = e^{\sin x}}.
+\vvv
+
+	\begin{enumerate}
+		\item Write the 4-th Taylor polynomial for $g$ at $a=0$.
+		\vvv
+		
+		{\setsize{11}
+			\emph{Hint:} First use the Maclaurin series for  the exponential.   Then use the Maclaurin series for $\sin$ and treat it like a polynomial.   You only need to keep the first few terms.
+		}
+		\vvv
+		
+\p		\item What is \DS{g^{(4)}(0)}?
+		\vvv
+		
+\p		\item  Find a value of $a \in \R$ such that the limit
+			$$\lim_{x \to 0} \frac{e^{\sin x} - e^x + ax^3 }{x^4}$$
+			exists and is not 0.  Then compute the limit.
+	\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Tangent}
+
+There is no nice, compact formula for the Maclaurin series of $\tan$, but we can obtain the first few terms.  Set
+	$$
+		\tan x =  c_1 x +  c_3 x^3 +  c_5x^5 + \ldots
+	$$
+By definition of $\tan$, we have:
+	$$
+		\rojo{\sin x} = ( \azul{\cos x}) ( \verde{\tan x})
+	$$
+Thus
+{\setsize{11}
+	$$ 
+		\left[ \rojo{ x - \frac{x^3}{3!} + \frac{x^5}{5!} + \ldots} \right] \; = \; \left[ \azul{1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \ldots} \right] \cdot \left[ \verde{c_1 x + c_3 x^3 + c_5 x^5 + \ldots} \phantom{\frac 11}  \right]
+	$$
+}
+
+Multiply the two series on the right.  Obtain equations for the coefficients $c_n$ and solve for the first few ones.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Secant}
+
+I want to obtain the first few terms of the Maclaurin series of \DS{f(x) = \sec x}.  Notice that
+	\begin{equation} \label{eq:sec}
+		\sec x \; = \; \frac{1}{\cos x} \; = \; \frac{1}{1 - \left[ 1 - \cos x\right]} \; = \; \frac{1}{1-u}
+	\end{equation}
+where I have called \DS{u = 1 - \cos x}.  \; Notice that as $x \to 0$, $u \to 0$.  
+\vvv
+
+Use the geometric series in \eqref{eq:sec}.  Then write $u$ as a power series centered at 0.  Then expand and regroups terms.
+\vv
+
+\begin{enumerate}
+	\item  Use the above to obtain the 6-th Maclaurin polynomial for $f$.
+\p	\item  Without taking any derivative, what is \DS{f^{(6)}(0)}?
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Applications
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Integrals}
+
+I want to calculate
+	$$
+		A = \int_0^1 t^{10}\sin t \; dt.
+	$$
+
+There are two ways to do it.  Choose your favourite one:
+	\begin{enumerate}
+		\item Use integration by parts 10 times.
+		\item Use power series. 
+	\end{enumerate}
+\p
+\hrulefill
+\vv	
+
+Estimate $A$ with an error smaller than $0.001$.
+		
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Add these series}
+
+\begin{enumerate}
+	\item \DS{\sum_{n=2}^{\infty} \frac{(-2)^n}{(2n+1)!}}
+		\hfill
+	\emph{Hint:} Think of $\sin$
+
+\vfill
+	\item \DS{\sum_{n=0}^{\infty} (4n+1) {x^{4n+2}}}
+		\hfill
+	\emph{Hint:}   \DS{\frac{d}{dx} \left[ x^{4n+1} \right] = ???}
+
+\vfill
+	\item \DS{\sum_{n=0}^{\infty} \frac{1}{(2n)!}}
+		\hfill
+	\emph{Hint:} Write first few terms.  Combine \DS{e^1} and \DS{e^{-1}}.
+
+\vfill
+	\item \DS{\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!(n+1)}}
+		\hfill
+	\emph{Hint:} Integrate %Compute \;  \DS{\int x^{n+\frac 12} dx} \; or \; \DS{\int x^{2n+1} dx}
+	
+\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Add more series}
+\vspace{-.5cm}
+
+\begin{enumerate}
+\addtocounter{enumi}{4}
+\begin{multicols}{2}
+	\item \DS{\sum_{n=1}^{\infty} \frac{n}{3^n}}
+\vv
+	\item \DS{\sum_{n=1}^{\infty} \frac{n^2}{3^n}}
+\vv
+	\item  \DS{\sum_{n=0}^{\infty} \frac{x^{n+2}}{(n+1)(n+2)} }
+\vvv	
+	\item \DS{\sum_{n=0}^{\infty} \frac{x^n}{(n+2)n!}}	
+\vvv
+	\item  \DS{\sum_{n=0}^{\infty}(-1)^n \frac{(n+1)}{(2n)!} \, 2^n }
+\vvv
+	\item \DS{\sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)3^n}}	
+\vvv
+\end{multicols}
+\end{enumerate}
+\vv
+
+\emph{Hint:} Take derivatives or antiderivatives of series whose values you know.
+
+\end{frame}
+%------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Limits}
+
+Use Maclaurin series to compute these limits:
+\vfill
+
+\begin{enumerate}
+	\item \; \DS{\lim_{x \to 0} \frac{\quad \sin x -  x + \frac{x^3}{6} \quad }{x^5}}
+	\vfill
+	\item \; \DS{\lim_{x \to 0} \frac{\quad \cos(2x) - e^{-2x^2} \quad }{x^4}}
+	\vfill
+	\item \; \DS{\lim_{x \to 0} \frac{\left[ \sin x - x \right]^3 x }{\quad \left[ \cos x - 1\right]^4 \left[ e^x - 1 \right]^2 } \quad }
+	\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Estimations}
+
+I want to estimate these two numbers
+	$$
+		A = \sin 1, \quad \quad B = \ln 0.9.
+	$$
+
+	\begin{enumerate} 
+		\item Use Taylor series to write $A$ and $B$ as infinite sums.
+	\vv
+		\item  If you want to estimate $A$ or $B$ with a small error using a partial sum, the fastest way is to use different theorems for $A$ and $B$.  What are they?
+	\vv
+		\item  Estimate $B$ with an error smaller than 0.001.
+	\end{enumerate}
+	
+\end{frame}
+%------------------------------
+%------------------------------
+%-----------------------------
+\end{document}
+%-----------------------------
+%-----------------------------
+
+
+
+

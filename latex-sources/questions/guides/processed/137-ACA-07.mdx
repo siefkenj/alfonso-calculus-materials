@@ -1,0 +1,679 @@
+# Unit 7: The definition of integral
+
+### $\Sigma$-notation for sums
+
+$\Sigma$ notation for sums is not difficult, but it may be new for students, so we need to introduce it. The notation is convenient to define integrals, but there are really two other reasons why we spend some time on them now. First, it is nice to have a “gentle” first lesson on the first day after Winter Break. Second, we want to let students play with sums for a bit to develop some intuition about sums, rather than just trying to manipulate them following rules – this will pay off when we get to Series (Unit 13).
+
+#### Warm-up questions
+
+<Slides>
+
+<QuestionPreview question={0} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={1} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These are simple warm-up questions to make sure students have learned the notation. If the students have watched Video 7.2, they will have no trouble with them.
+
+*   I use Question 6 in the second slide to emphasize that there are multiple correct answers, depending on where we begin the index. Some students wonder which one of them is *the* correct answer. They are all equally right, of course.
+
+</Comments>
+
+<Videos>
+
+[7.2 “Sigma notation” for sums](https://www.youtube.com/watch?v=hZXPAEeu5D4\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=2)
+
+</Videos>
+
+#### Re-writing sums
+
+<Slides>
+
+<QuestionPreview question={2} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These questions deal with two ideas:
+
+    *   The index in a sum is a “dummy index” (it does not carry any intrinsic meaning and we can “re-label” it).
+
+    *   We can “shift” the index of a sum.
+
+    Students may be uncomfortable with these two ideas, particularly when using them in combination. (Basically, the idea of doing a change of variable “
+
+    $k=k+1$
+
+    ” feels very uncomfotable.)
+
+*   The goal of the question is to have students play and discover the two ideas above themselves, not to be told the result. If they are simply given a rule, they will think they know what they are doing, but they won’t.
+
+*   I recommend emphasizing the hint: expand the sums on the left side, manipulate or regroup them, then rewrite as a sum again. This will allow them to discover things themselves, and should convince them that the results are correct.
+
+*   In Question 3 I am looking for
+
+    ```math
+    \left[ \sum_{k=1}^{N}k x^{k}\right] + Nx^{N+1}
+    ```
+
+    or something similar. Some students may propose
+
+    ```math
+    \left[ \sum_{k=1}^{N}(1+kx)x^{k}\right] + 0,
+    ```
+
+    which is technically correct, but not what I am looking for.
+
+</Comments>
+
+<Videos>
+
+[7.2 “Sigma notation” for sums](https://www.youtube.com/watch?v=hZXPAEeu5D4\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=2)
+
+</Videos>
+
+#### Telescopic sum
+
+<Slides>
+
+<QuestionPreview question={3} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is planting a seed for later use. Students are discovering telescoping series (relevant in Unit 13: Series) and partial-fraction decomposition (relevant in Unit 9: Integration methods).
+
+*   If they follow the hint: they should be able to solve the question without help.
+
+</Comments>
+
+<Videos>
+
+[7.2 “Sigma notation” for sums](https://www.youtube.com/watch?v=hZXPAEeu5D4\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=2)
+
+</Videos>
+
+#### Hard questions
+
+<Slides>
+
+<QuestionPreview question={4} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={5} unit={7} small={true} />
+
+<QuestionPreview question={6} unit={7} small={true} />
+
+</Slides>
+
+<Warning>
+
+Any of these questions will take much longer than you expect.
+
+</Warning>
+
+<Comments>
+
+*   None of the results in these questions is particularly important or must be “covered”. Rather, they are opportunities for students to play, develop intuition, and get comfortable with the notation and its properties. That is all. I recommend choosing one, and giving students plenty of time to explore. Merely watching the solution to any of them (as opposed to discovering it) has very limited value.
+
+*   The third Slide (Fubini-Tonelli) is particularly hard. Most students get intimidated by the notation and do not even start. If you plan to use it, think carefully about how you are going to motivate it or what kind of help you can offer.
+
+</Comments>
+
+<Videos>
+
+[7.2 “Sigma notation” for sums](https://www.youtube.com/watch?v=hZXPAEeu5D4\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=2)
+
+</Videos>
+
+### Suprema and infima
+
+Students believe they understand the notion of supremum because they get it intuitively (“it is the thing that is like the maximum even if it is not an element of the set; for example, 1 is the supremum of $(0,1)$”). However, it is more difficult to persuade them think in terms of the definition (“it is an upper bound which is less than or equal than all other upper bounds”.)
+
+Suprema play a very important role in a regular analysis class. In such a course students would learn to use the standard arguments for “proofs with suprema and infima”. This is not an objective of MAT137 and students will have limited contact with those proofs. On the few times these arguments appear, expect students to struggle. For example, if $A \subseteq \mathbb{R}$, $x \in \mathbb{R}$, and $x < \sup A$, then it follows that $\exists a \in A$ such that $x < a$. To us, this is obvious by definition of supremum and does not require any explanation. To students, it is not obvious.
+
+#### Warm-up questions
+
+<Slides>
+
+<QuestionPreview question={7} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={8} unit={7} small={true} />
+
+<QuestionPreview question={9} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These are simple warm-up questions to verify students have watched the videos. If so, they should be able to complete them if you give them enough time.
+
+*   For the third slide (“Trig suprema”), all of them are possible except $I_{2}$.
+
+</Comments>
+
+<Videos>
+
+[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)[7.4 The supremum and infimum of a function](https://www.youtube.com/watch?v=YgXv698pN8g\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=4)
+
+</Videos>
+
+#### Empyt set
+
+<Slides>
+
+<QuestionPreview question={10} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Many students try to do this question “by feeling” instead of by definition, and they get the wrong answer, or do not know what to do, or are just guessing.
+
+*   How I use this question:
+
+    *   I ask students to think about it individually.
+
+    *   Then I insist everybody write down the definitions of “upper bound” and “supremum”
+
+    *   After that, I ask students to think about the question again, and discuss with their neighbours. This time, they will get the right answer.
+
+    *   To conclude, *I remind them of the importance of always using definitions, particularly in unusual situations*.
+
+</Comments>
+
+<Videos>
+
+[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)
+
+</Videos>
+
+#### Equivalent definitions of supremum
+
+a:defsup
+
+<Slides>
+
+<QuestionPreview question={11} unit={7} small={true} />
+
+</Slides>
+
+<Warning>
+
+*   I recommend not skipping this question. Students won’t be writing proofs with the notion of supremum often, but the few times they do, it will almost always be using this property (specifically, options 5 or 9). I did not include it in the videos because I prefer that students have to think through it and realize why options 5 or 9 are equivalent to option 1, rather than receiving it as an equivalent definition to memorize.
+
+*   If you want students to actually figure this out themselves (and you do, don’t you?) the question takes quite a long time.
+
+</Warning>
+
+<Comments>
+
+*   The equivalent answers are 1, 4, 5, 6, 7, 9, 10.
+
+*   This question is hard. It is somewhat difficult, but accessible, to realize that
+
+    *   1 is the definition
+
+    *   4 is equivalent to 1, as it is the contrapositive
+
+    *   5 is equivalent to 4, by writing out what “$R$ is not an upper bound of $A$” means
+
+    *   9 is another way to write 5
+
+    It is much more difficult to realize what to do with 6, 7, 8, 10. Specifically
+
+    *   Most students will mistakenly think that 5 and 6 are not equivalent because $R<x$ and $R\leq x$ are not equivalent. They will move on without thinking about the full statements.
+
+    *   Some students will also be confused by 7 and 8. 8 is not equivalent because it excludes the case when the supremum is an isolated point. They are probably thinking only of intervals.
+
+*   When I use this question, I normally have to do multiple “iterations”.
+
+    *   I give students time to think, discuss with each other, and then vote. I expect a lot of confusion at this moment.
+
+    *   I lead a discussion taking volunteers to explain why 1, 4, and 5 are equivalent. Once we agree on this, I tell them that multiple ones of the leftover answers are also equivalent, even if they do not look like it. I invite them to think about them and discuss with their neighbours once again. This needs time.
+
+    *   In a second discussion, I attempt to agree on why 6 is equivalent. If students are not happy I tell them to give me an example that satisfies 5, but not 6. I remind them that they need to give me an example of just $A$ and $S$ (and not $A$, $S$, and $R$ – this is the error). This may require more discussion.
+
+    *   Depending how the class is going, I may ask them to take a third period of thinking individually and discussing with their neighbour before we look at the rest.
+
+</Comments>
+
+<Videos>
+
+[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)
+
+</Videos>
+
+#### Fix these false statements
+
+<Slides>
+
+<QuestionPreview question={12} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   If I gave students enough time and invite them to discuss with their neighbour, they normally figure out all the corrections. When a student figures out an answer they are happy to explain it because they know it is right, and the argument is convincing to those listening. However, if they do not talk to each other, half of them just wait doing nothing.
+
+*   Corrections:
+
+    1.  It should be an inequality $\leq$ instead of an equality.
+
+    2.  the first term is the maximum of the other two terms.
+
+    3.  This is only true if $c \geq 0$. If $c \leq 0$, we replace “sup” with “inf” on the right-hand side.
+
+</Comments>
+
+<Videos>
+
+[7.4 The supremum and infimum of a function](https://www.youtube.com/watch?v=YgXv698pN8g\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=4)
+
+</Videos>
+
+#### True or False - Suprema and infima
+
+<Slides>
+
+<QuestionPreview question={13} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Solution: 1, 3, and 6 are true. The rest are false.
+
+*   Some of these may confuse some students. However, if I give them enough time and they discuss with each other, they should be able to get them. When a student finds a counterexample they are happy to explain it because they know it is right, and those listening will be convinced. However, if students do not talk to each other, some will just try to guess and then wait doing nothing.
+
+</Comments>
+
+<Videos>
+
+[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)
+
+</Videos>
+
+### The definition of integral
+
+The definition of integral is the most complicated definition in MAT137. For now, students just need to understand the definition (and the many concepts necessary to state it), and be able to think of very basic examples and properties, without having to write complex proofs with it. Later, in MAT237, they will need to write those complex proofs.
+
+#### Definition of partition, lower sum, and upper sum
+
+<Slides>
+
+<QuestionPreview question={14} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={15} unit={7} small={true} />
+
+<QuestionPreview question={16} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={17} unit={7} small={true} />
+
+</Slides>
+
+<Warning>
+
+Don’t underestimate the importance of the basic, little questions in this topic!
+
+</Warning>
+
+<Comments>
+
+*   These are very basic questions to make sure students understand the basic ingredients: the definitions of partitions, lower sum, and upper sum. You may think they are trivial; you may be tempted to skip them and focus on the more “interesting” questions. Don’t do that. We want to give students a chance to absorb, solidify, and receive confirmation on each one of the little ingredients. They will appreciate it.
+
+</Comments>
+
+<Videos>
+
+[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)[7.1 Preview of the definition of integral](https://www.youtube.com/watch?v=F9lfbCaXOpk\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=1)
+
+</Videos>
+
+#### Easier than it looks
+
+<Slides>
+
+<QuestionPreview question={18} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   If you ask students whether this is true or false, they will intuitively think that it is true, but they will think they do not know how to prove it. Proofs with these concepts sound complicated. Many are intimidated and do not attempt to write anything.
+
+*   How I use this question
+
+    *   I give them a bit of time to think.
+
+    *   If, as expected, few of them are comfortable with this, I give them the thing “Choose the simplest partition you can think of. Really: the simplest one. What happens then?”
+
+    *   Then I invite them to discuss with each other.
+
+</Comments>
+
+<Videos>
+
+[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)
+
+</Videos>
+
+#### Joining partitions
+
+<Slides>
+
+<QuestionPreview question={19} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is another basic activity to verify that students understand the properties of lower and upper sums. If they have watched Video 7.6, they should be able to do it easily. Still, it is worth giving them time to think through the question to solidify those properties.
+
+</Comments>
+
+<Videos>
+
+[7.6 Properties of lower and upper sums](https://www.youtube.com/watch?v=Ev2w9NYqNvc\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=6)
+
+</Videos>
+
+#### A tricky question
+
+<Slides>
+
+<QuestionPreview question={20} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={21} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   All 3 statements are false.
+
+*   This activity addresses a (sadly) common error: that the lower integral is one of the lower sums and the upper integral is one of the upper sums. I do not know where this error comes from but I have seen it in students’ work in proofs and calculations.
+
+*   How I use this question:
+
+    *   First I give students only Options 1 and 2, I invite them to think, and I ask them to vote. The question is phrased so as to lead them towards Option 2.
+
+    *   Then I invite them to discuss with their neighbour, and vote again.
+
+    *   If they are not converging to the right answer (and normally they aren’t), I present Option 3, together with the summary picture, and I ask them to focus only on whether Option 3 is true or false, ignoring the others. I give them more time to discuss with each other. Now the class moves towards False.
+
+</Comments>
+
+<Videos>
+
+[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)
+
+</Videos>
+
+#### An alternative definition
+
+<Slides>
+
+<QuestionPreview question={22} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={23} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The goal of this question is to realize that
+
+    *   1 is equivalent to 4,
+
+    *   (1 and 2) is equivalent to (3 and 4)
+
+    When we use lower (or upper) integrals in proofs (or even in calculations), most of the time we are just using properties 1 and 2. Actually, the same is true of *any* supremum or infimum, not just lower and upper integrals. However, I do not want students to just memorize these as extra rules or properties. Rather, I want them to understand naturally that this is just another way of writing “the infimum of all the lower sums”.
+
+    Because of the above, this becomes a very important activity, but only if students figure it out themselves rather than being told the answer. If I am not going to have enough time to use the activity properly, then it is not worth it an I just skip it.
+
+*   This activity is a follow up to a:defsup: “Equivalent definitions of supremum”.
+
+*   How I use this activity:
+
+    *   I go through multiple rounds of think individually, discuss with your neighbours, take suggestions, vote, and me giving hints or telling them to focus on something (based on the suggestions they offer).
+
+    *   Once we are satisfied that (1 and 2) iff (3 and 4), which will take quite some time, I present the second slide and they work on it.
+
+    *   After they solve it, I explain how they will use these properties in practice, and how proving 1 and 2 is a way to prove that $\displaystyle M= \underline{I_a^b}(f)$.
+
+</Comments>
+
+<Videos>
+
+[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)
+
+</Videos>
+
+#### The “$\varepsilon$-characterization” of integrability
+
+<Slides>
+
+<QuestionPreview question={24} unit={7} small={true} />
+
+<QuestionPreview question={25} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={26} unit={7} small={true} />
+
+</Slides>
+
+<Warning>
+
+*   You may be attracted to this question because it is “interesting” and important (more on that below). However, it is on the upper end of difficulty of what we can ask from students. It is not worth it to spend any time on this question unless students have mastered the basics. In this challenging topic, I prefer to first focus on the basic, boring-looking questions as much as needed, rather than something like this. I may skip this question entirely.
+
+*   This takes a long time. If you want to do the whole activity, including both proofs, it could use up the full hour.
+
+</Warning>
+
+<Comments>
+
+*   If we want to prove all the properties of integrals and build the theory of integration rigorously, this lemma is essential. Indeed, students will learn this lemma and will make heavy use of it in MAT237. However, they won’t need it in MAT137. So this lemma will be important later on... but not in this course. Still, it *might* be an interesting (and challenging) exercise.
+
+*   How I use this question
+
+    *   I present only the first slide and ask them to just decide True or False for each implication, without writing a formal proof. I give them time to think individually and to talk to their neighbours. **This question specifically will not work if they do not talk to each other.**
+
+    *   After taking answers from students and discussing the question, if students are unhappy with one of them being true, I use the slide for the proof of that corresponding part to give them time to write it (and to practice proof writing). Otherwise, I may skip those.
+
+</Comments>
+
+<Videos>
+
+[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)[7.6 Properties of lower and upper sums](https://www.youtube.com/watch?v=Ev2w9NYqNvc\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=6)[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)
+
+</Videos>
+
+#### Examples of integrable and non-integrable functions from the definition
+
+<Slides>
+
+<QuestionPreview question={27} unit={7} small={true} />
+
+ 
+
+<QuestionPreview question={28} unit={7} small={true} />
+
+<QuestionPreview question={29} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   It is useful to have students work out the integrability of at least one function from the definition. The many questions on each slide are just intended to guide the students so they can do it themselves.
+
+*   These questions work much better if students talk to each other.
+
+*   If you are only going to use one of these examples, I recommend Example 2. Example 3 is too intimidating to be the first one.
+
+</Comments>
+
+<Videos>
+
+[7.7 Example: an integrable function](https://www.youtube.com/watch?v=si1Ds7TrP14\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=7)[7.8 Example: a non-integrable function](https://www.youtube.com/watch?v=N1R26svx9ZA\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=8)[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)
+
+</Videos>
+
+#### Sum of non-integrable functions
+
+<Slides>
+
+<QuestionPreview question={30} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   A good number of students will find this question accessible (given enough time) and will think of the characteristic function of the rationals and the characteristic function of the irrationals. The rest will want to sit and wait doing nothing.
+
+*   I only use this question if the class is engaged and students are actively talking to their neighbours. In that case, having them explain the solution to each other is valuable. Otherwise, I won’t bother. The answer to this question appears obvious once explained (assuming they have watched Video 7.8), but it is coming up with it that matters.
+
+</Comments>
+
+<Videos>
+
+[7.3 The supremum and the infimum of a set](https://www.youtube.com/watch?v=4qNstDwlh9I\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=3)[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)
+
+</Videos>
+
+#### Properties of the integral
+
+<Slides>
+
+<QuestionPreview question={31} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The answer to Question 3 is $2f(t)$. This will be the only controversial part. It is an opportunity to emphasize the role of the differential in an integral (and why we need to write it!)
+
+*   The answer to Question 6 is “We don’t have enough information to decide”.
+
+*   Other than Question 3, this is a simple activity to review the main properties of integrals, and students will have no trouble with it.
+
+</Comments>
+
+<Videos>
+
+[7.11 Five properties of definite integrals](https://www.youtube.com/watch?v=Hco-2q2A_ss\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=11)
+
+</Videos>
+
+#### The norm of a partition
+
+<Slides>
+
+<QuestionPreview question={32} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is an easy question to verify that students understand some important concepts from Video 7.9: the definition of norm of a partition, how we pick a sequence of partitions to compute an integral as a limit, and the fact that that sequence is not unique. If students have watched the video, and given enough time, they should be able to do it.
+
+*   Some students wonder why we don’t restrict ourselves to always using the partitions that break the interval into equal subintervals, and nothing else. It is good to have an answer ready.
+
+</Comments>
+
+<Videos>
+
+[7.9 Integrals as limits](https://www.youtube.com/watch?v=l_iMH_naiTo\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=9)
+
+</Videos>
+
+#### Riemann sums example
+
+<Slides>
+
+<QuestionPreview question={33} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Riemann sums do not look very difficult. They are just an algorithm! But it is only after working out one example completely, from beginning to end, that a student will actually understand them. That is the point of this question. It may be the one and only time the students integrate a function entirely through Riemann sums.
+
+*   Like many other questions in this unit, if students have watched the videos, then they will be able to work it out, even though they may make errors.
+
+*   Expect some students to be much faster than others in a question like this.
+
+</Comments>
+
+<Videos>
+
+[7.10 Riemann sums](https://www.youtube.com/watch?v=k_DPWyRU2Rw\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=10)
+
+</Videos>
+
+#### Riemann sums backwards
+
+<Slides>
+
+<QuestionPreview question={34} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   If $f$ is a continuous function on $[0,1]$, then $\displaystyle \int_{0}^{1}f(x) dx \; = \; \lim_{n \to \infty}\left[ \frac{1}{n}\sum_{i=1}^{n}f\left(\frac{i}{n}\right) \right]$.
+
+*   Some instructors like this type of question because it looks intriguing, or clever, or hard. But let’s face it: it is not an important “application”. When is the last time you computed a limit this way? Moreover, this question is sort of a trick: how is a student supposed to think of converting the limit of the sum into an integral if it is not asked in the context of Riemann sums?
+
+    I normally reserve this question in case I need a challenge in the last few minutes of class.
+
+</Comments>
+
+<Videos>
+
+[7.10 Riemann sums](https://www.youtube.com/watch?v=k_DPWyRU2Rw\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=10)
+
+</Videos>
+
+#### The Mean Value Theorem for integrals
+
+<Slides>
+
+<QuestionPreview question={35} unit={7} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Unit 8 contains an activity to write an alternative proof for this theorem. In Unit 7 the proof uses IVT and EVT. In Unit 8 the proof uses FTC and MVT. If you are using one, it is nice to use both.
+
+*   This question is not related to any one specific concept on this unit or any one video, but it is a nice final activity to practice proof writing, using various theorems and the notion of integral.
+
+*   The hints basically “give away” the proof, but students will still have to write the proof carefully and pay attention to proof structure. Good proof writing is the goal of the question.
+
+</Comments>
+
+<Videos>
+
+[7.1 Preview of the definition of integral](https://www.youtube.com/watch?v=F9lfbCaXOpk\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=1)[7.5 The definition of integral](https://www.youtube.com/watch?v=dZ_TWQbksbg\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=5)[7.11 Five properties of definite integrals](https://www.youtube.com/watch?v=Hco-2q2A_ss\&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ\&index=11)
+
+</Videos>

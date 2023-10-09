@@ -1,0 +1,783 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=6IiHC3-E3kQ&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=1}{9.1 Integration by substitution - The theory}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=dS50LonV_ms&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=2}{9.2 Integration by substitution - Examples}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=9WkYb_fRoG0&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=3}{9.3 Substitution for definite integrals}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=taKIe3Ui3oI&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=4}{9.4 Integration by parts - The theory}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=15DJgDvMpTE&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=5}{9.5 Integration by parts - Examples}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=gR-chzRVpWo&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=6}{9.6 Integration by parts - One more example}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=8TCGSagLskc&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=7}{9.7 Integration of products of trigonometric functions (Part 1)}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=zrPCAP9-0wo&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=8}{9.8 Integration of products of trigonometric functions (Part 2)}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=OT5DTVFfvFA&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=9}{9.9 The integral of secant}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=w-T90XSM90s&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=10}{9.10 Integration of rational functions - Example 1}}
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=XwuohSB1e5w&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=11}{9.11 Integration of rational functions - Example 2}}
+\newcommand{\vxii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=NjmH5KjYS2k&list=PLlwePzQY_wW_DPAQSBjQmMs0hF8T7yVkF&index=12}{9.12 Integration of rational functions - Example 3}}
+
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{9. Integration methods}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 9: Integration methods
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+{\bf Our objective is NOT to teach algorithms}
+
+\parskip=0.6\baselineskip
+
+There are two integration methods that are important by themselves: substitution and parts.  Students need to become fluent in performing these computations, as well as understand why the algorithm works, and be able to justify it using differentiation rules.
+
+\parskip=0.6\baselineskip
+
+After that, drilling complicated integration methods into students is obsolete.  Almost nobody performs them by hand anymore.    Instead, when we study other integration methods, we are teaching problem solving, not integration methods.    We want students to learn the more general idea of ``reduce this problem to another one I have already solved", which is the essence of all these methods.  So we focus on students understanding why the methods work and how someone could come up with them in the first place, rather than applying it to super-complex examples or memorizing a long list of algorithms.  {\bf To a certain extent it does not matter which other integration methods (if any) we ``teach".}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\section{Integration by substitution}
+%==================
+%==================
+\subsection{Computation practice: substitution}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=1]{137-CA-09.pdf}} \quad
+{ \includegraphics[scale=.6,page=3]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is some standard computational practice of integration by substitution.
+		\item  How I use this question:
+			\begin{itemize}
+				\item If I want a gentle warm up to make sure they understand the basics of the algorithm, I use the first slide.  It is a single question and I am telling them which substitution to use.
+				\item  If I want a bit more practice, I give them the second slide with only questions 1-4.  
+				\item  If I want longer practice, I give them the second slide with questions 1-8.
+			\end{itemize}
+		\item If I give them the second slide, I will not solve all the questions myself afterwards.  I will walk around the class observing their work.  Afterwards, I will decide whether I give them a final answer, or I solve it, or I just point out what the correct substitutions is, or nothing.  In particular, I may tell them to focus on a subset of the questions (the only ones we will discuss) and the rest are there to keep faster students busy.
+		\item Notice that Question 8 does not have an elementary antiderivative.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Definite integral via substitution}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=4]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question shows a common wrong write-up for a definite integral via substitution.    
+		\item It takes some work to convince them that this matters and it is not just me being pedantic.  I normally focus on the the expression 
+			$$\frac{1}{3} \int_0^2 u^{1/2} du,$$
+			 isolate it, agree that it has a meaning on its own independent of context, and ask whether this quantity is \DS{52/9} or not.
+		\item There are two ways to fix this:
+			\begin{itemize}
+				\item  First compute \DS{\int \sqrt{x^3+1} \, x^2 \, dx}, and then use FTC on a different line.
+				\item   Change the ends of integration when performing the substitution.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Integral of products of $\sin$ and $\cos$}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=6]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{warning}
+	This question is only worth it BEFORE students watch Video 9.7.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students will learn this in Video 9.7.  After they have watched it, this question is moot.  But if they have not watched it yet, it is a very nice exercise and it is completely accessible.
+		\item This is an example of one of the many obsolete integration algorithms our grandparents used to memorize (``to integrate a function of type X, do Y").  It is not particularly important per se.  The point is not to \emph{know} the algorithm.  The point is to be able to come up with the algorithm.	 
+		\item How I use this question:
+			\begin{itemize}
+				\item I give students only Questions 1-3.
+				\item After they solved them and we discuss them, I give them Question 4.
+			\end{itemize}	
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Odd functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=8]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{warning}
+	Students should know the definition of odd function, but plenty of them don't.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students find this question harder than you expect.  It is not super hard, but many students react with ``I do not know what you want me to do".  Have some guidance ready!
+		\item How I use this question:
+			\begin{itemize}
+				\item I tell students to ask their neighbour or to look up the definition of ``odd function" if they do not know it.
+				\item I give them time to work individually and to discuss with their neighbours.
+				\item We discuss together the answers to Questions 1 and 2.  We discuss together the beginning of the hint (we split the integral in two pieces and agree we want to show one piece is minus the other).
+				\item I give them time again to complete the proof.  Otherwise most students will not have even thought of this piece of the proof, which is the main point of the question.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\section{Integration by parts}
+%==================
+%==================
+\subsection{Computation practice: parts}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=10]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is some standard computational practice of integration by parts.
+		\item When teaching integration by parts, I want to focus on ``how do we choose parts so that the transformed integral is simpler" and use that as the only guiding principle.  In other words, I do not use ``ILATE".  Whoever invented ``ILATE" has harmed countless students by preventing them from understanding.
+		\item  Depending on how much time I want to spend, I give them more or fewer questions.  I may also tell them to focus on a subset of the questions (the only ones we will discuss) and the rest are there to keep faster students busy.
+		\item  I will not solve all the questions myself afterwards.  I will walk around the class observing their work.  Afterwards, I will decide whether I give them a final answer, or I solve it, or I just point out how to ``choose parts", or nothing.  
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vv
+
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Persistence}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=13]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   How I use this question:
+			\begin{itemize}
+				\item  I give students \emph{only} the first integral and I tell them to use integration by parts.  This is hard enough for many of them. 
+				\item Once students have progressed enough, we discuss how to do it.
+				\item Only after that, I give them the rest of the problem.  I think they appreciate the recursion method better if they have solved the first integral by brute force.  Otherwise, they do not see the big picture.
+			\end{itemize}
+		\item This question will consume a lot of time.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Integrals from a graph}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=14]{137-CA-09.pdf}} 
+
+{ \includegraphics[scale=.6,page=15]{137-CA-09.pdf}}  \quad
+{ \includegraphics[scale=.6,page=16]{137-CA-09.pdf}} 
+
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question checks whether students fully understand substitution and parts, or they just push symbols blindly without knowing what they mean.  Since the question ``looks different" from standard applications, they need to think and understand.
+		\item Students will be very uncomfortable with having to estimate some areas and not getting exact answers.
+		\item Question 3 is difficult. Most of them won't think of using parts.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\viv
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{The error function}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=18]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question checks whether students fully understand substitution and parts, or they just push symbols blindly without knowing what they mean.  Since the question ``looks different" from standard applications, they need to think and understand.
+		\item	
+			\begin{itemize}
+				\item 1 is easy
+				\item 2 is hard, even after we tell them to use parts.  They do not think of separating  $te^{-t^2}$ as something whose antiderivative we know.  
+				\item 3 is accessible, but a bit confusing as they do not think of rewriting $2t^2 = (\sqrt{2} t)^2$.
+				\item 4 is hard.  They do not think of completing the square.
+				\item 5 is easy if they have completed 4.
+				\item 6 is easier after we tell them to use substitution.
+			\end{itemize}
+		\item We can use this question to remind students that some functions are defined as integrals because there is not other way to define them.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vii
+
+\viii
+
+\viv
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Exp-trig antiderivative}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=19]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Students have seen the ``standard" solution to this question (with $a=b=1$) in Video 9.6: use parts twice to get an equation on $I$.  There is something unsatisfying about the standard solution: it is a trick.  How could a students have known to try it without being told the trick first?  How could they have known it was going to work?
+		
+		\item By contrast, the method proposed in this slide is a bit more natural and is something a student can reasonably do.  Give them enough time and they can complete the calculation without further help.  It is a bit more satisfying.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\section{Integration of products of trigonometric functions}
+%==================
+%==================
+\subsection{Practice: integrals with trigonometric functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=20]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item In these exercises students will practice the ideas and examples they have learned in Videos 9.7--9.9.  
+		\item Be careful: asking students to work through all six of them will take too much time.
+		\item I want students to only work until they get it to a point from which it is clear how to finish, and then stop.  That way they won't take too much time.  However, students often do not understand this instruction and want to work on the problems one at a time from beginning to end (thus not going very far).  I need to explain carefully what I want and make sure they get it before I launch them to work.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Integrals of products of secant and tangent}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=21]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item In Video 9.7 students learned when to use the substitution \DS{u=\sin x} or the substitution \DS{u= \cos x} to compute \DS{\int \sin^n x \cos^m x}.  The point was not to memorize the algorithm but to understand why it worked.  This question tests their understanding by asking them to use the same ideas for a different family of functions and to come up with their own algorithm.
+		\item To my surprise, they do not find this question too difficult.  If I give them enough time and the chance to discuss with each other, many of them get the right answer.
+		\item They will invariably ask you what to do when $n$ is odd and $m$ is even.  Have an answer ready.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A reduction formula}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=22]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This question is interesting but it takes a very long time.  Unless you plan to give students a big chunk of the class to work on it, I recommend not using it.   The question is only interesting if students come up with the ideas themselves.  They can, but it takes them time.
+		\item  Video 9.8 briefly touches upon using integration by parts for these types of integrals, but not in much detail so this method is still somewhat new to students.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vviii
+
+\vvi
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{A different kind of substitution}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=23]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item I have not included trigonometric substitution in the videos, so this is entirely new.
+		\item The point of the video is for student to use a new approach to integration that they have not seen before, with little direction.  The point is NOT to learn trigonometric substitution.   Once again: memorizing a long list of recipes is not the point.  
+		\item If you do not make a fuss about this, if you do not advertise that this is ``a different type of substitution", then students won't even notice; they will just solve the problem like a standard substitution problem, and they won't think there is anything different.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\vviii
+\end{videos}
+
+\newpage
+%==================
+\section{Integration of rational functions}
+%==================
+%==================
+\subsection{Discovering partial-fraction decomposition}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=24]{137-CA-09.pdf}} \quad
+{ \includegraphics[scale=.6,page=25]{137-CA-09.pdf}} 
+\vspace{-.5cm}
+
+{ \includegraphics[scale=.6,page=26]{137-CA-09.pdf}} \quad
+{ \includegraphics[scale=.6,page=27]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Each of these four slides is a scaffolded sequence of questions designed to ``discover" how to integrate certain functions.  In theory, students could come up with the methods by themselves through these activities, without having seen any examples first.
+		\item Videos 9.10--9.12 present some of the ideas of partial fraction decomposition and integration of rational functions.  They do not present a complete step-by-step algorithm to integrate all rational functions.
+		\item Once again, remember that our goal is not to memorize a long list of algorithms, but to develop problem solving skills.
+		
+		 If you allow students to play and explore, and you give them time, they will come up with creative methods to solve some of these problems which are not the ``official" ones.  For example, for question 4 on the second slide, the ``official" method is to write
+			$$
+				\frac{x^2}{(x+1)^3} = \frac{A}{(x+1)^3} + \frac{B}{(x+1)^2}+\frac{C}{x+1}
+			$$
+		Instead, every time I use it, some student proposes integration by parts (it works!) and some student proposes the substitution \DS{u=x+1} (which is faster!)
+	\end{itemize}
+\end{comments}
+
+\newpage
+\begin{videos}
+\vx
+
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{The integral of secant}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=28]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Perhaps the only point of this activity is to tie lose ends from the videos:
+			\begin{itemize}
+				\item Video 9.9 explained how to use the substitution \DS{u=\sin x} to transform \DS{\int \sec x \, dx} into the integral of a rational function (and then stops).
+				\item Video 9.10 explained how to compute the integral of similar rational functions using partial-fraction decomposition.
+				\item This activity invites students to put the two of them together and complete the computation of \DS{\int \sec \, dx} from beginning to end.  That is all.  
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vix
+
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Messier rational functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=29]{137-CA-09.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These questions are the traditional, more involved, partial-fraction decompositions that used to be taught in calculus courses.  Notice that the videos don't introduce this method in full.  
+		\item If I use this question, I ask students:
+			\begin{itemize}
+				\item Find simple rational functions that you can integrate and whose denominator divides the denominator of the integrand
+				\item How many of them will you need, noting that you want this to work for any polynomial of degree... (after long division)?
+			\end{itemize}
+			This still makes the problem very difficult.  Expect students to struggle.  Still, I do not see any value in giving students the ``official" method as a recipe.  They will never use it in their lives.  But I see value is struggling to come up with the method, even if they do not fully complete it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+
+\vxi
+
+\vxii
+\end{videos}
+%==================
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

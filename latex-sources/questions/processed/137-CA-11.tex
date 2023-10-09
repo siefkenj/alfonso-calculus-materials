@@ -1,0 +1,862 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation>{ \usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{}
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{
+	booktabs
+} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{% \pause
+}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0}
+\definecolor{rosa}{rgb}{1, 0, 1}
+\definecolor{naranja}{rgb}{1, .5, 0.1}
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\fontsize{15}{15}\selectfont}
+\setbeamerfont{block title}{size=\fontsize{14}{14}\selectfont}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+
+% Preamble just for this file
+
+%===========================
+
+\newcommand{\an}{\left\{ a_n \right\}_{n=0}^{\infty}}
+\newcommand{\bn}{\left\{ b_n \right\}_{n=0}^{\infty}}
+\newcommand{\Rn}{\left\{ R_n \right\}_{n=0}^{\infty}}
+
+\newcommand{\seqs}[1]{\left\{ #1_n \right\}_{n}}
+
+\newcommand{\tasma}{\phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? }}
+
+%===================================================
+\begin{document}
+	%===================================================
+
+	%----------------------------------------------------------------------------------------
+
+	%	Definition of sequence and convergence
+
+	%----------------------------------------------------------------------------------------
+
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":0,"title":"Warm up","images":[]}
+	\begin{frame}[t]
+		\frametitle{Warm up}
+
+		Write a formula for the general term of these sequences
+		\vfill
+		\begin{enumerate}
+			\item $\displaystyle \{a_{n}\}_{n=0}^{\infty}= \{ \, 1, \, 4, \, 9, \, 16,
+				\, 25, \, \ldots \, \}$
+				\vfill
+
+			\item $\displaystyle \{b_{n}\}_{n=1}^{\infty}= \{ \, 1, \, -2, \, 4, \, -8,
+				\, 16, \, -32, \, \ldots \, \}$
+				\vfill
+
+			\item $\displaystyle \{c_{n}\}_{n=1}^{\infty}= \left\{ \, \frac{2}{1!}, \,
+				\frac{3}{2!}, \, \frac{4}{3!}, \, \frac{5}{4!}, \, \ldots \, \right\}$
+				\vfill
+
+			\item $\displaystyle \{d_{n}\}_{n=1}^{\infty}= \{ \, 1, \, 4, \, 7, \, 10,
+				\, 13, \, \ldots \, \}$
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":1,"title":"Sequences vs functions — convergence","images":[]}
+	\begin{frame}[t]
+		\frametitle{Sequences vs functions -- convergence}
+
+		For any function $f$ with domain $[0, \infty)$, \\ we define a sequence as $a
+		_{n}= f(n)$. \\ Let $L \in \mathbb{R}$. Which of these implications is true?
+
+		\begin{enumerate}
+			\item IF $\displaystyle \lim_{x \to \infty}f(x) = L$, \; THEN
+				$\displaystyle \lim_{n \to \infty}a_{n}= L$.
+				\vfill
+
+			\item IF $\displaystyle \lim_{n \to \infty}a_{n}= L$, \; THEN
+				$\displaystyle \lim_{x \to \infty}f(x) = L$.
+				\vfill
+
+			\item IF $\displaystyle \lim_{n \to \infty}a_{n}= L$, \; THEN
+				$\displaystyle \lim_{n \to \infty}a_{n+1}= L$.
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":2,"title":"Definition of limit of a sequence","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Definition of limit of a sequence}
+
+		Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ be a sequence. Let
+		$\displaystyle L \in \mathbb{R}$. \\ Which statements are equivalent to $\displaystyle
+		``\left\{ a_{n} \right\}_{n=0}^{\infty}\longrightarrow L"$?
+
+		\begin{enumerate}
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in \mathbb{N},
+				\; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies |L-a_{n}| < \varepsilon
+				.$
+
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in \mathbb{N},
+				\; \forall n \in \mathbb{N}, \; \quad n \;{\color{red} > }\; n_{0}\implies
+				|L-a_{n}| < \varepsilon.$
+
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in{\color{red} \mathbb{R}}
+				, \; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies |L-a_{n}| <
+				\varepsilon.$
+
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in \mathbb{N},
+				\; \forall n \in{\color{red} \mathbb{R}}, \; \quad n \geq n_{0}\implies |
+				L-a_{n}| < \varepsilon.$
+
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in \mathbb{N},
+				\; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies |L-a_{n}| \;{\color{red} \leq}
+				\; \varepsilon.$
+
+			\item $\displaystyle \forall \varepsilon \;{\color{red} \in (0,1)}, \; \exists
+				n_{0}\in \mathbb{N}, \; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies
+				|L-a_{n}| < \varepsilon.$
+
+			\item $\displaystyle \forall \varepsilon>0, \; \exists n_{0}\in \mathbb{N},
+				\; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies |L-a_{n}| <{\color{red} \frac{1}{\varepsilon}}
+				.$
+
+			\item $\displaystyle \forall{\color{red} k \in \mathbb{Z}^{+}}, \; \exists
+				n_{0}\in \mathbb{N}, \; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies
+				|L-a_{n}| <{\color{red} k}.$
+
+			\item $\displaystyle \forall{\color{red} k \in \mathbb{Z}^{+}}, \; \exists
+				n_{0}\in \mathbb{N}, \; \forall n \in \mathbb{N}, \; \quad n \geq n_{0}\implies
+				|L-a_{n}| <{\color{red} \frac{1}{k}}.$
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":3,"title":"Definition of limit of a sequence (continued)","images":[]}
+	\begin{frame}[t]
+		\fontsize{12}{12}\selectfont
+		\frametitle{Definition of limit of a sequence (continued)}
+
+		Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ be a sequence. Let
+		$\displaystyle L \in \mathbb{R}$. \\ Which statements are equivalent to $\displaystyle
+		``\left\{ a_{n} \right\}_{n=0}^{\infty}\longrightarrow L"$?
+
+		\begin{enumerate}
+			\addtocounter{enumi}{9}
+
+			\item $\displaystyle \forall \varepsilon >0$, the interval
+				$\displaystyle (L-\varepsilon, L+\varepsilon)$ contains all the elements
+				of the sequence, except the first few.
+
+			\item $\displaystyle \forall \varepsilon >0$, the interval
+				$\displaystyle (L-\varepsilon, L+\varepsilon)$ contains infinitely many
+				of the elements of the sequence.
+
+			\item $\displaystyle \forall \varepsilon >0$, the interval
+				$\displaystyle (L-\varepsilon, L+\varepsilon)$ contains \emph{{\color{red} almost all}}
+				the elements of the sequence.
+
+			\item $\displaystyle \forall \varepsilon >0$, the interval
+				$\displaystyle [L-\varepsilon, L+\varepsilon]$ contains \emph{{\color{red} almost all}}
+				the elements of the sequence.
+
+			\item Every interval that contains $L$ must contain \emph{{\color{red} almost all}}
+				all the elements of the sequence.
+
+			\item Every open interval that contains $L$ must contain \emph{{\color{red} almost all}}
+				all the elements of the sequence.
+		\end{enumerate}
+
+		\emph{Notation:} ``\emph{{\color{red} almost all}}" = ``all, except finitely
+		many"
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":4,"title":"Convergence and divergence","images":[]}
+	\begin{frame}[t]
+		\frametitle{Convergence and divergence}
+
+		Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ be a sequence. \\ Write
+		the formal definition of the following concepts:
+
+		\begin{enumerate}
+			\item $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is convergent.
+
+				\vfill
+
+			\item $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is divergent.
+
+				\vfill
+
+			\item $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is divergent to
+				$\infty$.
+
+				\vfill
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":5,"title":"Proof from the definition of limit","images":[]}
+	\begin{frame}[t]
+		\frametitle{Proof from the definition of limit}
+
+		Prove, directly from the definition of limit, that
+		\[
+			\lim_{n \to \infty}\frac{n^{2}}{n^{2}+1}= 1.
+		\]
+
+		\emph{Suggestion:}
+		\begin{enumerate}
+			\item Write down the definition of what you want to show.
+
+			\item Use itto decide the structure of the proof.
+
+			\item Do some rough work if necessary.
+
+			\item Write down the formal proof.
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%----------------------------------------------------------------------------------------
+
+	%	Monotonicity and  boundness
+
+	%----------------------------------------------------------------------------------------
+
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":6,"title":"Sequences vs functions — monotonicity and boundness","images":[]}
+	\begin{frame}[t]
+		\frametitle{Sequences vs functions -- monotonicity and boundness}
+
+		For any function $f$ with domain $[0, \infty)$, \\ we define a sequence as $a
+		_{n}= f(n)$. \\ Which of these implications is true?
+
+		\begin{enumerate}
+			\item IF $f$ is increasing, THEN
+				$\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is increasing.
+				\vfill
+
+			\item IF $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is increasing,
+				THEN $f$ is increasing.
+				\vfill
+
+			\item IF $f$ is bounded, THEN
+				$\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is bounded.
+				\vfill
+
+			\item IF $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is bounded,
+				THEN $f$ is bounded.
+				\vfill
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":7,"title":"Examples","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Examples}
+
+		Construct 8 examples of sequences. \\ If any of them is impossible, cite a theorem
+		to justify it.
+
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				                               &           & convergent                                               & divergent                                                \\
+				\hline
+				\multirow{2}{*}{monotonic}     & bounded   & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } \\
+				\cline{2-4}                    & unbounded & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } \\
+				\hline
+				\multirow{2}{*}{not monotonic} & bounded   & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } \\
+				\cline{2-4}                    & unbounded & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } & \phantom{$\displaystyle \int_{\dfrac 11}^{9}$ ???????? } \\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{frame}
+	%-----------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":8,"title":"A sequence defined by recurrence","images":[]}
+	\begin{frame}[t]
+		\frametitle{A sequence defined by recurrence}
+
+		Consider the sequence $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$
+		defined by
+		\begin{equation*}
+			\begin{cases}
+				                                & R_{0}= 1                           \\
+				\forall n \in \mathbb{N}, \quad & R_{n+1}= \dfrac{ R_n + 2}{R_n + 3}
+			\end{cases}
+		\end{equation*}
+		Compute $\displaystyle R_{1}, \, R_{2}, \, R_{3}$.
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":9,"title":"Is this proof correct?","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Is this proof correct?}
+		Let $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$ be the sequence in
+		the previous slide.
+		\begin{block}{Claim:}
+			$\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}\longrightarrow -1 + \sqrt{3}$.
+		\end{block}
+		% \pause
+		\begin{proof}
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Let $\displaystyle L = \lim_{n \to \infty}R_{n}$.
+
+					\item $\displaystyle R_{n+1}= \frac{R_{n}+ 2}{ R_{n}+ 3}$
+
+					\item $\displaystyle \lim_{n \to \infty }R_{n+1}= \lim_{n \to \infty }\frac{R_{n}+
+						2}{ R_{n}+ 3}$
+
+					\item $\displaystyle L = \frac{L + 2}{ L + 3}$
+
+					\item $\displaystyle L(L+3) = L + 2$
+
+					\item $\displaystyle L^{2}+2L - 2 = 0$
+
+					\item $\displaystyle L = -1 \pm \sqrt{3}$
+
+					\item $\displaystyle L$ must be positive, so
+						$\displaystyle L = -1 + \sqrt{3}$
+				\end{itemize}
+			\end{multicols}
+		\end{proof}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":10,"title":"Another sequence defined by recurrence","images":[]}
+	\begin{frame}[t]
+		\frametitle{Another sequence defined by recurrence}
+		Consider the sequence $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ defined
+		by
+		\begin{equation*}
+			\begin{cases}
+				                                & a_{0}= 1           \\
+				\forall n \in \mathbb{N}, \quad & a_{n+1}= 1 - a_{n}
+			\end{cases}
+		\end{equation*}
+
+		\begin{itemize}
+			\item Use the same method as in the previous slide to compute its limit.
+
+			\item {\bfseries After} you have computed the limit, calculate $a_{1}$, $a_{2}$,
+				$a_{3}$, and $a_{4}$.
+
+			\item What happened?
+		\end{itemize}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":11,"title":"The original sequence defined by recurrence — done right","images":[]}
+	\begin{frame}[t]
+		\frametitle{The original sequence defined by recurrence -- done right}
+
+		Consider the sequence $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$
+		defined by
+		\begin{equation*}
+			\begin{cases}
+				                                & R_{0}= 1                           \\
+				\forall n \in \mathbb{N}, \quad & R_{n+1}= \dfrac{ R_n + 2}{R_n + 3}
+			\end{cases}
+		\end{equation*}
+
+		\begin{enumerate}
+			\item Prove $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$ is bounded
+				below by 0.
+
+			\item Prove $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$ is decreasing
+				(use induction)
+
+			\item Prove $\displaystyle \left\{ R_{n} \right\}_{n=0}^{\infty}$ is convergent
+				(use a theorem)
+
+			\item Now the calculation in the earlier slide is correct, and we can get
+				the value of the limit.
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":12,"title":"\\fontsize{13}{13}\\selectfont True or False - convergence, monotonicity, and boundedness","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{\fontsize{13}{13}\selectfont True or False - convergence,
+		monotonicity, and boundedness}
+
+		\begin{enumerate}
+			\item If a sequence is convergent, then it is bounded above.
+
+			\item If a sequence is bounded, then it is convergent
+
+			\item If a sequence is convergent, then it is eventually monotonic.
+
+			\item If a sequence is positive and converges to 0, then it is eventually
+				monotonic.
+
+			\item If a sequence diverges to $\infty$, then it is eventually monotonic.
+
+			\item If a sequence diverges, then it is unbounded.
+
+			\item If a sequence diverges and is unbounded above, then it diverges to
+				$\infty$.
+
+			\item If a sequence is eventually monotonic, then it is either convergent,
+				divergent to $\infty$, or divergent to $-\infty$.
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":13,"title":"True or False - Rapid fire","images":[]}
+	\begin{frame}[t]
+		\frametitle{True or False - Rapid fire}
+
+		\begin{enumerate}
+			\item (convergent) $\displaystyle \implies$ (bounded)
+				\vfill
+
+			\item (convergent) $\displaystyle \implies$ (monotonic)
+				\vfill
+
+			\item (convergent) $\displaystyle \implies$ (eventually monotonic)
+				\vfill
+
+			\item (bounded) $\displaystyle \implies$ (convergent)
+				\vfill
+
+			\item (monotonic) $\displaystyle \implies$ (convergent)
+				\vfill
+
+			\item (bounded + monotonic) $\displaystyle \implies$ (convergent)
+				\vfill
+
+			\item (divergent to $\infty$) $\displaystyle \implies$ (eventually
+				monotonic)
+				\vfill
+
+			\item (divergent to $\infty$) $\displaystyle \implies$ (unbounded above)
+				\vfill
+
+			\item (unbounded above) $\displaystyle \implies$ (divergent to $\infty$)
+		\end{enumerate}
+		\vfill
+
+		\vfill
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":14,"title":"Fill in the blanks","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Fill in the blanks}
+
+		Let $\displaystyle \{a_{n}\}$ be a decreasing, bounded sequence. \\ Assume $a
+		_{1}= 1$ and $a_{n}$ is never $0$. \\ Let $m$ be the greatest lower bound of
+		$\displaystyle \{a_{n}\}$.\\
+		\medskip
+
+		For each of the statements below, find \textbf{all} the values of $m$ that make
+		the statement true.
+
+		\begin{enumerate}
+			\item IF \boxed{\phantom{????????????}} THEN $\displaystyle \{1/a_{n}\}$
+				is bounded
+
+			\item IF \boxed{\phantom{????????????}} THEN $\displaystyle \{1/a_{n}\}$
+				is increasing
+
+			\item IF \boxed{\phantom{????????????}} THEN
+				$\displaystyle \{\sin a_{n}\}$ is bounded
+
+			\item IF \boxed{\phantom{????????????}} THEN
+				$\displaystyle \{\sin a_{n}\}$ is decreasing
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%----------------------------------------------------------------------------------------
+
+	%	Proving theorems
+
+	%----------------------------------------------------------------------------------------
+
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":15,"title":"Proof of Theorem 3","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Proof of Theorem 3}
+		Write a proof for the following Theorem
+		\begin{block}{\fontsize{13}{13}\selectfont Theorem 3}
+			Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ be a sequence.
+			\begin{itemize}
+				\item IF $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is increasing
+					AND unbounded above,
+
+				\item THEN $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ is divergent
+					to $\infty$
+			\end{itemize}
+		\end{block}
+		% \pause
+		\begin{enumerate}
+			\item Write the definitions of ``increasing", ``unbounded above", and ``divergent
+				to $\infty$"
+
+			\item Using the definition of what you want to prove, write down the
+				structure of the formal proof.
+
+			\item Do some rough work if necessary.
+
+			\item Write a formal proof.
+		\end{enumerate}
+	\end{frame}
+	%---------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":16,"title":"Proof feedback","images":[]}
+	\begin{frame}[t]
+		\frametitle{Proof feedback}
+
+		\begin{enumerate}
+			\item Does your proof have the correct structure?
+
+			\item Are all your variables fixed (not quantified)? In the right order? Do
+				you know what depends on what?
+
+			\item Is the proof self-contained? Or do I need to read the rough work to
+				understand it?
+
+			\item Does each statement follow logically from previous statements?
+
+			\item Did you explain what you were doing? Would your reader be able to
+				follow your thought process without reading your mind?
+		\end{enumerate}
+	\end{frame}
+	%---------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":17,"title":"Critique this proof - #1","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Critique this proof - \#1}
+
+		\begin{itemize}
+			\vfill
+
+			\item $\displaystyle \forall M \in \mathbb{R}, \; \exists n_{0}\in \mathbb{N}
+				, \; \forall n \in \mathbb{N}, \quad n\geq n_{0}\implies x_{n}> M$
+				\vfill
+				\vfill
+
+			\item $M$ is not an upper bound:
+				$\displaystyle \exists n_{0}\in \mathbb{N}$ s.t. $\displaystyle x_{n_0}>
+				M$
+				\vfill
+				\vfill
+
+			\item $\displaystyle n \geq n_{0}\; \implies \; x_{n}\geq x_{n_0}> M$
+				\vfill
+		\end{itemize}
+	\end{frame}
+	%---------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":18,"title":"Critique this proof - #2","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Critique this proof - \#2}
+
+		\begin{itemize}
+			\vfill
+
+			\item WTS $a_{n}\rightarrow \infty$. This means:
+				\vspace{.2cm}
+				\quad $\displaystyle \forall M \in \mathbb{R}, \; \exists n_{0}\in \mathbb{N}
+				, \; \forall n \in \mathbb{N}, \quad n\geq n_{0}\implies x_{n}> M$
+				\vfill
+				\vfill
+
+			\item bounded above: \quad
+				$\displaystyle \exists M \in \mathbb{R}, \; \forall n \in \mathbb{N}, \;
+				x_{n}\leq M$
+				\vfill
+				\vfill
+
+			\item negation: \quad
+				$\displaystyle \forall M \in \mathbb{R}, \; \exists n \in \mathbb{N}, \;
+				x_{n}> M$
+				\vfill
+				\vfill
+
+			\item $\forall n \in \mathbb{N}$, take $n=n_{0}$.
+				\vfill
+		\end{itemize}
+	\end{frame}
+	%---------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":19,"title":"Composition law","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{Composition law}
+		Write a proof for the following Theorem
+		\begin{block}{Theorem}
+			Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ be a sequence.
+			Let $\displaystyle L \in \mathbb{R}$. Let $f$ be a function.
+			\begin{itemize}
+				\item IF $\displaystyle
+					\begin{cases}
+						\left\{ a_{n} \right\}_{n=0}^{\infty}\longrightarrow L \\
+						f \text{ is continuous at }L
+					\end{cases}$
+
+				\item THEN $\displaystyle \left\{ f(a_{n}) \right\}_{n=0}^{\infty}\longrightarrow
+					f(L)$ .
+			\end{itemize}
+		\end{block}
+		% \pause
+		\begin{enumerate}
+			\item Write the definition of your hypotheses and your conclusion.
+
+			\item Using the definition of your conclusion, figure out the structure of
+				the proof.
+
+			\item Do some rough work if necessary.
+
+			\item Write a formal proof.
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%----------------------------------------------------------------------------------------
+
+	%	The ``Big Theorem"
+
+	%----------------------------------------------------------------------------------------
+
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":20,"title":"Calculations","images":[]}
+	\begin{frame}[t]
+		\frametitle{Calculations}
+
+		\begin{enumerate}
+			\item $\displaystyle \lim_{n \to \infty}\frac{n! + 2 e^{n}}{3n! + 4 e^{n}}$
+
+				\vfill
+
+			\item $\displaystyle \lim_{n \to \infty}\frac{2^{n}+ (2n)^{2}}{2^{n+1}+ n^{2}}$
+
+				\vfill
+
+			\item $\displaystyle \lim_{n \to \infty}\frac{5n^{5}+ 5^{n}+ 5n! }{n^{n}}$
+		\end{enumerate}
+
+		\vfill
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":21,"title":"True or False — The Big Theorem","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{True or False -- The Big Theorem}
+
+		Let $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ and $\displaystyle
+		\left\{ b_{n} \right\}_{n=0}^{\infty}$ be positive sequences.
+		\vspace{.15cm}
+		\begin{enumerate}
+			\item IF \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}, \quad THEN \;
+				{\color{blue} $\displaystyle \forall m \in \mathbb{N}$, $\displaystyle a_{m}< b_{m}$}.
+				\vfill
+
+			\item IF \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}, \quad THEN \;
+				{\color{blue} $\displaystyle \exists m \in \mathbb{N}$ s.t. $\displaystyle a_{m}< b_{m}$}.
+				\vfill
+
+			\item IF \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}, \quad THEN \;
+				{\color{blue} $\displaystyle \exists n_{0}\in \mathbb{N}$ s.t.}
+				\vspace{.15cm}
+
+				{\color{blue} $\displaystyle \forall m \in \mathbb{N}, \; m\geq n_{0}\implies a_{m}< b_{m}$}.
+				\vfill
+			% \pause
+
+			\item IF \; {\color{blue} $\displaystyle \forall m \in \mathbb{N}, \, a_{m}< b_{m}$},
+				\quad THEN \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}.
+				\vfill
+
+			\item IF \; {\color{blue} $\displaystyle \exists m \in \mathbb{N}$ s.t. $\displaystyle a_{m}< b_{m}$},
+				\quad THEN \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}.
+				\vfill
+
+			\item IF \; {\color{blue} $\displaystyle \exists n_{0}\in \mathbb{N}$ s.t. $\displaystyle \forall m \in \mathbb{N}, \; m\geq n_{0}\implies a_{m}< b_{m}$},
+				\vspace{.15cm}
+
+				THEN \; {\color{red} $\displaystyle a_{n}\ll b_{n}$}.
+				\vfill
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":22,"title":"Refining the Big Theorem - 1","images":[]}
+	\begin{frame}[t]
+		\frametitle{Refining the Big Theorem - 1}
+
+		\begin{enumerate}
+			\item Construct a sequence $\displaystyle \left\{ u_{n} \right\}_{n}$ such
+				that
+				\[
+					\begin{cases}
+						\forall a < 0,    & n^{a}\ll u_{n} \\
+						\forall a \geq 0, & u_{n}\ll n^{a}
+					\end{cases}
+				\]
+
+			\item Construct a sequence $\displaystyle \left\{ v_{n} \right\}_{n}$ such
+				that
+				\[
+					\begin{cases}
+						\forall a \leq 0, & n^{a}\ll v_{n} \\
+						\forall a > 0,    & v_{n}\ll n^{a}
+					\end{cases}
+				\]
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":23,"title":"Refining the Big Theorem - 2","images":[]}
+	\begin{frame}[t]
+		\frametitle{Refining the Big Theorem - 2}
+
+		\begin{enumerate}
+			\item Construct a sequence $\displaystyle \left\{ u_{n} \right\}_{n}$ such
+				that
+				\[
+					\begin{cases}
+						\forall a < 2,    & n^{a}\ll u_{n} \\
+						\forall a \geq 2, & u_{n}\ll n^{a}
+					\end{cases}
+				\]
+
+			\item Construct a sequence $\displaystyle \left\{ v_{n} \right\}_{n}$ such
+				that
+				\[
+					\begin{cases}
+						\forall a \leq 2, & n^{a}\ll v_{n} \\
+						\forall a > 2,    & v_{n}\ll n^{a}
+					\end{cases}
+				\]
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%QUESTION_INFO: {"unit":11,"question":24,"title":"True or False - Review","images":[]}
+	\begin{frame}[t]
+		\fontsize{13}{13}\selectfont
+		\frametitle{True or False - Review}
+
+		\begin{enumerate}
+			\item If $\displaystyle \left\{ a_{n} \right\}_{n=0}^{\infty}$ diverges and
+				is increasing, then $\exists n \in \mathbb{N}$ s.t. $a_{n}> 100$.
+				\vfill
+
+			\item If $\displaystyle \lim_{n \to \infty}a_{n}= L$, then
+				$\forall n \in \mathbb{N}$, $\displaystyle a_{n}< L+1$.
+				\vfill
+
+			\item If $\displaystyle \lim_{n \to \infty}a_{n}= L$, then
+				$\exists n \in \mathbb{N}$ s.t. $\displaystyle a_{n}< L+1$.
+				\vfill
+
+			\item If $\displaystyle \lim_{n \to \infty}a_{n}= L$, then
+				$\exists \varepsilon>0$ s.t. $\forall n \in \mathbb{N}$,
+				$\displaystyle a_{n}< L+\varepsilon$.
+				\vfill
+
+			\item If $\left\{ a_{n} \right\}_{n=0}^{\infty}$ is convergent and $b_{n}=a
+				_{n}$ for \emph{almost all} $n \in \mathbb{N}$, then $\left\{ b_{n} \right
+				\}_{n=0}^{\infty}$ is convergent.
+				\vfill
+
+			\item If $a_{n}\ll b_{n}$, then $\exists n \in \mathbb{N}$ s.t. $a_{n}< b_{n}$.
+				\vfill
+
+			\item If $a_{n}\ll b_{n}$, then $\forall \varepsilon >0$, $\exists n \in \mathbb{N}$
+				s.t. $a_{n}< \varepsilon b_{n}$.
+				\vfill
+
+			\item If $a_{n}\ll b_{n}$, then $\forall \varepsilon >0$, $\exists n_{0}\in
+				\mathbb{N}$ s.t. $\forall n \in \mathbb{N}$, $n \geq n_{0}\implies a_{n}<
+				\varepsilon b_{n}$,
+				\vfill
+		\end{enumerate}
+	\end{frame}
+	%------------------------------
+
+	%------------------------------
+
+	%-----------------------------
+\end{document}
+%-----------------------------
+
+%-----------------------------

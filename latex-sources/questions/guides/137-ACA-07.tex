@@ -1,0 +1,930 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=F9lfbCaXOpk&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=1}{7.1 Preview of the definition of integral}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=hZXPAEeu5D4&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=2}{7.2 ``Sigma notation" for sums}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=4qNstDwlh9I&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=3}{7.3 The supremum and the infimum of a set}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=YgXv698pN8g&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=4}{7.4 The supremum and infimum of a function}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=dZ_TWQbksbg&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=5}{7.5 The definition of integral}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Ev2w9NYqNvc&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=6}{7.6 Properties of lower and upper sums}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=si1Ds7TrP14&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=7}{7.7 Example: an integrable function}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=N1R26svx9ZA&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=8}{7.8 Example: a non-integrable function}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=l_iMH_naiTo&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=9}{7.9 Integrals as limits}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=k_DPWyRU2Rw&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=10}{7.10 Riemann sums}}
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=Hco-2q2A_ss&list=PLlwePzQY_wW9vqCkUudCmoOvnNmr9vMuJ&index=11}{7.11 Five properties of definite integrals}}
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{7. Definition of integral}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 7: The definition of integral
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+\tableofcontents
+
+\newpage
+
+%==================
+\section{$\Sigma$-notation for sums}
+\vspace{5mm}
+
+$\Sigma$ notation for sums is not difficult, but it may be new for students, so we need to introduce it.    The notation is convenient to define integrals, but there are really two other reasons why we spend some time on them now.  First, it is nice to have a ``gentle" first lesson on the first day after Winter Break.  Second, we want to let students play with sums for a bit to develop some intuition about sums, rather than just trying to manipulate them following rules -- this will pay off when we get to Series (Unit 13).
+
+\vspace{5mm}
+%==================
+%==================
+\subsection{Warm-up questions}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=1]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=2]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  These are simple warm-up questions to make sure students have learned the notation.  If the students have watched Video 7.2, they will have no trouble with them.
+		\item I use Question 6 in the second slide to emphasize that there are multiple correct answers, depending on where we begin the index.  Some students wonder which one of them is \emph{the} correct answer.  They are all equally right, of course.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Re-writing sums}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These questions deal with two ideas:  
+			\begin{itemize}
+				\item The index in a sum is a ``dummy index" (it does not carry any intrinsic meaning and we can ``re-label" it).
+				\item We can ``shift" the index of a sum.
+			\end{itemize}
+			Students may be uncomfortable with these two ideas, particularly when using them in combination.  (Basically, the idea of doing a change of variable ``$k=k+1$" feels very uncomfotable.)
+			
+		\item The goal of the question is to have students play and discover the two ideas above themselves, not to be told the result.  If they are simply given a rule, they will think they know what they are doing, but they won't.
+		
+		\item I recommend emphasizing the hint:  expand the sums on the left side, manipulate or regroup them, then rewrite as a sum again.   This will allow them to discover things themselves, and should convince them that the results are correct.
+		
+		\item In Question 3 I am looking for 
+			$$
+				\left[ \sum_{k=1}^{N}  k x^k \right] + Nx^{N+1}
+			$$
+			or something similar.  Some students may propose
+			$$
+				\left[ \sum_{k=1}^{N} (1+kx)x^{k} \right] + 0,
+			$$
+			which is technically correct, but not what I am looking for.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Telescopic sum}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This question is planting a seed for later use.  Students are discovering telescoping series (relevant in Unit 13: Series) and partial-fraction decomposition (relevant in Unit 9: Integration methods).
+		\item If they follow the hint: they should be able to solve the question without help.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Hard questions}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=6]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=7]{137-CA-07.pdf}} 
+
+{ \includegraphics[scale=.6,page=8]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{warning}
+	Any of these questions will take much longer than you expect.
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item None of the results in these questions is particularly important or must be ``covered".  Rather, they are opportunities for students to play, develop intuition, and get comfortable with the notation and its properties.  That is all.  I recommend choosing one, and giving students plenty of time to explore.  Merely watching the solution to any of them (as opposed to discovering it) has very limited value.
+		\item The third Slide (Fubini-Tonelli) is particularly hard.  Most students get intimidated by the notation and do not even start.  If you plan to use it, think carefully about how you are going to motivate it or what kind of help you can offer.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\section{Suprema and infima}
+\vspace{5mm}
+
+Students believe they understand the notion of supremum because they get it intuitively (``it is the thing that is like the maximum even if it is not an element of the set; for example, 1 is the supremum of $(0,1)$").  However, it is more difficult to persuade them think in terms of the definition (``it is an upper bound which is less than or equal than all other upper bounds".)
+
+\vspace{5mm}
+
+Suprema play a very important role in a regular analysis class.  In such a course students would learn to use the standard arguments for ``proofs with suprema and infima".  This is not an objective of MAT137 and students will have limited contact with those proofs.  On the few times these arguments appear, expect students to struggle.  For example, if $A \subseteq \mathbb{R}$, $x \in \mathbb{R}$, and $x < \sup A$, then it follows that $\exists a \in A$ such that $x < a$. To us, this is obvious by definition of supremum and does not require any explanation.  To students, it is not obvious.
+\vspace{5mm}
+%==================
+%==================
+\subsection{Warm-up questions}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=9]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=10]{137-CA-07.pdf}} 
+
+{ \includegraphics[scale=.6,page=11]{137-CA-07.pdf}} 
+\end{center}
+
+\vspace{-2cm}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  These are simple warm-up questions to verify students have watched the videos.  If so, they should be able to complete them if you give them enough time.
+		\item For the third slide (``Trig suprema"), all of them are possible except $I_2$. 
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Empyt set}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=12]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Many students try to do this question ``by feeling" instead of by definition, and they get the wrong answer, or do not know what to do, or are just guessing.
+		\item How I use this question:	
+			\begin{itemize}
+				\item  I ask students to think about it individually.
+				\item  Then I insist everybody write down the definitions of ``upper bound" and ``supremum"
+				\item  After that, I ask students to think about the question again, and discuss with their neighbours.  This time, they will get the right answer.
+				\item  To conclude, \textit{I remind them of the importance of always using definitions, particularly in unusual situations}.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Equivalent definitions of supremum}  \label{a:defsup}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=13]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{warning}
+\nl
+	\begin{itemize}
+		\item I recommend not skipping this question.  Students won't be writing proofs with the notion of supremum often, but the few times they do, it will almost always be using this property (specifically, options 5 or 9).  I did not include it in the videos because I prefer that students have to think through it and realize why options 5 or 9 are equivalent to option 1, rather than receiving it as an equivalent definition to memorize.
+		\item If you want students to actually figure this out themselves (and you do, don't you?) the question takes quite a long time.
+	\end{itemize}	
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item The equivalent answers are 1, 4, 5, 6, 7, 9, 10.
+		\item This question is hard. It is somewhat difficult, but accessible, to realize that
+			\begin{itemize}
+				\item 1 is the definition
+				\item 4 is equivalent to 1, as it is the contrapositive
+				\item 5 is equivalent to 4, by writing out what ``$R$ is not an upper bound of $A$" means
+				\item 9 is another way to write 5
+			\end{itemize}
+			It is much more difficult to realize what to do with 6, 7, 8, 10.  Specifically
+			\begin{itemize}
+				\item  Most students will mistakenly think that 5 and 6 are not equivalent because $R<x$ and $R\leq x$ are not equivalent.  They will move on without thinking about the full statements. 
+				\item Some students will also be confused by 7 and 8.  8 is not equivalent because it excludes the case when the supremum is an isolated point.  They are probably thinking only of intervals.
+			\end{itemize}
+		\item When I use this question, I normally have to do multiple ``iterations".
+			\begin{itemize}
+				\item  I give students time to think, discuss with each other, and then vote.  I expect a lot of confusion at this moment.
+				\item I lead a discussion taking volunteers to explain why 1, 4, and 5 are equivalent.   Once we agree on this, I tell them that multiple ones of the leftover answers are also equivalent, even if they do not look like it.  I invite them to think about them and discuss with their neighbours once again. This needs time.
+				\item In a second discussion, I attempt to agree on why 6 is equivalent.  If students are not happy I tell them to give me an example that satisfies 5, but not 6.  I remind them that they need to give me an example of just $A$ and $S$ (and not $A$, $S$, and $R$ -- this is the error).  This may require more discussion.
+				\item  Depending how the class is going, I may ask them to take a third period of thinking individually and discussing with their neighbour before we look at the rest.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Fix these false statements}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=14]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  If I gave students enough time and invite them to discuss with their neighbour, they normally figure out all the corrections.  When a student figures out an answer they are happy to explain it because they know it is right, and the argument is convincing to those listening.  However, if they do not talk to each other, half of them just wait doing nothing.
+		\item Corrections:
+			\begin{enumerate}
+				\item It should be an inequality $\leq$ instead of an equality.
+				\item the first term is the maximum of the other two terms.
+				\item This is only true if $c \geq 0$.  If $c \leq 0$, we replace ``sup" with ``inf" on the right-hand side.
+			\end{enumerate}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Suprema and infima}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=15]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Solution: 1, 3, and 6 are true.  The rest are false.
+		\item  Some of these may confuse some students.  However, if I give them enough time and they discuss with each other, they should be able to get them.  When a student finds a counterexample they are happy to explain it  because they know it is right, and those listening will be convinced.  However, if students do not talk to each other, some will just try to guess and then wait doing nothing.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\section{The definition of integral}
+\vspace{5mm}
+
+The definition of integral is the most complicated definition in MAT137.  For now, students just need to understand the definition (and the many concepts necessary to state it), and be able to think of very basic examples and properties, without having to write complex proofs with it.  Later, in MAT237, they will need to write those complex proofs.
+
+
+\vspace{5mm}
+%==================
+%==================
+\subsection{Definition of partition, lower sum, and upper sum}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=16]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=17]{137-CA-07.pdf}} 
+
+{ \includegraphics[scale=.6,page=18]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=19]{137-CA-07.pdf}} 
+\end{center}
+
+\vspace{-4mm}
+
+
+\begin{warning}
+Don't underestimate the importance of the basic, little questions in this topic!
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item These are very basic questions to make sure students understand the basic ingredients: the definitions of partitions, lower sum, and upper sum.  You may think they are trivial; you may be tempted to skip them and focus on the more ``interesting" questions.  Don't do that.    We want to give students a chance to absorb, solidify, and receive confirmation on each one of the little ingredients.  They will appreciate it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Easier than it looks}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=20]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  If you ask students whether this is true or false, they will intuitively think that it is true, but they will think they do not know how to prove it.  Proofs with these concepts sound complicated.  Many are intimidated and do not attempt to write anything.
+		\item How I use this question
+			\begin{itemize}
+				\item  I give them a bit of time to think.
+				\item  If, as expected, few of them are comfortable with this, I give them the thing ``Choose the simplest partition you can think of.  Really: the simplest one.  What happens then?"
+				\item Then I invite them to discuss with each other. 
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Joining partitions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=21]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item This is another basic activity to verify that students understand the properties of lower and upper sums.  If they have watched Video 7.6, they should be able to do it easily.  Still, it is worth giving them time to think through the question to solidify those properties.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{A tricky question}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=22]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=23]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item All 3 statements are false.
+		\item This activity addresses a (sadly) common error: that the lower integral is one of the lower sums and the upper integral is one of the upper sums.  I do not know where this error comes from but I have seen it in students' work in proofs and calculations.
+		\item How I use this question:	
+			\begin{itemize}
+				\item  First I give students only Options 1 and 2, I invite them to think, and I ask them to vote.  The question is phrased so as to lead them towards Option 2.
+				\item Then I invite them to discuss with their neighbour, and vote again.
+				\item If they are not converging to the right answer (and normally they aren't), I present Option 3, together with the summary picture, and I ask them to focus only on whether Option 3 is true or false, ignoring the others.  I give them more time to discuss with each other.  Now the class moves towards False.
+			\end{itemize}
+		\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{An alternative definition}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=24]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=25]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item The goal of this question is to realize that 
+			\begin{itemize}
+				\item 1 is equivalent to 4,
+				\item  (1 and 2) is equivalent to (3 and 4)
+			\end{itemize}
+			  When we use lower (or upper) integrals in proofs (or even in calculations), most of the time we are just using properties 1 and 2.  Actually, the same is true of \emph{any} supremum or infimum, not just lower and upper integrals.  However, I do not want students to just memorize these as extra rules or properties.  Rather, I want them to understand naturally that this is just another way of writing ``the infimum of all the lower sums".
+		
+		Because of the above, this becomes a very important activity, but only if students figure it out themselves rather than being told the answer.  If I am not going to have enough time to use the activity properly, then it is not worth it an I just skip it.
+		
+		\item This activity is a follow up to \autoref{a:defsup}: ``Equivalent definitions of supremum".  
+		
+		\item How I use this activity:
+			\begin{itemize}
+				\item  I go through multiple rounds of think individually, discuss with your neighbours, take suggestions, vote, and me giving hints or telling them to focus on something (based on the suggestions they offer).
+				\item  Once we are satisfied that (1 and 2) iff (3 and 4), which will take quite some time, I present the second slide and they work on it.
+				\item After they solve it, I explain how they will use these properties in practice, and how proving 1 and 2 is a way to prove that \DS{M= \underline{I_a^b}(f)}.
+			\end{itemize}
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{The ``$\e$-characterization" of integrability}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=26]{137-CA-07.pdf}} 
+
+{ \includegraphics[scale=.6,page=27]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=28]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{warning}
+\nl
+	\begin{itemize}
+		\item You may be attracted to this question because it is ``interesting" and important (more on that below).  However, it is on the upper end of difficulty of what we can ask from students.  It is not worth it to spend any time on this question unless students have mastered the basics.    In this challenging topic, I prefer to first focus on the basic, boring-looking questions as much as needed, rather than something like this.   I may skip this question entirely.
+		\item This takes a long time.  If you want to do the whole activity, including both proofs, it could use up the full hour.
+	\end{itemize}
+\end{warning}
+
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   If we want to prove all the properties of integrals and build the theory of integration rigorously, this lemma is essential.  Indeed, students will learn this lemma and will make heavy use of it in MAT237.  However, they won't need it in MAT137.  So this lemma will be important later on... but not in this course.  Still, it \emph{might} be an interesting (and challenging) exercise.
+		\item   How I use this question
+			\begin{itemize}
+				\item  I present only the first slide and ask them to just decide True or False for each implication, without writing a formal proof.   I give them time to think individually and to talk to their neighbours.  \textbf{This question specifically will not work if they do not talk to each other.}
+				\item After taking answers from students and discussing the question, if students are unhappy with one of them being true, I use the slide for the proof of that corresponding part to give them time to write it (and to practice proof writing).  Otherwise, I may skip those.
+			\end{itemize}
+		
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvi
+
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Examples of integrable and non-integrable functions from the definition}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=29]{137-CA-07.pdf}} \quad
+{ \includegraphics[scale=.6,page=30]{137-CA-07.pdf}} 
+
+{ \includegraphics[scale=.6,page=31]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item It is useful to have students work out the integrability of at least one function from the definition.  The many questions on each slide are just intended to guide the students so they can do it themselves. 
+		\item These questions work much better if students talk to each other.
+		\item If you are only going to use one of these examples, I recommend Example 2.  Example 3 is too intimidating to be the first one.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vvii
+
+\vviii
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Sum of non-integrable functions}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=32]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item A good number of students will find this question accessible (given enough time) and will think of the characteristic function of the rationals and the characteristic function of the irrationals.  The rest will want to sit and wait doing nothing.
+		\item I only use this question if the class is engaged and students are actively  talking to their neighbours.  In that case, having them explain the solution to each other is valuable.  Otherwise, I won't bother.    The answer to this question appears obvious once explained (assuming they have watched Video 7.8), but it is coming up with it that matters.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\viii
+
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Properties of the integral}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=33]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item The answer to Question 3 is $2f(t)$.  This will be the only controversial part.  It is an opportunity to emphasize the role of the differential in an integral (and why we need to write it!)
+		\item The answer to Question 6 is ``We don't have enough information to decide".
+		\item Other than Question 3, this is a simple activity to review the main properties of integrals, and students will have no trouble with it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vxi
+\end{videos}
+
+\newpage
+%==================
+\subsection{The norm of a partition}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=34]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is an easy question to verify that students understand some important concepts from Video 7.9: the definition of norm of a partition, how we pick a sequence of partitions to compute an integral as a limit, and the fact that that sequence is not unique.  If students have watched the video, and given enough time, they should be able to do it.
+		\item  Some students wonder why we don't restrict ourselves to always using the partitions that break the interval into equal subintervals, and nothing else.  It is good to have an answer ready.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Riemann sums example}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=35]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Riemann sums do not look very difficult.  They are just an algorithm!  But it is only after working out one example completely, from beginning to end, that a student will actually understand them.  That is the point of this question.  It may be the one and only time the students integrate a function entirely through Riemann sums.
+		\item Like many other questions in this unit, if students have watched the videos, then they will be able to work it out, even though they may make errors. 
+		\item Expect some students to be much faster than others in a question like this. 
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Riemann sums backwards}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=36]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item If $f$ is a continuous function on $[0,1]$, then \DS{\int_0^1 f(x) dx \; = \; \lim_{n \to \infty} \left[ \frac 1n \sum_{i=1}^{n} f\left(\frac in\right) \right] }.
+		\item  Some instructors like this type of question because it looks intriguing, or clever, or hard.  But let's face it:  it is not an important ``application".  When is the last time you computed a limit this way?  Moreover, this question is sort of a trick: how is a student supposed to think of converting the limit of the sum into an integral if it is not asked in the context of Riemann sums?
+		
+		I normally reserve this question in case I need a challenge in the last few minutes of class.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{The Mean Value Theorem for integrals}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=38]{137-CA-07.pdf}} 
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item Unit 8 contains an activity to write an alternative proof for this theorem.  In Unit 7 the proof uses IVT and EVT.  In Unit 8 the proof uses FTC and MVT.  If you are using one, it is nice to use both.
+		\item This question is not related to any one specific concept on this unit or any one video, but it is a nice final activity to practice proof writing, using various theorems and the notion of integral.
+		\item The hints basically ``give away" the proof, but students  will still have to write the proof carefully and pay attention to proof structure.  Good proof writing is the goal of the question.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vi
+
+\vv
+
+\vxi
+\end{videos}
+
+\newpage
+%==================
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

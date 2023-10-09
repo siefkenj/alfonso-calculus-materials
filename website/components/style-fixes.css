@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.primary-blue {
+    color: hsl(
+        var(--nextra-primary-hue) var(--nextra-primary-saturation) 32% /
+            var(--tw-text-opacity)
+    );
+}
+.dark\:primary-blue-dark {
+    color: hsl(
+        var(--nextra-primary-hue) var(--nextra-primary-saturation) 45% /
+            var(--tw-text-opacity)
+    );
+}
+
+#__next {
+    main {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            @apply primary-blue dark:primary-blue-dark;
+        }
+        li {
+        }
+        li > p {
+            @apply mt-2;
+        }
+    }
+
+    main > p > strong:first-child {
+        @apply primary-blue me-2;
+    }
+}

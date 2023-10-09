@@ -1,0 +1,1023 @@
+# Unit 13: Series
+
+<Warning>
+
+Students find this material very difficult. There are lots of little concepts and little results. Individually, they are not too hard, but they become a big mess if we move on too quickly before students have absorbed each piece.Resist the temptation to spend time on “interesting” questions unless students have fully understood the basics. Go slowly. They will appreciate working on what you may consider “trivial” questions so as to gain confidence.
+
+</Warning>
+
+**SPECIAL QUESTIONS**
+
+<QuestionPreview question={undefined} unit={13} small={true} />
+
+**Discovery:** a question for students to explore an idea that will foreshadow or anticipate something appearing later in the videos. They may simply think about a concept ahead of time, or they may fully discover a new result or technique by themselves.
+
+*   You can use it as I describe it – then be aware that students have not learned the concept yet and the goal is to *discover* it.
+
+*   Or you can wait till they learn the concept in the videos – then modify it appropriately, if needed.
+
+<QuestionPreview question={undefined} unit={13} small={true} />
+
+**Concept check:** a quick question to test something simple that we want students to know really well. It works great as a warm-up.
+
+*   You may use it on the day this concept is being learned, as part of the process.
+
+*   Or you may save for a later day as a warm up to “review”, to emphasize how important this is.
+
+**OBJECTIVES**
+
+*   Never confuse a sequence with a series. Use proper notation for both concepts.
+
+*   Like for improper integrals, understand that an infinite sum is a new concept that we have to define.
+
+*   Understand the definition, be able to explain it, and use it to compute the value of simple series (mostly geometric and telescopic series).
+
+*   Estimate a series numerically.
+
+*   Know that we cannot take for granted that properties of finite sums carry to infinite sums. Know which properties carry and prove so from the definition.
+
+*   State the standard convergence tests and justify intuitively why they work (even if not formally prove them). Correctly use them to determine whether a series is convergent (and even conditionally convergent or absolutely convergent) or divergent, as well as in simple proofs.
+
+### Definition of series
+
+#### Telescopic series
+
+<Slides>
+
+<QuestionPreview question={0} unit={13} small={true} />
+
+ 
+
+<QuestionPreview question={1} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The two slides work well together or individually (any of them).
+
+    *   Slide 1 is an example where students can compute a series from beginning to end using the definition.
+
+    *   Slide 2 reminds students that we cannot assume infinite sums behave like finite sums. Series are a new concept and properties cannot be taken for granted.
+
+*   Answers:
+
+    *   Slide 1:   $\displaystyle S_{k}= \frac{1}{2}\left[ 1 + \frac{1}{2}- \frac{1}{k+1}- \frac{1}{k+2}\right]$
+
+    *   Slide 2:   The series is divergent to $-\infty$. The split we did as difference of two series was illegal, because it was “$\infty - \infty$”.
+
+</Comments>
+
+<Videos>
+
+[13.1 Infinite sums: a cautionary tale](https://www.youtube.com/watch?v=vJCGp9luzlc\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI)[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.3 A telescopic series](https://www.youtube.com/watch?v=OfDw7AoVXYs\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=3)[13.6 Series are linear](https://www.youtube.com/watch?v=x8zxHukU-UE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=6)
+
+</Videos>
+
+#### Trig series
+
+<Slides>
+
+<QuestionPreview question={2} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Basic question to remind students of the simplest examples of divergent series.
+
+</Comments>
+
+<Videos>
+
+[13.4 Examples of divergent series from the definition](https://www.youtube.com/watch?v=jrO276f_wwg\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=4)
+
+</Videos>
+
+#### Help me write the next assignment
+
+<Slides>
+
+<QuestionPreview question={3} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Simple question to hammer on the definition of series and of partial sums.
+
+*   Answer: $\displaystyle \sum_{n=1}^{\infty}(2n+1)$
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)
+
+</Videos>
+
+#### What can you conclude?
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"5"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   This activity foreshadows (slightly) positive series and comparison tests.
+
+*   It also insist on the definition of series as a limit of partial sums.
+
+*   Answers:
+
+    *   1 - we do not know: every series satisfies this
+
+    *   2 - convergent: the sequence of partial sums is increasing and bounded above
+
+    *   3 - we do not know
+
+    *   4 - divergent: the series grows faster than $\displaystyle \sum_{n}^{\infty}M$
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.9 Positive series](https://www.youtube.com/watch?v=_7qwFfSjBtE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=9)
+
+</Videos>
+
+#### Harmonic series
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"6"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Warning>
+
+This is one of those activities that looks confusing, makes students react with “I do not know”, and tempts them to just wait for your answer while doing nothing. Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+
+</Warning>
+
+<Comments>
+
+*   This question foreshadows comparison tests.
+
+*   Students will later learn that the harmonic series diverges using the Integral Test.
+
+    This question is an attempt at doing an “elementary” proof from the definition of series.
+
+*   How I use this question:
+
+    *   I give students a bit of time.
+
+    *   We discuss together the answer to 1.
+
+    *   I give students more time for the rest.
+
+*   Answer:
+
+    *   $\displaystyle r_{1}= 1$,   $\displaystyle S_{1}=1$
+
+    *   $\displaystyle r_{2}= \frac{1}{2}$,   $\displaystyle S_{2}= S_{1}+ \frac{1}{2}$
+
+    *   $\displaystyle r_{3}=r_{4}= \frac{1}{4}$,   $\displaystyle S_{4}= S_{2}+ \frac{1}{2}$
+
+    *   $\displaystyle r_{5}= r_{6}= r_{7}= r_{8}= \frac{1}{8}$,   $\displaystyle S_{8}= S_{4}+ \frac{1}{2}$
+
+    *   ...
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.9 Positive series](https://www.youtube.com/watch?v=_7qwFfSjBtE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=9)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)
+
+</Videos>
+
+#### True or False - Definition of series
+
+<Slides>
+
+<QuestionPreview question={6} unit={13} small={true} />
+
+ 
+
+<QuestionPreview question={7} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+This activity is easy, but do not rush it.
+
+</Warning>
+
+<Comments>
+
+*   This activity should be easy. It focuses on the definition of a series as the limit of the sequence of partial sums, together with properties of sequences.
+
+*   Nevertheless, do not rush it! Students can answer this question, but it takes them time to wrap their heads around the notation and get comfortable with it. It is worth it to give them enough time to think through it and discuss it with their peers.
+
+*   Answers: 1, 3, 4, 5, 6, 7 are true. 2 is false.
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)
+
+</Videos>
+
+### Geometric series
+
+#### Rapid geometric series
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"9"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"quick"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   Short question to recognize geometric series even when they are “in disguise”.
+
+*   Works well as a warm up.
+
+*   Answer: 1, 2, 3, 4 are convergent. The rest are divergent.
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)
+
+</Videos>
+
+#### Compute geometric series
+
+<Slides>
+
+<QuestionPreview question={9} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Simple question to recognize geometric series and add them up.
+
+*   Students find this question accessible and even fun. Give them enough time and they will solve it.
+
+*   There are some subtleties about Question 6:
+
+    *   They will forget we need to break this into cases, depending on whether $|x|<1$.
+
+    *   The videos only introduce $\displaystyle \sum_{n=0}^{\infty}x^{n}= \frac{1}{1-x}$. Some of them learned in high school $\displaystyle \sum_{n=0}^{\infty}ax^{n}= \frac{a}{1-x}$. “Are we allowed to use this other formula?” “Do we need to know it?”
+
+    *   If you try to reduce this problem to using the basic formula only “are we allowed to do those manipulations?”
+
+*   Answers:
+
+
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)
+
+</Videos>
+
+#### $0.9999999 \ldots$
+
+<Slides>
+
+<QuestionPreview question={10} unit={13} small={true} />
+
+ 
+
+<QuestionPreview question={11} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   There are absurdly heated debates on the internet over whether $0.999 \ldots = 1$. Read the Wikipedia article [https://en.wikipedia.org/wiki/0.999... ](<https://en.wikipedia.org/wiki/0.999... >)and in particular the sections “Skepticism in education” and “Cultural phenomenon”.
+
+*   Your class will be split between firm believers that they are different, confused students, believers that they are equal but who cannot prove it rigorously, and those who know what is going on.
+
+    Resist the temptation to rush or to lecture to your students and give them the answer. Proper understanding of what is going on is now within their reach if you give them enough time. Use this activity wisely and you will witness many “aha” moments, things finally clicking, and some minds blown.
+
+*   *After* students have solve the question, it is appropriate to have a mini-lecture to explain how a decimal representation is just a way to represent a number, that the proper interpretation of such expansions is a series, and how it is reasonable for two decimal representations to represent the same number (just like two fractions can represent the same number).
+
+*   Both of the slides serve the same purpose. I use one or the other depending on the time I want to spend.
+
+*   Answers:
+
+
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)
+
+</Videos>
+
+#### Power series advertising
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"15"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"16"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"17"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   The good:
+
+    *   These activities serve as an advertisement for why we will spend Unit 14 studying power series.
+
+    *   If successful, students will be impressed and intrigued.
+
+*   The bad:
+
+    *   These activities are hard and take a lot of time!
+
+    *   Resist the temptation to rush into them unless you have enough time and students are very comfortable with the basics. If you are going to end up explaining the answer yourself, rather than having students discover it, they are not worth it.
+
+    *   If unsure, solidifying the basics of series is probably more important. After all, none of these questions are “necessary” at this point in the unit. Students will eventually learn this in Unit 14 anyway.
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)
+
+</Videos>
+
+### Basic properties of series
+
+#### Examples
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"19"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Comments>
+
+*   Simple question that anticipates positive series.
+
+*   Some students mistakenly think that $\displaystyle \sum_{n}^{\infty}(2 + \sin n)$ is an example of positive series that is “oscillating”.
+
+    Remind them that “oscillating” means “divergent, but neither $\infty$ or $-\infty$”, and not simply that the terms alternate between increasing and decreasing.
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.3 A telescopic series](https://www.youtube.com/watch?v=OfDw7AoVXYs\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=3)[13.4 Examples of divergent series from the definition](https://www.youtube.com/watch?v=jrO276f_wwg\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=4)[13.9 Positive series](https://www.youtube.com/watch?v=_7qwFfSjBtE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=9)
+
+</Videos>
+
+#### True or False - Tail of a series
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"20"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"thinking"}\html-attr:page{""}}}
+
+</Slides>
+
+<Warning>
+
+I suggest not skipping this question. This result is essential.
+
+</Warning>
+
+<Comments>
+
+*   This activity foreshadows the “tail of a series” (whether a series converges depends only on the tails).
+
+*   Common point of confusion: some students will think that $a_{n}= 1/n$ provides a counterexample to 2. They are thinking that it is possible for $\displaystyle \int_{0}^{\infty}f(x) dx$ to be divergent while $\displaystyle \int_{7}^{\infty}f(x) dx$ is convergent as long as $\displaystyle \int_{0}^{7}f(x) dx$ is divergent.
+
+*   Answers: 1, 2 are true. 3 is false.
+
+</Comments>
+
+<Videos>
+
+[13.7 The tail of a series](https://www.youtube.com/watch?v=9njCb8usB94\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=7)
+
+</Videos>
+
+#### True or False - Necessary condition
+
+<Slides>
+
+<QuestionPreview question={17} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+Do not skip this question!
+
+</Warning>
+
+<Comments>
+
+*   This is one of the most important results about series, and one of the most commonly misused in tests and assignments. I would advise using this activity *even more than once*.
+
+*   2, 3 are true. 1,4 are false.
+
+</Comments>
+
+<Videos>
+
+[13.8 A necessary condition for convergence of series](https://www.youtube.com/watch?v=kP9qHkTSNpI\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=8)
+
+</Videos>
+
+#### True or False - Harder questions
+
+<Slides>
+
+<QuestionPreview question={18} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is one of those activities that looks confusing, makes students react with “I do not know”, and tempts them to just wait for your answer while doing nothing. Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+
+</Warning>
+
+<Comments>
+
+*   These questions are hard. Most students try to do them “by feeling”, just by looking at them and guessing, without writing anything down, or thinking of definitions. That is pretty much impossible.
+
+*   If I use this question, I aggressively tell students to rewrite everything in terms of partial sums. Otherwise, they will get nowhere.
+
+*   For 1 and 2, we need to notice that $\displaystyle \sum_{n=k}^{\infty}a_{n}\; = \; S - S_{k-1}$. This is obvious to you and me, but students do not think of it easily.
+
+*   The notation in 3 and 4 will confuse students. It may be worth it to write the first few terms of the series to make sure they understand what they are working with.
+
+*   Answers:
+
+    *   1 and 2 are true.
+
+    *   3 is true. $\displaystyle \sum_{n=1}^{k}a_{n}= \sum_{n=1}^{\lfloor k/2 \rfloor}a_{2n}+ \sum_{n=1}^{\lceil k/2 \rceil }a_{2n+1}$, then use limit laws.
+
+    *   4 is false. Counterexample: $\displaystyle 1 - 1 + \frac{1}{2}- \frac{1}{2}+ \frac{1}{3}- \frac{1}{3}+ \frac{1}{4}- \frac{1}{4}+ \ldots$
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.1 Infinite sums: a cautionary tale](https://www.youtube.com/watch?v=vJCGp9luzlc\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI)
+
+</Videos>
+
+#### Series are linear
+
+<Slides>
+
+<QuestionPreview question={19} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   In Video 13.6 students learn that series are linear. The video proves additivity, but leaves scalar multiplication (the proof in this activity) as an exercise.
+
+*   The goals of this activity include
+
+    *   We cannot assume all properties of finite sums carry on to infinite sums. We need to verify which ones do.
+
+    *   To prove they do carry, just use the definition of a series as a limit of partial sums.
+
+*   This proof will be accessible to students who watched the videos.
+
+</Comments>
+
+<Videos>
+
+[13.6 Series are linear](https://www.youtube.com/watch?v=x8zxHukU-UE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=6)
+
+</Videos>
+
+### Integral and comparison tests
+
+#### Quick review of most useful improper integrals
+
+<Slides>
+
+<QuestionPreview question={20} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   I use this activity early in Unit 13 to keep these results (which belong to Unit 12) fresh and relevant in students’ minds.
+
+    We will need to recall them when we get to integral test and comparison tests for series.
+
+*   Answers: 1, 4 are convergent. 2, 3, 5, 6 are divergent.
+
+</Comments>
+
+<Videos>
+
+[13.11 The integral test - Examples](https://www.youtube.com/watch?v=bmb_K39nay0\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=11)
+
+</Videos>
+
+#### $p$-series vs geometric series
+
+<Slides>
+
+{\html-tag:img{\html-attr:src{"137-CA-13.pdf"}\html-attr:page{"26"}}} at (3.8,-2.63) {\html-tag:img{\html-attr:src{"quick"}\html-attr:page{""}}}
+
+</Slides>
+
+<Warning>
+
+Do not skip this question!
+
+</Warning>
+
+<Comments>
+
+*   This activity summarizes two essential families of series. We want students to be able to answer this in their sleep.
+
+*   Answers:
+
+
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)[13.10 The integral test - the theorem](https://www.youtube.com/watch?v=spg7c-LY59o\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=10)[13.11 The integral test - Examples](https://www.youtube.com/watch?v=bmb_K39nay0\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=11)
+
+</Videos>
+
+#### Comparison and integral test practice
+
+<Slides>
+
+<QuestionPreview question={22} unit={13} small={true} />
+
+ 
+
+<QuestionPreview question={23} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Practice with standard applications of integral test and comparison tests.
+
+    *   Slide 1 contains easier questions. We want everybody to eventually be able to solve these in their sleep. Students will be slower than you think.
+
+    *   Slide 2 contains harder examples including some very challenging ones. You could easily spend a whole class just on this slide.
+
+        When I use it, I tell students to focus on Question X, Y, Z (the ones we will actually discuss), but the rest are there to keep faster students busy.
+
+*   Students need the practice, and they will take a lot of time. It is time well spent.
+
+*   Answers:
+
+    *   Slide 1. Use LCT with $\displaystyle \sum_{n}^{\infty}\frac{1}{n^{p}}$ for an appropriate value of $p$.
+
+
+
+    *   Slide 2
+
+        *   Convergent: LCT with a geometric series
+
+        *   Convergent: $\displaystyle \ln n \ll n^{1/40}$ and use comparison tests
+
+        *   Convergent: LCT with $\displaystyle \sum_{n}\frac{1}{n^{2}}$
+
+        *   Convergent: Integral test.
+
+        *   Divergent: Integral test
+
+        *   Convergent: $\displaystyle e^{-n^2}< e^{-n}$, then integral test. Or $\displaystyle e^{-n^2}\ll \frac{1}{n^{2}}$.
+
+</Comments>
+
+<Videos>
+
+[13.10 The integral test - the theorem](https://www.youtube.com/watch?v=spg7c-LY59o\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=10)[13.11 The integral test - Examples](https://www.youtube.com/watch?v=bmb_K39nay0\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=11)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)
+
+</Videos>
+
+#### Abstract use of convergence tests
+
+<Slides>
+
+<QuestionPreview question={24} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is a great question. I am sure you like it already. As paradoxical as it may sound, do not rush to use it!
+
+</Warning>
+
+<Comments>
+
+*   This is one of the most important questions in the unit, because it summarizes many ideas. If a student understands everything, then it is delightfully simple. Otherwise, it is impossible.
+
+    **However this does not mean you should necessarily use it in class!** If students are not comfortable with the basics, you will be wasting a great activity and they will not be able to to solve it. If you do not have time for it, do not worry: it is included in the practice problems and students will attempt it when studying for the test.
+
+*   Answers. Since $\displaystyle \sum_{n}a_{n}$ is convergent, we conclude $\displaystyle a_{n}\longrightarrow 0$.
+
+    *   Convergent. Use LCT as $\displaystyle \lim_{n \to \infty}\frac{\sin a_{n}}{a_{n}}= 1$.
+
+    *   Divergent. $\displaystyle \lim_{n \to \infty}\cos a_{n}= 1$.
+
+    *   No conclusion. Examples $\displaystyle a_{n}= \frac{1}{n^{2}}$ and $\displaystyle a_{n}= \frac{1}{n^{4}}$.
+
+    *   Convergent. $0 < a_{n}<1$ for large values of $n$. Therefore ${a_n}^{2}< a_{n}$. Use BCT.
+
+</Comments>
+
+<Videos>
+
+[13.8 A necessary condition for convergence of series](https://www.youtube.com/watch?v=kP9qHkTSNpI\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=8)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)
+
+</Videos>
+
+#### Infinite decimal expansions are well-defined
+
+<Slides>
+
+<QuestionPreview question={25} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+If you use this question, have a plan to make sure students understand what the point is, perhaps including a brief explanation before starting.
+
+</Warning>
+
+<Comments>
+
+*   Answer: It is always convergent – compare it with $\displaystyle 0.9999....$ using BCT.
+
+*   This question is hard to use well. Students easily miss the point and do not understand what we are doing or why. Those who get it find the question easy (but perhaps satisfying). Those who don’t just wait without doing anything.
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)[13.9 Positive series](https://www.youtube.com/watch?v=_7qwFfSjBtE\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=9)
+
+</Videos>
+
+### Alternating series
+
+#### Rapid questions: alternating series test
+
+<Slides>
+
+<QuestionPreview question={26} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Simple question to check the statement of the alternating series test with very easy examples.
+
+*   Answers: 2, 4, 5 are true; 1, 3, 6 are false.
+
+</Comments>
+
+<Videos>
+
+[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)[13.8 A necessary condition for convergence of series](https://www.youtube.com/watch?v=kP9qHkTSNpI\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=8)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)
+
+</Videos>
+
+#### True or False - Odd and even partial sums
+
+<Slides>
+
+<QuestionPreview question={27} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These questions address a step in the *proof* of the Alternating Series Test (Video 13.13) that students may miss.
+
+*   Answer: In general, the sequence $\displaystyle \{S_{n}\}_{n=0}^{\infty}$ is convergent iff the two sequences $\displaystyle \{S_{2n}\}_{n=0}^{\infty}$ and $\displaystyle \{S_{2n+1}\}_{n=0}^{\infty}$ are convergent to the *same* limit.
+
+    3 is true; 1, 2 are false.
+
+</Comments>
+
+<Videos>
+
+[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)
+
+</Videos>
+
+#### An alternating series test example
+
+<Slides>
+
+<QuestionPreview question={28} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   The terms of these series only satisfy the hypotheses of the Alternating Series test *eventually*, but that is enough. That is the point of the question.
+
+*   Some students mistakenly believe that we do not need to check the sequence $\displaystyle \left\{ \frac{n - \pi}{e^{n}}\right\}_{n}^{\infty}$ to be (eventually) decreasing. They mistakenly reason: it is (eventually) positive and convergent to 0, so it must be (eventually) decreasing.
+
+*   A simple way to check monotonicity is to extend to a function and take the derivative.
+
+</Comments>
+
+<Videos>
+
+[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)
+
+</Videos>
+
+#### Estimation
+
+<Slides>
+
+<QuestionPreview question={29} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Standard application of the second half of the Alternating Series Theorem.
+
+*   Answer: The smallest partial sum that works is   $\displaystyle S_{2}= 1 - \frac{1}{3!}+ \frac{1}{5!}= \frac{101}{120}$   because   $\displaystyle \frac{1}{7!}< 0.001$.
+
+*   Common error: Many students correctly calculate that $\displaystyle \frac{1}{7!}< 0.001$ and therefore think we need to use $\displaystyle S_{3}= 1 - \frac{1}{3!}+ \frac{1}{5!}- \frac{1}{7!}$ as an estimate.
+
+    This error comes from memorizing the formula without thinking about why it is true.
+
+</Comments>
+
+<Videos>
+
+[13.14 Estimating the value of an alternating series](https://www.youtube.com/watch?v=NFhV-ZVg6pg\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=14)
+
+</Videos>
+
+#### Not exactly alternating
+
+<Slides>
+
+<QuestionPreview question={30} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These two series have both positive and negative terms, but they are not alternating as in the Alternating Series Test. They are unlike any example students my have seen. The goal is to challenge them to be creative and come up with new tricks.
+
+*   You will need to convince students to play and experiment. Most students reaction to this activity is “I do not know what to do. I will just wait for the answer”. Collaboration is essential for this activity. Making the goal explicit may help.
+
+*   I like to use this question at the end of class, give them a bit of time, and *not solve it*.
+
+*   Answers:
+
+    *   $A$ is convergent. Group every two terms together and you have a new series that *does* satisfy the hypotheses of the Alternating Series test. Equivalently, think of the sequence of even partial sums.
+
+    *   $B$ is divergent. Group every 5 terms together. Equivalently look at the sequence of every 5th partial sum.
+
+        ```math
+        B \; \geq \; 1 + \frac{1}{6}+ \frac{1}{11}+ \frac{1}{16}+ \ldots
+        ```
+
+</Comments>
+
+<Videos>
+
+[13.2 The definition of infinite sum](https://www.youtube.com/watch?v=VccmKguRkeY\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=2)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)
+
+</Videos>
+
+#### A counterexample to the alternating series test?
+
+<Slides>
+
+<QuestionPreview question={31} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is one of those activities that looks confusing, makes students react with “I do not know”, and tempts them to just wait for your answer while doing nothing. Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+
+</Warning>
+
+<Comments>
+
+*   Small hint: there can’t be a counterexample to the Alternating Series Test, so which of the hypotheses is this series failing?
+
+    Many students realize that we need $\displaystyle \{b_{n}\}_{n}$ *not* to be eventually decreasing. Unfortunately, this by itself is not enough and most students get stuck.
+
+*   Big hint: You can define $\displaystyle \{b_{2n}\}$ and $\displaystyle \{b_{2n-1}\}$ independently.
+
+    Students will figure it out with this hint, but unfortunately, it gives a little bit too much away. It would be better to guide to discover this hint themselves, but I do not know how.
+
+*   Sample answer: $\displaystyle b_{2n}= \frac{1}{n}$ and $\displaystyle b_{2n-1}= \frac{1}{n^{2}}$.
+
+</Comments>
+
+<Videos>
+
+[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)
+
+</Videos>
+
+### Absolute and conditional convergence
+
+#### Absolutely convergent or conditionally convergent?
+
+<Slides>
+
+<QuestionPreview question={32} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Quick check of the definition of absolute and conditional convergence. The examples are easy if we remember the definitions.
+
+*   Answer:
+
+    *   is conditionally convergent
+
+    *   is absolutely convergent
+
+    *   is divergent. (Yes, the wording is misleading on purpose, just to check if they are paying attention.)
+
+</Comments>
+
+<Videos>
+
+[13.15 Absolute convergence vs conditional convergence](https://www.youtube.com/watch?v=2i0iUwLwwxs\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=15)[13.8 A necessary condition for convergence of series](https://www.youtube.com/watch?v=kP9qHkTSNpI\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=8)
+
+</Videos>
+
+#### True or False - Absolute Values
+
+<Slides>
+
+<QuestionPreview question={33} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Questions 3 and 4 are the “absolute convergence test”. This is an essential result that students must know.
+
+*   Questions 1 and 2, by contrast, are new questions. Students must think of them on the spot. Having all four questions together will confuse some of them.
+
+*   Answers: 1 and 4 are true; 2 and 3 are false.
+
+</Comments>
+
+<Videos>
+
+[13.15 Absolute convergence vs conditional convergence](https://www.youtube.com/watch?v=2i0iUwLwwxs\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=15)[13.16 Proof of the Absolute Convergence Test](https://www.youtube.com/watch?v=_CSvVbH-0c0\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=16)
+
+</Videos>
+
+#### Positive and negative terms
+
+<Slides>
+
+<QuestionPreview question={34} unit={13} small={true} />
+
+ 
+
+<QuestionPreview question={35} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These two activities work fine together or independently (either one of them).
+
+*   The goal is to make students think about the ideas behind the absolute convergence test, and the difference between absolute and conditional convergence (including the reason for the name).
+
+*   Answers:
+
+</Comments>
+
+<Videos>
+
+[13.15 Absolute convergence vs conditional convergence](https://www.youtube.com/watch?v=2i0iUwLwwxs\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=15)[13.16 Proof of the Absolute Convergence Test](https://www.youtube.com/watch?v=_CSvVbH-0c0\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=16)[13.17 Infinite sums are not commutative!](https://www.youtube.com/watch?v=H6f9mfqzeBg\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=17)
+
+</Videos>
+
+### The Ratio Test
+
+#### Quick review: convergence or divergent
+
+<Slides>
+
+<QuestionPreview question={36} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This activity works well as a warm up on the last session of Unit 13, before we go on practicing the Ratio Test.
+
+*   This is NOT about the Ratio Test. Rather, it is a summary of all the important examples of series whose convergence is very easy to calculate. We want students to be able to answer these question in their sleep.
+
+*   Answers:
+
+
+
+</Comments>
+
+<Videos>
+
+[13.5 Geometric series](https://www.youtube.com/watch?v=IjTJP3ssOkk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=5)[13.8 A necessary condition for convergence of series](https://www.youtube.com/watch?v=kP9qHkTSNpI\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=8)[13.12 Comparison tests for series](https://www.youtube.com/watch?v=QbYK4COJUqU\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=12)[13.13 Alternating series](https://www.youtube.com/watch?v=OM9U6Pwze8E\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=13)
+
+</Videos>
+
+#### Ratio test
+
+<Slides>
+
+<QuestionPreview question={37} unit={13} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Standard practice with the Ratio Test.
+
+*   What to expect:
+
+    *   Question 1 (convergent) is easy, but students are likely much slower than you expect.
+
+    *   In Question 2 (divergent), some students have trouble simplifying $\displaystyle \frac{(2(n+1))!}{(2n)!}$
+
+    *   In Question 3 (convergent), students will have trouble computing the limit.
+
+    *   In Question 4 (divergent) the Ratio Test is inconclusive. This is on purpose, to remind students this may happen. Use BCT instead.
+
+</Comments>
+
+<Videos>
+
+[13.18 Ratio test: the theorem](https://www.youtube.com/watch?v=2Fj56wxfLEo\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=18)[13.19 Ratio test: examples](https://www.youtube.com/watch?v=S0C0XoEKGCk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=19)
+
+</Videos>
+
+#### Root test
+
+<Slides>
+
+<QuestionPreview question={38} unit={13} small={true} />
+
+</Slides>
+
+<Warning>
+
+This is one of those activities that looks confusing, makes students react with “I do not know”, and tempts them to just wait for your answer while doing nothing. Unless you have enough time and a class that is willing to engage in collaboration, this activity is not worth it.
+
+</Warning>
+
+<Comments>
+
+*   In Video 13.18 students learn the Ratio Test and a heuristic argument (not a formal proof) of why the theorem is true. The videos do *not* include the Root Test at all.
+
+*   The goal of this question is to guide students to come up with a new theorem (intuitively; without necessarily writing a formal proof). It is a bit of a gamble: it may pay off and be very satisfying.... or it may flop and lead nowhere.
+
+*   To clarify: students do not need to learn the Root Test in this course. In this activity they are practicing other skills; the goal is not to memorize the theorem itself.
+
+</Comments>
+
+<Videos>
+
+[13.18 Ratio test: the theorem](https://www.youtube.com/watch?v=2Fj56wxfLEo\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=18)[13.19 Ratio test: examples](https://www.youtube.com/watch?v=S0C0XoEKGCk\&list=PLlwePzQY_wW-FJMnD_ybkXU_jZLVtZttI\&index=19)
+
+</Videos>

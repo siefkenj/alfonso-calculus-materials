@@ -1,0 +1,936 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+%\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\counterwithout{subsection}{section}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{}
+
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp3}}
+\subsectionfont{\large \color{137cp2}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.1em}
+\cftsetindents{subsection}{2.1em}{1.9em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=heqUCdcgVYA&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=1}{5.1 The MVT... who cares?}}
+\newcommand{\vii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=_z8OglXFIq8&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=2}{5.2 The Local Extreme Value Theorem}}
+\newcommand{\viii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=SWb2T0ad6lw&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=3}{5.3 Proof of the Local Extreme Value Theorem}}
+\newcommand{\viv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=_giwkVIFeGY&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=4}{5.4 Finding the maximum and minimum of a function}}
+\newcommand{\vv}{\hspace{8mm} \href{https://www.youtube.com/watch?v=n8Nhn7N_rkE&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=5}{5.5 Rolle's Theorem}}
+\newcommand{\vvi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=5TKUOC06JzM&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=6}{5.6 How many zeroes does a function have?}}
+\newcommand{\vvii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=DKFV3KMDKHc&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=7}{5.7 The Mean Value Theorem}}
+\newcommand{\vviii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=xL5qJSZie5Y&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=8}{5.8 Proof of the Mean Value Theorem}}
+\newcommand{\vix}{\hspace{8mm} \href{https://www.youtube.com/watch?v=l10mJLuG-U4&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=9}{5.9 Zero-derivative implies constant}}
+\newcommand{\vx}{\hspace{8mm} \href{https://www.youtube.com/watch?v=15-oyDZT2aE&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=10}{5.10 Why integration is possible}}
+\newcommand{\vxi}{\hspace{8mm} \href{https://www.youtube.com/watch?v=HlzVrFcqi04&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=11}{5.11 Monotonicity of functions}}
+\newcommand{\vxii}{\hspace{8mm} \href{https://www.youtube.com/watch?v=HsMHLIwKmFo&list=PLlwePzQY_wW9m5oabUf6hvfVfAaA9uAwM&index=12}{5.12 Finding the intervals where a function is increasing or decreasing}}
+
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{5. The Mean Value Theorem and applications}}
+\rfoot{}
+\cfoot{\thepage}
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 5: The Mean Value Theorem and applications
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+
+There is a common theme in many of the proofs and applications in this Unit: when you use a Theorem, verify the hypotheses first.  Students need many reminders of this.
+
+\
+
+I have not included any activity that works with Video 5.8 (Proof of the MVT).  In the past I have tried various things, but none worked well for a class activity.  The practice problems contain an exercise to come up with and prove Cauchy's MVT that works very nicely as a practice problem, but not as a class activity.
+
+\
+
+I have included various activities to introduce students to the art of coming up with new theorems.  It fits well with what they learned in the videos. The activities are nice when they work out, but beware: they look simple, but they are hard, and they take longer than you may expect.
+
+\
+
+\tableofcontents
+
+\newpage
+
+%==================
+\subsection{Definition of local extremum}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=1]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item Simple warm-up question to make sure students understand the definition of local extremum and (global) extremum.
+\item There are normally two issues:
+	\begin{itemize}
+		\item  They miss the local maximum at $x=4$
+		\item They are not sure if $x=6.5$ (and other such points) counts as a local extremum, and they would like us to confirm it.
+	\end{itemize}
+	If I tell them to write down the definition of local maximum/minimum and redo the question, they are normally able to solve the question correctly.  Then I remind that they should not do the problems by definition and not ``by intuition".
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Where is the maximum?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=3]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item The correct answer is that we can only conclude that either $h$ has no maximum, or the maximum occurs at $x=-1$, $x=0$, or $x=1$.
+	\item Students favourite algorithm to find extrema is ``Find the points with derivative 0.  One of them is the maximum". They forget points where the derivative does not exist, endpoints, and the option of not having a maximum.  I blame their high-school teachers.
+	
+	  It is really hard to get them out of the habit.  For example, when asked to find the maximum of a function, they search for points where the derivative is 0, and if there is only one, it must be the maximum.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{What can you conclude?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=4]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This activity is an attempt to make students think about the proof in Video 5.3.  The best way to see if a student understands a proof is to ask them to use the same ideas in a new case.  It is not that these proofs are particularly important: we are just practicing proofs in general.
+
+\item The conclusion I am looking for is \DS{f'(0)=1} or \DS{f'(0)} DNE.  The proof I am looking for is that 
+	$$
+		\lim_{x \to 0^+} \frac{f(x) - f(0)}{x} \geq 1, \quad \quad \lim_{x \to 0^-} \frac{f(x) - f(0)}{x} \leq 1
+	$$
+
+\item This activity is pointless if students have not watched the corresponding video.  Even then, it is hard.  It will take longer than you may think.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\viii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Fractional exponents}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=5]{137-CA-05.pdf}} 
+\end{center}
+
+\vspace{-1cm}
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item Students know that ``to find the extrema of a function" (they do not make distinction between local and global) ``find the points where the derivative is 0".  Sadly they often stop at that.    The issues:
+	\begin{itemize}
+		\item  They may forget that points where the function is not differentiable are also critical points.
+		\item  They may forget the end points.
+		\item  More importantly: before we jump into looking at critical points and endpoints, we need to justify the function has extrema (in this case, we invoke the EVT).
+ Otherwise, we are only saying that ``if the function has extrema, they must be at one of these points..."  It is very difficult to convince students of this last point.  If you explain it, they will understand it, but when we ask a question on a test more than half of them will ignore it.
+	\end{itemize}
+\item Students (mostly) take the derivative correctly, but to find the critical points it helps to first ``simplify" the derivative and factor it nicely.  They have trouble with this.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{Trig extrema}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=6]{137-CA-05.pdf}} 
+\end{center}
+
+\vspace{-2cm}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  The domain is $\mathbb{R}$ so we cannot invoke EVT.  However, the function is periodic.  Half of the students will ignore this.  The other half will realize it is periodic so we can restrict our domain to $[0, 2\pi]$.  However, they may or may not be comfortable explaining why this is.
+	\item  \DS{f'(x) = 0 \; \iff \cos x = -1/3}.  This is not a ``nice" angle, but it is still possible to find the values of $f(x)$ at those points.  Students will be uncomfortable with this.  Among those who don't freeze and just wait for you to do it, they may still miss that there are two values of $\sin x$ when $\cos x = -1/3$.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+\end{videos}
+
+\newpage
+%==================
+\subsection{How many zeroes?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=7]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This is a simple application, very similar to the one on Video 5.6.  Any student who has watched the video should be able to do it.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Zeroes of the derivative}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=8]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item  Option 3 is impossible (as explained in Video 5.6).  The others are possible, but we still need to sketch an example.
+
+\item In my experience, students don't have trouble with this question.
+
+\item I often use this as a warm up.  I post the question, split the board space in 4, and I walk among them while they work.  When I see an example that I like, I give a piece of chalk to the student and ask them to come to the board and draw it.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Zeroes of a polynomial}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=9]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item Video 5.6 states that the number of zeroes of a function $h$ is at least 1 + the number of zeroes of $h'$.  So that is basically it.  This proof is trivial... for us.  For students this proof is weird.  They are used to the induction step being to manipulate one equation to get another equation.   This is different.  In a proof like this, they are very uncertain of whether they have ``written enough" or even what they are ``supposed" to write.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvi
+\end{videos}
+
+\newpage
+%==================
+\subsection{An extension of Rolle's Theorem}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=10]{137-CA-05.pdf}}  \quad
+{ \includegraphics[scale=.6,page=11]{137-CA-05.pdf}} 
+\end{center}
+
+\begin{warning}
+	This is a great exercise to introduce students to the art of coming up with new theorems (as long as they are the ones exploring, rather than you telling them the answer), but it is harder and more subtle than it may seem.  Do not underestimate it!
+\end{warning}
+\begin{comments}
+\nl
+\begin{itemize}
+\item  The point of this question is to introduce students to the art of coming up with new theorems (research?): explore, make conjectures, try to find the ``minimal" hypotheses for a conclusion, focus on writing precise statements, and writing proofs.
+
+  It is not that this theorem is particularly important.  (Well, in a way it is.  This lemma simplifies a lot the proof of Lagrange theorem for the Remainder of a Taylor polynomial.)
+  
+ \item This works well with just the first slide, or with both.
+\item I like to tell them to just try to write the proof, and keep track of what hypotheses they are using about continuity and derivatives, and at the end write them up in the statement.  This is, after all, the way research is done!  But it is something weird for them, and they won't be comfortable with it at first.
+
+\item There is a big error or point of confusion.    For Rolle's Theorem 2, the proof goes like this:
+	\begin{itemize}
+		\item Use Rolle's Theorem on $f$ on $[a,b]$. 
+		\item This produces $c_0 \in (a,b)$ such that $f(c_0)=0$. 
+		\item Use Rolle Theorem on $f'$ on $[a,c_0]$.
+	\end{itemize}
+	Therefore, the natural statement of the theorem will require the hypotheses:
+	\begin{itemize}
+		\item  $f$ is continuous on $[a,b]$
+		\item  $f'$ exists and is continuous on $[a,b)$
+		\item $f''$ exists on $(a,b)$
+	\end{itemize}
+	Of course, we could require stronger hypotheses, but it is a good exercise to think of the ``minimal theorem".  Do not assume students will easily understand what I mean by this!
+	
+	Students are likely to instead use a hypothesis like ``$f'$ is continuous on $[a,c_0]$", which would make the statement totally meaningless.  Understanding why, and how to fix it, is pretty hard for them.
+
+\item Like in most proofs in this unit, it is good to get students in the habit of verifying the hypotheses of a theorem before using it.  They do not do it by default.
+
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vv
+\end{videos}
+
+\newpage
+%==================
+\subsection{A new theorem}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=13]{137-CA-05.pdf}}  \quad
+{ \includegraphics[scale=.6,page=14]{137-CA-05.pdf}} 
+
+{ \includegraphics[scale=.6,page=15]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item  The point of this question is to introduce students to the art of coming up with new theorems (research?): explore, make conjectures, try to find the ``minimal" hypotheses for a conclusion, focus on writing precise statements, and writing proofs.
+
+  It is not that this theorem is particularly important.  
+\item You can use all 3 slides, or stop at any point.
+\item Slide 1 ``A new theorem":
+	\begin{itemize}
+		\item  We have not formally introduced ``proof by contrapositive".   Rather, the hints lead students to discover proof by contrapositive, by understanding that the two ``if-then" statements are equivalent.  I much rather prefer that than a memorized algorithm.
+		\item \textit{Students will think that Theorem 1 is trivial.}  They think that the hypotheses implies the derivative is always positive or always negative, and thus the function is always increasing or always decreasing.  \textit{However, since $f'$ does not need to be continuous, this is not something we can assume.}
+	\end{itemize}
+\item Slide 2 ``A variant".  (See the solution in Slide 3).  The point is to understand the recurring theme in most results in Unit 5: it is enough to request continuity on the end-points, but differentiability everywhere else.   Students won't necessarily understand what ``the weakest conditions possible" mean, or why we may want that.
+\item Slide 3 ``Why the 3 hypotheses are necessary" is self-explanatory.   Doing this exercise is good practice whenever we learn a new theorems, but it is not something students would think of doing by default.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vv
+
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{MVT - True or False?}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=16]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item  Simple, warm-up question to check whether students have watched the videos.  (The function is not differentiable on the interior of the interval.)
+
+\item A recurring theme in this unit: before using a theorem, we need to verify its hypotheses.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Car race} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=17]{137-CA-05.pdf}}  \quad
+{ \includegraphics[scale=.6,page=18]{137-CA-05.pdf}} 
+
+\vspace{-2cm}
+
+{ \includegraphics[scale=.6,page=19]{137-CA-05.pdf}}  \quad
+{ \includegraphics[scale=.6,page=20]{137-CA-05.pdf}} 
+
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item These slides play with the interpretation of the Mean Value Theorem.  They start easy, and end up pretty tricky.
+
+\item   The Mean Value Theorem was introduced in Video 5.7, but the video is never explicit in the interpretation ``the average rate of change of a function equals the instantaneous rate of change at some point".   Slide 1 (``Car race -1") focus on this interpretation.    I find this a necessary warm-up, or students will not know what to do.
+
+\item The claim is true (even though the proof in the third slide is wrong).  The key is to consider the function \DS{h(t) = f(t) - g(t)} and apply MVT (or even Rolle's Theorem) to it.  This is not easy, and student will not think of this without help.
+
+\item A possible plan to use these slides:
+	\begin{itemize}
+		\item  Use Slide 1 as a warm up.  Only move on once students are happy with this interpretation.
+		\item Present the question in Slide 2.  Invite students to think individually, then to discuss with their neighbours.
+		\item Then take a poll.  
+			\begin{itemize}
+				\item Some students may think the answer is yes because they are  using the idea in the wrong proof in Slide 3.   Using the slide if necessary, invite the students to find error by discussing with each other.  Some students will find it, and once they explain it, it is convincing.
+				\item  Alternatively, some students may think that we can only prove something weaker: that there are times (distinct for the two racers) when their speeds are the same.  This is basically fixing the bad proof in the most straightforward way.  It is worth it to acknowledge that this is a true result and invite a student to explain it.
+			\end{itemize}
+		\item Then surprise student with Slide 4 and tell them that the claim is still true!    They will need a hint for it.  We can tell them that since MVT only talks about a single function, we need to rewrite the condition ``$f'(c)=g'(c)$" into a condition about one single function.  A strong student may get it with this hint, but most students won't.  Then, suggest they they use the function $h=f-g$.
+	\end{itemize}
+
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Speeding ticket}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=21]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item   If this question comes after the question ``Car race" (or at least after the first part of that sequence), it is much easier.  
+\item Both 2 and 3 are true.  To justify 3, we need to interpret the situation physically: at the starting and ending times Barney was not moving, so his speed cannot possibly have been constant.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vvii
+\end{videos}
+
+\newpage
+
+%==================
+\subsection{Proving difficult identities}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=22]{137-CA-05.pdf}} \quad
+{ \includegraphics[scale=.6,page=23]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item There are two errors in the sample proof:
+	\begin{itemize}
+		\item  The proof write-up is bad.  We should be defining a function, computing its derivative, realizing is 0, then concluding the function is constant.  Rather, we are starting from the conclusion!
+		\item The function is not differentiable at 0!  So we have only prove the identity for $x>0$.  We need to notice that $f$ is continuous at $0$ (on the right) to extend the identity to $x \geq 0$.   Even when we point out the error, students are unlikely to say that the solution is to notice continuity.
+	\end{itemize}
+\item For background, we have asked questions like this in past tests.   The two errors in this proof are very common.  In particular, a majority of the students make the second error.  They are good at doing computations, but they do not like to stop and verify domains or check the hypotheses of the theorems they are using.
+\item How I use this question:
+	\begin{itemize}
+		\item I present the first slide and give students plenty of time (the computation is a bit long).  They spend all their time focusing on computing and simplifying the derivative.  They have not realized that there is anything else to do.
+		\item Once enough of them have gotten somewhere, I present the bad proof.  I give them enough time to think about it individually.  
+		\item I invite them to discuss with each other.
+		\item I take volunteers.  Hopefully they will point out the errors.  We can fix the first one, but we will probably be stuck on the second one.
+		\item If nobody has a solution for the second error, I point out what we have proven already (that the identity is true for all $x>0$) and I ask them to focus on how to prove that a function that is constant on $(0, \infty)$ must also be constant on $[0, \infty)$.  ``What property must the function sastisfy?"  It is still not easy, but it helps (some of) them figure it out.
+		\item I end with the moral: ``Don't do computations on autopilot.  Every time you use a theorem, think about the hypotheses you need before you are allowed to use it."
+	\end{itemize}
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vix
+\end{videos}
+
+\newpage
+%==================
+\subsection{Positive derivative implies increasing}
+
+\begin{center}
+{ \includegraphics[scale=.6,page=24]{137-CA-05.pdf}} 
+
+\vspace{-2cm}
+
+{ \includegraphics[scale=.6,page=26]{137-CA-05.pdf}} \quad
+{ \includegraphics[scale=.6,page=27]{137-CA-05.pdf}} 
+\end{center}
+
+\begin{warning}
+This is possibly the most important activity in Unit 5.  Do not skip it!
+\end{warning}
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   Coming up with a proof of this difficulty is one of the main objectives of the course.  Don't underestimate it: most student butcher it.
+	\item Video 5.9 contains the proof that ``zero derivative implies constant" which is essentially the same.  It is important that we give students the chance to write this proof themselves (rather than see us write it) and find the error themselves.   If instead we simply write it ourselves, they will think they understand it and they will never realize they would have written it badly.
+	
+	\item For background, in the past we have used this question in class; then we asked students for the equivalent proof for decreasing functions on a test.  Half of them got it wrong.  The bad proof you see in ``What is wrong with this proof?" was more common than a good proof.
+
+	\item The warm-up slide is to ensure they actually write down those two things and they have them present when trying to write the proof.  Otherwise they are careless.
+		
+	\item The steps/hints/suggestions/checklist are supposed to help them clean up their proof.  Specifically, writing out the definition of increasing and writing out the structure of the proof from it, before doing anything else, should make them realize the big problem with the bad proof.
+
+	\item How I use this question:  I want them to do all the work. I won't write the proof myself.  If they need to see a sample proof, they can watch Video 5.9.
+		\begin{itemize}
+			\item I give them Slide 1. I tell them to look the answers up if necessary but to write them down.
+			\item I give them Slide 2 without the four suggestions.  I give them time to work individually.  After a while, I show the suggestions and invite them to continue.
+			\item After a while I invite them to share proofs with each other and give each other feedback.
+			\item I shared Slide 3. I invite them to discuss the errors in the bad proof with each other. 
+			\item I take volunteers to explain the errors.
+		\end{itemize}
+
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vix
+
+\vxi
+\end{videos}
+
+\newpage
+%==================
+\subsection{Your first integration}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=28]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item  Many students will get the correct answer very quickly.  However, they probably will just write down the calculations.  They may not be able to explain what they are doing or what theorem they are implicitly using.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vx
+\end{videos}
+
+\newpage
+%==================
+\subsection{Intervals of monotonicity}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=29]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item   Students do these questions pretty well.  They probably already learned it in high school.  Even if they didn't, it is identical to the example in Video 5.12, and it is just following an algorithm.
+\item The one issue that is likely to appear is whether the intervals of monotonicity include the endpoints.  For example, is \DS{f(x)=x^2} increasing on $(0, \infty)$ or on $[0, \infty)$?  The answer is, of course, on both.    Students are still confusing ``increasing" with ``positive derivative".   They sometimes even say ``but $f$ is not increasing at $0$" and they need to be reminded that a function is increasing on an interval, not at a point.
+
+Here we need to remind that the results from the videos say that ``IF $I$ is any interval, $f'$ is positive on the interior, and $f$ is continuous on $I$, THEN $f$ is increasing on $I$."
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{True or False - Monotonicity and local extrema}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=30]{137-CA-05.pdf}} 
+\end{center}
+
+\begin{warning}
+Don't underestimate this question.  It addresses a \emph{very common} misunderstanding.  I recommend not to skip it.
+\end{warning}
+\begin{comments}
+\nl
+\begin{itemize}
+\item Many students will get this wrong.  They may (mistakenly) think that
+	\begin{itemize}
+		\item the \emph{definition} of increasing is ``positive derivative".
+		\item  ``local extremum", ``critical point", and ``zero derivative" mean the same. 
+	\end{itemize}
+\item  Only 2 is true.
+	\begin{itemize}
+		\item 1 is false: $f(x)=x^3$, $I = \R$.  
+		\item 3 and 4 are false.  The correct statement is ``IF $f$ has a local extremum at $c$, THEN $f'(c)=0$ or DNE".  There is nothing else we can say.
+		\item 5 is false, of course.
+		\item 6 is also false according to our definition.  An extremum at an end-point does not count as a local extremum.  This is the standard criterion in single-variable calculus, but it is not the criterion in other courses.  
+	\end{itemize}
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+
+%==================
+\subsection{Inequalities}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=31]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This type of application has not been introduced in the videos.  That is on purpose.  I hope that the hint (plus discussion with each other) is enough for them to figure out how to solve this problem.  Then I like to point this out: how they could figure out how to solve a problem that I had not taught them yet, and how this is one of the objectives of the course.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{Backwards graphing}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=32]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This question revisits the relation between the first derivative and monotonicity backwards.  It will test whether students are comfortable with the concepts or only with using a fixed algorithm.  It also requires some creativity. It is a great question, but hard to use effectively in class.
+
+\item The first step is to conjecture that the polynomial probably looks something like 
+	$$P(x) = - M x^N (x-b),$$ 
+	where $N$ is an even number and $M$ is a positive real.  Once students realize this, they can do the rest.  However, I do not have a great suggestion on how to guide students to discover this step without plain telling them.
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\viv
+
+\vxi
+
+\vxii
+\end{videos}
+
+\newpage
+%==================
+\subsection{A sneaky function}
+
+\begin{center}
+{ \includegraphics[scale=.7,page=33]{137-CA-05.pdf}} 
+\end{center}
+
+
+\begin{comments}
+\nl
+\begin{itemize}
+\item This question is an interesting challenge, but it is hard to use effectively in class:
+ most students will simply not know what to do and wait.  If that is what happens, it is not worth it.
+\item A possible solution is \DS{f(x) = \begin{cases} x^2 \sin \frac{1}{x} & \mbox{ if } x \neq 0 \\ 0 & \mbox{ if } x =0 \end{cases}}
+\end{itemize}	
+\end{comments}
+
+\begin{videos}
+\vii
+
+\vxi
+\end{videos}
+
+\newpage
+%==================
+
+
+%==================
+%==================
+
+\end{document}
+%==================
+%==================
+
+
+

@@ -1,0 +1,963 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm, marginparwidth=1cm, marginparsep=1mm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}		% controlling line spacing
+	\setlength\parindent{0pt}	% paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+\usepackage[english]{babel}
+
+%Text formating
+\setlength{\parindent}{0cm}
+\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+%MATHS Commands
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+%============================================
+%137 COLOUR PALETTE
+%============================================
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}
+\definecolor{137cp4}{RGB}{232, 144, 5}
+
+
+%============================================
+%HYPERLINKS
+%============================================
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+%============================================
+%SECTIONS FORMAT
+%============================================
+\usepackage{titlesec}
+\usepackage{sectsty}
+\setcounter{secnumdepth}{1}
+\renewcommand{\thesection}{\arabic{section}.}
+\titleformat{\section}
+  {\Large \color{137cp2}}{\thesection}{1em}{}
+\sectionfont{\Large \color{137cp2}}
+\subsectionfont{\large \color{137cp1}}
+\paragraphfont{\color{137cp1}}
+
+%============================================
+%TOC FORMAT
+%============================================
+\usepackage{tocloft}
+
+\cftsetindents{section}{0em}{2.3em}
+\cftsetindents{subsection}{0em}{2.3em}
+
+
+\setcounter{tocdepth}{2}
+
+
+%============================================
+%BOXES
+%============================================
+
+\usepackage[most]{tcolorbox}
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: THEOREM STYLES
+%==========================================
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	notefont=\bfseries\mathversion{bold},
+	notebraces={(}{)},
+	%bodyfont=\itshape,
+	postheadspace=2mm,
+	headpunct={.}\mbox{}\\
+]{myexample}
+
+
+\declaretheoremstyle[
+	spaceabove=-6mm,
+	spacebelow=-2cm,
+	headfont=\color{137cp1}\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=2cm,
+	headpunct={.}\mbox{}\\
+]{myparts}
+
+
+\usepackage{marginnote}
+
+%==========================================
+%: THEOREM ENVIRONMENTS
+%==========================================
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\newcommand{\mypartscolour}{Lavender!50}	
+	
+%: 	COMMENTS
+\declaretheorem
+	[style=myparts, 
+	name=Comments, 
+	numbered=no,
+	]
+	{corx}
+	
+\DeclareDocumentEnvironment
+	{comments}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{info1.png} } \vspace{-2.5mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp2,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{corx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{corx}
+	\end{mdframed}}
+
+
+%: 	RELATED VIDEOS
+\declaretheorem
+	[style=myparts, 
+	name=Related Videos, 
+	numbered=no]
+	{comm}
+	
+\DeclareDocumentEnvironment
+	{videos}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[width=18pt]{youtube2} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=\mypartscolour,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=137cp3,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false
+		]	
+	\begin{comm}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{comm}
+	\end{mdframed} 
+}
+	
+%: 	WARNING
+\declaretheorem
+	[style=myexample, 
+	name=Warning, 
+	numbered=no]
+	{propx}
+	
+\DeclareDocumentEnvironment
+	{warning}
+	{O{ } g}	% optional arguments: title, label
+	{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert2.png} } \vspace{-3mm}
+	\begin{mdframed}
+		[backgroundcolor=yellow!10,
+		skipabove=0.5\baselineskip,
+		innertopmargin=0.5\baselineskip,
+		skipbelow=1\baselineskip,
+		innerbottommargin=0.5\baselineskip,
+		leftmargin=-0.25cm,
+		rightmargin=-0.25cm,
+		innerleftmargin=0.25cm,
+		innerrightmargin=0.25cm,
+		linewidth=3pt,
+		linecolor=yellow,
+		hidealllines=true,
+		leftline=true,
+		nobreak=false]	
+	\begin{propx}[#1]%
+		\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+	{\end{propx}
+	\end{mdframed} }
+	
+\newcommand{\nl}{\hfill \vspace{-1.1\baselineskip}} %needed when a there is an itemize command at the beginning of a box.
+
+
+%ITEMIZE BULLETS	
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+\renewcommand{\labelitemii}{\textcolor{137cp1}{$\circ$}}
+	
+%============================================
+%VIDEOS
+%============================================
+
+\newcommand{\vone}{\hspace{8mm} \href{https://www.youtube.com/watch?v=4ca1t9noMlo&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=1}{1.1 Sets and notation}}
+
+\newcommand{\vtwo}{\hspace{8mm} \href{https://www.youtube.com/watch?v=GQfOWN76eTA&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=2}{1.2 Set-building notation}}
+
+\newcommand{\vthree}{\hspace{8mm}\href{https://www.youtube.com/watch?v=XHapWWI_wJ8&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=3}{1.3 Quantifiers}}
+
+\newcommand{\vfour}{\hspace{8mm}\href{https://www.youtube.com/watch?v=h1milgIk4U8&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=4}{1.4 Double quantifiers}}
+
+\newcommand{\vfive}{\hspace{8mm}\href{https://www.youtube.com/watch?v=4UwhnYJVi0o&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=5}{1.5 Sample proofs with quantifiers}}
+
+\newcommand{\vsix}{\hspace{8mm}\href{https://www.youtube.com/watch?v=WLI1yzvK_5w&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=6}{1.6 Quantifiers and the empty set}}
+
+\newcommand{\vseven}{\hspace{8mm} \href{https://www.youtube.com/watch?v=VPzlj_OJyU0&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=7}{1.7 Conditional statements}}
+
+\newcommand{\veight}{\hspace{8mm}\href{https://www.youtube.com/watch?v=PfAr1hhhL9o&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=8}{1.8 How to negate a conditional statement}}
+
+\newcommand{\vnine}{\hspace{8mm}\href{https://www.youtube.com/watch?v=H7NkSHt5Bao&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=9}{1.9 A bad proof}}
+
+
+\newcommand{\vten}{\hspace{8mm}\href{https://www.youtube.com/watch?v=IBwDUEXM0xs&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=10}{1.10 How to write a rigorous mathematical definition}}
+
+\newcommand{\veleven}{\hspace{8mm}\href{https://www.youtube.com/watch?v=9rYcAygjOas&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=11}{1.11 Proofs: an example}}
+
+\newcommand{\vtwelve}{\hspace{8mm}\href{https://www.youtube.com/watch?v=a0_dQgwuzYk&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=12}{1.12 Proofs: a non-example}}
+
+\newcommand{\vthirteen}{\hspace{8mm}\href{https://www.youtube.com/watch?v=x0d3gO1e868&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=13}{1.13 Proofs: a theorem}}
+
+\newcommand{\vfourteen}{\hspace{8mm}\href{https://www.youtube.com/watch?v=NmgABEiwgLg&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=14}{1.14 Proof by induction}}
+
+\newcommand{\vfifteen}{\hspace{8mm}\href{https://www.youtube.com/watch?v=WPP2TDPXyc8&list=PLlwePzQY_wW-CPzhk-af-MXj9knthD1gx&index=15}{1.15 One Theorem. Two proofs.}}
+
+
+%============================================
+%HEADER
+%============================================
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{\textcolor{137cp1}{\scshape MAT137Y Annotated Class Questions}}
+\rhead{\textcolor{137cp1}{1. Logic, notation, sets, definitions, and proofs}}
+\rfoot{}
+\cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+	\begin{center}
+		{ {\LARGE  \scshape
+		\textcolor{137cp3}{MAT137Y --   Annotated Class Questions}
+		}
+		
+		\medskip
+		{\bf \Large \textcolor{137cp1}{Unit 1: Introduction to logic, notation, \\ sets,  definitions, and proofs
+		}}
+		
+		\
+		
+		\medskip
+		{\large
+		\textcolor{137cp1}{Alfonso Gracia-Saz \& Beatriz Navarro-Lameda}
+		}}
+	\end{center}
+
+\vspace{5mm}
+
+This unit is perfect to begin the course for various reasons.  
+
+\medskip
+
+\begin{itemize}
+\item The material is mostly new for all students no matter how much calculus they have learned before, but the questions are not inaccessible, so it levels the playing field. 
+\item The material also lends itself very well to the inverted format: students are mostly happy to actively engage during class, and they prefer practicing to listening to a lecture.  
+\item Most of the activities work very well. 
+\item This unit gives students the necessary vocabulary to talk about mathematics and write proofs.
+\end{itemize}
+
+\medskip
+
+\textbf{\textcolor{137cp1}{Take advantage of this unit to create good habits and establish expectations.}}  You will need this head start: your first very challenging class lies ahead in Unit 2, writing proofs using the definition of limit.
+
+\n
+
+\tableofcontents
+
+%========================================
+\newpage
+\section{Warm-up} 
+
+\begin{center}
+{ \includegraphics[page=1]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  Simple, quick question.  
+	\item This is a good question to begin the course on the right foot.  Students get it right, feel good about being active, and understand how the course will run.  If you ask for volunteers for answers, you will get them.
+	\item The point of parts 3--5 is to notice that when an example is ``weird" we have to answer it by looking at the definition (in this case, at the definition of interval) and not by intuition.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vone
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Similar sets} 
+
+\begin{center}
+{ \includegraphics[page=2]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  Simple, quick question. 
+	\item This is a good question to begin the course on the right foot.  Students get it right, feel good about being active, and understand how the course will run.  If you ask for volunteers for answers, you will get them.
+	
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vtwo
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Describing a new set} 
+
+\begin{center}
+{ \includegraphics[page=3]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  I normally give students time to think individually.   Then I say ``if you have an answer you are confident about, raise your hand"  followed by ``only those who didn't raise your hand, I would like a suggestion from you".  I take a few suggestions, and copy them on the board (sometimes with prodding or a bit of rewriting -- or not).  Then I tell them to discuss with their neighbours which ones are right, and finally they vote.   Normally, I will get a lot of misuse of notation in the suggestions, but once they discuss with their neighbours, they vote correctly for the right ones.     
+	\item Going through this process will take a long time and some prodding, but it is a worthy exercise.  I want students to appreciate what is bad notation and why.  I also want them to realize that it is normal to make mistakes, that most people make them, and that there often is more than one correct answer.
+	\item There are correct solutions defining $B$ as a single set all at once, or as union and intersection of smaller sets.  However, students do not think of this second option unless I specifically suggest it.
+	\item Some students will want to use some notation for irrational numbers (for example, \DS{\mathbb{I}}), but this has not been defined.  It is a good moment to explain that it is okay to make up their own notation, but that they need to introduce it first.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vone
+
+\vtwo
+
+\end{videos}
+
+
+\n
+%========================================
+\newpage
+\section{Sets and quantifiers} 
+
+\begin{center}
+{ \includegraphics[page=4]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  As long as I give them enough time, and as long as they discuss with each other, most students eventually get the right answer for this one.  It is a good question for them to feel satisfied and appreciate that they are learning.
+		\item If students struggle, a good hint is ``Is $x=0$ an element of the set? Why?"  ``Is $x=0.5$ an element of the set?  Why?" ``Is..."
+		\item  The answer to $F$ is something like ``this is bad notation and so it does not mean anything."
+		\item I sometimes ask the students to ``read these definitions in plain English, with words" but they do not understand what I mean.  They will say things like ``$A$ is the set of $x$ in $\mathbb{R}$ such that for all $y$ in $[0,1]$, $x$ is smaller than $y$" whereas I am looking for something like ``$A$ is the set of real numbers $x$ that are smaller than all numbers in the interval $[0,1]$".  I thought this translation exercise would be useful, but I have not had much success with it.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vtwo
+
+\hspace{0.1mm} \vthree
+
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Functions and quantifiers} 
+
+\begin{center}
+{ \includegraphics[page=5]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize} 
+		\item Some non-native English speakers might not even know the everyday (non-mathematical) meaning of the word `vanish'. It might be a good idea to explain what the word means and give an example to help them make the connection with its mathematical meaning. You can say that `to vanish' means  `to disappear'. For example, ``if all the money vanishes, it means that there are zero dollars left." 
+		\item  Even after that, some students will decide they do not know what ``the zero function" is or what ``never vanishes" means, and therefore they cannot do the problem, they will simply wait and do nothing unless I tell them.  I like to reply with ``If you do not know what some of these mean, discuss with your neighbour, try to guess, and write an answer anyway. I want you to write an answer for each even if you think they are likely wrong."  This is the first (very small) step to train them to be comfortable with uncertainty, and to get used to exploring new problems that they do not know how to solve right away.   I will explain this at the end of the exercise (because, surprise!, most of their ``guessed" answers will actually be right).		
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vthree
+
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Negation} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=6]{137-CA-01.pdf}} \quad
+{ \includegraphics[scale=.6,page=7]{137-CA-01.pdf}}
+{ \includegraphics[scale=.6,page=8]{137-CA-01.pdf}}
+\end{center}
+
+\vspace{-1.5cm}
+
+\begin{warning}
+Notice I do not  lecture in detail on ``negation" in the videos. This is on purpose. In particular, \textbf{I strongly do not want to give students an algorithm with a list of steps (e.g.:``the negation of $\forall$ is $\exists$'').  I want them to figure this out by thinking. I want them to attack every question by thinking ``What does this statement mean?  What does it mean for it to be false?" } And I remind them multiple times that this is all they need, in particular when I see them doing things blindly without thinking of the meaning of a piece of a sentence.  
+\end{warning}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item   These questions fit well anywhere in the unit. I use them a bit as ``filler", depending on how much time I have left.  I may do one or more, together or on different days.
+		\item If you use the first slide, Question 5 is a good opportunity to tell them that ``or" is always inclusive in math.
+		\item The last two are very different!  If you use them, they will likely ask you ``Why do we negate every bit of the sentence in one of them, but we keep some as they are in the other?"  Great opportunity again to remind them again to think about what the sentence means and not to do steps mindlessly.
+		\item If students have trouble with the more convoluted ones, breaking the sentence into pieces helps.  E.g.: `` How do you negate `Every page in this book is blank'?"
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vthree
+
+\vfour
+\end{videos}
+\n
+%========================================
+\newpage
+\section{Symmetric difference} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=9]{137-CA-01.pdf}} \quad
+{ \includegraphics[scale=.6,page=10]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  These two questions work together, but you can also use just one of them independently.   I will use the second question if I think students need a challenge.
+	\item  Symmetric difference is not a particularly important operation or something students need to know.  The only goal of these questions is for students to learn to read new definitions and notation without somebody explaining it to them.  It is worth saying this when using these questions.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vone
+\end{videos}
+
+
+\n
+%========================================
+\newpage
+\section{Even numbers} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=11]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=13]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+Don't underestimate this question!  Many will make an error and choose option 1.  It is a worthy exercise to help them figure out why without doing it for them.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  Normally, I first ask students to write a definition of $E$ (first slide).  I give them time individually.  Then I show options 1 and 2 and ask them to vote.  They are split fifty-fifty!    They make this error because they are thinking ``It is true that for all integers $a$, the number $n=2a$ is an element of $E$".  They will realize their error by discussing with each other, probably with the hint ``Is $n=6$ an element of $E$?  Which of the two conditions does $n=6$ satisfy?"
+	\item If necessary, I present afterwards statements 3 and 4 and ask them which one is true.  Then I explain the difference between a definition and a theorem.
+	\item Of course, there are other valid ways to define $E$, such as 
+		 $$E = \{ 2a \; : \; a \in \Z\} \quad \quad \mbox{or} \quad \quad E = \{ n \in \Z \; : \; n/2 \in \Z \} $$
+		Another way to use this question is to ask students for alternatives definitions of $E$, get a few options (with enough prodding), and ask them to vote on which ones are good.
+\end{itemize}
+\end{comments} 
+
+\begin{videos}
+
+\vthree
+
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Mother} 
+
+\begin{center}
+{ \includegraphics[page=14]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+Don't skip this question.  It will come in handy in the future.  Whenever later in the course I find a case of double quantifiers where the order matters, I can simply say ``Remember the mother question?  Mother of all humans or all humans have a mother?"  And since this questions is memorable, that small mention will be enough.  Similarly, whenever a student makes a mistake on the order of quantifiers, a mention to this question will help them fix it without telling them anything else.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  This question is not too hard and they like it.  If they have watched the corresponding video, and if I invite them to discuss with each other, they will get it right, and they will be happy to offer their own explanations.
+	\item I like to rewrite the sentences in plain English ``Every human has a mother" vs ``There is a person who is the mother of all humans".  This makes them laugh (and helps the question become memorable), but it is also a good exercise by itself anyway.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vfour
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Elephants} 
+
+\begin{center}
+{ \includegraphics[page=15]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+ We need to make sure students understand vacuously true statements early on, so I suggest not to skip this question (or use a different question with the same purpose).
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item   Students find it is easy to just memorize ``A statement that begins with `$\forall x \in \emptyset$' is always true because the professor says so" but it is harder to understand why this is true and be convinced.  Of course, we want them to understand why. There are two main arguments that we would like students to understand:
+		\begin{itemize}
+		\item the statement is true because the negation is false
+		\item why the statement is true by itself
+		\end{itemize}
+Students find it easy to accept the first argument but struggle to understand the second.  Ideally, I would like them to understand both arguments, which I tried to explain in the video.
+	\item  For students who find this hard, I think it helps to hear as many different explanations as possible.  When I use this in class, I give them 20 seconds to think, then I tell them to discuss with their neighbours.   They are quite talkative about this question!  Then I ask for volunteers to explain it.  I get quite a few different (and good) explanations (which I often have to rephrase), and I think this helps.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vsix
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Indecisive functions} 
+
+\begin{center}
+{ \includegraphics[page=16]{137-CA-01.pdf}}
+\end{center}
+\vspace{-.5cm}
+\begin{warning}
+This activity is difficult to use effectively in class!
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item     This questions has two main objectives:
+		\begin{itemize}
+		\item The first objective is to practice reading formal definitions and making sense of them, as well as constructing examples.  
+		\item The second (and perhaps, hidden) objective  is to learn persistence.  If a problem appears confusing at first, stick with it until it makes sense.  It is easier to practice such skill outside of class than in class. You might want to point this out at the end of the activity.
+		\end{itemize}
+		\item  Some of the students will solve this problem with relative ease.  Many others will be confused.  They will react with ``I do not understand it", ``I do not know how to do it", or ``How can $y$ be both greater than and smaller than $x$?", and they will want to do nothing, and wait for the official solution from me.  If I allow that, any learning opportunity is gone.   I want them to spend time trying, even if they do not solve it.
+	\item  If I ask for a volunteer for an explanation and accept one too quickly, it is as bad as solving it myself right away.  Most students will have not spent any effort trying to solve it and the activity will have been wasted.  \textbf{Ideally, I want students to first try  individually, then collaborate with each other, before I have any official discussion, if any. }  Sometimes I have done this question at the end of class, and after giving them time to work, I have chosen to leave it as an exercise rather than solving it.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vfour
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Conditionals - True or False?} 
+
+\begin{center}
+{ \includegraphics[page=18]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+	Don't dismiss this question too quickly!  While most students get 1 and 2 right, some make an error. 
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item Some students' reasoning is ``If $x>0$, then $x \neq 0$, so 1 is false".   The question is still easy, though: asking students to discuss with each other is normally enough to help them understand the solution.
+	\item  The point of statement 3 is that students do not know whether the ``THEN" part is true or false, but still can answer the question.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vseven
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Negation of conditionals} 
+
+\begin{center}
+{ \includegraphics[page=19]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+Don't skip this question!  It will be handy in the future.
+\end{warning}
+
+\begin{comments}
+There are two issues with this question:
+	\begin{itemize}
+		 \item The negation of a conditional is not a conditional (addressed in Statement 1)
+		 \item Conditionals often have a hidden quantifier (addressed in Statement 2)
+	\end{itemize}		 
+		 Statement 2 actually means ``For every student $X$ in this class, if $X$ has a brother, then $X$ has a sister."  In the negation we must write the quantifier explicitly ``There exists a student $X$ in this class with a brother, but with no sister".
+		Students often forget this quantifier, particularly in more formal statements.  For example, they will make this error when they write the definition of ``the limit does not exist".    Whenever a student makes this error, I can simply remind them of this activity, and that will be enough for students to figure out their mistake by themselves.
+
+\end{comments}
+
+\begin{videos}
+\vseven
+
+\hspace{0.1mm} \veight
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Cards} 
+
+\begin{center}
+{ \includegraphics[scale=.6, page=20]{137-CA-01.pdf}} \quad
+{ \includegraphics[scale=.6, page=21]{137-CA-01.pdf}}
+\end{center}
+
+\
+
+\begin{comments}
+		I normally give students the first slide.  I ask them to think individually, and then vote.   Everybody votes ``E", nobody votes ``P", and they are split fifty-fifty on ``8" and ``3".   At this moment, I will 
+			\begin{itemize}
+				\item either pause the question, move to the second slide, invite them to solve it, then come back to the first slide and ask them to vote again,
+				\item or invite them to discuss with each other
+			\end{itemize}
+		Normally, any of these two tasks (or both of them in a row) are enough for students to understand what is going on.
+\end{comments}
+
+\begin{videos}
+\vseven
+
+\hspace{0.1mm} \veight
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Hockey} 
+
+\begin{center}
+{ \includegraphics[page=22]{137-CA-01.pdf}}
+\end{center}
+
+
+\begin{comments}
+	This is a simple, enjoyable activity to get comfortable with the meaning of conditionals.  If I give students enough time and an opportunity to discuss and explain to each other, then they normally complete the task.
+\end{comments}
+
+\begin{videos}
+\vseven
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Graphs} 
+
+\begin{center}
+{ \includegraphics[page=23]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+		\item  This is a simple activity on the difference between ``if" and ``if and only if" that students normally complete well.
+		\item  It may be a useful activity in anticipation of a piece in the definition of limit.
+	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vseven
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{One-to-one functions} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=25]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=26]{137-CA-01.pdf}}
+{ \includegraphics[scale=.6,page=27]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+This question is useful, but it is harder than it looks.  It will take longer than you think.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  While the notion of ``one-to-one function" is important and will appear in the course later, the actual goal of this activity is to get comfortable writing  precise definitions, and interpreting formal statements.
+	\item I like to use the first slide and give them some time to actually write their own definition without giving them options.   Then I give them the second slide and ask them think about it individually.  Then I ask them to vote on each one to get an idea of where they are.  
+		\begin{itemize}
+			\item If they are not completely off (some of them at least identify 5 as being correct), then I move to the harder question: I present the third slide and invite them to collaborate with each other.  By now they all know that some of the options are confusing to most of the class and they are happy to talk. 
+			\item  But if they are totally confused, I may work with them to agree that 5 is a correct answer, before moving to slide 3. 
+		\end{itemize}
+		 After that I will decide how to resolve.
+	\item Option 4 is false for every function (unless $D$ is empty).  Students have particular trouble with it:
+		\begin{itemize}
+			\item Students think that 4 means ``For every $x_1$ and $x_2$ satisfying $x_1 \neq x_2$, they must also satisfy $f(x_1) \neq f(x_2)$".  But that is not what is written.  If they wanted to write that, they should write it as an implication.
+			\item  Instead, if it means anything, 4  means ``Every pair of values $x_1$ and $x_2$ satisfy that ($x_1 \neq x_2$ and $f(x_1) \neq f(x_2)$). But of course, ``every pair of values" includes the possibility of choosing the same value twice.
+		\end{itemize}
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vten
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{Various proofs} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=31]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=35]{137-CA-01.pdf}}
+
+\
+
+{ \includegraphics[scale=.6,page=40]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+If you are going to use these activities, use the previous one first, where the definition of one-to-one function appears.  Don't assume students know the definition, or that you can give them the definition and they will absorb it instantly.
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	 	\item  We have two important goals for these activities, and they have nothing to do with one-to-one functions:
+		\begin{itemize}
+			\item  In general, to prove any claim, we need to use the definition of whatever concepts appear in the claim.  Students don't do this by default.  We need to correct it.
+			\item  Students like to memorize templates and algorithms and are good at following them.  They want to be taught, for example, ``To prove a limit exists, follow these steps and write exactly these things", and the same for ``every type of proof".  We want them to realize that if they understand the precise meaning of the things they want to prove, they can ``come up with the steps by themselves" so-to-speak.  They need to be able to write proofs that are completely new, even if they have never seen ``an example of that type of proof".
+		\end{itemize}
+	\item I find it useful to explicitly tell students what my goal is and the skill we are working towards.\\
+	
+	\item  This is hard and it will continue coming back again and again in the course.  Students need as much practice as we can give them.  Remember that practice means them writing the proof, not them watching us write the proof.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+%\vten
+
+\vfive
+
+\veleven
+
+\vtwelve
+
+\vthirteen
+\end{videos}
+
+\n
+
+%========================================
+\newpage
+\section{Disproving a theorem} 
+
+\begin{center}
+{ \includegraphics[page=43]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+	\begin{itemize}
+	  \item The goal is for students to understand that providing one single counterexample is enough to disprove a theorem.
+  	\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vfive
+
+\veight
+
+\vtwelve
+
+\veleven
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{What is wrong with this proof?} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=45]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=47]{137-CA-01.pdf}}
+{ \includegraphics[scale=.6,page=49]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=51]{137-CA-01.pdf}}
+\end{center}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  These three activities can be used independently or together.   If you use the third one, it helps to agree on the definition of odd and even first, which is the reason for the extra slide.
+	\item If I use these questions I give students time to think and discuss, then I ask them to share what they think is wrong, which I collect in the blackboard.  Interestingly, they are able to find lots and lots to criticize!  
+	\item The last one in particular is a very good example (perhaps a bit exaggerated) of bad proofs that students do submit.  After discussing I like to ask them what grade they would give to this proof, and we agree it is very low -- I personally would give it 0 points.  This is good: it shows the class that we are in agreement, that it is not us being picky, but that there is something wrong with just ``writing a bunch of symbols".
+	\item There is an on-going objective in the course of learning to criticize (in addition to learning to write) proofs.  So the theme of ``What is wrong with this proof?" will keep coming back in our activities.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vnine
+%\veleven
+
+\vthirteen
+\end{videos}
+
+
+\n
+%========================================
+\newpage
+\section{Variations on induction} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=54]{137-CA-01.pdf}}
+
+{ \includegraphics[scale=.6,page=55]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=56]{137-CA-01.pdf}}
+\end{center}
+
+\vspace{-1cm}
+\begin{warning}
+We want students to understand why a proof by induction works.  \textbf{Be careful or they will fool you!  Students are very good at memorizing templates, and proof by induction lends itself to a template.    This does not mean they understand what they are doing. }   To illustrate the dangers, here are some examples:
+		\begin{itemize}
+			\item  If you ask a student during office hours to tell you what the induction step of a proof by induction is, many will say ``Prove that the statement is true for $n+1$".  Few will be able to say ``Prove that if the statement is true for $n$, then it must also be true for $n+1$".
+			\item  I once had a student write a proof by induction that looked perfect, and at the bottom they added a summarizing sentence (as they were told to do in their high school, I assume):  ``I have proven the statement for 1, for $n$, and for $n+1$, so I have finished the proof by induction."
+		\end{itemize}
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  The goal of these questions is to force students to think of why a proof by induction works.
+	
+	\item I like to use the last two slides to remind students that one of our goals is for them to solve problems that we have not taught them, and that this is on purpose.   ``See?  I did not teach this `type' of proof by induction, but if you understand why induction works, you are able to do it anyway!"
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vfourteen
+
+\vfifteen
+\end{videos}
+
+\n
+%========================================
+\newpage
+\section{What is wrong with this proof by induction?} 
+
+\begin{center}
+{ \includegraphics[scale=.6,page=58]{137-CA-01.pdf}}
+\quad
+{ \includegraphics[scale=.6,page=60]{137-CA-01.pdf}}
+\end{center}
+
+\begin{warning}
+This question is much more difficult than it seems.    The main issues are:
+		\begin{itemize}
+			\item  ``I realize the theorem is false, so that is the problem.   That' s it."
+			\item   Students need to understand the logic behind the argument before they can find the flaw on it, and many students do not understand the argument to begin with.
+		\end{itemize}
+\end{warning}
+
+\begin{comments}
+\nl
+\begin{itemize}
+	\item  I have changed the way I use this question.  Nowadays, I first give them the proof and tell them to read it and think about it quietly.  Then I try to explain the argument myself (bypassing the flaw, of course).  If I cannot explain the argument to them they will not be able to search for the flaw.  After that I tell them to talk to each other.  Some will use the time to still try to understand the argument.  Others will use the time to try to find the flaw.  After that, I move to the second slide.  
+	\item In my opinion the correct explanation (of both the argument and the flaw in it) is that we have proven
+		$$
+			S_1 \quad \mbox{ and } \quad \forall N \geq 2, \, S_N \implies S_{N+1}
+		$$
+		The goal of the second slide is to guide them towards this conclusion.  If I can get students there, then I am very happy.  I don't always succeed.
+\end{itemize}
+\end{comments}
+
+\begin{videos}
+\vfourteen
+
+\vfifteen
+\end{videos}
+
+%========================================
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%==================
+%==================
+
+
+

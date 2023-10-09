@@ -1,0 +1,751 @@
+\documentclass[11pt]{article}
+
+\usepackage[
+	top=20mm,
+	bottom=20mm,
+	left=20mm,
+	right=20mm,
+	marginparwidth=1cm,
+	marginparsep=1mm
+]{geometry}
+
+%\setlength{\parskip}{0.5\baselineskip}%
+%\setlength{\parindent}{0pt}%
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{.4mm} % header line width
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{1cm} % left extra length
+\fancyhfoffset[R]{1cm} % right extra length
+\lhead{MAT137Y Instructor Guide}
+\rhead{Course Goals}
+\rfoot{}
+\cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace} % controlling line spacing
+\setlength{\parindent}{0pt} % paragraphs are not indented
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{multicol}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds}
+
+\usepackage[english]{babel}
+
+\setlength{\parindent}{0cm}
+%\setlength{\parskip}{1em}
+
+\newcommand{\DS}[1]{${\displaystyle #1}$}
+\newcommand{\vv}{\vspace{.5cm}}
+\newcommand{\n}{\newpage}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+
+\definecolor{gold}{rgb}{212,175,55}
+\definecolor{mygreen}{RGB}{66,165,81}
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{mygreen} #1}}
+
+\newcommand{\set}[2]{ \left\{ #1 \; : \; #2 \right\} }
+\newcommand{\e}{\varepsilon}
+
+\definecolor{137cp1}{RGB}{13, 33, 161}
+\definecolor{137cp2}{RGB}{51, 161, 253}
+\definecolor{137cp3}{RGB}{255, 67, 101}%{255, 84, 0}
+\definecolor{137cp4}{RGB}{232, 144, 5}%{255, 190, 11}%{83, 221, 108}%{38, 196, 133}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\hypersetup{urlcolor=137cp3, linkcolor=137cp1}
+
+\usepackage{sectsty}
+\sectionfont{\centering \LARGE\color{137cp3}} % sets colour of chapters
+\subsectionfont{\Large \color{137cp2}}
+\subsubsectionfont{\large \color{137cp4}}
+\paragraphfont{\color{137cp1}}
+
+\usepackage{tikzsymbols}
+\usepackage[final]{pdfpages} %insert .pdf file
+
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2}
+
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+%% kill warnings for overfull hboxes
+%\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+%\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+%==========================================
+%: theorem styles
+%==========================================
+
+\declaretheoremstyle[
+spaceabove=-6mm,
+spacebelow=-2cm,
+headfont=
+\color{137cp1}
+\bfseries,
+notefont=\bfseries\mathversion{bold},
+notebraces={(}{)},
+%bodyfont=\itshape,
+postheadspace=2mm,
+headpunct={.}
+]{myexample}
+
+\declaretheoremstyle[
+spaceabove=-6mm,
+spacebelow=-2cm,
+headfont=
+\color{137cp3}
+\normalfont,
+bodyfont=\normalfont,
+postheadspace=2mm,
+headpunct={.}
+]{mywarning}
+
+%==========================================
+%: theorem environments
+%==========================================
+% ??? create theorem synopsis - list of only important theorems/prop/lem - environments with option to add to this list
+
+\definecolor{Lavender}{rgb}{0.95,0.90,1.00}
+\definecolor{darkviolet}{rgb}{0.35,0.00,0.70}
+
+\newcommand{\mypartscolour}{Lavender!50}
+\newcommand{\mylemmacolour}{darkviolet!15}
+\newcommand{\mydefinitioncolour}{red!50}
+\newcommand{\myremarkcolour}{yellow!25}
+
+%: 	EXAMPLE
+
+\declaretheorem
+[style=myexample,
+name=Exercise,
+refname={Exercise},
+Refname={Exercise},
+]
+{thmx}
+
+\DeclareDocumentEnvironment{exercise}{O{ } g} % optional arguments: title, label
+{\begin{mdframed} [backgroundcolor=\mypartscolour, skipabove=0.5\baselineskip, innertopmargin=0.5\baselineskip, skipbelow=0.5\baselineskip, innerbottommargin=0.1\baselineskip, roundcorner=12pt leftmargin=0.25cm, rightmargin=-0.25cm, innerleftmargin=0.3cm, innerrightmargin=0.25cm, linewidth=4pt, linecolor=137cp1, hidealllines=true, leftline=true, nobreak=false, roundcorner=50pt ] \begin{thmx}[#1] \IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+{\end{thmx} \end{mdframed}}
+
+%: 	WARNING
+\declaretheorem
+[style=mywarning,
+name=Warning,
+numbered=no]
+{propx}
+
+\DeclareDocumentEnvironment{warning}{O{ } g} % optional arguments: title, label
+{\reversemarginpar\marginpar{\hspace{10cm} \includegraphics[height=18pt]{alert.png} } \vspace{-3mm} \begin{mdframed} [backgroundcolor=red!10, skipabove=0.5\baselineskip, innertopmargin=0.5\baselineskip, skipbelow=1\baselineskip, innerbottommargin=0.5\baselineskip, leftmargin=-0.25cm, rightmargin=-0.25cm, innerleftmargin=0.25cm, innerrightmargin=0.25cm, linewidth=3pt, linecolor=137cp3, hidealllines=true, leftline=true, nobreak=false] \begin{propx}[#1]%
+\IfNoValueTF{#2}{}{\label{#2}\hypertarget{#2}{}}}
+{\end{propx} \end{mdframed} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm, thmtools}
+\usepackage{mdframed}
+
+% kill warnings for overfull hboxes
+\newcommand{\ignoreoverfullhboxes}{\setlength{\hfuzz}{\maxdimen}}
+\AtBeginEnvironment{mdframed}{\ignoreoverfullhboxes}
+
+\renewcommand{\baselinestretch}{1.2} %increase line spacing
+
+\renewcommand{\labelitemi}{$\textcolor{137cp1}{\bullet}$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	\thispagestyle{plain}
+	\begin{center}
+		{\bf {\LARGE \textcolor{137cp3}{MAT137Y: Course Goals} }
+
+		\medskip {\Large \textcolor{137cp1}{Alfonso Gracia-Saz} }}
+	\end{center}
+
+
+	This guide will help you understand better who our students are as well as the main goals of the course.
+
+	The section \hyperref[who]{Who are our students?} gives a brief description of who MAT137Y students are: what is the difference between MAT137Y and other calculus courses offered at the University of Toronto, what to expect from our students, their background, course prerequisites, etc.
+
+	The section \hyperref[GCO]{Global Course Objectives} describes the three major objectives in the course. These are very important: they are the main point of reference that we use when making pedagogical decisions.
+
+	Finally, the \hyperref[Appendix]{Unit-by-Unit Course Objectives} section provides a very detailed list of the objectives we would like to achieve in each unit. You do not have to read all of these now. You may prefer to postpone them till you are planning your classes for each unit.
+
+
+
+	\tableofcontents
+
+	\newpage
+
+	%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Who are our students?}
+
+	\paragraph{MAT135/6 vs MAT137 vs MAT157.}
+	\begin{itemize}
+		\item Students in the most ``hardcore" math programs (Pure Math and three others)
+			take \textcolor{137cp1}{MAT157Y}, an analysis course that sometimes begins
+			with Dedekind cuts and it assumes they are already fluent in proofs and
+			rigour (or that they will learn it by osmosis).
+
+		\item Students in life science who need a general calculus course without proofs
+			or formal definitions take \textcolor{137cp1}{MAT135H$+$MAT136H}. It focuses
+			on modelling, applications, and communication.
+
+		\item \textcolor{137cp1}{MAT137Y} is a hybrid in the middle.
+
+			There are four math specialist programs that begin with MAT137Y. These are
+			\begin{itemize}
+				\item Mathematical applications in economics and finance.
+
+				\item Mathematics and its applications in probability and statistics
+
+				\item Mathematics and its applications in physical science
+
+				\item Mathematics and its application in teaching
+			\end{itemize}
+			However, the majority of our students are not in a math specialist program.
+			They are students in actuarial science, statistics, computer science,
+			economics, or physics (or perhaps in a math major). Their programs may
+			require MAT137Y or simply recommend it.
+	\end{itemize}
+
+	\paragraph{What to expect from our students.}
+	Our student are smart, motivated, and were ``good at math in high school". Unfortunately,
+	this does not mean much. Most of them have only taken math courses consisting in
+	memorizing formulas and algorithms and plugging numbers into them. They may be
+	comfortable with heavy computations, but they have never been asked to understand
+	why a method works or to think creatively. They are capable of learning rigour,
+	but they have never been exposed to it before.
+
+	In MAT137Y we acknowledge that mathematical abstraction and proofs are difficult. We assume no background knowledge on proofs. We will teach all the related skills (see \hyperref[CO2]{Global Course Objective 2} below) slowly and from scratch. This is a big difference with an analysis course like MAT157Y.
+
+	\paragraph{Prerequisites.}
+	In terms of prerequisites, we assume that students have mastered precalculus
+	topics (trigonometry, exponentials and logarithms, basic graphing, polynomial
+	manipulations...) This is not always true, but students are responsible to do any
+	catch up they need to do by themselves, and we provide
+	\href{http://uoft.me/precalc}{http://uoft.me/precalc} for this purpose. There is
+	one exception that we include and teach in MAT137: the proper definitions of
+	function and inverse function (see \hyperref[unit4]{Unit 4} below).
+
+	\paragraph{Goal.}
+	Having talked to professors in the non-math departments who send their students
+	to MAT137Y, their priority is that students accomplish
+	\hyperref[CO3]{Global Course Objective 3} below.
+
+	Finally, a good way to summarize the objectives of MAT137 is ``to get students ready to take MAT237Y". While nominally a multivariable calculus course, MAT237Y is even more a hybrid calculus/analysis. It studies more advanced concepts (such as compactness, uniform continuity, or completeness) and it requires students tor read, understand, and write much more complex proofs. 
+	%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+
+	\section{Global Course Objectives}
+
+
+	There are three major objectives in the course:
+
+	%%%
+	\subsection{1. Calculus concepts}
+
+
+	We want students to become fluent in the main calculus concepts (limits, derivatives,
+	integrals, sequences, series, and power series). This includes:
+	\begin{itemize}
+		\item State their definitions precisely.
+
+		\item Recognize and construct examples and non-examples.
+
+		\item Perform simple computations.
+
+		\item Remember the main theorems that involve these concepts, state them
+			precisely, and use them. This includes at least the Intermediate Value
+			Theorem, the Extreme Value Theorem, limit laws, differentiation rules, the
+			Mean Value Theorem, L'H\^{o}pital's Rule, the Fundamental Theorem of Calculus,
+			and the Monotone Convergence Theorem for sequences. Notice that the formal
+			proofs of some of these are too complex and not relevant to this course.
+
+		\item Use these concepts in simple proofs.
+
+		\item Determine whether a claim involving them is true or false.
+	\end{itemize}
+
+	%%%
+	\subsection{2. Mathematical rigour}
+
+	We want to introduce students to mathematical rigour and logic. We want them to
+	read and understand mathematical statements and precise definitions, as well
+	as read, critique, and write rigorous proofs.
+
+	There are a lot of small skills that are part of this objective. Since they are all second nature to us, it is easy to forget how foreign and difficult they are to most of our students. In order to acquire these skills, students need to explicitly practice all of them: to do them themselves, and to receive feedback. They do not learn any of this ``by osmosis" (by watching us demonstrate them). In particular ``watching a proof of theorem X" is not a learning objective.
+	The list of skills related to this big objective include:
+	\begin{itemize}
+		\item Understand the difference between a definition and a theorem.
+
+		\item Translate an intuitive concept or idea into a precise mathematical definition.
+
+		\item Write the negation of a mathematical definition.
+
+		\item Read a mathematical definition, and determine whether a particular
+			object is or isn't an example.
+
+		\item Compare mathematical statements and determine whether they are equivalent,
+			whether one is strictly stronger, or whether they are not comparable
+
+		\item Read a mathematical statement and determine whether it makes sense or it
+			is nonsense. If it makes sense, determine whether it is true or false.
+
+		\item Construct examples satisfying certain properties.
+
+		\item Prove a claim to be false by constructing a counterexample (and know
+			that this is the way to do it).
+
+		\item Read and critique simple proofs; this includes finding the flaws in a
+			bad proof and fixing them if possible.
+
+		\item Write simple proofs. This could mean reconstruct a proof they have
+			seen before, use the same ideas in a different context, or write a new
+			proof. At this level, students only need to write \emph{simple} proofs (what
+			we normally call ``one-liners").
+
+		\item Use set notation, set-building notation, quantifiers, and conditionals
+			in the context of all the above.
+
+		\item Understand and justify why a proof needs to have a certain structure,
+			why we need to write things in a certain way, and why we consider some things
+			a valid proof and others not.
+
+			\begin{quote}
+				In other words, memorizing templates for how to write proofs is not
+				enough. For example, as long as they are always asked questions with the
+				same format, it is possible for a student to memorize how to write a ``perfect"
+				proof by induction and having no idea of why proof by induction works. This
+				does not meet our objectives.
+			\end{quote}
+
+		\item Use variables in proofs correctly. It is hard to overestimate how
+			difficult this is for students. They need to practice it (and receive
+			feedback on it) as much as possible. We need to be strict with it to
+			properly relay its importance. Specifically, students need to know, and correctly
+			use in proofs:
+			\begin{quote}
+				Variables in a definition or claim normally have to be quantified. A
+				quantified variable is a ``dummy variable" and it does not carry any intrinsic
+				meaning. Variables in a proof should not be quantified; they should be fixed.
+				A variable cannot be used until it has been fixed. Variables need to be introduced
+				in order, paying attention to what depends on what.
+			\end{quote}
+	\end{itemize}
+
+	As examples, here are two of the most difficult claims that students should be
+	able to prove.
+
+	\begin{exercise}
+		{} Let $a \in \mathbb{R}$. Let $f$ be a function defined at least on an
+		interval centered at $a$, except possibly $a$. Prove that
+		\[
+			\text{ IF }\lim_{x \to a}f(x) = \infty, \quad \quad \text{ THEN }\lim_{x
+			\to a}\frac{1}{f(x)}= 0.
+		\]
+		Write a proof directly from the definitions of limit, without using any of the
+		limit laws.
+	\end{exercise}
+
+	\begin{exercise}
+		{} Let $a <b.$ Let $f$ be a function differentiable on $(a,b)$. Prove that
+		\[
+			\text{IF for all }x \in (a,b), \, f'(x)>0, \quad \quad \text{ THEN }f \text{
+			is increasing on }(a,b).
+		\]
+		\emph{Hint:} Use the Mean Value Theorem.
+	\end{exercise}
+
+	Proofs more difficult than these two exercises are probably inappropriate in a
+	test in MAT137Y, although they might be suitable as a learning exercise with
+	lots of scaffolding. If students really understand how proofs and rigour work using
+	simple results in MAT137Y, then they can move on to other courses (MAT237Y)
+	where they will learn to write longer and more complex proofs.
+
+	As a warning, we cannot expect students to acquire all these skills in \hyperref[unit1]{Unit 1} (``Intro to logic and proofs"). \hyperref[unit1]{Unit 1} provides students with the basics so that they begin to understand what a proof is and they have a chance to start practicing. However, they will only master proof writing through consistent practice (and feedback) throughout the whole course. 
+
+	%%%
+	\subsection{3. Problem solving}
+
+	We want students to be comfortable attacking new problems that they have not
+	seen before, to make conjectures, to figure out by themselves how to adjust
+	old methods to new situations, to figure out what new things they need to learn
+	and to learn them, and to know when to be confident with their answers. We want
+	students to build resilience, persistence, and creativity. We want them to
+	become comfortable with struggle and productive failure.
+
+	To accomplish this, whenever possible (in class and in assignments) we make students part of the discovery process and we guide them to come up with claims, algorithms, or proofs themselves. We emphasize building intuition and understanding why a method or algorithm or theorem works (which is not the same as having seen a rigorous proof for it, and often has nothing to do with it).
+
+	Whenever possible we avoid asking students to memorize formulas or patterns and use them mindlessly. That hurts rather than helps in our objective.
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\vfill
+
+	\begin{quotation}
+		\noindent
+		\emph{``I thoroughly enjoyed this course, as my first real introduction to math
+		as not just a list of formulas, but indeed a exploration of abstract
+		mathematical objects and their properties. It helped me discover a love of math
+		I did not know that I had, and definitely has motivated me to explore a
+		higher level of math than I planned to in my time at U of T. I did not consider
+		myself particularly strong at math in high school as I am not very good at memorizing
+		formulas (high school trigonometry was an unmitigated disaster), but your
+		course empowered me as a student of math in a way that I haven't been before,
+		as I came to appreciate the abstract logic underlying each and every concept,
+		from basic limit definitions all the way to Taylor series applications."}
+
+		\hfill --- From a student's unsolicited email at the end of the course
+	\end{quotation}
+
+	%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	\section{Unit-by-Unit Course Objectives}
+
+
+	\begin{warning}
+		The detailed list below is intended to help, but it is much less important
+		than the global course objectives above. It is also much more dynamic; it
+		can and will likely evolve.
+	\end{warning}
+
+	\setcounter{subsection}{0}
+
+	%%%
+	\subsection{1. Introduction to logic, sets, notation, definitions, and proofs}
+
+
+	The goal of \hyperref[unit1]{Unit 1} is to provide students with the basics so
+	that they begin to understand notation, definitions, and proofs and they have a
+	chance to start practicing all the skills listed in \hyperref[CO2]{Global
+	Course Objective 2}.
+
+	%%%
+	\subsection{2. Limits and continuity}
+
+
+	When I write ``limit" it means all ``versions" of limits (finite, infinite, at
+	a point, at infinity, side limits).
+
+	\begin{itemize}
+		\item Understand the concepts of limit intuitively, and estimate limits from
+			graphs and tables of values.
+
+		\item Write formal definitions of limits. Determine which variations of the
+			definition are equivalent and otherwise determine what they mean.
+
+		\item Prove that limits exists or do not exist from the definition.
+
+		\item State and prove the limit laws and the Squeeze Theorem. Construct
+			proofs of other similar results. Use them in computations and in other simple
+			proofs.
+
+		\item Define continuity, identify continuous functions, and the various types
+			of discontinuities.
+
+		\item Understand the theorems that are or are not true about composition of limits
+			and continuous functions.
+
+		\item Compute simple limits through algebraic manipulations.
+
+		\item State the Extreme Value Theorem and the Intermediate Value Theorem,
+			interpret them geometrically, and use them in simple applications or proofs.
+	\end{itemize}
+
+	Notice that the proofs of EVT and IVT are definitely too difficult for this course.
+
+	%%%
+	\subsection{3. Derivatives}
+
+	\begin{itemize}
+		\item Interpret derivative geometrically (as slope) and physically (as rate
+			of change).
+
+		\item Understand and use the formal definition of derivative.
+
+		\item Compute derivatives from the definition.
+
+		\item Compute derivatives of common functions quickly with differentiation rules,
+			including implicit differentiation.
+
+		\item Prove the differentiation rules from the definition, and create other
+			simple proofs using the definition of derivative. A full proof of the Chain
+			Rule is probably too much for this course.
+
+		\item Understand how a function may fail to be differentiable, and identify
+			examples geometrically and algebraically.
+	\end{itemize}
+
+	%%%
+	\subsection{4. Transcendental functions}
+
+	\begin{itemize}
+		\item Understand the definitions of function, domain, codomain, range, one-to-one,
+			onto, invertible function, and inverse function; compute them in examples,
+			and use them in very simple proofs.
+
+		\item Understand the relation between one-to-one and invertible (using the
+			common convention in calculus where the codomain is redefined to be the
+			range when needed and we never worry about surjectivity).
+
+		\item For non one-to-one functions, work with restrictions to different
+			subdomains, construct the corresponding inverses, and understand what the
+			compositions will be.
+
+		\item Obtain an identity for the inverse of a function given the derivative of
+			the function.
+
+		\item Compute complex derivative using exponentials and logarithms, and use
+			``logarithmic differentiation".
+
+		\item Define the inverse trigonometric functions rigorously, compute with
+			them, and derive equations for their derivatives.
+	\end{itemize}
+
+	%%%
+	\subsection{5. The Mean Value Theorem and applications}
+
+	\begin{itemize}
+		\item Write definitions and state theorems precisely. This includes the Mean
+			Value Theorem, Rolle's Theorem, and theorems about monotonocity, extrema,
+			and local extrema. Interpret them geometrically.
+
+		\item Understand and create simple proofs using these theorems.
+
+		\item Find extrema of functions and where they are increasing/decreasing.
+
+		\item Use the MVT and related theorems in simple proofs, calculations, and applications.
+	\end{itemize}
+
+	%%%
+	\subsection{6. Applications of derivatives and limits}
+
+	\begin{itemize}
+		\item Model physical situations using derivatives, and solve ``related-rates
+			problems".
+
+		\item Solve applied-optimization problems (i.e.\ translate a real situation into
+			an optimization question, an use calculus to optimize it).
+
+		\item When computing limits, determine (and prove) which quotients, products,
+			powers, and sums are or are not an indetermine form.
+
+		\item Understand the statement of L'H\^{o}pital's Rule, including all the subtle
+			hypotheses that determine when it can or cannot be used.
+
+		\item Compute limits that are in indetermine form, using L'H\^{o}pital's Rule
+			and other methods.
+
+		\item State the definition of concavity and interpret it geometrically.
+
+		\item Study the concavity and inflection points of a function.
+
+		\item Define what an asymptote is, interpret it geometrically, and identify them
+			in examples.
+
+		\item Sketch the graph of a function, analyzing all the important
+			characteristics and points.
+	\end{itemize}
+
+	%%%
+	\subsection{7. Definition of the integral}
+
+	\begin{itemize}
+		\item Use ``sigma notation" for sums.
+
+		\item State the definitions of upper and lower bound, supremum and infinimum
+			of a set or a function, and understand equivalent variations of the definitions.
+			Compute them in examples, and use them in simple proofs.
+
+		\item Understand all the concepts involve in the formal definition of definite
+			integral (partition, upper and lower sum, upper and lower integral, integrable
+			function, definite integral), both formally and geometrically. Compute them
+			in examples, determine which statements are true or false, and use these concepts
+			in simple proofs.
+
+		\item Compute some integrals as limits using Riemann sums.
+	\end{itemize}
+
+	%%%
+	\subsection{8. The Fundamental Theorem of Calculus}
+
+	\begin{itemize}
+		\item Understand the difference between the notions of definite integral,
+			antiderivatives, and a function defined as an integral, using the correct
+			notation in each case. This includes understanding which notation is correct,
+			incorrect (means something else), or nonsense (does not mean anything).
+			Know when to use each of these concepts.
+
+		\item Compute elementary antiderivatives.
+
+		\item State the Fundamental Theorem of Calculus (Parts 1 and 2), and use it
+			in applications, calculations, and simple proofs.
+
+		\item Compute areas of regions in the plane.
+	\end{itemize}
+
+	%%%
+	\subsection{9. Integration methods}
+
+	There are two integration methods that are important by themselves: substitution
+	and parts. Students need to become fluent in performing these computations, as
+	well as understand why the algorithm works, and be able to justify it using
+	differentiation rules.
+
+	{\parskip=0.4\baselineskip
+
+	After that, drilling complicated integration methods into students is obsolete. Almost nobody performs them by hand anymore. Instead, when we study other integration methods, we are teaching problem solving, not integration methods. We want students to learn the more general idea of ``reduce this problem to another one I have already solved", which is the essence of all these methods. So we focus on students understanding why the methods work and how someone could come up with them in the first place, rather than applying it to super-complex examples or memorizing a long list of algorithms. To a certain extent it does not matter which other integration methods (if any) we teach. }
+
+	%%%
+	\subsection{10. Applications of the integral}
+
+	Many calculus courses study a long list of applications of the integral (volumes,
+	surface area, arc length, work, centre of mass, ...) These applications are reduced
+	to memorizing a dozen formulas and nothing else. This is of dubious value. Even
+	if we restrict ourselves to common and useful applications, if all we do is
+	give students a formula to memorize and later ask them to plug different
+	functions into it, what is the point? Any time they need one such formula in
+	the future they can look it up, and there is no skill (or difficulty) in plugging
+	a function into it.
+
+
+	Instead, our emphasis is on \emph{understanding} why certain quantities can be computed by integrals, and to be able to derive these formulas, including new ones, themselves. That way, whichever application they may need in the future, they will be ready for it. The ideal learning outcome as follows: 
+
+	\begin{quotation}
+		``A student takes a second-year class in electricity and magnetism. They
+		learn that a charged particle creates an electric potential at all points in
+		space. They learn that the electric potential created by various charged particles
+		is the sum of the potentials created by each one individually. Based only on
+		this (and on what they learned about integrals as limits of Riemann sums in our
+		course) they immediately understand how to write the electric potential
+		created by a continuous distribution of charges as an integral."
+	\end{quotation}
+
+	If we get them to that point, it does not matter which specific applications
+	they have ``learned".
+
+	%%%
+	\subsection{11. Sequences}
+
+	\begin{itemize}
+		\item Understand the (various equivalent) definitions of sequence,
+			convergence, various types of divergence, monotonicity, and boundness. We
+			do not introduce subsequences.
+
+		\item Transfer all the results about limits of functions to limits of sequences,
+			when appropriate.
+
+		\item Use these in computations, examples, and simple proofs.
+
+		\item In particular, know (and be able to justify) the relations between
+			them; most notably 1) convergent implies bounded, and 2) bounded $+$
+			monotonic implies convergent.
+
+		\item Understand the definition of ``$a_{n}$ grows much slower than $b_{n}$".
+			Memorize (and be able to prove) the hierarchy of divergent sequences (logarithms,
+			polynomials, exponentials, factorials, and power-exponentials), and use it
+			in simple proofs and limit computations.
+	\end{itemize}
+
+	%%%
+	\subsection{12. Improper integrals}
+
+	\begin{itemize}
+		\item Understand that improper integrals are a new concept that we have to define.
+			This means that we cannot just assume that improper integrals are always
+			well-defined and have the same properties as regular integrals.
+
+		\item State and understand the definition of improper integral and use it to
+			compute simple improper integrals.
+
+		\item Memorize the standard family of convergent/divergent improper integrals:
+			${\displaystyle \int^{\infty}_1 \frac{dx}{x^{p}}}$.
+
+		\item Understand the statement of the two Comparison Tests (Basic Comparison
+			Test and Limit-Comparison Test), why they are true, and use them to prove certain
+			improper integrals are convergent and divergent, or in simple proofs.
+	\end{itemize}
+
+	%%%
+	\subsection{13. Series}
+
+	\begin{itemize}
+		\item Never confuse a sequence with a series. Use proper notation for both
+			concepts.
+
+		\item Like for improper integrals, understand that an infinite sum is a new
+			concept that we have to define.
+
+		\item Understand the definition, be able to explain it, and use it to compute
+			the value of simple series (mostly geometric and telescopic series).
+
+		\item Estimate a series numerically.
+
+		\item Know that we cannot take for granted that properties of finite sums carry
+			to infinite sums. Know which properties carry and prove so from the
+			definition.
+
+		\item State the standard convergence tests and justify intuitively whey they
+			work (even if not formally prove them). Correctly use them to determine
+			whether a series is convergent (and even conditionally convergent or absolutely
+			convergent) or divergent, as well as in simple proofs.
+	\end{itemize}
+
+	%%%
+	\subsection{14. Power series and Taylor series}
+
+	\begin{itemize}
+		\item Identify power series and compute their interval of convergence. %Recognize them as a particular case of a function defined as a series depending on a parameter.
+
+		\item Understand (and use) which properties of polynomials apply to power series
+			in the interior of the interval of convergence.
+
+		\item Understand various equivalent definition of Taylor polynomials and Taylor
+			series (as a an approximation of a function near a point with an error
+			that approaches 0 ``quickly", as a polynomial with the right derivatives, or
+			via the standard formula). Compute with them.
+
+		\item Memorize the standard Maclaurin series, and be able to re-derive them.
+
+		\item Use all the common tricks to obtain new Taylor series expansions from old
+			ones.
+
+		\item Use Taylor series in many common applications (possibly limits, integrals,
+			estimations, adding series, physics, asymptotic behaviour...)
+	\end{itemize}
+
+	Throughout this last unit I recommend focusing on conceptual understanding,
+	computations, and applications, while avoiding proofs, particularly the most technical
+	ones. Understanding, writing, and critiquing simple proofs is one objective
+	for this course that has been practiced in all the previous units; however,
+	the proofs in this unit are often too technical, hard, or long, so they are not
+	appropriate for that learning objective. Most of the aspects of the theory and
+	most of the theorems are illustrated by how we use them in the applications.
+\end{document}
+
+%============
+%============
+%============
+%============

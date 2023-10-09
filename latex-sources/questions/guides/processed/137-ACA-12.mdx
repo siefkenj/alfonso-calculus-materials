@@ -1,0 +1,439 @@
+# Unit 12: Improper integrals
+
+**OBJECTIVES**
+
+*   Understand that improper integrals are a new concept that we have to define. This means that we cannot just assume that improper integrals are always well-defined and have the same properties as regular integrals.
+
+*   State and understand the definition of improper integral and use it to compute simple improper integrals.
+
+*   Memorize the standard family of convergent/divergent improper integrals: $\displaystyle \int^{\infty}_{1}\frac{dx}{x^{p}}$.
+
+*   Understand the statement of the two Comparison Tests (Basic Comparison Test and Limit-Comparison Test), why they are true, and use them to prove certain improper integrals are convergent and divergent, or in simple proofs.
+
+### Definition of improper integral
+
+#### Recall the definitions
+
+<Slides>
+
+<QuestionPreview question={0} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a quick question to begin. If students have watched the videos, it will be fast.
+
+*   It also serves to emphasize that everything must be done from the definition.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)[12.5 Improper integral: Example 5 (vertical asymptote)](https://www.youtube.com/watch?v=l0bYj2g9qqM\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=5)
+
+</Videos>
+
+#### Computation
+
+<Slides>
+
+<QuestionPreview question={1} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a simple calculation where the improper integral can be computed exactly from the definition. It is good for students to compute at least one example all the way from the definition before we jump onto comparison tests.
+
+*   The only potential issue is that some students may leave an antiderivative as
+
+    ```math
+    \ln x - \ln (x+1)
+    ```
+
+    rather than as
+
+    ```math
+    \ln \frac{x}{x+1}
+    ```
+
+    and then be unable to compute the limit as $x \to \infty$. Other than that, if you give them enough time, they won’t have trouble with it.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)
+
+</Videos>
+
+#### The most important improper integrals
+
+<Slides>
+
+<QuestionPreview question={2} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={3} unit={12} small={true} />
+
+</Slides>
+
+<Warning>
+
+This result is most important! It is worth the time.
+
+</Warning>
+
+<Comments>
+
+*   I cannot overemphasize how important this result is. Students will be using it all the time in later lessons. I want them to know it in their sleep.
+
+*   Students have learned the answer to Question 1 in Video 12.4, but they have not learned the answer to Question 2 yet. Still, it is worth it to ask them to do both derivations themselves.
+
+*   When do I use these questions?
+
+    *   I use Slide 1 on the first lesson of Unit 12 to have student do the derivation themselves entirely.
+
+    *   In a later lesson, I use Slide 2 as a quick warm up before we start doing computations with comparison tests. If they do not know this result, there is no point in attempting to use Comparison Test, so it is a good reminder. Sometimes I will use Slide 2 as a warm up at the beginning of multiple lessons, to emphasize the importance.
+
+</Comments>
+
+<Videos>
+
+[12.4 Improper integral - Example 4 (“p functions”)](https://www.youtube.com/watch?v=LVKdfkNyp58\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=4)[12.5 Improper integral: Example 5 (vertical asymptote)](https://www.youtube.com/watch?v=l0bYj2g9qqM\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=5)[12.6 Doubly improper integrals](https://www.youtube.com/watch?v=WAhjLIfNnjI\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=6)
+
+</Videos>
+
+#### Examples
+
+<Slides>
+
+<QuestionPreview question={4} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Most of this question is very easy. It is just a quick activity to remind students of the definitions and make them think of what an example of each type looks like.
+
+*   There is one exception: coming up with a type-2 divergent “oscillating” integral is difficult.
+
+    *   Students will likely propose $\displaystyle \int_{0}^{1}\sin \frac{1}{x}dx$ and it will take some work to persuade them that this integral is convergent (particularly because the integrand does not have an elementary antiderivative!)
+
+    *   One actual example is $\displaystyle \int_{0}^{1}\left( \cos \frac{1}{x}\right) \frac{1}{x^{2}}\, dx$. Notice that we can indeed find an elementary antiderivative. The way I came up with this answer is backwards: first I thought of what I wanted the antiderivative to be, then I computed its derivative and made it the integrand.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)[12.2 Improper integrals: Example 2](https://www.youtube.com/watch?v=L9wxtktioik\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=2)[12.3 Improper integrals: Example 3](https://www.youtube.com/watch?v=pbr8GWBmLhU\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=3)[12.4 Improper integral - Example 4 (“p functions”)](https://www.youtube.com/watch?v=LVKdfkNyp58\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=4)[12.5 Improper integral: Example 5 (vertical asymptote)](https://www.youtube.com/watch?v=l0bYj2g9qqM\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=5)
+
+</Videos>
+
+#### Positive functions
+
+<Slides>
+
+<QuestionPreview question={5} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Students will learn this in Video 12.7. I recommend using this activity before they have watched the video.
+
+*   Some students mistakenly think that $\displaystyle \int_{0}^{\infty}(2 + \sin x) \, dx$ is an example of “oscillating”.
+
+    Remind them that “oscillating” means “divergent, but neither $\infty$ or $-\infty$”, and not simply that the function alternates between increasing and decreasing.
+
+*   The goals are
+
+    *   to make them realize what is different about positive integrals (thus laying down the foundation for comparison tests) before they are given the answer in the videos, and
+
+    *   to ponder why “eventual” conditions (“for large values of $x$”) are as good as full conditions when it comes to convergence – this will be a repeating theme for the rest of the course.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)[12.2 Improper integrals: Example 2](https://www.youtube.com/watch?v=L9wxtktioik\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=2)[12.3 Improper integrals: Example 3](https://www.youtube.com/watch?v=pbr8GWBmLhU\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=3)[12.7 The Basic Comparison Test for improper integrals](https://www.youtube.com/watch?v=8xtCdrLzQpQ\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=7)
+
+</Videos>
+
+#### Doubly improper integrals
+
+<Slides>
+
+<QuestionPreview question={6} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={7} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Both slides address the same point. I sometimes use one, the other, or both. Normally I get confusion and a lively discussion which, by itself, does not lead to consensus. This is one of the few activities where I can’t avoid giving a mini lecture at the end.
+
+*   The correct answer is that   $\displaystyle \int_{-1}^{1}\frac{1}{x}\, dx$   is divergent. Strictly speaking
+
+    ```math
+    \int_{-1}^{1}\frac{1}{x}\, dx \; = \; \left[ \lim_{\varepsilon \to 0^+}\int_{-1}^{-\varepsilon}\frac{1}{x}\, dx \right] \; + \; \left[ \lim_{\varepsilon \to 0^+}\int_{\varepsilon}^{1}\frac{1}{x}\, dx \right]
+    ```
+
+    and we cannot merge the two limits because we cannot cancel $-\infty$ with $\infty$.
+
+    I explain this in Video 12.6.
+
+*   Expect this to be controversial! The arguments for why this should be 0 are convincing.
+
+*   I would not bring this up unless a student (normally in physics) does, but just in case be prepared. The calculation in the second slide is the *principal part* of the improper integral. If a doubly improper integral like this one is convergent, then its value equals the principal part. But when the integral is divergent, it is still possible for the principal part to exist. It does not help that physicist are too casual with this distinction and pretend that the integral and the principal part are the same.
+
+</Comments>
+
+<Videos>
+
+[12.6 Doubly improper integrals](https://www.youtube.com/watch?v=WAhjLIfNnjI\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=6)
+
+</Videos>
+
+#### Probability
+
+<Slides>
+
+<QuestionPreview question={8} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question is not necessary (probability is not included in the course’s objectives) but, if you have time, it is nice to give students a glimpse of one of the most common applications of integration: probability.
+
+*   The question itself is simple: give students time and they will solve it.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)[12.6 Doubly improper integrals](https://www.youtube.com/watch?v=WAhjLIfNnjI\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=6)
+
+</Videos>
+
+#### Collection of antiderivatives
+
+<Slides>
+
+<QuestionPreview question={9} unit={12} small={true} />
+
+</Slides>
+
+<Warning>
+
+*   This question is tempting (to us) because it looks interesting (to us)... but remember to base your decisions on what students need, not what we enjoy. I do not give this question priority over the basics.
+
+*   I advice not using this question unless you have an engaged class with students eager to collaborate. Otherwise, half the class will think they do not know what to do and will wait for your answer doing nothing.
+
+</Warning>
+
+<Comments>
+
+*   I only use this question if I need a challenge and I have already covered all the basics.
+
+*   The necessary and sufficient condition is that $\displaystyle \int_{-\infty}^{0}f(x) \, dx \; = \; \int_{0}^{\infty}f(x) \, dx \; = \; \infty$. This is difficult to conjecture, and even harder (for students) to prove. A formal proof would use the definition of limit and IVT.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)
+
+</Videos>
+
+### Comparison tests
+
+#### A simple BCT application
+
+<Slides>
+
+<QuestionPreview question={10} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   I use this question as a gentle, guided warm up to the BCT to emphasize two points:
+
+    *   BCT is sometimes inconclusive
+
+    *   We often need to try different things until we find something that helps
+
+</Comments>
+
+<Videos>
+
+[12.7 The Basic Comparison Test for improper integrals](https://www.youtube.com/watch?v=8xtCdrLzQpQ\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=7)[12.8 The Basic Comparison Test for integrals: Examples](https://www.youtube.com/watch?v=9NeR7QXGJbE\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=8)
+
+</Videos>
+
+#### True or False - Comparisons
+
+<Slides>
+
+<QuestionPreview question={11} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={12} unit={12} small={true} />
+
+<QuestionPreview question={13} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={14} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   All of these questions are variation on the same idea. The goal is not only to learn to use BCT, but to understand why it works. That’s why I ask students to think of variations.
+
+*   If students are willing to discuss with each other, they normally get the right conclusions, but only after discussion.
+
+</Comments>
+
+<Videos>
+
+[12.7 The Basic Comparison Test for improper integrals](https://www.youtube.com/watch?v=8xtCdrLzQpQ\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=7)
+
+</Videos>
+
+#### BCT and LCT calculations
+
+<Slides>
+
+<QuestionPreview question={15} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={16} unit={12} small={true} />
+
+<QuestionPreview question={17} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={18} unit={12} small={true} />
+
+</Slides>
+
+<Warning>
+
+Students can solve (most of) these questions but they are probably slower than you expect. Give them plenty of time: it is worth it for them to practice to solidify concepts, and this only works if you give them enough time.
+
+</Warning>
+
+<Comments>
+
+*   These are questions for students to practice BCT and LCT, develop intuition, and gain fluency. They take time.
+
+*   I use different slides depending on my goal.
+
+    *   I use Slide 1 (“BCT calculations”) if students have only learned BCT and I only want to practice BCT.
+
+        *   For a shorter activity, using only “standard” applications, I use Questions 1-3 only.
+
+        *   For a longer activity, to give students a challenge, I use all Question 1-5.
+
+    *   Slide 2 (“Rapid fire”) is a reminder once again of the examples we want students to do quickly in their sleep. I use it to emphasize: the other questions may take time, but I want them to answer these ones within seconds.
+
+    *   Slide 3 (“Slow questions”) is a mix of BCT and LCT applications, easy and hard. I could easily spend a full class with only this question if I wanted.
+
+    *   Slide 4 (“A harder calculation”) is a question I save in case I need a computational challenge. I have never had to use it: the last few questions in Slide 3 are hard enough.
+
+</Comments>
+
+<Videos>
+
+[12.7 The Basic Comparison Test for improper integrals](https://www.youtube.com/watch?v=8xtCdrLzQpQ\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=7)[12.8 The Basic Comparison Test for integrals: Examples](https://www.youtube.com/watch?v=9NeR7QXGJbE\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=8)[12.9 The Limit-Comparison Test for improper integrals](https://www.youtube.com/watch?v=2hOr_4hc3pA\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=9)[12.10 The Limit-Comparison Test - proof](https://www.youtube.com/watch?v=FqJSWNtT_aA\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=10)[12.6 Doubly improper integrals](https://www.youtube.com/watch?v=WAhjLIfNnjI\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=6)
+
+</Videos>
+
+#### A variation on LCT
+
+<Slides>
+
+<QuestionPreview question={19} unit={12} small={true} />
+
+ 
+
+<QuestionPreview question={20} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   In Video 12.7 I explained LCT as stated in this slide. I left the two generalizations in these slides as an exercise.
+
+*   There are two ways to use these questions
+
+    *   intuitively – just conjecture the answer without proving it: one function is smaller than the other for large values of $x$.
+
+    *   formally – write a formal proof (if you want to practice proof writing)
+
+    Students will be able to write the correct conjecture (if given enough time and a chance to discuss).
+
+    As usual, writing a proof is much harder.
+
+</Comments>
+
+<Videos>
+
+[12.10 The Limit-Comparison Test - proof](https://www.youtube.com/watch?v=FqJSWNtT_aA\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=10)
+
+</Videos>
+
+#### Absolute convergence
+
+<Slides>
+
+<QuestionPreview question={21} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Absolute convergence for improper integral is not included in our learning goals, and the topic does not appear in the videos. Unfortunately, we don’t have as much time for Unit 12 as we might want, and it is important the basics are well learned rather than trying to “teach” students a lot of things. Thus, this question is not “important” or necessary.
+
+    If you have decide to use it, it may work well as an example of an application of BCT, and it can help plant a seed for the notion of absolute convergence of series (which we *will* study in Unit 13).
+
+*   This question is very easy for us, but expect it to be confusing for students. Specifically, the auxiliary functions $f_{+}$ and $f_{-}$ will be confusing.
+
+</Comments>
+
+<Videos>
+
+[12.7 The Basic Comparison Test for improper integrals](https://www.youtube.com/watch?v=8xtCdrLzQpQ\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=7)[12.8 The Basic Comparison Test for integrals: Examples](https://www.youtube.com/watch?v=9NeR7QXGJbE\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=8)
+
+</Videos>
+
+#### Dirichlet integral
+
+<Slides>
+
+<QuestionPreview question={22} unit={12} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This could be a good question to finish by tying together various ideas from Unit 12 and various other units. However, I have never had time for it (or even come close). If the question were not so easily googelable it would make for a great assignment question.
+
+</Comments>
+
+<Videos>
+
+[12.1 Improper integrals: Definition and Example 1](https://www.youtube.com/watch?v=NqxwJ2D-Ckc\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo)[12.4 Improper integral - Example 4 (“p functions”)](https://www.youtube.com/watch?v=LVKdfkNyp58\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=4)[12.2 Improper integrals: Example 2](https://www.youtube.com/watch?v=L9wxtktioik\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=2)[12.3 Improper integrals: Example 3](https://www.youtube.com/watch?v=pbr8GWBmLhU\&list=PLlwePzQY_wW-OVbBuwbFDl8RB5kt2Tngo\&index=3)
+
+</Videos>

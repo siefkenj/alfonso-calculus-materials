@@ -1,0 +1,621 @@
+# Unit 6: Applications of derivatives and limits
+
+Many of the activities in this unit are long. That is just the nature of the topics. On the plus side many of them have a low entry point and students will easily start working on them, even if they cannot finish them or they make errors. **Remember that as long as students spend the time engaged and thinking about the problem, it was time well spent even if we did not “covered” many questions.**
+
+### Modelling applications
+
+#### Related-rates problems
+
+relatedrates
+
+<Slides>
+
+<QuestionPreview question={0} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={1} unit={6} small={true} />
+
+<QuestionPreview question={2} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={3} unit={6} small={true} />
+
+<QuestionPreview question={4} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={5} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+These problems take a lot longer than you may think. I normally have time for no more than 3 problems in a 50-minute class, and that is okay.
+
+</Warning>
+
+<Comments>
+
+*   My answers:
+
+    *   Lake ripple - At a rate of $\displaystyle 0.4 \pi$ m/s
+
+    *   Sliding ladder - At a rate of $\displaystyle 4/3$ m/s away from the wall
+
+    *   Math party - With speed of $\displaystyle 51\pi/2$ m/s
+
+    *   Sleepy ants - 69.9 cm/h or 0.194 mm/s
+
+        This is by far the hardest problem. It probably requires cosine law or using coordinates in $\mathbb{R}^{2}$. Also, students may mistakently think the angle at 3:30 is exactly $\pi/2$
+
+    *   The kite - At a rate of $\displaystyle 2\sqrt{5}/3$ m/s
+
+    *   Coffee - At a rate of 0.073 cm/s
+
+*   Related-rates and applied-optimization problems are probably the most useful applications in this course for students who will not go into a field that requires rigour and proof. I base this on consultations I had with professors of other departments when I was first redesigning MAT137.
+
+*   These problems have two parts: the modelling (turn the situation into a calculus question) and the calculus. Students find the modelling harder. Modelling requires understanding, and there is no mindless algorithm they can use: they have to think through each case.
+
+*   How do I use these in class?
+
+    Students would love it for me to just lecture and solve N problems for them. There is no value in that. If they want to see sample problems solved in detail, they have thousands with a YouTube or Google search. And no matter what they think, watching solutions to 20 different problem won’t help them solve the 21st by themselves if it is different. Instead, more than ever, I want students to be active in class:
+
+    *   I present a problem, and I give students plenty of time to work on it, individually or in groups. **They need much more time than we would!**
+
+    *   I insist that if they tell me “I do not know how to start” I won’t believe it: surely they can draw a picture, give names to the quantities involved, and identify in that language what their goal is.
+
+    *   Only after students have spent enough time working on a problem, I am willing to discuss it. I may fully solve it, or I may only present the modelling part, or I may only mention the main ideas, or I may point out common errors, or I may give them the final answer to check. Or, if it is the last problem of the class and I consider they did not have enough time to work on it, I simply leave it as an exercise.
+
+*   The sample problems I propose are of different difficulty. **I strongly recommend avoiding the temptation of only using hard ones.**
+
+</Comments>
+
+<Videos>
+
+[6.1 Related rates: Example 1](https://www.youtube.com/watch?v=TjW3e01KW8M\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=1)[6.2 Related rates: Example 2](https://www.youtube.com/watch?v=DyoVgunLR18\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=2)
+
+</Videos>
+
+#### Applied-optimization problems
+
+<Slides>
+
+<QuestionPreview question={6} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={7} unit={6} small={true} />
+
+<QuestionPreview question={8} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={9} unit={6} small={true} />
+
+<QuestionPreview question={10} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={11} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+There is one *extremely common error* and I find it nearly impossible to get students out of it. If they do the modelling right, they take the derivative, and they find there is a single critical point, then they will declare it to be the solution without any further analysis. Whether we had asked them to find the maximum or the minimum, they would have solved it the same way! They do not bother justifying why they know it is the maximum/minimum. It may not be! There may not be a maximum/minimum!
+
+</Warning>
+
+<Comments>
+
+*   Almost all the comments I wrote about [related-rates problems](#relatedrates) apply here as well.
+
+*   My answers, and individual comments:
+
+    *   The classic farmer problem - 3750 $m^{2}$
+
+    *   Distance - $(2,2)$.
+
+    *   A matter of perspective - At a distance of $\displaystyle \sqrt{a(a+h)}$ from the wall.
+
+        Students will ask “what does best view?” mean. I have chosen the maximize the angle I view the paining with (this is the criterion used when designing movie theaters in a slope). However, I don’t tell students this, and I insist they try to produce a reasonable definition of “best view” themselves. After all, in real life, nobody will pay them for solving problems like “The classic farmer problem”. They will only be paid for solving ill-defined problems where they have to figure out how to phrase the question properly in the first place.
+
+    *   Airplane - $\displaystyle \sqrt{800}$ $km/h$
+
+    *   Fire - You should fill your bucket where you are and run in a straight line with it.
+
+        Careful! If you model this problem carelessly, you will get a critical point that is outside of the domain. The extremum happens at an endpoint instead.
+
+    *   Dominion - This is a real board game! If you have any Dominion players in the class, they will probably know you should aim to have 3 more duchies than dukes.
+
+        If possible, you should purchase $(r+3)/2$ duchies and $(r-3)/2$ dukes, where $r = \lfloor N/3 \rfloor$. However, this needs to be adjusted if $r$ is odd or smaller than $3$.
+
+</Comments>
+
+<Videos>
+
+[6.3 Applied optimization: Example 1](https://www.youtube.com/watch?v=AuWxVJPU0SI\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=3)[6.4 Applied optimization: Example 2](https://www.youtube.com/watch?v=SaeGMaz0w5g\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=4)
+
+</Videos>
+
+### Indeterminate Forms and L’Hôpital’s Rule
+
+#### Limits from graphs
+
+<Slides>
+
+<QuestionPreview question={12} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a nice, short question to test whether students understand L’Hôpital’s Rule beyond computing with equations. They have to realize that they can read information from the graph, that they have an indeterminate form, and that they can use L’Hôpital’s Rule without an equation (which is an unfamiliar setting).
+
+*   Students normally do reasonably well on this. Enough of them understand it and, if I give them time to discuss with each other, most of them get the right answer.
+
+</Comments>
+
+<Videos>
+
+[6.5 Indeterminate forms](https://www.youtube.com/watch?v=yz8uZbi2wEk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=5)[6.6 L’Hôpital’s Rule: The Theorem](https://www.youtube.com/watch?v=6YvN79aDbjs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=6)[6.7 L’Hôpital’s Rule: Examples](https://www.youtube.com/watch?v=aaee9hSP7Gw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=7)
+
+</Videos>
+
+#### Polynomial vs exponential
+
+<Slides>
+
+<QuestionPreview question={13} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+This activity is a nice opportunity for students to *discover* that all polynomials grow slower than exponentials. For it to work, we need to give them enough time and not spoil it. Otherwise it is just a standard calculation and it may not be worth using.
+
+</Warning>
+
+<Comments>
+
+*   I like to give students only Question 1 initially, so that there is no suggestion of a general result. It takes students quite a few iterations of L’Hôpital’s Rule before they think “Wait a moment... What is going to happen here?” I want them to have that realization by themselves. Individual work plus discussion (plus enough time) normally gets them there.
+
+*   If I am feeling ambitious, instead of showing Question 2, I ask students to generalize the calculation they just did and come up with their own Theorem. If this works, it is very satisfying for them.
+
+</Comments>
+
+<Videos>
+
+[6.5 Indeterminate forms](https://www.youtube.com/watch?v=yz8uZbi2wEk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=5)[6.6 L’Hôpital’s Rule: The Theorem](https://www.youtube.com/watch?v=6YvN79aDbjs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=6)[6.7 L’Hôpital’s Rule: Examples](https://www.youtube.com/watch?v=aaee9hSP7Gw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=7)
+
+</Videos>
+
+#### Computations
+
+<Slides>
+
+<QuestionPreview question={14} unit={6} small={true} />
+
+<QuestionPreview question={15} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={16} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+The average student needs more time than we think for many of these questions. It is easy to underestimate this.
+
+</Warning>
+
+<Comments>
+
+*   These are standard computational questions to practice L’Hôpital’s Rule and all types of indeterminate forms.
+
+*   I have split them by type of indeterminate form:
+
+    *   Slide 1 is about $0/0$, $\infty/\infty$ and $0 \cdot \infty$. Some notes:
+
+        *   In Question 4, if we apply L’Hôpital’s Rule as is, it does not help.
+
+        *   Question 7 is not an indeterminate form.
+
+    *   Slide 2 is about $\infty - \infty$
+
+    *   Slide 3 is about $1^{\infty}$, $0^{0}$, and $\infty^{0}$
+
+    What I end up using may depend on how I distribute the videos and what other activities I want to do on a given day. I may only use a subset, split them among days, or mix a few from each type.
+
+*   How I use them:
+
+    *   I normally give students a bunch of questions of different difficulties at a time and let them work for a while individually or in groups.
+
+    *   I walk around them while they are working, answering questions and paying attention to their work.
+
+    *   I remind them to share answers with their neighbours if they have not done so yet.
+
+    *   Once I am ready, we discuss. I normally point out the common errors I have seen them making and give out final answers, but I do not solve all of them. In particular, I do not solve a question that most of them have not attempted.
+
+</Comments>
+
+<Videos>
+
+[6.5 Indeterminate forms](https://www.youtube.com/watch?v=yz8uZbi2wEk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=5)[6.6 L’Hôpital’s Rule: The Theorem](https://www.youtube.com/watch?v=6YvN79aDbjs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=6)[6.7 L’Hôpital’s Rule: Examples](https://www.youtube.com/watch?v=aaee9hSP7Gw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=7)[6.9 Indeterminate form: ZERO times INFINITY](https://www.youtube.com/watch?v=TMlnlD4HCrA\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=9)[6.10 Indeterminate form: INFINITY minus INFINITY](https://www.youtube.com/watch?v=3EyFtXgJXTg\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=10)[6.12 Indeterminate forms: exponential types](https://www.youtube.com/watch?v=ySxaqDTcWgk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=12)
+
+</Videos>
+
+#### Backwards L’Hôpital’s Rule
+
+<Slides>
+
+<QuestionPreview question={17} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={18} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   These two questions can be used together, or separately. If you only use one, I recommend the first one. They both have the same idea, but the second question might be too hard by itself (and a bit too long).
+
+*   The point of the question is to explore L’Hôpital’s Rule in a different context. If a student understands the theorem well, it is very doable; but if they think of it as a mere algorithm to apply blindly, then they will not know how to start.
+
+*   How I use the first question.
+
+    *   I give students some time to think individually. Then they discuss with their neighbour.
+
+    *   Then I ask for volunteers to explain what we need to do. I am hoping someone will share that we need to “*force*” an indeterminate form so that we can apply L’Hôpital, so we need $P(1)=0$.
+
+    *   Once I get that information, I invite students to continue working individually and talking to their neighbour.
+
+    I find that the question is a bit too subtle and has multiple layers. That is why I break it this way. Otherwise many students never get started.
+
+</Comments>
+
+<Videos>
+
+[6.5 Indeterminate forms](https://www.youtube.com/watch?v=yz8uZbi2wEk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=5)[6.6 L’Hôpital’s Rule: The Theorem](https://www.youtube.com/watch?v=6YvN79aDbjs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=6)[6.7 L’Hôpital’s Rule: Examples](https://www.youtube.com/watch?v=aaee9hSP7Gw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=7)
+
+</Videos>
+
+#### Which ones are indeterminate forms?
+
+<Slides>
+
+<QuestionPreview question={19} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={20} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+I recommend you do not skip the first slide (“Indeterminate?”). It is something that students are confused about, but that they can ignore as long as they limit themselves to traditional computations. This activity forces them to address this issue.
+
+</Warning>
+
+<Comments>
+
+*   Students have accepted that $0/0$ and $\infty/\infty$ are indeterminate forms. However:
+
+    *   A few do not understand why $0 \cdot \infty$ or $\infty - \infty$ are indeterminate forms. (They think they are $0$.)
+
+    *   A lot of them do not understand why $1^{\infty}$, $0^{0}$, and $\infty^{0}$ are indeterminate forms.
+
+    *   Some have memorize the “official list of indeterminate forms” but do not why that list is what it is.
+
+    *   Some do not understand what an indeterminate form is in the first place.
+
+*   I use these two questions with two different approaches:
+
+    *   In Slide 1, I want them to argue “$0 \cdot \infty$ is an indeterminate form because one function is trying to make the product 0, and the other function is trying to make the product $\infty$”. I would call this an intuitive explanation.
+
+    *   In Slide 2, I want them to argue “$0 \cdot \infty$ is an indeterminate form because we have these examples with different final answers”. I would call this a proof.
+
+    I will normally model the explanations for the first indeterminate form, and then I will ask them to work on the rest.
+
+*   Slide 1 in particular works very well. Students are happy to work individually for a while, and then they are happy to discuss with their neighbours the ones that confuse them. Afterwards, there will be a lively discussion when we put our results together. They get invested in the question and they want to understand it.
+
+</Comments>
+
+<Videos>
+
+[6.5 Indeterminate forms](https://www.youtube.com/watch?v=yz8uZbi2wEk\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=5)[6.11 Why is 1INFINITY an indeterminate form?](https://www.youtube.com/watch?v=I7LjiDDI7ZA\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=11)
+
+</Videos>
+
+### Concavity, asymptotes, and graphing
+
+#### Find coordinates of a point in a graph given the equation
+
+<Slides>
+
+<QuestionPreview question={21} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={22} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+These two questions probably belong in two different lessons, as one is about concavity, and the other one is about asymptotes.
+
+</Warning>
+
+<Comments>
+
+*   Graphing questions are often very standard and follow a template: “do these $N$ steps to compute $N$ different things following straightforward recipes, and sketch the graph at the end”. By contrast, these questions ask about the same concepts in a different, unfamiliar way. If students understand the concept of inflection point and asymptote, the questions are very easy. Otherwise, they won’t know what to do.
+
+*   Students normally do reasonably well on this. Enough of them understand it and, if I give them time to discuss with each other, most of them get the right answer.
+
+</Comments>
+
+<Videos>
+
+[6.13 The definition(s) of concavity](https://www.youtube.com/watch?v=4Dh6KdQDRkw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=13)[6.14 Example: Monotonicity and Concavity of a function](https://www.youtube.com/watch?v=ZodaIjLuhI8\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=14)[6.15 Asymptotes](https://www.youtube.com/watch?v=PG41kUSC0w0\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=15)[6.17 Slant asymptote: an example](https://www.youtube.com/watch?v=UTFOz-4GZYs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=17)
+
+</Videos>
+
+#### True or False - Concavity and inflection points
+
+<Slides>
+
+<QuestionPreview question={23} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This question addresses two common misconceptions. Many students like to think that:
+
+    *   “concave up” is the same as “second derivative is positive”
+
+    *   “inflection point” is the same as “second derivative is zero”
+
+*   For context, in Video 6.13 I defined “concave up” as “increasing first derivative”. I also talked about other definitions (including the ones that are preferable, because they work for non-differentiable functions), but I settled on this one for simplicity.
+
+*   Answers:
+
+    *   3, 4, 7 are true *by definition*
+
+    *   8 appears also true by definition, but is actually false. $f'$ could have a local extremum without being monotonic on either side. For example consider $f'(x) = x^{2}\sin^{2}\frac{1}{x}$. This is quite a subtle point, so perhaps it is best to skip this question.
+
+    *   2 is also true
+
+    *   the rest are false
+
+</Comments>
+
+<Videos>
+
+[6.13 The definition(s) of concavity](https://www.youtube.com/watch?v=4Dh6KdQDRkw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=13)
+
+</Videos>
+
+#### Secant segments are above the graph
+
+<Slides>
+
+<QuestionPreview question={24} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   For context, in Video 6.14 I mentioned informally three possible ways to define “concave up”:
+
+    1.  it:s “secant segments are above the graph”
+
+    2.  it:t “tangent lines are below the graph”
+
+    3.  it:d “positive first derivative”
+
+    I settled for it:d because it is the simplest, even though it:s is probably better because it includes non-differentiable functions.
+
+    The goal of this Slide is to convert the geometric idea in it:s into a formal definition.
+
+    The practice problems contain a question about converting the geometric idea in it:t into a formal definition, *and* proving it is equivalent to it:d.
+
+</Comments>
+
+<Videos>
+
+[6.13 The definition(s) of concavity](https://www.youtube.com/watch?v=4Dh6KdQDRkw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=13)
+
+</Videos>
+
+#### A polynomial from 3 points
+
+<Slides>
+
+<QuestionPreview question={25} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   Graphing questions are often very standard and follow a template: “do these $N$ steps to compute $N$ different things following straightforward recipes, and sketch the graph at the end”. By contrast, this problem approaches graphing from a different, unfamiliar angle. Still, if students understand the relation between the sign of the first two derivatives and monotonicity and concavity, they should be able to do this.
+
+*   Many students will solve this question well if given enough time and the opportunity to discuss with each other.
+
+*   I use the hint “Figure out first a possible equation for the second derivative” for the students who would otherwise not know how to start.
+
+</Comments>
+
+<Videos>
+
+[6.13 The definition(s) of concavity](https://www.youtube.com/watch?v=4Dh6KdQDRkw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=13)[6.14 Example: Monotonicity and Concavity of a function](https://www.youtube.com/watch?v=ZodaIjLuhI8\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=14)
+
+</Videos>
+
+#### Sketch the graph of a function: monotonicity, concavity, and asymptotes
+
+<Slides>
+
+<QuestionPreview question={26} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={27} unit={6} small={true} />
+
+<QuestionPreview question={28} unit={6} small={true} />
+
+ 
+
+<QuestionPreview question={29} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+It takes students longer than we think to complete any one of these questions. Much longer.
+
+</Warning>
+
+<Comments>
+
+*   These are more or less standard “sketch-the-graph-of-this-function” type of questions, with large variations in difficulty.
+
+*   As usual, the questions are only worth it if students spend time working on them, not if we solve them for students. The good news is that students at least know how to start.
+
+*   I will normally not fully solve any of these questions myself, even after students have worked on them. I may explain some complicated points, or solve one of the steps, or given them the final answers.
+
+*   Individual comments:
+
+    *   Slide 1 (“Monotonicity and concavity”).
+
+        This question can be used right after learning of monotonicity, before learning of asymptotes.
+
+    *   Slide 2 (“Fractional exponents”)
+
+        Students mostly do a good job of computing the intervals of monotonicity and concavity, but that does not necessarily translate into a correct graph. The function has a cusp at $x=0$ that students may miss.
+
+    *   Slide 3 (“Hyperbolic tangent”)
+
+        This may be the first example students encounter of a function with different horizontal aysmptotes as $x \to \infty$ and $x \to -\infty$.
+
+        When computing the limits as $x \to \pm \infty$, using L’Hôpital’s Rule directly does not help (you get into a loop). Rather, factoring $e^{x}$ or $e^{-x}$ helps. Students are likely to miss this.
+
+    *   Slide 4 (“A very hard function to graph”)
+
+        This question is, indeed, very hard. Students could easily spend a full class period on it, and they will need guidance and discussion about various points. Perhaps it is too hard for the course (unless used as a “grand finale” for the term?) Two main issues stand out:
+
+        *   To find the slant asymptote, they can imitate the reasoning in Video 6.18, but that is the only tool they have at the moment. This is quite a challenge.
+
+        *   They will find it hard to prove that $\displaystyle \lim_{x \to 0^-}G(x) =0$ properly. They may miss it is an indeterminate form. If they do not miss it, they will try L’Hôpital’s Rule, but it does not help. Instead, I would recommend the change of variable $\displaystyle t=1/x$ to calculate this limit.
+
+</Comments>
+
+<Videos>
+
+[6.13 The definition(s) of concavity](https://www.youtube.com/watch?v=4Dh6KdQDRkw\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=13)[6.14 Example: Monotonicity and Concavity of a function](https://www.youtube.com/watch?v=ZodaIjLuhI8\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=14)[6.15 Asymptotes](https://www.youtube.com/watch?v=PG41kUSC0w0\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=15)[6.16 Vertical and horizontal asymptotes of a rational function](https://www.youtube.com/watch?v=gzoTke-bby4\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=16)[6.17 Slant asymptote: an example](https://www.youtube.com/watch?v=UTFOz-4GZYs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=17)[6.18 Asymptotes: a hard example](https://www.youtube.com/watch?v=5Obe9JUFtEg\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=18)
+
+</Videos>
+
+#### Backwards graphing
+
+<Slides>
+
+<QuestionPreview question={30} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   **This was one of my most successful activities in the whole course (at least while teaching in person). I strongly recommend it.**
+
+*   Students have seen one standard example of how to compute the asymptotes of a rational function (Video 6.16). The goal of this question is for them to discover how the multiplicity of the zeroes of numerator and denominator affect the shape of the graph.
+
+*   Tell students to use Desmos. They like it because it feels like playing: they can type any equation, see the graph, and then adjust the equation to modify the graph. They slowly start to get progress in different parts of the graph and keep adjusting to search for the features they are still missing. It is a game, and it is fun.
+
+*   When I used this question in class, students were very eager to collaborate. After a while I asked them if they were ready to discuss. They told me that no, that they wanted to continue working and they did not want me to solve the problem. That is a great sign! So I told them to continue working as long as they needed. I asked any group who was done to call me so they could share their answer (which they were eager to do) and I gave them a challenge question to keep them entertained while the rest continued with the main question.
+
+</Comments>
+
+<Videos>
+
+[6.15 Asymptotes](https://www.youtube.com/watch?v=PG41kUSC0w0\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=15)[6.16 Vertical and horizontal asymptotes of a rational function](https://www.youtube.com/watch?v=gzoTke-bby4\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=16)
+
+</Videos>
+
+#### Unexpected asymptote
+
+<Slides>
+
+<QuestionPreview question={31} unit={6} small={true} />
+
+</Slides>
+
+<Warning>
+
+I think this example is very interesting, but students may disagree. I do not know if I want to use it again.
+
+</Warning>
+
+<Comments>
+
+*   This function has a horizontal asymptote (as $x \to -\infty$) and a slant asymptote (as $x \to \infty$). It is likely the first such example students see.
+
+*   When studying the behaviour as $x \to \infty$ if we “factor out the biggest term”, we need to be careful and write it as
+
+    ```math
+    F(x) \; = \; x \; + \; |x| \sqrt{1 + \frac{2}{x} + \frac{2}{x^{2}}}
+    ```
+
+    rather than as
+
+    ```math
+    F(x) \; = \; x \; + \; x \sqrt{1 + \frac{2}{x} + \frac{2}{x^{2}}}
+    ```
+
+    This explains the different behaviour as $x \to \pm \infty$.
+
+*   Computing the slant asymptote is difficult. The only tool students have at the moment is to imitate the calculation in Video 6.18.
+
+*   There is a hand-wavy argument that explains the two asymptotes by writing:
+
+    ```math
+    F(x) \; = \; x + \sqrt{(x+1)^{2}+ 1}\; \approx \; x + \sqrt{(x+1)^{2}}\; = \; x + |x+1|
+    ```
+
+    Of course, this is not rigorous.
+
+</Comments>
+
+<Videos>
+
+[6.18 Asymptotes: a hard example](https://www.youtube.com/watch?v=5Obe9JUFtEg\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=18)[6.15 Asymptotes](https://www.youtube.com/watch?v=PG41kUSC0w0\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=15)[6.16 Vertical and horizontal asymptotes of a rational function](https://www.youtube.com/watch?v=gzoTke-bby4\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=16)[6.17 Slant asymptote: an example](https://www.youtube.com/watch?v=UTFOz-4GZYs\&list=PLlwePzQY_wW9EsqbQzPdJTNGsHYvO_2CJ\&index=17)
+
+</Videos>
+
+#### Unusual examples
+
+<Slides>
+
+<QuestionPreview question={32} unit={6} small={true} />
+
+</Slides>
+
+<Comments>
+
+*   This is a mix of questions using concepts from Unit 6 and previous units. All the examples may seem impossible at first sight, but they are all possible.
+
+*   This may be a good way to finish the term, but it only works well if students are willing to collaborate and discuss with each other. Otherwise the questions feel mostly like tricks and half the students do not know what to do and simply sit there waiting.
+
+</Comments>
+
+<Videos>
+
+A mix of many topics from Unit 6 and previous units.
+
+</Videos>

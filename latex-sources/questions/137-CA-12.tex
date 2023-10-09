@@ -1,0 +1,622 @@
+\documentclass[14pt]{beamer}
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+% To remove the navigation symbols from the bottom of all slides uncomment next line
+\setbeamertemplate{navigation symbols}{} 
+\date{}
+\title{}
+\author{}
+
+%to get rid of footer entirely uncomment next line
+\setbeamertemplate{footline}{}
+}
+
+
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{bbding}
+\usepackage{rotating}
+\usepackage{xcolor}
+
+
+%\usepackage{tkz-berge} %cool grid
+\usepackage{pgfplots} %pics
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{mathtools}
+
+\newcommand {\DS} [1] {${\displaystyle #1}$}
+\newcommand {\R}{\mathbb{R}}
+\newcommand {\Z}{\mathbb{Z}}
+\newcommand {\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+
+\newcommand{\p}{\pause}
+
+% simple environrment for enumerate, easier to read
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+% to use colours easily
+\definecolor{verde}{rgb}{0, .7, 0} 
+\definecolor{rosa}{rgb}{1, 0, 1}  
+\definecolor{naranja}{rgb}{1, .5, 0.1} 
+\newcommand{\azul}[1]{{\color{blue} #1}}
+\newcommand{\rojo}[1]{{\color{red} #1}}
+\newcommand{\verde}[1]{{\color{verde} #1}}
+\newcommand{\rosa}[1]{{\color{rosa} #1}}
+\newcommand{\naranja}[1]{{\color{naranja} #1}}
+\newcommand{\violeta}[1]{{\color{violet} #1}}
+ 
+% box in red and blue in math and outside of math
+\newcommand{\cajar}[1]{\boxed{\mbox{\rojo{ #1}}}}
+\newcommand{\majar}[1]{\boxed{\rojo{ #1}}}
+\newcommand{\cajab}[1]{\boxed{\mbox{\azul{ #1}}}}
+\newcommand{\majab}[1]{\boxed{\azul{ #1}}}
+ 
+\newcommand{\setsize}[1]{\fontsize{#1}{#1}\selectfont} %allows you to change the font size. The default size of this document is 14. To change the font size of the whole slide, place this at the beginning of the slide. To change the size of only a portion of the text to size 12, you can do the following { \setsize{12} Your text. }.
+
+\setbeamerfont{frametitle}{size=\setsize{15}}
+\setbeamerfont{block title}{size=\setsize{14}}
+
+\newcommand{\smallerfont}{\setsize{13}} %place this at the beginning of a slide to set the font size of the entire slide to 13.
+
+%===========================
+% Preamble just for this file
+%===========================
+
+
+%===================================================
+\begin{document}
+%===================================================
+%----------------------------------------------------------------------------------------
+%	Definition of improper integral
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\frametitle{Recall the definitions}
+
+\begin{enumerate}
+
+	\item  {\bf Type-1 improper integrals.}  Let $f$ be a bounded, continuous function on \DS{[c, \infty)}.  How do we define the improper integral
+		$$
+			\int_c^{\infty} f(x) dx \, ?
+		$$
+	
+	\vfill
+	
+	\item {\bf Type-2 improper integrals.}  Let $f$ be a continuous function on \DS{(a,b]}, possibly with $x=a$ as a vertical asymptote.  How do we define the improper integral
+		$$
+			\int_a^{b} f(x) dx  \, ?
+		$$
+	
+	\vfill
+	
+	
+\end{enumerate}
+
+\end{frame}
+
+
+%------------------------------
+\begin{frame}[t]
+\frametitle{Computation}
+
+Calculate, using the definition of improper integral
+	$$
+		\int_{1}^{\infty}  \frac{1}{x^2+x} dx
+	$$
+\
+
+\emph{Hint:}  \DS{\frac{1}{x^2+x} = \frac{(x+1) - (x)}{x(x+1)}}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{The most important improper integrals}
+
+Use the definition of improper integral to determine for which values of \DS{p \in \R} each of the following improper integrals converges.
+
+\begin{enumerate}
+	\item  \DS{\int_1^{\infty} \frac{1}{x^p} \, dx }	
+	\vfill
+	\item \DS{\int_0^1 \frac{1}{x^p} \, dx }	
+	\vfill
+	\item \DS{\int_0^{\infty} \frac{1}{x^p} \, dx }
+	\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Quick review}
+
+For which values of \DS{p \in \R} is each of the following improper integrals convergent?
+
+\begin{enumerate}
+	\item \DS{\int_1^{\infty} \frac{1}{x^p} \, dx }
+	
+	\vfill
+	\item \DS{\int_0^1 \frac{1}{x^p} \, dx }
+	
+	\vfill
+	\item \DS{\int_0^{\infty} \frac{1}{x^p} \, dx }
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Examples}
+
+ \begin{enumerate}
+ 
+ \item Let $f$ be continuous on $[a, \infty)$.   Let
+			\DS{ A = \int_a^{\infty} f(x) dx }
+	
+		Then $A$ may be
+		\DS{
+			\begin{cases}
+				\mbox{ convergent (a number) } \\
+				\mbox{ divergent } 
+					\begin{cases}
+						\mbox{ to } \infty \\
+						\mbox{ to } - \infty \\
+						\mbox{ ``oscillating"}
+					\end{cases}
+			\end{cases}
+		}
+		
+	\
+	
+Give one example of each of the four results.
+\vfill \p
+
+\item Now do the same thing for ``type 2" improper integrals. 
+
+\end{enumerate}
+\vfill
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Positive functions}
+
+\begin{itemize}
+	\item Let $f$ be continuous on $[a, \infty)$.   Let
+			\DS{ A = \int_a^{\infty} f(x) dx }
+	
+		Then $A$ may be
+		\DS{
+			\begin{cases}
+				\mbox{ convergent (a number) } \\
+				\mbox{ divergent } 
+					\begin{cases}
+						\mbox{ to } \infty \\
+						\mbox{ to } - \infty \\
+						\mbox{ ``oscillating"}
+					\end{cases}
+			\end{cases}
+		}
+		
+		\ \p		
+	\item  Assume \DS{\forall x \geq a, f(x) \geq 0}.
+		\vspace{.2cm}
+		
+		\boxed{\mbox{Which of the four options are still possible?	}}
+		
+		\ \p 
+	\item  Assume \DS{\exists M \geq a, \mbox{ s.t. } \forall x \geq M, f(x) \geq 0}.
+		\vspace{.2cm}
+	
+		\boxed{\mbox{Which of the four options are still possible?	}}
+		
+\end{itemize}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{A ``simple" integral}
+
+What is \DS{\int_{-1}^{1} \frac{1}{x} \,  dx} \; ?
+\p
+
+\begin{enumerate}
+\vfill
+	\item \DS{\int_{-1}^{1} \frac{1}{x} \,  dx \; = \;  \left( \ln |x| \right) \Big\vert_{-1}^{1} \; = \;  \ln|1| - \ln|-1|  =  0}
+\vfill
+	\item \DS{\int_{-1}^{1} \frac{1}{x} \,  dx = 0} \; because  \DS{f(x) = \frac{1}{x}} is an odd function.
+\vfill
+	\item \DS{\int_{-1}^{1} \frac{1}{x} \,  dx} is divergent.
+\vfill
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{What is wrong with this computation?}
+
+	$$
+	\begin{aligned}
+		\int_{-1}^{1} \frac{1}{x} \, dx \; &= \; \lim_{\e \to 0^+} \left[ \int_{-1}^{-\e} \frac{1}{x}\, dx \; + \; \int_{\e}^{1} \frac{1}{x} \, dx \, \right] 
+			\\ \; &= \; \lim_{\e \to 0^+} \left[ \left.  \phantom{\frac 11} \ln|x| \right\vert_{-1}^{-\e}  \; +  \left. \phantom{\frac 11} \ln|x| \right\vert_{\e}^{1} \; \right] 
+			\\ \; & = \; \lim_{\e \to 0^+}  \left[ \, \ln|-\e| - \ln |\e| \, \right] \phantom{\int}
+			\\ \; &= \; \lim_{\e \to 0^+} \left[ \, 0 \, \right] \; = \; 0 \phantom{\int}
+	\end{aligned}
+	$$
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Probability}
+
+\smallerfont
+\vspace{-2mm}
+
+A nonnegative function $f$ defined on $(-\infty,\infty)$ is called a {\bf probability density function } if
+\vspace{-2mm}
+	$$\int_{-\infty}^{\infty}f(x)\, dx=1.$$
+The \emph{mean} of a probability density function is defined as
+\vspace{-2mm}
+	$$\mu=\int_{-\infty}^{\infty}x \, f(x)\, dx.$$
+Let 
+	\DS{f(x) = 
+		\begin{cases}
+			Ce^{-kx} & \mbox{ if } x\geq 0 \\
+			0 & \mbox{ if } x <0
+		\end{cases}
+	}
+\begin{enumerate}
+	\item For $k>0$, find a constant $C$ such that the function $f$ is a probability density function.
+	\item Calculate the mean $\mu$.
+	
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Collection of antiderivatives}
+
+Let \DS{f} be a positive, continuous function with domain $\R$. \\
+We know two ways to describe a collection of antiderivatives:
+\begin{enumerate}
+	\item  \DS{G(x) + C} for $C \in \R$, where $G$ is any one antiderivative.
+	\item The collection of functions \DS{F_a} for \DS{a \in \R}, where
+		$$
+			F_a(x) = \int_a^x f(t) dt
+		$$
+\end{enumerate}
+
+\p  These two collections are not always the same.  
+Why not?  Are they the same for some functions $f$?  When are they the same?
+
+\vspace{2.5cm} \hfill
+\emph{Hint:}  \quad \href{https://tinyurl.com/137antiderivatives}{\beamergotobutton{https://tinyurl.com/137antiderivatives}}
+\end{frame}
+%------------------------------
+%----------------------------------------------------------------------------------------
+%	Comparison tests
+%----------------------------------------------------------------------------------------
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{A simple BCT application}
+
+We want to determine whether \DS{\int_1^{\infty} \frac{1}{x+e^x} \; dx} \\ is convergent or divergent.  
+
+\
+
+We can try at least two comparisons:
+
+	\begin{enumerate}
+		\item  Compare \DS{\frac{1}{x}} and \DS{\frac{1}{x+ e^x}}.
+		\item  Compare \DS{\frac{1}{e^x}} and \DS{\frac{1}{x+ e^x}}.
+	\end{enumerate}
+
+\
+
+Try both.  What can you conclude from each one of them?
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{11}
+\frametitle{True or False - Comparisons}
+
+Let $a \in \R$. \\
+Let $f$ and $g$ be continuous functions on $[a, \infty)$. \\
+Assume that \DS{\boxed{\forall x \geq a, \quad 0 \leq  \azul{f(x)} \leq \rojo{g(x)}}}. \\
+What can we conclude?
+
+\begin{enumerate}
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent.
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{11}
+\frametitle{True or False - Comparisons II}
+
+Let $a \in \R$. \\
+Let $f$ and $g$ be continuous functions on $[a, \infty)$. \\
+Assume that \DS{\boxed{\forall x \geq a, \quad \azul{f(x)} \leq \rojo{g(x)}}}. \\
+What can we conclude?
+
+\begin{enumerate}
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent.
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{11}
+\frametitle{True or False - Comparisons III}
+
+Let $a \in \R$. \\
+Let $f$ and $g$ be continuous functions on $[a, \infty)$. \\
+Assume that \DS{\boxed{\exists M \geq a \; \mbox{ s.t. } \; \forall x \geq M, \quad 0 \leq  \azul{f(x)} \leq \rojo{g(x)}}}. \\
+What can we conclude?
+
+\begin{enumerate}
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent.
+	\item  IF \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}, \, THEN \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx}} is convergent, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx}} is convergent.
+	\item  IF \DS{\rojo{\int_a^{\infty} g(x) dx} = \infty}, \, THEN \DS{\azul{\int_a^{\infty} f(x) dx} = \infty}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{What can you conclude?}
+
+Let $a \in \R$.
+Let $f$ be a continuous, {\bf positive} function on $[a, \infty)$. \\
+In each of the following cases, what can you conclude about \DS{\int_a^{\infty} f(x) dx}?  \; Is it convergent, divergent, or we do not know?
+
+\begin{enumerate}
+	\item \DS{\forall b \geq a, \; \exists M \in \R \; \mbox{ s.t. } \; \quad \int_a^b f(x)\,dx \; \leq \; M}.
+	\item \DS{\exists M \in \R \; \mbox{ s.t. } \; \forall b \geq a, \;  \quad \int_a^b f(x)\, dx \; \leq \; M}.
+\vspace{.3cm}
+	\item \DS{\exists M >0 \; \mbox{ s.t. } \; \quad \forall x \geq a, \; f(x) \leq M}.
+\vspace{.3cm}
+	\item \DS{\exists M >0 \; \mbox{ s.t. } \; \quad \forall x \geq a, \; f(x) \geq M}.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{BCT calculations}
+
+Use BCT to determine whether each of the following is convergent or divergent
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item  \DS{\int_1^{\infty} \frac{1 + \cos^2 x}{x^{2/3}} \, dx}
+\vspace{.3cm}
+	\item  \DS{\int_1^{\infty} \frac{1 + \cos^2 x}{x^{4/3}} \, dx}
+\vspace{.3cm}
+	\item  \DS{\int_0^{\infty} \frac{\arctan x^2 }{1 + e^x} \, dx}
+\vspace{.3cm}
+\p
+	\item  \DS{\int_0^{\infty} e^{-x^2} dx}
+\vspace{.3cm}
+	\item  \DS{\int_2^{\infty} \frac{(\ln x)^{10}}{x^2} \, dx}
+\vspace{.3cm}
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{Rapid questions: convergent or divergent?}
+
+\begin{enumerate}
+\begin{multicols}{3}
+	\item  \DS{\int_1^{\infty} \frac{1}{x^2} \, dx }	
+\vspace{.4cm}
+	\item \DS{\int_1^{\infty} \frac{1}{\sqrt{x}} \, dx }
+\vspace{.4cm}
+	\item \DS{\int_1^{\infty} \frac{1}{x} \, dx }
+\vspace{.4cm}
+	\item  \DS{\int_0^{1} \frac{1}{x^2} \, dx }
+\vspace{.3cm}
+	\item \DS{\int_0^{1} \frac{1}{\sqrt{x}} \, dx }
+\vspace{.3cm}
+	\item \DS{\int_0^{1} \frac{1}{x} \, dx }
+\vspace{.3cm}
+	\item  \DS{\int_1^{\infty} \frac{3}{x^2} \, dx }
+\vspace{.3cm}
+	\item  \DS{\int_1^{\infty} \frac{1}{x^2+3} \, dx }
+\vspace{.3cm}
+	\item  \DS{\int_1^{\infty} \! \! \! \left( \frac{1}{x^2} + 3 \right) \! dx }
+\vspace{.3cm}
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\smallerfont
+\frametitle{Slow questions: convergent or divergent?}
+
+\begin{enumerate}
+\begin{multicols}{2}
+	\item \DS{\int_1^{\infty} \! \! \frac{x^3 + 2x + 7}{x^5 + 11x^4+ 1} \, dx }
+\vspace{.4cm}
+	\item \DS{\int_1^{\infty} \! \! \frac{1}{\sqrt{x^2+x+1}} \, dx}
+\vspace{.4cm}
+	\item \DS{\int_0^{1} \frac{3 \cos x}{x + \sqrt{x}} \, dx }
+\vspace{.4cm}
+	\item \DS{\int_0^1 \sqrt{\cot x} \, dx}
+\vspace{.4cm}
+	\item \DS{\int_0^1 \frac{\sin x}{x^{3/2}} \, dx }
+\vspace{.4cm}
+	\item  \DS{\int_0^{\infty} e^{-x^2} dx}
+\vspace{.4cm}
+	\item  \DS{\int_2^{\infty} \frac{(\ln x)^{10}}{x^2} \, dx}
+\vspace{.4cm}
+\end{multicols}
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\frametitle{A harder calculation}
+
+For which values of $a>0$ is the integral
+	$$
+		\int_0^{\infty} \frac{\arctan x}{x^a} \, dx
+	$$
+convergent?
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{A variation on LCT}
+
+This is the theorem you have learned:
+\begin{block}{\smallerfont Theorem (Limit-Comparison Test)}
+Let \DS{a \in \R}. 
+Let $f$ and $g$ be positive, continuous functions on \DS{[a, \infty)}. 
+\begin{itemize}
+	\item  IF the limit \;
+		\DS{	L = \lim_{x \to \infty} \frac{f(x)}{g(x)} } \; exists and \; \DS{L>0}
+	\item  THEN
+		\DS{ \int_a^{\infty} \! \! f(x) dx} \; and \; \DS{ \int_a^{\infty} \! \! g(x) dx }
+		\\ are both convergent or both divergent.
+\end{itemize}
+\end{block}
+
+\p \vspace{.2cm}
+{\bf What if we change the hypotheses to $L=0$?} 
+\begin{enumerate}
+	\item  Write down the new theorem (different conclusion).
+	\item  Prove it.
+\end{enumerate}
+
+\p \vspace{.2cm}
+\emph{Hint:}  If \DS{\lim_{x \to \infty} \frac{f(x)}{g(x)}=0 }, what is larger $f(x)$ or $g(x)$?
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{A variation on LCT - 2}
+
+This is the theorem you have learned:
+\begin{block}{\smallerfont Theorem (Limit-Comparison Test)}
+Let \DS{a \in \R}. 
+Let $f$ and $g$ be positive, continuous functions on \DS{[a, \infty)}. 
+\begin{itemize}
+	\item  IF the limit \;
+		\DS{	L = \lim_{x \to \infty} \frac{f(x)}{g(x)} } \; exists and \; \DS{L>0}
+	\item  THEN
+		\DS{ \int_a^{\infty} \! \! f(x) dx} \; and \; \DS{ \int_a^{\infty} \! \! g(x) dx }
+		\\ are both convergent or both divergent.
+\end{itemize}
+\end{block}
+
+ \vspace{.2cm}
+{\bf What if we change the hypotheses to $L=\infty$?} 
+\begin{enumerate}
+	\item  Write down the new theorem (different conclusion).
+	\item  Prove it.
+\end{enumerate}
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{Absolute Convergence}
+\vspace{-.3cm}
+
+\begin{block}{\setsize{12} Definition}
+The integral \DS{\int_a^\infty f(x)\, dx} is called \textbf{absolutely convergent} when \DS{\int_a^\infty |f(x)|\, dx} converges.
+\end{block}
+
+Prove that
+	\begin{itemize}
+		\item  IF an improper integral is absolutely convergent
+		\item  THEN it is convergent
+	\end{itemize}
+
+\vspace{.5cm}
+
+\textit{Hint:} Consider the functions 
+	$$
+		f_+(x) = \begin{cases}
+			f(x) & \mbox{ if } f(x) \geq 0 \\
+			0 & \mbox{ if } f(x) \leq 0
+		\end{cases}
+\quad \quad
+		f_{-}(x) = \begin{cases}
+			0 & \mbox{ if } f(x) \geq 0 \\
+			|f(x)| & \mbox{ if } f(x) \leq 0
+		\end{cases}
+	$$
+Write $f(x)$ and $|f(x)|$ in terms of $f_+(x)$ and $f_-(x)$.  Use BCT.
+
+\end{frame}
+%------------------------------
+\begin{frame}[t]
+\setsize{12}
+\frametitle{Dirichlet integral}
+
+Let \DS{f(x) = \begin{cases}
+	\frac{\sin x}{x} & \mbox{ if } x \neq 0 \\
+	1 & \mbox{ if } x = 0
+\end{cases}  }
+\vspace{.1cm}
+
+\begin{enumerate}
+	\item Is \; \DS{\int_0^1 \! f(x) \, dx} \; an inproper integral?
+	\item  Show that \; \DS{\int_1^{\infty} \frac{\cos x}{x^2} \, dx} \;is absolutely convergent.
+	\vspace{.1cm}
+	
+		\emph{Hint:}  Use BCT.
+		
+	\item The same argument is inconclusive for \DS{\int_1^{\infty} \! \! f(x) \, dx}.  Why?
+		
+	\item  Show that \; \DS{\int_1^{\infty}  \! \! f(x) dx} \; is convergent
+	\vspace{.1cm}
+	
+		\emph{Hint:} Use the definition of improper integral, not comparison tests.  Use integration by parts with $u=\frac{1}{x}$ and $dv= \sin x \,dx$.
+		\vspace{.1cm}
+
+\end{enumerate}
+
+{\setsize{10}
+\emph{Note:}  It is possible to prove that \; \DS{\int_1^{\infty} \! \! \frac{\sin x}{x} \, dx} is not absolutely convergent.
+}
+\end{frame}
+
+
+%-----------------------------
+\end{document}
+%-----------------------------
+%-----------------------------
+
+
+
+
