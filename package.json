@@ -5,7 +5,9 @@
     "description": "Calculus Materials from Alfonso Gracia-Saz (MAT137, University of Toronto)",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"No test specified\" && exit 0"
+        "test": "echo \"No test specified\" && exit 0",
+        "dev": "cd website && next",
+        "build": "cd website && next build && next export"
     },
     "author": "",
     "license": "CC-BY-SA-4",
