@@ -36,6 +36,7 @@ jobs:
     deploy:
         permissions:
             id-token: write
+            pages: write
         environment:
             name: github-pages
         runs-on: ubuntu-latest
