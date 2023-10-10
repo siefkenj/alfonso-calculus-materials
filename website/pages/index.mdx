@@ -1,20 +1,30 @@
 import Image from "next/image";
 import { Callout, Card, Cards } from "nextra/components";
+import { useRouter } from "next/router";
+
+export function AlfonsoImage() {
+    const { basePath } = useRouter();
+    return (
+        <p align="center">
+            <Image
+                alt="Portrait of Alfonso Gracia-Saz"
+                src={`${basePath}/alfonso.jpg`}
+                width={300}
+                height={450}
+            />
+        </p>
+    );
+}
 
 # Alfonso Gracia-Saz's Calculus Materials
 
-<p align="center">
-    <Image
-        alt="Portrait of Alfonso Gracia-Saz"
-        src="./alfonso.jpg"
-        width={300}
-        height={450}
-    />
-</p>
+<AlfonsoImage />
 
 Alfonso Gracia-Saz (1976&ndash;2021) was an [award-winning](https://notes.math.ca/en/article/alphonso-gracia-saz/) math professor
 at the University of Toronto. Before his [passing](https://www.utoronto.ca/news/passionate-principled-and-caring-u-t-remembers-math-professor-alfonso-gracia-saz),
 Alfonso put countless hours into redesigning [MAT137: Calculus with Proofs](https://artsci.calendar.utoronto.ca/course/mat137y1) at the University of Toronto.
+
+If you find these materials useful, consider donating to the [Alfonso Gracia-Saz Memorial Scholarship](https://engage.utoronto.ca/site/SPageServer?pagename=donate#/fund/1624).
 
 On this page, you can find the materials Alfonso created for MAT137 as well as instructor guides for those materials
 that he made in collaboration with Beatriz Navarro-Lameda.
