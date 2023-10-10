@@ -6,6 +6,7 @@ import { allQuestions } from "./all-questions";
 import { download } from "./downloader";
 import classNames from "classnames";
 import { useRouter } from "next/router";
+import { MathRender } from "./math-render";
 
 type QuestionInfo = (typeof allQuestions)[0];
 
@@ -48,7 +49,9 @@ export function QuestionPreview({
     return (
         <div className={classNames("question-preview", { small: small })}>
             <div className="header">
-                <h4 className="title">{q.title || altText}</h4>
+                <h4 className="title">
+                    <MathRender content={q.title || altText} />
+                </h4>
                 {!small && (
                     <div className="actions">
                         <Button
@@ -143,7 +146,7 @@ export function QuestionDownloader({
                                     id={`list-question-${i}-checked`}
                                 ></input>
                                 <label htmlFor={`list-question-${i}-checked`}>
-                                    {i + 1}. {q.title}
+                                    {i + 1}. <MathRender content={q.title} />
                                 </label>
                             </li>
                         );
