@@ -4,7 +4,11 @@ import FileSave from "file-saver";
 
 type QuestionInfo = (typeof allQuestions)[0];
 
-export async function download(questions: QuestionInfo[], unit: string) {
+export async function download(
+    questions: QuestionInfo[],
+    unit: string,
+    basePath = ""
+) {
     // First we figure out if any images are needed.
     const images = new Set<string>();
     for (const question of questions) {
@@ -13,8 +17,8 @@ export async function download(questions: QuestionInfo[], unit: string) {
         }
     }
     // Next we download the template.
-    const template = await fetch("/beamer-template.tex").then((res) =>
-        res.text()
+    const template = await fetch(`${basePath}/beamer-template.tex`).then(
+        (res) => res.text()
     );
 
     const indentedQuestions = questions
@@ -38,7 +42,7 @@ export async function download(questions: QuestionInfo[], unit: string) {
         zip.file(fileName, filledTemplate);
         const imagesList = Array.from(images);
         const imagePromises = Array.from(images).map((image) =>
-            fetch(`/slide-images/${image}`).then((res) => res.blob())
+            fetch(`${basePath}/slide-images/${image}`).then((res) => res.blob())
         );
         const imageBlobs = await Promise.all(imagePromises);
         for (let i = 0; i < imagesList.length; i++) {

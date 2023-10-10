@@ -5,6 +5,7 @@ import { CopyIcon, ExpandIcon } from "nextra/icons";
 import { allQuestions } from "./all-questions";
 import { download } from "./downloader";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 
 type QuestionInfo = (typeof allQuestions)[0];
 
@@ -20,9 +21,10 @@ export function QuestionPreview({
     hideImageTitle?: boolean;
     small?: boolean;
 }>) {
+    const { basePath } = useRouter();
     const unitStr = String(unit).padStart(2, "0");
     const questionStr = String(question + 1);
-    const imageUrl = `/slides/unit-${unitStr}-question-${question}.png`;
+    const imageUrl = `${basePath}/slides/unit-${unitStr}-question-${question}.png`;
     const altText = `Question ${questionStr} from Unit ${unitStr}`;
     const q: QuestionInfo = allQuestions.find(
         (q) => q.unit === unit && q.question === question
@@ -95,6 +97,7 @@ export function QuestionDownloader({
     unit,
     children,
 }: React.PropsWithChildren<{ unit: number }>) {
+    const { basePath } = useRouter();
     const unitStr = String(unit).padStart(2, "0");
     const questions = allQuestions.filter((q) => q.unit === unit);
     const [checked, _setChecked] = React.useState(() =>
@@ -119,7 +122,8 @@ export function QuestionDownloader({
                         onClick={() => {
                             download(
                                 questions.filter((q, i) => checked[i]),
-                                unitStr
+                                unitStr,
+                                basePath
                             );
                         }}
                     >

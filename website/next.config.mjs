@@ -144,6 +144,20 @@ function insertLatexCodeBlocksIntoQuestionPreview() {
 //    origLog(...args.map((x) => util.inspect(x, false, 10, true)));
 //};
 
+
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
+let assetPrefix = "";
+let basePath = "";
+
+if (isGithubActions) {
+    // trim off `<owner>/`
+    const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
+
+    assetPrefix = `/${repo}/`;
+    basePath = `/${repo}`;
+}
+
 const withNextra = nextraConfig({
     theme: "nextra-theme-docs",
     themeConfig: "./theme.config.tsx",
@@ -170,20 +184,6 @@ const withNextra = nextraConfig({
     //    },
     staticImage: true,
 });
-
-const isGithubActions = process.env.GITHUB_ACTIONS || false;
-
-let assetPrefix = "";
-let basePath = "";
-
-if (isGithubActions) {
-    // trim off `<owner>/`
-    const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
-
-    assetPrefix = `/${repo}/`;
-    basePath = `/${repo}`;
-}
-
 const config = withNextra({
     images: {
         unoptimized: true,

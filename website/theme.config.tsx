@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
         link: "https://github.com/siefkenj/alfonso-calculus-materials",
     },
     docsRepositoryBase:
-        "https://github.com/siefkenj/alfonso-calculus-materials",
+        "https://github.com/siefkenj/alfonso-calculus-materials/tree/main/website",
     footer: {
         text: "Alfonso Gracia-Saz's Calculus Materials",
     },

@@ -104,10 +104,10 @@
                 @apply mx-auto;
             }
             input {
-                @apply mx-2;
+                @apply mx-2 max-md:hidden;
             }
             .note {
-                @apply self-center text-sm text-gray-400 basis-20;
+                @apply self-center text-sm text-gray-400 basis-20 max-md:hidden;
             }
             li:hover .note {
                 @apply text-gray-600;
