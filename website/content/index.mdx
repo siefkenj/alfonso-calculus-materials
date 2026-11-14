@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { Callout, Card, Cards } from "nextra/components";
-import { useRouter } from "next/router";
+import { Cards } from "nextra/components";
+import { Callout } from "../components/callout";
 
 export function AlfonsoImage() {
-    const { basePath } = useRouter();
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
     return (
         <p align="center">
             <Image
@@ -81,10 +81,10 @@ Use them wisely.
 ## Resources
 
 <Cards>
-    <Card title="Inverted Classroom Guide" href="/guide" arrow />
-    <Card title="MAT137 Learning Objectives" href="/objectives" arrow />
-    <Card title="In-class Questions" href="questions" arrow />
-    <Card
+    <Cards.Card title="Inverted Classroom Guide" href="/guide" arrow />
+    <Cards.Card title="MAT137 Learning Objectives" href="/objectives" arrow />
+    <Cards.Card title="In-class Questions" href="/questions" arrow />
+    <Cards.Card
         title="YouTube Channel"
         href="https://www.youtube.com/@mat1378"
         target="_blank"

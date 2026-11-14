@@ -2,9 +2,12 @@
 
 name: Node.js Build and Deploy
 
+# Pushes to main build and deploy the site; pull requests only build it, to
+# check that it still builds.
 on:
     push:
         branches: [main]
+    pull_request:
 
 jobs:
     build:
@@ -12,14 +15,14 @@ jobs:
 
         steps:
             # https://github.com/actions/checkout
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v7
 
             # a standard step for GitHub actions on Node
             # https://github.com/actions/setup-node
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v7
               with:
                   # update the Node version to meet your needs
-                  node-version: 20
+                  node-version: 24
                   cache: npm
 
             - name: Build
@@ -29,11 +32,12 @@ jobs:
                   touch website/out/.nojekyll
             - name: Prepare for Github Pages
               if: ${{ github.event_name == 'push' }}
-              uses: actions/upload-pages-artifact@v1
+              uses: actions/upload-pages-artifact@v5
               with:
                   path: ./website/out
 
     deploy:
+        if: ${{ github.event_name == 'push' }}
         permissions:
             id-token: write
             pages: write
@@ -45,4 +49,4 @@ jobs:
         steps:
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v2
+              uses: actions/deploy-pages@v5

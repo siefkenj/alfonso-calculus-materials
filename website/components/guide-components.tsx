@@ -1,23 +1,25 @@
 import React from "react";
-import { Callout } from "nextra/components";
+import { Callout } from "./callout";
 
-function isP(child: React.ReactNode): child is React.ReactElement {
+function isP(child: React.ReactNode): child is React.ReactElement<{ children?: React.ReactNode }> {
     try {
         return (
             React.isValidElement(child) &&
-            typeof child.type !== "string" &&
-            child.type.name === "p"
+            (child.type === "p" ||
+                (typeof child.type === "function" &&
+                    child.type.name === "p"))
         );
     } catch (e) {
         return false;
     }
 }
-function isUl(child: React.ReactNode): child is React.ReactElement {
+function isUl(child: React.ReactNode): child is React.ReactElement<{ children?: React.ReactNode }> {
     try {
         return (
             React.isValidElement(child) &&
-            typeof child.type !== "string" &&
-            child.type.name === "ul"
+            (child.type === "ul" ||
+                (typeof child.type === "function" &&
+                    child.type.name === "ul"))
         );
     } catch (e) {
         return false;
@@ -65,7 +67,7 @@ export function Warning({ children }: React.PropsWithChildren<{}>) {
     }
     const firstChild = _children[0];
     const firstChildIsP = isP(firstChild);
-    let init = firstChild;
+    let init: React.ReactNode = firstChild;
     if (firstChildIsP) {
         init = firstChild.props.children;
     }
@@ -73,7 +75,7 @@ export function Warning({ children }: React.PropsWithChildren<{}>) {
     return (
         <Callout type="warning">
             {firstChildIsP ? (
-                <p className="nx-mt-6 nx-leading-7 first:nx-mt-0">
+                <p className="mt-6 leading-7 first:mt-0">
                     <strong>Warning. </strong>
                     {init}
                 </p>
