@@ -2,9 +2,12 @@
 
 name: Node.js Build and Deploy
 
+# Pushes to main build and deploy the site; pull requests only build it, to
+# check that it still builds.
 on:
     push:
         branches: [main]
+    pull_request:
 
 jobs:
     build:
@@ -34,6 +37,7 @@ jobs:
                   path: ./website/out
 
     deploy:
+        if: ${{ github.event_name == 'push' }}
         permissions:
             id-token: write
             pages: write
