@@ -1,4 +1,4 @@
-{
+export default {
     "index": {
         "type": "page",
         "title": "About Alfonso's Calculus Materials",

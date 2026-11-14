@@ -6,31 +6,40 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"No test specified\" && exit 0",
-        "dev": "cd website && next",
-        "build": "cd website && next build && next export"
+        "dev": "cd website && next dev --hostname 0.0.0.0",
+        "build": "cd website && next build",
+        "postbuild": "cd website && pagefind --site .next/server/app --output-path out/_pagefind"
     },
     "author": "",
     "license": "CC-BY-SA-4",
-    "devDependencies": {
-        "autoprefixer": "^10.4.16",
-        "glob": "^10.3.10",
-        "postcss": "^8.4.31",
-        "postcss-nesting": "^12.0.1",
-        "tailwindcss": "^3.3.3",
-        "typescript": "^5.2.2"
-    },
     "dependencies": {
-        "@unified-latex/unified-latex": "^1.5.0",
-        "@unified-latex/unified-latex-cli": "^1.5.0",
-        "classnames": "^2.3.2",
+        "@unified-latex/unified-latex": "^1.8.4",
+        "@unified-latex/unified-latex-cli": "^1.8.4",
+        "classnames": "^2.5.1",
         "file-saver": "^2.0.5",
-        "jszip": "^3.10.1",
-        "katex": "^0.16.9",
-        "next": "^13.5.4",
-        "nextra": "^2.13.2",
-        "nextra-theme-docs": "^2.13.2",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "vite-node": "^0.34.6"
+        "jszip": "^3.10.2",
+        "katex": "^0.19.1",
+        "next": "^16.4.6",
+        "nextra": "^4.6.1",
+        "nextra-theme-docs": "^4.6.1",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "vite-node": "^6.0.0"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.3.5",
+        "@types/file-saver": "^2.0.7",
+        "@types/node": "^26.6.6",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "glob": "^14.0.6",
+        "pagefind": "^1.6.0",
+        "postcss": "^8.5.33",
+        "tailwindcss": "^4.3.5",
+        "typescript": "^6.0.3"
+    },
+    "overrides": {
+        "zod": "4.3.6",
+        "katex": "$katex"
     }
 }

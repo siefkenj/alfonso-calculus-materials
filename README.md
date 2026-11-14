@@ -16,3 +16,16 @@ at the University of Toronto. Before his [passing](https://www.utoronto.ca/news/
 Alfonso put countless hours into redesigning [MAT137: Calculus with Proofs](https://artsci.calendar.utoronto.ca/course/mat137y1) at the University of Toronto.
 
 If you find these materials useful, consider donating to the [Alfonso Gracia-Saz Memorial Scholarship](https://engage.utoronto.ca/site/SPageServer?pagename=donate#/fund/1624).
+
+## Development
+
+```sh
+npm install
+npm run dev     # http://localhost:3000, also reachable from outside a dev container
+npm run build   # static site in website/out, with the Pagefind search index
+```
+
+`npm run dev` listens on `0.0.0.0`. Next.js only lets pages on `localhost` and
+private-network addresses (`10.*`, `172.*`, `192.168.*`, `*.local`) use its dev
+resources such as hot reload; to open the dev server under another host name,
+list it in `DEV_ORIGINS`, e.g. `DEV_ORIGINS=mybox.example.com npm run dev`.
