@@ -41,5 +41,8 @@
     "overrides": {
         "zod": "4.3.6",
         "katex": "$katex"
+    },
+    "prettier": {
+        "tabWidth": 4
     }
 }

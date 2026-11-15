@@ -18,14 +18,18 @@
 /* `:where` keeps these weak, so `.videos h3` below can override them. */
 main {
     :where(h1, h2, h3, h4, h5) {
-        color: hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) 32%);
+        color: hsl(
+            var(--nextra-primary-hue) var(--nextra-primary-saturation) 32%
+        );
     }
     li > p {
         @apply mt-2;
     }
     > p > strong:first-child {
         @apply me-2;
-        color: hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) 32%);
+        color: hsl(
+            var(--nextra-primary-hue) var(--nextra-primary-saturation) 32%
+        );
     }
     strong + ul {
         @apply mt-0;
@@ -33,7 +37,9 @@ main {
 }
 :where(html.dark) main {
     :where(h1, h2, h3, h4, h5) {
-        color: hsl(var(--nextra-primary-hue) var(--nextra-primary-saturation) 45%);
+        color: hsl(
+            var(--nextra-primary-hue) var(--nextra-primary-saturation) 45%
+        );
     }
 }
 

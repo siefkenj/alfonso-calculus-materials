@@ -1,14 +1,14 @@
 export default {
-    "index": {
-        "title": "Introduction"
+    index: {
+        title: "Introduction",
     },
     "general-aspects": {
-        "title": "General Aspects"
+        title: "General Aspects",
     },
-    "implementation": {
-        "title": "Implementation"
+    implementation: {
+        title: "Implementation",
     },
     "commentated-examples": {
-        "title": "Commentated Examples"
-    }
-}
+        title: "Commentated Examples",
+    },
+};

@@ -21,7 +21,10 @@ async function LatexSource({ frame }: { frame: string }) {
     let source = compiled.get(frame);
     if (!source) {
         // A fence longer than any run of backticks in the frame.
-        const longest = Math.max(0, ...(frame.match(/`+/g) ?? []).map((r) => r.length));
+        const longest = Math.max(
+            0,
+            ...(frame.match(/`+/g) ?? []).map((r) => r.length)
+        );
         const fence = "`".repeat(Math.max(3, longest + 1));
         source = compileMdx(`${fence}latex\n${frame}\n${fence}`);
         compiled.set(frame, source);
@@ -45,7 +48,9 @@ export function QuestionPreview(props: {
 }) {
     const q = props.small
         ? undefined
-        : allQuestions.find((q) => q.unit === props.unit && q.question === props.question);
+        : allQuestions.find(
+              (q) => q.unit === props.unit && q.question === props.question
+          );
     return (
         <ClientQuestionPreview
             {...props}

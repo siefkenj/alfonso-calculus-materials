@@ -1,6 +1,6 @@
 export default {
-    "index": {
-        "title": "Learning Objectives",
-        "theme": { "typesetting": "article" }
-    }
-}
+    index: {
+        title: "Learning Objectives",
+        theme: { typesetting: "article" },
+    },
+};

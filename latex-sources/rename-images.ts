@@ -15,12 +15,12 @@ async function main() {
     const imageFiles = glob.sync("./questions/slides/q-*.png");
     const numFiles = imageFiles.length;
     console.log(`Found ${numFiles} image files.`);
-    
+
     const allQuestions = JSON.parse(
         await fs.readFile("./questions/processed/all-questions.json", "utf-8")
     );
     console.log(`Found ${allQuestions.length} questions.`);
-    
+
     for (let i = 0; i < numFiles; i++) {
         const imageFile = imageFiles[i];
         const question = allQuestions[i];
