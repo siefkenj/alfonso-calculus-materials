@@ -1,11 +1,12 @@
 export default {
     "*": {
-        "theme": { "typesetting": "article" }
+        theme: { typesetting: "article" },
     },
-    "index": {
-        "title": "About"
+    index: {
+        title: "About",
     },
-    "unit-01": "Unit 1: Introduction to logic, notation,sets, definitions, and proofs",
+    "unit-01":
+        "Unit 1: Introduction to logic, notation,sets, definitions, and proofs",
     "unit-02": "Unit 2: Limits and continuity",
     "unit-03": "Unit 3: Derivatives",
     "unit-04": "Unit 4: Transcendental functions",
@@ -18,5 +19,5 @@ export default {
     "unit-11": "Unit 11: Sequences",
     "unit-12": "Unit 12: Improper integrals",
     "unit-13": "Unit 13: Series",
-    "unit-14": "Unit 14: Power series and Taylor series"
-}
+    "unit-14": "Unit 14: Power series and Taylor series",
+};

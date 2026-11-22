@@ -1,25 +1,27 @@
 import React from "react";
 import { Callout } from "./callout";
 
-function isP(child: React.ReactNode): child is React.ReactElement<{ children?: React.ReactNode }> {
+function isP(
+    child: React.ReactNode
+): child is React.ReactElement<{ children?: React.ReactNode }> {
     try {
         return (
             React.isValidElement(child) &&
             (child.type === "p" ||
-                (typeof child.type === "function" &&
-                    child.type.name === "p"))
+                (typeof child.type === "function" && child.type.name === "p"))
         );
     } catch (e) {
         return false;
     }
 }
-function isUl(child: React.ReactNode): child is React.ReactElement<{ children?: React.ReactNode }> {
+function isUl(
+    child: React.ReactNode
+): child is React.ReactElement<{ children?: React.ReactNode }> {
     try {
         return (
             React.isValidElement(child) &&
             (child.type === "ul" ||
-                (typeof child.type === "function" &&
-                    child.type.name === "ul"))
+                (typeof child.type === "function" && child.type.name === "ul"))
         );
     } catch (e) {
         return false;

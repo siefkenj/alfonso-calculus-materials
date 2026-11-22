@@ -1,22 +1,22 @@
 export default {
-    "index": {
-        "type": "page",
-        "title": "About Alfonso's Calculus Materials",
-        "display": "hidden",
-        "theme": {
-            "typesetting": "article"
-        }
+    index: {
+        type: "page",
+        title: "About Alfonso's Calculus Materials",
+        display: "hidden",
+        theme: {
+            typesetting: "article",
+        },
     },
-    "guide": {
-        "title": "Inverted Classroom Guide",
-        "type": "page"
+    guide: {
+        title: "Inverted Classroom Guide",
+        type: "page",
     },
-    "objectives": {
-        "title": "Learning Objectives",
-        "type": "page"
+    objectives: {
+        title: "Learning Objectives",
+        type: "page",
     },
-    "questions": {
-        "title": "Questions",
-        "type": "page"
-    }
-}
+    questions: {
+        title: "Questions",
+        type: "page",
+    },
+};

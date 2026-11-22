@@ -1,3 +1,13 @@
 node_modules
 out
 .next
+
+# Made by `npm run typst` (typst-sources/build.ts)
+website/public/typst/questions.json
+website/public/typst/questions.json.tmp
+website/public/typst/slides/
+
+# Made by TypeScript (`tsc`)
+*.tsbuildinfo
+# Written by Next (its docs: not to be in Git).
+website/next-env.d.ts

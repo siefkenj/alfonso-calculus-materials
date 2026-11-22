@@ -1,0 +1,11 @@
+# Written by npm, with its own formatting.
+package-lock.json
+# Generated data.
+latex-sources/questions/processed/all-questions.json
+website/public/all-questions.json
+# Written by `next dev`.
+website/AGENTS.md
+# Prettier does not know the maths in these ($..$), and breaks it: it
+# escapes `_` in `\sum_{n=0}`, for one.
+*.md
+*.mdx

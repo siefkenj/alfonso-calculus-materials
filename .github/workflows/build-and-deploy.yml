@@ -25,6 +25,16 @@ jobs:
                   node-version: 24
                   cache: npm
 
+            # The Typst previews of the last build, so that only those whose
+            # question has changed are rendered again (typst-sources/build.ts
+            # knows which, from slides/manifest.json).
+            # https://github.com/actions/cache
+            - uses: actions/cache@v6
+              with:
+                  path: website/public/typst/slides
+                  key: typst-slides-${{ hashFiles('typst-sources/**', 'website/components/typst-document.ts', 'website/components/site.ts', 'website/public/typst/fonts/**', 'package-lock.json') }}
+                  restore-keys: typst-slides-
+
             - name: Build
               run: |
                   npm ci

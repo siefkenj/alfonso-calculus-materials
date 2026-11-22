@@ -1,12 +1,13 @@
 import React from "react";
 
-function isP(child: React.ReactNode): child is React.ReactElement<{ children?: React.ReactNode }> {
+function isP(
+    child: React.ReactNode
+): child is React.ReactElement<{ children?: React.ReactNode }> {
     try {
         return (
             React.isValidElement(child) &&
             (child.type === "p" ||
-                (typeof child.type === "function" &&
-                    child.type.name === "p"))
+                (typeof child.type === "function" && child.type.name === "p"))
         );
     } catch (e) {
         return false;

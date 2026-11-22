@@ -4,6 +4,7 @@ import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
 import "./globals.css";
+import { SourceLanguageSwitch } from "../components/source-language-switch";
 
 export const metadata: Metadata = {
     title: {
@@ -50,6 +51,7 @@ export default async function RootLayout({
                 >
                     {children}
                 </Layout>
+                <SourceLanguageSwitch />
             </body>
         </html>
     );

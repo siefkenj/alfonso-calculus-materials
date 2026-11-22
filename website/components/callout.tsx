@@ -52,13 +52,14 @@ export function Callout({
             className={cn(
                 "nextra-callout overflow-x-auto mt-6 flex rounded-lg border py-2 pe-4",
                 "contrast-more:border-current contrast-more:dark:border-current",
-                classes[type],
+                classes[type]
             )}
         >
             <div
                 className="select-none text-xl ps-3 pe-2"
                 style={{
-                    fontFamily: '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                    fontFamily:
+                        '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
                 }}
                 data-pagefind-ignore="all"
             >

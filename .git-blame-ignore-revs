@@ -1,0 +1,5 @@
+# Commits that only reformat, which `git blame` skips: GitHub reads this
+# file itself; locally, `git config blame.ignoreRevsFile .git-blame-ignore-revs`.
+
+# Format with Prettier, 4-space indentation
+96ef506838b9e0506e4c78052e7d2acc2641a492
