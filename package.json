@@ -6,16 +6,30 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"No test specified\" && exit 0",
+        "typst": "vite-node typst-sources/build.ts",
+        "predev": "npm run typst -- --keep-going",
         "dev": "cd website && next dev --hostname 0.0.0.0",
+        "prebuild": "npm run typst",
         "build": "cd website && next build",
         "postbuild": "cd website && pagefind --site .next/server/app --output-path out/_pagefind"
     },
     "author": "",
     "license": "CC-BY-SA-4",
     "dependencies": {
+        "@codemirror/autocomplete": "^6.20.4",
+        "@codemirror/commands": "^6.11.1",
+        "@codemirror/language": "^6.13.1",
+        "@codemirror/state": "^6.7.6",
+        "@codemirror/view": "^6.43.15",
+        "@headlessui/react": "^2.2.10",
+        "@lezer/highlight": "^1.2.5",
+        "@myriaddreamin/typst-ts-renderer": "0.8.0-rc4",
+        "@myriaddreamin/typst-ts-web-compiler": "0.8.0-rc4",
+        "@myriaddreamin/typst.ts": "0.8.0-rc4",
         "@unified-latex/unified-latex": "^1.8.4",
         "@unified-latex/unified-latex-cli": "^1.8.4",
         "classnames": "^2.5.1",
+        "codemirror-lang-typst": "^0.6.0",
         "file-saver": "^2.0.5",
         "jszip": "^3.10.2",
         "katex": "^0.19.1",
@@ -24,9 +38,11 @@
         "nextra-theme-docs": "^4.6.1",
         "react": "^19.3.1",
         "react-dom": "^19.3.1",
+        "shiki": "^3.23.0",
         "vite-node": "^6.0.0"
     },
     "devDependencies": {
+        "@myriaddreamin/typst-ts-node-compiler": "0.8.0-rc4",
         "@tailwindcss/postcss": "^4.3.5",
         "@types/file-saver": "^2.0.7",
         "@types/node": "^26.6.6",
@@ -36,6 +52,7 @@
         "pagefind": "^1.6.0",
         "postcss": "^8.5.33",
         "tailwindcss": "^4.3.5",
+        "tex2typst": "^0.6.2",
         "typescript": "^6.0.3"
     },
     "overrides": {

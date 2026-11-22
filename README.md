@@ -25,6 +25,9 @@ npm run dev     # http://localhost:3000, also reachable from outside a dev conta
 npm run build   # static site in website/out, with the Pagefind search index
 ```
 
+Both first run `npm run typst`, which bundles the Typst versions of the questions in
+[`typst-sources`](typst-sources) for the site and renders their previews (see its README).
+
 `npm run dev` listens on `0.0.0.0`. Next.js only lets pages on `localhost` and
 private-network addresses (`10.*`, `172.*`, `192.168.*`, `*.local`) use its dev
 resources such as hot reload; to open the dev server under another host name,

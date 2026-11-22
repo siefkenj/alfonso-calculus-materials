@@ -10,7 +10,8 @@ if (isGithubActions) {
 }
 
 // No custom remark plugins: ```math blocks are rendered by Nextra itself, and
-// the questions' LaTeX is highlighted by components/question-preview.tsx.
+// the questions' sources are highlighted in the browser
+// (components/highlight.tsx).
 // Function-valued plugins would also rule out Turbopack, which cannot pass
 // them to a loader.
 const withNextra = nextra({

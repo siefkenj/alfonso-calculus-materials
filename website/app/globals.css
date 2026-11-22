@@ -92,10 +92,6 @@ html.dark {
         .title {
             @apply text-base font-bold;
         }
-
-        .actions button {
-            @apply flex gap-2 text-sm;
-        }
     }
     &.small .title {
         @apply text-center w-full;
@@ -109,9 +105,6 @@ html.dark {
 
         .header {
             @apply flex items-center justify-between mb-2 font-bold;
-            button {
-                @apply text-base;
-            }
         }
         ul {
             @apply h-32 scroll-m-1 overflow-y-scroll pe-1;
@@ -180,4 +173,510 @@ html.dark {
 }
 .comments ul {
     @apply mt-0;
+}
+
+/* --- Typst ------------------------------------------------------------------ */
+
+/* The buttons by the questions and in the editor (Show source, the language
+   menus, Edit, Download): outlined, all of one height so they line up. The
+   rules are outside any layer, so they win over Nextra's own classes. */
+.outlined-button {
+    @apply inline-flex h-7 items-center gap-1 whitespace-nowrap rounded-md border border-gray-300 px-2 text-sm font-medium leading-none;
+    color: inherit;
+    &:hover {
+        @apply bg-gray-100;
+    }
+    &:disabled {
+        @apply cursor-not-allowed opacity-50;
+        background: none;
+    }
+}
+:where(html.dark) .outlined-button {
+    @apply border-neutral-700;
+    &:hover {
+        @apply bg-neutral-800;
+    }
+    &:disabled {
+        background: none;
+    }
+}
+/* The down arrow of a menu. */
+.menu-arrow {
+    @apply shrink-0 opacity-70;
+}
+
+/* A button joined to the menu of source languages (LanguageSplitButton in
+   question-preview.client.tsx): one outline, and a bar between the two. */
+/* A button whose action is under way (the source being highlighted). */
+.split-button > button[aria-busy="true"] {
+    @apply cursor-progress opacity-70;
+}
+.split-button {
+    @apply inline-flex h-7 items-stretch overflow-hidden rounded-md border border-gray-300 text-sm font-medium;
+    > button {
+        @apply inline-flex h-auto items-center gap-1 whitespace-nowrap rounded-none px-2 leading-none;
+        color: inherit;
+        font-size: inherit;
+        background: none;
+        &:hover {
+            @apply bg-gray-100;
+        }
+        &:disabled {
+            @apply cursor-not-allowed opacity-50;
+            background: none;
+        }
+    }
+    > .split-button-menu {
+        @apply border-l border-gray-300 ps-2 pe-1.5;
+    }
+}
+:where(html.dark) .split-button {
+    @apply border-neutral-700;
+    > button:hover:not(:disabled) {
+        @apply bg-neutral-800;
+    }
+    > .split-button-menu {
+        @apply border-neutral-700;
+    }
+}
+
+/* One language's logo (or name) of all of theirs, stacked, the others
+   hidden: as wide as the widest (ForEitherLanguage, language-logos.tsx). */
+.either-language {
+    display: inline-grid;
+    > .either-language-item {
+        @apply inline-flex items-center justify-center;
+        grid-area: 1 / 1;
+        &[data-shown="false"] {
+            visibility: hidden;
+        }
+    }
+}
+
+/* The logos of LaTeX and Typst (language-logos.tsx). */
+.language-logo {
+    @apply inline-block shrink-0;
+}
+.typst-logo {
+    width: 1.1em;
+    height: 1.1em;
+}
+.tex-logo {
+    font-family: "Latin Modern Roman", "CMU Serif", "Computer Modern Serif",
+        "Times New Roman", serif;
+    font-size: 1.15em;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+}
+/* Knuth's spacing: E lowered half an ex, T and X kerned in over it. */
+.tex-logo-e {
+    position: relative;
+    top: 0.22em;
+    margin-inline: -0.1667em -0.125em;
+}
+.language-option {
+    @apply inline-flex items-center gap-2;
+}
+
+/* A question's source: the question alone, or the whole document. */
+.question-source {
+    @apply flex flex-col;
+    /* Nextra spaces a code block from what is above it: here, the tabs are
+       on it. */
+    .nextra-code {
+        margin-top: 0;
+    }
+    pre {
+        max-height: 28rem;
+        overflow-y: auto;
+        /* Square under the first tab. */
+        border-top-left-radius: 0;
+    }
+}
+/* The source view, in the slide's place: at least as tall as the slide, its
+   code filling it. */
+.question-preview .source-frame:not([hidden]) {
+    @apply flex flex-col;
+    min-height: var(--slide-height);
+    > .question-source {
+        @apply grow;
+    }
+    .question-source > .nextra-code {
+        @apply flex grow flex-col;
+    }
+    .question-source > .nextra-code > pre {
+        @apply grow;
+    }
+}
+.question-source-status {
+    @apply mb-1 text-sm text-gray-500;
+    &[data-state="error"] {
+        @apply text-red-600;
+    }
+}
+
+/* The slide, with its Edit button in the corner: shown on hover or focus
+   (always, on screens without hover), over the slide rather than in the
+   header, so that the header does not change between LaTeX and Typst. */
+.question-preview .slide-frame {
+    @apply relative self-start;
+}
+.question-preview .slide-edit-button {
+    @apply absolute right-2 top-2 bg-white/90 shadow-sm backdrop-blur-sm transition-opacity;
+    opacity: 0;
+    &:hover {
+        @apply bg-gray-100;
+    }
+}
+.question-preview .slide-frame:hover .slide-edit-button,
+.question-preview .slide-edit-button:focus-visible {
+    opacity: 1;
+}
+@media (hover: none) {
+    .question-preview .slide-edit-button {
+        opacity: 1;
+    }
+}
+:where(html.dark) .question-preview .slide-edit-button {
+    @apply bg-neutral-900/90;
+    &:hover {
+        @apply bg-neutral-800;
+    }
+}
+
+/* The question's buttons: source and language. */
+.question-preview .header .actions {
+    @apply flex items-center gap-2 text-sm;
+}
+.question-downloader .short-selector .download {
+    @apply flex items-center gap-2;
+}
+.question-downloader .download-error {
+    @apply text-sm text-red-600;
+}
+.question-downloader .download-notice {
+    @apply text-sm text-amber-700;
+}
+:where(html.dark) .question-downloader .download-notice {
+    @apply text-amber-300;
+}
+
+/* The LaTeX/Typst switch in the sidebar's footer, beside the theme switch. */
+.nextra-sidebar-footer .source-language-switch {
+    @apply flex items-center;
+}
+
+/* The live editor (typst-editor.tsx). */
+dialog.typst-editor {
+    @apply fixed inset-0 m-auto flex flex-col gap-2 rounded-lg border p-3 shadow-2xl;
+    width: min(1200px, 96vw);
+    height: min(800px, 92vh);
+    /* Nextra keeps its background colour as bare RGB numbers. */
+    background: rgb(var(--nextra-bg));
+    color: inherit;
+    &::backdrop {
+        background: rgb(0 0 0 / 0.5);
+    }
+    &:not([open]) {
+        display: none;
+    }
+}
+/* In place of the editor, if its code could not be loaded. */
+dialog.editor-load-error {
+    @apply fixed inset-0 m-auto flex max-w-lg flex-col gap-3 rounded-lg border p-3 shadow-2xl;
+    background: rgb(var(--nextra-bg));
+    color: inherit;
+    &::backdrop {
+        background: rgb(0 0 0 / 0.5);
+    }
+    &:not([open]) {
+        display: none;
+    }
+}
+.editor-load-error-actions {
+    @apply flex justify-end gap-2;
+}
+.typst-editor-bar {
+    @apply flex flex-wrap items-center gap-2;
+}
+/* A question with edits saved in this browser: a badge in the editor, and a
+   dot on the buttons that open it. */
+.edited-badge {
+    @apply rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800;
+}
+:where(html.dark) .edited-badge {
+    @apply bg-amber-900/50 text-amber-200;
+}
+.edited-badge[data-state="error"] {
+    @apply bg-red-100 text-red-700;
+}
+:where(html.dark) .edited-badge[data-state="error"] {
+    @apply bg-red-900/50 text-red-200;
+}
+/* The badge with its revert button, after a bar: one pill. */
+.edited-pill {
+    @apply inline-flex items-stretch p-0;
+    > span {
+        @apply px-2 py-0.5;
+    }
+}
+.edited-revert {
+    @apply flex cursor-pointer items-center rounded-r-full border-l border-current/30 pr-2 pl-1.5;
+    > svg {
+        @apply size-3;
+    }
+    &:hover {
+        @apply bg-amber-200;
+    }
+    &:focus-visible {
+        @apply outline-2 outline-offset-1 outline-amber-600;
+    }
+}
+:where(html.dark) .edited-revert:hover {
+    @apply bg-amber-800/60;
+}
+.edited-pill[data-state="error"] .edited-revert:hover {
+    @apply bg-red-200;
+}
+:where(html.dark) .edited-pill[data-state="error"] .edited-revert:hover {
+    @apply bg-red-800/60;
+}
+/* In the list of the questions to select, after the title. */
+/* In the list of questions to download: the same as under the slide. */
+.question-downloader .short-selector .list-edits {
+    @apply ml-2 inline-flex align-middle text-xs text-gray-600;
+}
+:where(html.dark) .question-downloader .short-selector .list-edits {
+    @apply text-neutral-400;
+}
+/* Revert, beside the badge: as small as it. */
+.outlined-button.small-button {
+    @apply h-6 px-2 text-xs;
+}
+.typst-editor-status {
+    @apply inline-flex grow items-center gap-1.5 text-sm text-gray-500;
+    &[data-state="error"] {
+        @apply text-red-600;
+    }
+}
+/* The panes fill the dialog, and each scrolls within itself: the code when
+   it is longer than its pane, the slide only if it does not fit. */
+/* Between them, the divider (pane-splitter.tsx), which takes the place of a
+   gap; `--split` is the code's share, the divider's middle. */
+.typst-editor-panes {
+    --divider: 0.75rem;
+    @apply grid min-h-0 grow;
+    grid-template-columns:
+        minmax(0, calc(var(--split, 50%) - var(--divider) / 2))
+        var(--divider) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    @media (max-width: 800px) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows:
+            minmax(0, calc(var(--split, 50%) - var(--divider) / 2))
+            var(--divider) minmax(0, 1fr);
+    }
+    /* While dragging, the pointer stays the divider's over the panes. */
+    &[data-dragging] {
+        @apply cursor-col-resize select-none;
+        @media (max-width: 800px) {
+            @apply cursor-row-resize;
+        }
+    }
+}
+/* A thin line, darker on hover, while dragged, and when focused. */
+.pane-splitter {
+    @apply relative cursor-col-resize touch-none outline-none;
+    &::after {
+        @apply absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 rounded-full bg-transparent transition-colors;
+        content: "";
+    }
+    &:hover::after,
+    &[data-dragging]::after {
+        @apply bg-gray-300;
+    }
+    &:focus-visible::after {
+        @apply bg-blue-500;
+    }
+    &[aria-orientation="horizontal"] {
+        @apply cursor-row-resize;
+        &::after {
+            @apply inset-x-0 inset-y-auto top-1/2 left-0 h-0.5 w-auto translate-x-0 -translate-y-1/2;
+        }
+    }
+}
+:where(html.dark) .pane-splitter:is(:hover, [data-dragging])::after {
+    @apply bg-neutral-600;
+}
+/* The code of the question or of the whole document, under the switch
+   between them. */
+.typst-editor-source {
+    @apply flex min-h-0 flex-col;
+}
+/* Question / Full document, as tabs on top of a box of code (the source
+   view's, the editor's): the chosen one open into it, the other closed off
+   by the box's top edge. Compact: a switch of the view below. `--tab-bg`
+   and `--tab-border` are the box's. */
+.source-tabs {
+    --tab-bg: white;
+    --tab-border: var(--color-gray-300);
+    @apply flex items-end text-xs font-medium leading-none;
+    /* A closed tab stands on the box's top edge, which is its bottom line;
+       the open one reaches 1px further down, over that edge, to open into
+       the box. Neither draws a bottom border: overlapping the box's, it can
+       be a pixel off it when the page is zoomed. */
+    > button {
+        @apply relative rounded-t-md border border-b-0 bg-gray-100 px-2.5 py-1 text-gray-600;
+        border-color: var(--tab-border);
+        & + button {
+            @apply -ml-px;
+        }
+        &:hover:not(:disabled) {
+            @apply bg-gray-200 text-gray-900;
+        }
+        &:disabled {
+            @apply cursor-not-allowed opacity-50;
+        }
+        &[aria-busy="true"] {
+            @apply cursor-progress;
+        }
+        &[aria-pressed="true"] {
+            @apply z-10 -mb-px pb-[calc(--spacing(1)+1px)] text-gray-900;
+            background: var(--tab-bg);
+        }
+    }
+}
+:where(html.dark) .source-tabs > button:not([aria-pressed="true"]) {
+    @apply bg-neutral-800 text-gray-300;
+    &:hover:not(:disabled) {
+        @apply bg-neutral-700 text-gray-50;
+    }
+}
+/* In the dark, Nextra's code blocks are black, edged in dark grey (the
+   editor's code stays white). */
+:where(html.dark) .question-source .source-tabs {
+    --tab-bg: black;
+    --tab-border: var(--color-neutral-700);
+    > button[aria-pressed="true"] {
+        @apply text-gray-100;
+    }
+}
+/* The tabs' row in the source view: the tabs, and at the right, Edit. */
+.source-tabs-bar {
+    @apply flex items-end gap-2;
+    > .outlined-button {
+        @apply mb-1 ml-auto h-6 text-xs;
+    }
+}
+.typst-editor-code {
+    @apply min-h-0 grow overflow-auto rounded-b rounded-tr border border-gray-300 text-sm;
+    &[hidden] {
+        display: none;
+    }
+    /* The highlighting's colours are for a light background: keep the code
+       light, as the slide is, whatever the theme. */
+    background: white;
+    color: #1f2937;
+    .cm-editor {
+        height: 100%;
+    }
+    .cm-scroller {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    /* The folding arrows, beside the code. */
+    .cm-gutters {
+        @apply border-none bg-white text-gray-400;
+    }
+    .cm-foldGutter .cm-gutterElement {
+        @apply cursor-pointer px-1 hover:text-gray-700;
+    }
+    .cm-foldPlaceholder {
+        @apply mx-0.5 cursor-pointer rounded border-gray-300 bg-gray-100 px-1 text-gray-600;
+    }
+}
+.typst-editor-preview {
+    @apply flex min-h-0 flex-col gap-2 overflow-auto;
+}
+.typst-editor-slide svg {
+    width: 100%;
+    height: auto;
+    /* The slide is white, whatever the theme. */
+    background: white;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.25);
+}
+.typst-editor-error {
+    @apply flex items-start gap-2 rounded border border-red-300 bg-red-50 p-2 text-sm text-red-800;
+    > div {
+        @apply flex min-w-0 flex-col items-start gap-2;
+    }
+    pre {
+        @apply m-0 min-w-0 whitespace-pre-wrap;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+}
+.typst-editor-error-icon {
+    @apply mt-px size-5 shrink-0 text-red-600;
+}
+:where(html.dark) .typst-editor-error {
+    @apply border-red-800 bg-red-950 text-red-200;
+    .typst-editor-error-icon {
+        @apply text-red-400;
+    }
+}
+/* Where the slide will be, until it is first compiled. */
+.typst-editor-placeholder {
+    @apply flex w-full flex-col items-center justify-center gap-3 rounded border border-dashed border-gray-300 text-sm text-gray-500;
+    aspect-ratio: 4 / 3;
+    .typst-editor-spinner {
+        @apply size-8;
+    }
+}
+:where(html.dark) .typst-editor-placeholder {
+    @apply border-neutral-700 text-gray-400;
+}
+.typst-editor-spinner {
+    @apply size-4 shrink-0;
+    animation: typst-editor-spin 0.8s linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+        animation-duration: 2.4s;
+    }
+}
+@keyframes typst-editor-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.typst-editor-note {
+    @apply text-xs text-gray-500;
+}
+
+/* Under an edited question's slide: that it is edited, and Revert. */
+.question-preview .edited-bar {
+    @apply mt-1 flex items-center gap-2 text-xs text-gray-600;
+}
+:where(html.dark) .question-preview .edited-bar {
+    @apply text-neutral-400;
+}
+/* A library folded in a source view (highlight.tsx), as in the editor. */
+.question-source .code-fold {
+    @apply mx-0.5 cursor-pointer rounded border border-gray-300 bg-gray-100 px-1 text-gray-600 hover:bg-gray-200;
+    font: inherit;
+    /* As wide as a short line of code, with the rest in its title. */
+    display: inline-block;
+    max-width: 32ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    &::after {
+        content: attr(data-label);
+    }
+}
+:where(html.dark) .question-source .code-fold {
+    @apply border-neutral-700 bg-neutral-800 text-neutral-300 hover:bg-neutral-700;
+}
+/* After a revert: what happened, and Undo. */
+.reverted-note {
+    @apply inline-flex items-center gap-2;
 }
