@@ -12,7 +12,7 @@
   Suggestion:
   + Transform the “$display(P ==> Q)$”
     theorem into an equivalent
-    “$display("(not Q)" ==> "(not P)")$”
+    #box[“$display("(not Q)" ==> "(not P)")$”]
     theorem.  \
      You will prove that one instead.
   + Write the definition of the hypotheses  \

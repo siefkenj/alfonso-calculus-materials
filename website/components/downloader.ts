@@ -2,12 +2,16 @@ import type { allQuestions } from "./all-questions";
 import JSZip from "jszip";
 import FileSave from "file-saver";
 import { latexDocument } from "./full-source";
-import { basePath } from "./site";
+import { basePath, type SlideShape } from "./site";
 import { compilePdf } from "./typst-compiler";
 
 type QuestionInfo = (typeof allQuestions)[0];
 
-export async function download(questions: QuestionInfo[], unit: string) {
+export async function download(
+    questions: QuestionInfo[],
+    unit: string,
+    shape: SlideShape = "4:3"
+) {
     // First we figure out if any images are needed.
     const images = new Set<string>();
     for (const question of questions) {
@@ -15,7 +19,7 @@ export async function download(questions: QuestionInfo[], unit: string) {
             images.add(image);
         }
     }
-    const filledTemplate = await latexDocument(questions);
+    const filledTemplate = await latexDocument(questions, shape);
 
     const baseName = `unit-${unit}-slides`;
     const fileName = `${baseName}.tex`;

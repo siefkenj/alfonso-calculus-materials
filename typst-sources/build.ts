@@ -5,13 +5,16 @@
  *   questions share (function-graph.typ) and every question's source, for
  *   the site's downloads, source views and editor;
  * - website/public/typst/slides/unit-NN-question-N.svg: each question's
- *   preview, rendered with the fonts in website/public/typst/fonts.
+ *   preview, rendered with the fonts in website/public/typst/fonts; and
+ *   unit-NN-question-N.16x9.svg, its 16:9 one.
  *
  * It reports questions that do not compile and those that overflow their
  * slide (they run onto a second page), and fails if any do not compile,
  * unless given `--keep-going` (as `npm run dev` does, so that the site can
  * still be worked on). Previews are not rendered again unless their
- * document, the fonts or the compiler have changed.
+ * document, the fonts or the compiler have changed. It also lists the
+ * questions without a LaTeX preview of either shape (website/public/slides),
+ * which it cannot make: latex-sources/render-previews.ts does.
  *
  * Run from the repository root:
  *   npx vite-node typst-sources/build.ts [--no-previews] [--keep-going]
@@ -24,7 +27,7 @@ import {
     typstDocument,
     type TypstBundle,
 } from "../website/components/typst-document";
-import { questionName } from "../website/components/site";
+import { SLIDE_SHAPES, previewName } from "../website/components/site";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const SOURCES = path.join(ROOT, "typst-sources");
@@ -58,6 +61,23 @@ async function loadQuestions(): Promise<TypstBundle["questions"]> {
         }
     }
     return questions;
+}
+
+/**
+ * The LaTeX previews that are not there (public/slides/`<name>.png`, of
+ * either shape), of the questions in all-questions.json. The site shows a
+ * question's 4:3 one instead of its missing 16:9 one.
+ */
+async function missingLatexPreviews(): Promise<string[]> {
+    const questions: { unit: number; question: number }[] = JSON.parse(
+        await fs.readFile(path.join(PUBLIC, "all-questions.json"), "utf8")
+    );
+    const files = new Set(await fs.readdir(path.join(PUBLIC, "slides")));
+    return questions
+        .flatMap(({ unit, question }) =>
+            SLIDE_SHAPES.map((shape) => previewName(unit, question, shape))
+        )
+        .filter((name) => !files.has(`${name}.png`));
 }
 
 function hash(s: string | Buffer): string {
@@ -112,6 +132,15 @@ async function main() {
             OUT
         )}/questions.json`
     );
+    const missing = await missingLatexPreviews();
+    if (missing.length) {
+        console.log(
+            `\n${missing.length} LaTeX previews are missing (made by ` +
+                `latex-sources/render-previews.ts):\n  ${missing.join(
+                    "\n  "
+                )}\n`
+        );
+    }
     if (!previews) return;
 
     const manifestFile = path.join(SLIDES, "manifest.json");
@@ -127,9 +156,14 @@ async function main() {
     const failed: string[] = [];
     const overflowing: string[] = [];
     let rendered = 0;
-    for (const q of bundle.questions) {
-        const id = questionName(q.unit, q.question);
-        const doc = typstDocument(bundle, [q.typst]);
+    // Each question's preview of either shape (the site shows the one its
+    // reader chose).
+    const previewsOf = bundle.questions.flatMap((q) =>
+        SLIDE_SHAPES.map((shape) => ({ q, shape }))
+    );
+    for (const { q, shape } of previewsOf) {
+        const id = previewName(q.unit, q.question, shape);
+        const doc = typstDocument(bundle, [q.typst], shape);
         const key = hash(rendering + doc);
         const svgFile = path.join(SLIDES, `${id}.svg`);
         if (
@@ -163,7 +197,7 @@ async function main() {
     }
     // The previews of questions that are no longer there.
     const ids = new Set(
-        bundle.questions.map((q) => questionName(q.unit, q.question))
+        previewsOf.map(({ q, shape }) => previewName(q.unit, q.question, shape))
     );
     for (const file of await fs.readdir(SLIDES)) {
         const id = file.replace(/\.svg$/, "");
@@ -178,7 +212,7 @@ async function main() {
     await fs.writeFile(manifestFile, JSON.stringify(manifest, null, 1));
     console.log(
         `Rendered ${rendered} previews (${
-            bundle.questions.length - rendered - failed.length
+            previewsOf.length - rendered - failed.length
         } unchanged).`
     );
     if (overflowing.length) {

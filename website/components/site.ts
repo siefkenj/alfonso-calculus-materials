@@ -18,6 +18,24 @@ export const ATTRIBUTION = [
 export const questionName = (unit: number, question: number) =>
     `unit-${String(unit).padStart(2, "0")}-question-${question}`;
 
+/**
+ * The slides' shape: 4:3, as the questions were written for, or 16:9, as
+ * tall and only wider. The reader chooses it (slide-shape.ts).
+ */
+export type SlideShape = "4:3" | "16:9";
+export const SLIDE_SHAPES: readonly SlideShape[] = ["4:3", "16:9"];
+
+/**
+ * The name of a question's preview of `shape`, its Typst one (public/typst/
+ * slides/`<name>.svg`) and its LaTeX one (public/slides/`<name>.png`):
+ * "unit-07-question-3", or "unit-07-question-3.16x9".
+ */
+export const previewName = (
+    unit: number,
+    question: number,
+    shape: SlideShape
+) => questionName(unit, question) + (shape === "16:9" ? ".16x9" : "");
+
 /** The site's base path (see next.config.mjs), before its own URLs. */
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

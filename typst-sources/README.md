@@ -84,6 +84,21 @@ The SVGs and PNGs stay in `website/public/slide-images` for the LaTeX.
 Step-by-step slides use Touying's `#pause` and `#only`. The previews and the
 editor show each slide with all of its parts (`--input handout=true`).
 
+The slides are 4:3 (128 mm × 96 mm), as the questions were written for.
+`#show: mat137-slides.with(aspect-ratio: "16-9")`, or `--input
+aspect-ratio=16-9`, makes them widescreen: 170.7 mm × 96 mm, as tall as a 4:3
+slide and only wider, so that every question still fits on one slide (Beamer's
+own 16:9, 160 mm × 90 mm, is shorter, and two dozen do not). The 4:3/16:9
+switch in the site's sidebar does this for its previews, its downloads and
+its editor; `build.ts` renders each question's preview of either shape
+(`unit-NN-question-N.svg` and `unit-NN-question-N.16x9.svg`), and the LaTeX
+the site downloads sets the same size with `\geometry`. Its 16:9 LaTeX
+previews (`website/public/slides/unit-NN-question-N.16x9.png`) are made by
+`latex-sources/render-previews.ts`, which needs a TeX installation and is run
+by hand when the LaTeX changes (they are committed, as the 4:3 ones are).
+`build.ts` lists the questions without one, and the site shows their 4:3
+preview instead.
+
 ## Building
 
 `npm run typst` (run by `npm run dev` and `npm run build`) runs `build.ts`,

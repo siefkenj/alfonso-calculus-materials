@@ -9,6 +9,7 @@ import { download, downloadTypst } from "./downloader";
 import classNames from "classnames";
 import { MathRender } from "./math-render";
 import { useSourceLanguage } from "./source-language";
+import { useSlideShape } from "./slide-shape";
 import {
     ForEitherLanguage,
     LanguageLogo,
@@ -18,9 +19,9 @@ import {
 import { fullSource, typstFullDocument } from "./full-source";
 import { HighlightedCode } from "./highlight";
 import { preloadHighlighter, tokenize, type Token } from "./highlight-tokens";
-import { withHelpers } from "./typst-document";
+import { makesWidescreen, withHelpers } from "./typst-document";
 import { QuestionEdits } from "./edited-pill";
-import { basePath, questionName } from "./site";
+import { basePath, previewName, questionName, type SlideShape } from "./site";
 import {
     editedDocument,
     editedQuestion,
@@ -151,29 +152,46 @@ function EditButton({
     );
 }
 
+/** An edited question's slide, as compiled here. */
+type EditedSlide = {
+    /** Its SVG, if it compiles. */
+    url: string | null;
+    /** Why it does not compile, if it does not. */
+    error: string | null;
+    /** Its shape: 4:3 if its edited template cannot make 16:9. */
+    shape: SlideShape;
+};
+
 /**
- * The slide of an edited question, compiled here: a URL of its SVG, or why
- * it does not compile; null without edits. While `paused` (the editor is
- * open, and compiles its own), the last slide stays.
+ * The slide of an edited question, of `shape`, compiled here: a URL of its
+ * SVG, or why it does not compile; null without edits. While `paused` (the
+ * editor is open, and compiles its own), the last slide stays.
  */
-function useEditedSlide(name: string, edit: SavedEdit | null, paused: boolean) {
-    const [slide, setSlide] = React.useState<{
-        url: string | null;
-        error: string | null;
-    } | null>(null);
+function useEditedSlide(
+    name: string,
+    edit: SavedEdit | null,
+    paused: boolean,
+    shape: SlideShape
+) {
+    const [slide, setSlide] = React.useState<EditedSlide | null>(null);
     const replace = React.useCallback(
-        (next: { url: string | null; error: string | null } | null) =>
+        (next: EditedSlide | null) =>
             setSlide((prev) => {
                 if (prev?.url) URL.revokeObjectURL(prev.url);
                 return next;
             }),
         []
     );
-    /** The edit compiled last (or being compiled): not compiled again. */
-    const compiled = React.useRef<SavedEdit | null>(null);
+    /** What was compiled last (or is being compiled): not compiled again. */
+    const compiled = React.useRef<{
+        edit: SavedEdit | null;
+        shape: SlideShape;
+    } | null>(null);
     React.useEffect(() => {
-        if (paused || edit === compiled.current) return;
-        compiled.current = edit;
+        const last = compiled.current;
+        if (paused || (last?.edit === edit && last.shape === shape)) return;
+        const mine = { edit, shape };
+        compiled.current = mine;
         if (!edit) {
             setEditError(name, null);
             return replace(null);
@@ -182,10 +200,10 @@ function useEditedSlide(name: string, edit: SavedEdit | null, paused: boolean) {
         let done = false;
         (async () => {
             const bundle = await loadTypstBundle();
-            const svg = await compileSvg(
-                editedDocument(edit, bundle),
-                () => cancelled
-            );
+            const document = editedDocument(edit, bundle, shape);
+            const made: SlideShape =
+                shape === "16:9" && makesWidescreen(document) ? "16:9" : "4:3";
+            const svg = await compileSvg(document, () => cancelled);
             if (cancelled) return;
             done = true;
             setEditError(name, null);
@@ -196,21 +214,22 @@ function useEditedSlide(name: string, edit: SavedEdit | null, paused: boolean) {
                     })
                 ),
                 error: null,
+                shape: made,
             });
         })().catch((e) => {
             if (!cancelled && !(e instanceof Superseded)) {
                 done = true;
                 const error = describeError(e);
                 setEditError(name, error);
-                replace({ url: null, error });
+                replace({ url: null, error, shape });
             }
         });
         return () => {
             cancelled = true;
             // Stopped before it was compiled: compiled when next asked for.
-            if (!done && compiled.current === edit) compiled.current = null;
+            if (!done && compiled.current === mine) compiled.current = null;
         };
-    }, [name, edit, paused, replace]);
+    }, [name, edit, paused, shape, replace]);
     // The last URL, freed with the preview.
     const last = React.useRef(slide);
     last.current = slide;
@@ -341,6 +360,7 @@ function QuestionSource({
     paused?: boolean;
 }) {
     const language = useSourceLanguage();
+    const shape = useSlideShape();
     const name = languageName(language);
     const [full, setFull] = React.useState(false);
     /**
@@ -348,7 +368,7 @@ function QuestionSource({
      * source as it is now (edited, or not).
      */
     const wanted = `${full ? "full" : "question"}/${language}/${hashText(
-        (code ?? "") + JSON.stringify(edit ?? null)
+        (code ?? "") + JSON.stringify(edit ?? null) + (full ? shape : "")
     )}`;
     const [shown, setShown] = React.useState<{
         wanted: string;
@@ -367,8 +387,8 @@ function QuestionSource({
             const text = !full
                 ? code
                 : edit
-                ? editedDocument(edit, await loadTypstBundle())
-                : await fullSource(language, question, typst);
+                ? editedDocument(edit, await loadTypstBundle(), shape)
+                : await fullSource(language, question, typst, shape);
             if (text === undefined) {
                 throw new Error(`This question has no ${name} source.`);
             }
@@ -394,6 +414,7 @@ function QuestionSource({
         attempt,
         paused,
         full,
+        shape,
         language,
         name,
         question,
@@ -491,6 +512,7 @@ export function QuestionPreview({
     helpers?: Helpers;
 }) {
     const language = useSourceLanguage();
+    const shape = useSlideShape();
     const unitStr = String(unit).padStart(2, "0");
     const questionStr = String(question + 1);
     const id = questionName(unit, question);
@@ -498,15 +520,34 @@ export function QuestionPreview({
     // The edits saved in this browser, which the Typst slide shows.
     const edit = useSavedEdit(id);
     const showsEdits = !small && language === "typst";
-    const edited = useEditedSlide(id, showsEdits ? edit : null, editing);
+    const edited = useEditedSlide(id, showsEdits ? edit : null, editing, shape);
     /** The edits last reverted, to bring back. */
     const reverted = useRevertedEdit(id);
     // The preview in the preferred language: the LaTeX slide or the Typst one
     // (as edited, once compiled, if it has edits).
+    // Of the shape chosen (as edited: 4:3 if its template cannot make 16:9).
+    const preview = previewName(unit, question, shape);
+    const latexUrl = `${basePath}/slides/${preview}.png`;
+    /**
+     * A LaTeX 16:9 preview that is not there (they are made by hand, with
+     * latex-sources/render-previews.ts): the 4:3 one is shown instead.
+     */
+    const [missing, setMissing] = React.useState<string | null>(null);
+    const fallsBack = language === "latex" && missing === latexUrl;
     const imageUrl =
         language === "typst"
-            ? edited?.url ?? `${basePath}/typst/slides/${id}.svg`
-            : `${basePath}/slides/${id}.png`;
+            ? edited?.url ?? `${basePath}/typst/slides/${preview}.svg`
+            : fallsBack
+            ? `${basePath}/slides/${id}.png`
+            : latexUrl;
+    const shown: SlideShape =
+        language === "typst"
+            ? edited?.url
+                ? edited.shape
+                : shape
+            : fallsBack
+            ? "4:3"
+            : shape;
     const altText = `Question ${questionStr} from Unit ${unitStr}`;
     // The same object from render to render: the source is loaded again
     // when it changes.
@@ -539,7 +580,9 @@ export function QuestionPreview({
                 : withHelpers(typst, helpers ?? {})
             : q.frame;
 
-    let w = 400;
+    // As tall either way, so that a 16:9 slide's text is as big as a 4:3
+    // one's: wider.
+    let w = shown === "16:9" ? (300 * 16) / 9 : 400;
     let h = 300;
     // The title bar, cropped off: 27 px of the LaTeX slide, 25 px of the Typst one.
     // The height shown is the same in either language (the LaTeX one's), so
@@ -554,9 +597,14 @@ export function QuestionPreview({
         offset *= scale;
         crop *= scale;
     }
+    /** The slide's shape as shown, its title bar cropped off or not. */
+    const aspect = `${w} / ${hideImageTitle ? h + crop : h}`;
 
     return (
-        <div className={classNames("question-preview", { small: small })}>
+        <div
+            className={classNames("question-preview", { small: small })}
+            style={{ "--slide-width": `${w}px` } as React.CSSProperties}
+        >
             <div className="header">
                 <h4 className="title">
                     <MathRender content={q.title || altText} />
@@ -586,24 +634,35 @@ export function QuestionPreview({
             </div>
             {source !== "on" && (
                 <div className="slide-frame">
-                    <Image
-                        // A new image, not the old one with a new source, when the language changes.
-                        key={imageUrl}
-                        src={imageUrl}
-                        alt={altText}
-                        width={w}
-                        height={h}
-                        className={hideImageTitle ? "hide-image-title" : ""}
-                        style={
-                            hideImageTitle
-                                ? {
-                                      objectFit: "cover",
-                                      objectPosition: `0px ${offset}px`,
-                                      height: h + crop,
-                                  }
-                                : undefined
-                        }
-                    />
+                    <div
+                        // Its title bar cropped off: a box of the height left,
+                        // the slide moved up in it. Proportionally, so that it
+                        // can be narrower on a small screen (a margin's
+                        // percentage is of the width).
+                        className="slide-crop"
+                        style={{ width: w, aspectRatio: aspect }}
+                    >
+                        <Image
+                            // A new image, not the old one with a new source, when the language changes.
+                            key={imageUrl}
+                            src={imageUrl}
+                            alt={altText}
+                            width={w}
+                            height={h}
+                            style={
+                                hideImageTitle
+                                    ? { marginTop: `${(offset / w) * 100}%` }
+                                    : undefined
+                            }
+                            onError={
+                                language === "latex" &&
+                                shape === "16:9" &&
+                                !fallsBack
+                                    ? () => setMissing(latexUrl)
+                                    : undefined
+                            }
+                        />
+                    </div>
                     {!small && language === "typst" && typst && (
                         // Over the slide's corner, so that the header is the same in
                         // either language.
@@ -617,17 +676,12 @@ export function QuestionPreview({
             {source !== "off" && (
                 // Made while the slide is still shown, and shown once ready;
                 // at least as tall as the slide, so that what is below it
-                // does not move up.
+                // does not move up (of its shape: as tall as it is shown,
+                // on a narrow screen too).
                 <div
                     className="source-frame"
                     hidden={source === "opening"}
-                    style={
-                        {
-                            "--slide-height": `${
-                                hideImageTitle ? h + crop : h
-                            }px`,
-                        } as React.CSSProperties
-                    }
+                    style={{ "--slide-aspect": aspect } as React.CSSProperties}
                 >
                     <QuestionSource
                         question={q}
@@ -678,6 +732,7 @@ export function QuestionDownloader({
     helpers?: Helpers;
 }) {
     const language = useSourceLanguage();
+    const shape = useSlideShape();
     const unitStr = String(unit).padStart(2, "0");
     const questions = allQuestions.filter((q) => q.unit === unit);
     const [checked, _setChecked] = React.useState(() =>
@@ -718,7 +773,7 @@ export function QuestionDownloader({
                 // editor downloads it, edits to its template and all.
                 if (selected.length === 1 && edits[0] && bundle) {
                     await downloadTypst(
-                        editedDocument(edits[0], bundle),
+                        editedDocument(edits[0], bundle, shape),
                         questionName(unit, selected[0].question),
                         kind
                     );
@@ -757,7 +812,7 @@ export function QuestionDownloader({
                     );
                 }
                 await downloadTypst(
-                    await typstFullDocument(sources as string[]),
+                    await typstFullDocument(sources as string[], shape),
                     `unit-${unitStr}-slides`,
                     kind
                 );
@@ -771,7 +826,7 @@ export function QuestionDownloader({
                     );
                 }
             } else {
-                await download(selected, unitStr);
+                await download(selected, unitStr, shape);
             }
         } catch (e) {
             setError(
