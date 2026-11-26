@@ -5,8 +5,10 @@ import React from "react";
 import {
     splitDocument,
     typstDocument,
+    withSlideShape,
     type TypstBundle,
 } from "./typst-document";
+import type { SlideShape } from "./site";
 
 /** A question's edits, as the editor left them. */
 export type SavedEdit = {
@@ -130,14 +132,20 @@ export function useEditError(name: string): string | null {
     );
 }
 
-/** The whole document of an edited question, as the editor compiles it. */
+/**
+ * The whole document of an edited question, as the editor compiles it, its
+ * slides of `shape` (unless its `#show:` line has been edited otherwise).
+ */
 export function editedDocument(
     edit: SavedEdit,
-    bundle: Pick<TypstBundle, "template" | "helpers">
+    bundle: Pick<TypstBundle, "template" | "helpers">,
+    shape: SlideShape = "4:3"
 ): string {
-    if (edit.document !== null) return edit.document;
-    if (edit.head !== null) return edit.head + edit.question.trim() + "\n";
-    return typstDocument(bundle, [edit.question]);
+    if (edit.document !== null) return withSlideShape(edit.document, shape);
+    if (edit.head !== null) {
+        return withSlideShape(edit.head, shape) + edit.question.trim() + "\n";
+    }
+    return typstDocument(bundle, [edit.question], shape);
 }
 
 /**
@@ -159,7 +167,8 @@ export function editsTemplate(
     const split = splitDocument(edit.document);
     if (!split) return true;
     return (
-        split.head !==
+        // Whatever its slides' shape: that is the site's setting, not an edit.
+        withSlideShape(split.head, "4:3") !==
         splitDocument(typstDocument(bundle, [split.slides]))?.head
     );
 }

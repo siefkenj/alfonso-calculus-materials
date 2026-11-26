@@ -1,6 +1,7 @@
 "use client";
-// The menu of source languages: Nextra's Select (nextra/components), the same
-// to look at and to use, but not modal. Headless UI's menus are modal unless
+// The menus of the site's settings (the source language, the slides' shape):
+// Nextra's Select (nextra/components), the same to look at and to use, but
+// not modal. Headless UI's menus are modal unless
 // told otherwise, and a modal one stops the page scrolling while it is open,
 // which hides the page's scroll bars; Nextra's Select cannot be told.
 import cn from "classnames";
@@ -21,25 +22,31 @@ import { LANGUAGE_OPTIONS } from "./language-logos";
 
 type AnchorProps = ComponentProps<typeof ListboxOptions>["anchor"];
 
-export function LanguageMenu({
-    title,
-    className,
-    selectedOption,
-    anchor = { to: "top start", gap: 10 },
-}: {
+type MenuProps = {
     title: string;
     /** Where the options open, as Headless UI takes it. */
     anchor?: AnchorProps;
     className?: string;
     /** What the button shows. */
     selectedOption: ReactNode;
+};
+
+/** The menu of a setting: its value, and its options to choose from. */
+export function SettingMenu<T extends string>({
+    value,
+    onChange,
+    options,
+    title,
+    className,
+    selectedOption,
+    anchor = { to: "top start", gap: 10 },
+}: MenuProps & {
+    value: T;
+    onChange: (value: T) => void;
+    options: { id: T; name: ReactNode }[];
 }) {
-    const language = useSourceLanguage();
     return (
-        <Listbox
-            value={language}
-            onChange={(l: SourceLanguage) => setSourceLanguage(l)}
-        >
+        <Listbox value={value} onChange={onChange}>
             <ListboxButton
                 title={title}
                 className={({ hover, open, focus }) =>
@@ -71,7 +78,7 @@ export function LanguageMenu({
                     )
                 }
             >
-                {LANGUAGE_OPTIONS.map((option) => (
+                {options.map((option) => (
                     <ListboxOption
                         key={option.id}
                         value={option.id}
@@ -97,5 +104,18 @@ export function LanguageMenu({
                 ))}
             </ListboxOptions>
         </Listbox>
+    );
+}
+
+/** The menu of source languages. */
+export function LanguageMenu(props: MenuProps) {
+    const language = useSourceLanguage();
+    return (
+        <SettingMenu<SourceLanguage>
+            value={language}
+            onChange={setSourceLanguage}
+            options={LANGUAGE_OPTIONS}
+            {...props}
+        />
     );
 }

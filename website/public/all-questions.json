@@ -766,7 +766,7 @@
     "images": [
       "G9.png"
     ],
-    "frame": "\\begin{frame}\n\t\\frametitle{Bella}\n\n\tThe graph below describes Bella's distance from home one morning as she drives\n\tbetween her home and school.\\\\\n\n\tDescribe a possible scenario for her travels that morning. \\\\ Then sketch the\n\tcorresponding graph of her velocity.\n\n\t\\begin{center}\n\t\t\\includegraphics[width=0.7\\textwidth]{G9}\n\t\\end{center}\n\\end{frame}"
+    "frame": "\\begin{frame}\n\t\\frametitle{Bella}\n\n\tThe graph below describes Bella's distance from home one morning as she drives\n\tbetween her home and school.\\\\\n\n\tDescribe a possible scenario for her travels that morning. \\\\ Then sketch the\n\tcorresponding graph of her velocity.\n\n\t\\begin{center}\n\t\t\\includegraphics[width=8.27cm]{G9}\n\t\\end{center}\n\\end{frame}"
   },
   {
     "unit": 3,
@@ -911,7 +911,7 @@
     "images": [
       "G10.png"
     ],
-    "frame": "\\begin{frame}\n\t\\frametitle{Chain rule from a graph}\n\n\tIf $f$ and $g$ are the functions whose graphs are shown. \\\\ Let $u(x)=f(g(x))$\n\tand $v(x)=g(f(x))$. \\\\\n\t\\medskip\n\n\tFind each derivative, if it exists. \\\\ If it does not exist, explain why.\n\n\t\\begin{enumerate}\n\t\t\\item $u'(1)$\n\n\t\t\\item $v'(1)$\n\t\\end{enumerate}\n\t\\vspace{-1cm}\n\n\t\\begin{center}\n\t\t\\includegraphics[width=0.5\\textwidth]{G10}\n\t\\end{center}\n\\end{frame}"
+    "frame": "\\begin{frame}\n\t\\frametitle{Chain rule from a graph}\n\n\tIf $f$ and $g$ are the functions whose graphs are shown. \\\\ Let $u(x)=f(g(x))$\n\tand $v(x)=g(f(x))$. \\\\\n\t\\medskip\n\n\tFind each derivative, if it exists. \\\\ If it does not exist, explain why.\n\n\t\\begin{enumerate}\n\t\t\\item $u'(1)$\n\n\t\t\\item $v'(1)$\n\t\\end{enumerate}\n\t\\vspace{-1cm}\n\n\t\\begin{center}\n\t\t\\includegraphics[width=5.9cm]{G10}\n\t\\end{center}\n\\end{frame}"
   },
   {
     "unit": 3,

@@ -4,6 +4,7 @@
 // It imitates the Beamer template the questions were written for: a 4:3
 // slide of 128 mm × 96 mm with 14 pt text, the "Madrid" title bar, and the
 // same colours. Each question is one `#question(title: [..])[..]` slide.
+// `#show: mat137-slides.with(aspect-ratio: "16-9")` makes them widescreen.
 //
 // It needs only Touying (https://typst.app/universe/package/touying), so a
 // downloaded file compiles on its own. The fonts are New Computer Modern Sans
@@ -147,11 +148,17 @@
   let mat137-slides(
     /// The attribution in each slide's footer.
     copyright: [© Alfonso Gracia-Saz 2020],
+    /// The slides' shape: "4-3", as the questions were written for, or
+    /// "16-9", for a widescreen; also `--input aspect-ratio=16-9`. A 16:9
+    /// slide is as tall as a 4:3 one, only wider, so that what fits on one
+    /// fits on the other.
+    aspect-ratio: sys.inputs.at("aspect-ratio", default: "4-3"),
     body,
   ) = {
+    assert(aspect-ratio in ("4-3", "16-9"), message: "aspect-ratio is \"4-3\" or \"16-9\"")
     show: touying-slides.with(
       config-page(
-        width: 128mm,
+        width: if aspect-ratio == "16-9" { 96mm * 16 / 9 } else { 128mm },
         height: 96mm,
         // Beamer lets a slide run into its bottom margin, so the margin is
         // small and the footer sits low in it.

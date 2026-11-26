@@ -23,6 +23,8 @@ import {
     splitDocument,
     typstDocument,
     withHelpers,
+    makesWidescreen,
+    withSlideShape,
     type TypstBundle,
 } from "./typst-document";
 import {
@@ -42,6 +44,7 @@ import {
 } from "./saved-edits";
 import { EditedPill, RevertedNote } from "./edited-pill";
 import { usePaneSplit } from "./pane-splitter";
+import { useSlideShape } from "./slide-shape";
 
 type Status = {
     state: "loading" | "compiling" | "ready" | "error";
@@ -236,7 +239,7 @@ async function createEditor(
 ) {
     const [
         { EditorView, drawSelection, highlightActiveLine, keymap },
-        { EditorState },
+        { EditorState, Transaction },
         commands,
         language,
         autocomplete,
@@ -284,12 +287,42 @@ async function createEditor(
     folding.foldLibraries(view);
     return {
         text: () => view.state.doc.toString(),
-        /** Replaces the text, as an edit (which can be undone). */
-        replace: (text: string) => {
+        /**
+         * Replaces the text: only what differs, so that the cursor and the
+         * folds elsewhere stay. As an edit, which can be undone, unless
+         * `history` is false; the libraries are folded again, unless `fold`
+         * is false.
+         */
+        replace: (text: string, { fold = true, history = true } = {}) => {
+            const old = view.state.doc.toString();
+            let from = 0;
+            while (
+                from < old.length &&
+                from < text.length &&
+                old[from] === text[from]
+            ) {
+                from++;
+            }
+            let end = 0;
+            while (
+                end < old.length - from &&
+                end < text.length - from &&
+                old[old.length - 1 - end] === text[text.length - 1 - end]
+            ) {
+                end++;
+            }
+            if (from === old.length && old.length === text.length) return;
             view.dispatch({
-                changes: { from: 0, to: view.state.doc.length, insert: text },
+                changes: {
+                    from,
+                    to: old.length - end,
+                    insert: text.slice(from, text.length - end),
+                },
+                annotations: history
+                    ? undefined
+                    : Transaction.addToHistory.of(false),
             });
-            folding.foldLibraries(view);
+            if (fold) folding.foldLibraries(view);
         },
         /** Starts again with `text`, with no history. */
         reset: (text: string) => {
@@ -375,6 +408,13 @@ export default function TypstEditor({
     const [question, setQuestion] = React.useState("");
     /** The head of the document, if it has been edited (`splitDocument`). */
     const [head, setHead] = React.useState<string | null>(null);
+    /**
+     * The slides' shape, the site's setting (slide-shape.ts): the line
+     * `#show: mat137-slides` of the documents is made for it.
+     */
+    const shape = useSlideShape();
+    const shapeRef = React.useRef(shape);
+    shapeRef.current = shape;
     /** Whether the whole document is being edited, and its text. */
     const [full, setFull] = React.useState(false);
     const [wholeText, setWholeText] = React.useState("");
@@ -438,9 +478,9 @@ export default function TypstEditor({
             !bundle
                 ? null
                 : h !== null
-                ? h + q.trim() + "\n"
-                : typstDocument(bundle, [q]),
-        [bundle, head]
+                ? withSlideShape(h, shape) + q.trim() + "\n"
+                : typstDocument(bundle, [q], shape),
+        [bundle, head, shape]
     );
     /** The document as it stands: what is compiled and downloaded. */
     const document = full ? wholeText : documentOf(question);
@@ -454,8 +494,13 @@ export default function TypstEditor({
         setQuestion(startQuestion);
         setHead(saved?.head ?? null);
         setBase(saved?.base ?? source);
-        if (saved?.document != null) {
-            setWholeText(saved.document);
+        // Its slides of the shape now chosen.
+        const savedDocument =
+            saved?.document != null
+                ? withSlideShape(saved.document, shapeRef.current)
+                : null;
+        if (savedDocument !== null) {
+            setWholeText(savedDocument);
             setFull(true);
         }
         let cancelled = false;
@@ -471,7 +516,7 @@ export default function TypstEditor({
             ),
             createEditor(
                 documentHolder.current!,
-                saved?.document ?? "",
+                savedDocument ?? "",
                 "Typst source of the whole document",
                 setWholeText,
                 completions
@@ -543,6 +588,18 @@ export default function TypstEditor({
         );
     }
 
+    // The whole document, being edited, follows the shape when it changes
+    // (in another tab: this one's switch is behind the editor). Not as an
+    // edit: undoing it would make the document's shape not the setting's.
+    React.useEffect(() => {
+        const editor = documentEditor.current;
+        if (!full || !editor) return;
+        const text = editor.text();
+        const shaped = withSlideShape(text, shape);
+        if (shaped !== text)
+            editor.replace(shaped, { fold: false, history: false });
+    }, [full, shape]);
+
     /** The question's end of the whole document, if it can be found. */
     const split = full ? splitDocument(wholeText) : null;
 
@@ -560,11 +617,14 @@ export default function TypstEditor({
 
     function showQuestion() {
         if (!full || !split || !bundle || !questionEditor.current) return;
-        // The head is kept only if it is not what the question's would be.
+        // The head is kept only if it is not what the question's would be
+        // (whatever its slides' shape, which is the site's setting).
         const usual = splitDocument(
             typstDocument(bundle, [split.slides])
         )?.head;
-        setHead(split.head === usual ? null : split.head);
+        setHead(
+            withSlideShape(split.head, "4:3") === usual ? null : split.head
+        );
         if (split.slides !== question.trim()) {
             questionEditor.current.replace(split.slides);
         }
@@ -638,8 +698,9 @@ export default function TypstEditor({
             questionEditor.current?.replace(reverted.question);
         }
         if (reverted.document !== null) {
-            if (documentEditor.current?.text() !== reverted.document) {
-                documentEditor.current?.replace(reverted.document);
+            const doc = withSlideShape(reverted.document, shape);
+            if (documentEditor.current?.text() !== doc) {
+                documentEditor.current?.replace(doc);
             }
             setFull(true);
         } else {
@@ -790,7 +851,10 @@ export default function TypstEditor({
                         // Where the slide will be, the size of one.
                         !error &&
                         !loadError && (
-                            <div className="typst-editor-placeholder">
+                            <div
+                                className="typst-editor-placeholder"
+                                data-shape={shape}
+                            >
                                 <Spinner />
                                 {status.state === "loading"
                                     ? "Loading Typst..."
@@ -837,6 +901,10 @@ export default function TypstEditor({
                     " Your edits to the template and to what draws the graphs are kept."}
                 {outdated &&
                     " The question has changed on the site since you edited it: Revert to get the new version."}
+                {shape === "16:9" &&
+                    document !== null &&
+                    !makesWidescreen(document) &&
+                    " Its slide is 4:3, not 16:9: your edited template is from before the site could make widescreen slides (revert it to get them)."}
             </p>
         </dialog>
     );

@@ -4,7 +4,7 @@
 // by the site's downloads and live editor and by the build
 // (typst-sources/build.ts), which renders the previews with it.
 
-import { ATTRIBUTION } from "./site";
+import { ATTRIBUTION, type SlideShape } from "./site";
 
 /** The Typst side of the site, as typst-sources/build.ts writes it. */
 export type TypstBundle = {
@@ -201,6 +201,37 @@ const HEADER = ATTRIBUTION.map((line) => `// ${line}`).join("\n");
 /** The line of a document after which its slides come. */
 const SLIDES_START = /^#show: mat137-slides[^\n]*\n/m;
 
+/** The line `#show: mat137-slides`, as the site writes it, of either shape. */
+const SHOW_LINE =
+    /^#show: mat137-slides(?:\.with\(aspect-ratio: "(?:4-3|16-9)"\))?[ \t]*$/m;
+
+/**
+ * Whether a document's template can make 16:9 slides: one from before that
+ * (in the edits saved in a browser) cannot, and its slides stay 4:3.
+ */
+export function makesWidescreen(document: string): boolean {
+    const show = SLIDES_START.exec(document);
+    return /\baspect-ratio\s*:/.test(
+        show ? document.slice(0, show.index) : document
+    );
+}
+
+/**
+ * A document with its slides of `shape`: its line `#show: mat137-slides`
+ * made `#show: mat137-slides.with(aspect-ratio: "16-9")`, or back; 4:3 if
+ * its template cannot make 16:9 (`makesWidescreen`). A line that has been
+ * edited otherwise (`.with(copyright: ..)`) is left as it is.
+ */
+export function withSlideShape(document: string, shape: SlideShape): string {
+    const wide = shape === "16:9" && makesWidescreen(document);
+    return document.replace(
+        SHOW_LINE,
+        wide
+            ? '#show: mat137-slides.with(aspect-ratio: "16-9")'
+            : "#show: mat137-slides"
+    );
+}
+
 /**
  * A document of `typstDocument`'s, split into its head (the header, the
  * template, the helpers, up to the slides) and its slides, so that `head +
@@ -262,10 +293,11 @@ export function bundleNames(
     return names;
 }
 
-/** A whole document of the given questions' sources. */
+/** A whole document of the given questions' sources, its slides of `shape`. */
 export function typstDocument(
     bundle: Pick<TypstBundle, "template" | "helpers">,
-    sources: string[]
+    sources: string[],
+    shape: SlideShape = "4:3"
 ): string {
     const helpers = helpersUsedByAll(sources, bundle.helpers);
     // The template without the comment at its top, which is for those who
@@ -283,5 +315,5 @@ export function typstDocument(
             "#show: mat137-slides\n\n" +
             sources.map((s) => s.trim()).join("\n\n")
     );
-    return parts.join("\n\n") + "\n";
+    return withSlideShape(parts.join("\n\n") + "\n", shape);
 }

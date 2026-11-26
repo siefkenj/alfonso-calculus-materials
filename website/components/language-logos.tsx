@@ -81,7 +81,7 @@ export const languageName = (language: SourceLanguage) =>
 export const LANGUAGE_OPTIONS = SOURCE_LANGUAGES.map((l) => ({
     id: l.id,
     name: (
-        <span className="language-option">
+        <span className="setting-option">
             <LanguageLogo language={l.id} decorative />
             {l.name}
         </span>

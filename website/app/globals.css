@@ -78,13 +78,10 @@ html.dark {
 
 .question-preview {
     @apply flex flex-col border rounded-lg p-2 bg-slate-50;
-    width: 420px;
-
-    .hide-image-title {
-        object-fit: cover;
-        object-position: 0px -27px;
-        height: 274px;
-    }
+    /* Its slide's width (wider at 16:9), and its padding and border. */
+    width: max(420px, calc(var(--slide-width, 400px) + 20px));
+    /* On a small screen, narrower: the slide is scaled down. */
+    max-width: 100%;
 
     .header {
         @apply flex items-center justify-between mb-2;
@@ -129,7 +126,8 @@ html.dark {
                 @apply flex my-1 py-2 rounded-lg hover:bg-slate-50 cursor-pointer;
             }
             label {
-                @apply mx-auto;
+                /* No wider than the row, so that its slide can shrink. */
+                @apply mx-auto min-w-0;
             }
             input {
                 @apply mx-2 max-md:hidden;
@@ -154,7 +152,8 @@ html.dark {
     @apply flex flex-row gap-2 flex-wrap justify-center;
     .question-preview {
         display: inline-block;
-        width: 330px;
+        /* The small slide's width (wider at 16:9). */
+        width: max(330px, var(--slide-width, 330px));
     }
 }
 
@@ -275,7 +274,7 @@ html.dark {
     top: 0.22em;
     margin-inline: -0.1667em -0.125em;
 }
-.language-option {
+.setting-option {
     @apply inline-flex items-center gap-2;
 }
 
@@ -295,12 +294,21 @@ html.dark {
     }
 }
 /* The source view, in the slide's place: at least as tall as the slide, its
-   code filling it. */
+   code filling it. Under the code, an empty box of the slide's shape and
+   width (--slide-aspect, --slide-width), or narrower if the card is: as tall
+   as the slide is shown. */
 .question-preview .source-frame:not([hidden]) {
-    @apply flex flex-col;
-    min-height: var(--slide-height);
+    @apply grid;
+    grid-template-columns: minmax(0, 1fr);
+    &::before {
+        content: "";
+        grid-area: 1 / 1;
+        align-self: start;
+        width: min(100%, var(--slide-width));
+        aspect-ratio: var(--slide-aspect);
+    }
     > .question-source {
-        @apply grow;
+        grid-area: 1 / 1;
     }
     .question-source > .nextra-code {
         @apply flex grow flex-col;
@@ -320,7 +328,14 @@ html.dark {
    (always, on screens without hover), over the slide rather than in the
    header, so that the header does not change between LaTeX and Typst. */
 .question-preview .slide-frame {
-    @apply relative self-start;
+    @apply relative self-start max-w-full;
+}
+/* The slide, as wide as it is given (its width) or as there is room for. */
+.question-preview .slide-crop {
+    @apply max-w-full overflow-hidden;
+    img {
+        @apply block h-auto w-full max-w-none;
+    }
 }
 .question-preview .slide-edit-button {
     @apply absolute right-2 top-2 bg-white/90 shadow-sm backdrop-blur-sm transition-opacity;
@@ -362,9 +377,40 @@ html.dark {
     @apply text-amber-300;
 }
 
-/* The LaTeX/Typst switch in the sidebar's footer, beside the theme switch. */
-.nextra-sidebar-footer .source-language-switch {
-    @apply flex items-center;
+/* The site's settings in the sidebar's footer: LaTeX/Typst and 4:3/16:9
+   (sidebar-settings.tsx), on a row of their own above the theme switch,
+   which leaves no room for them beside it. */
+.nextra-sidebar-footer:has(> .sidebar-settings) {
+    @apply flex-wrap;
+    container-type: inline-size;
+}
+.nextra-sidebar-footer .sidebar-settings {
+    @apply order-first flex basis-full items-center gap-2;
+    > .source-language-switch {
+        @apply flex items-center;
+    }
+}
+/* In the collapsed sidebar, a narrow column: one above the other, each its
+   logo or icon alone (its name in its title, and in its menu). */
+@container (max-width: 120px) {
+    .nextra-sidebar-footer .sidebar-settings {
+        @apply flex-col;
+        .setting-name,
+        .menu-arrow {
+            display: none;
+        }
+    }
+}
+/* A slide's outline, at its shape: as tall as a line, 4:3 or 16:9 wide. */
+.slide-shape-icon {
+    @apply shrink-0;
+    width: 1.5em;
+    height: 1em;
+}
+/* "4:3" or "16:9", as wide as the wider, so that nothing moves. */
+.slide-shape-name {
+    @apply inline-block text-left tabular-nums;
+    min-width: 4ch;
 }
 
 /* The live editor (typst-editor.tsx). */
@@ -628,6 +674,9 @@ dialog.editor-load-error {
 .typst-editor-placeholder {
     @apply flex w-full flex-col items-center justify-center gap-3 rounded border border-dashed border-gray-300 text-sm text-gray-500;
     aspect-ratio: 4 / 3;
+    &[data-shape="16:9"] {
+        aspect-ratio: 16 / 9;
+    }
     .typst-editor-spinner {
         @apply size-8;
     }
